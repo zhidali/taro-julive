@@ -353,6 +353,7 @@ App = function (t) {
 };
 
 function appLaunch(options) {
+  console.log(options, 'options');
   app = this;
   enviroment.init();
   // console.log('options=====', options);

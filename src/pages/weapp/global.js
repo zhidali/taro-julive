@@ -123,6 +123,7 @@ let options = {
     searchKey: "",
   },
   onLaunch: async function (e) {
+    console.log(this);
     // 设置监听
     observer.Observe(this.commonData);
     // 获取投放页channel_id
