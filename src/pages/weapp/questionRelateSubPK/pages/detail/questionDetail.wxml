@@ -1,0 +1,82 @@
+<import src="../../../component/loading/loading.wxml" />
+<import src="../../../pages/template/qaCell/qaCell.wxml" />
+<import src="../template/questionCell.wxml" />
+<import src="../../../pages/project/template/projectCell.wxml" />
+<import src="../../../utils/wxParse/wxParse.wxml" />
+
+<view class="loading-view" wx:if="{{!loadingHidden}}">
+  <template is="loading-view" data="{{hidden:loadingHidden}}" />
+</view>
+<view class="container" hidden="{{!loadingHidden}}">
+  <view class="qa-detail-question-view">
+    <template is="qa-cell" data="{{qa:qa, showPurpose:true, showDistrict: true, showQuestionType:true, limitline:false}}" />
+  </view>
+  <view class="qa-detail-answer-view">
+    <view class="qa-tag-view">
+      <image class="tag-icon" src="/image/icon_tab_question.png" />
+      <jlImage className="tag-avatar" url="{{answer.employee_info.avatar}}" placeholder="{{answer.employee_info.sex==1?'/image/placeholder_consult_avater_man.png':'/image/placeholder_consult_avater_woman.png'}}"></jlImage>
+    </view>
+    <view class="qa-detail-right-view">
+      <view class="qa-detail-right-header-view">
+        <view class="qa-detail-employee-view">
+          <view class="qa-detail-name-view">
+            <label class="qa-detail-name-label">{{answer.employee_info.employee_name}}</label>
+            <label class="qa-detail-academy-label" wx:if="{{answer.employee_info.academy.length > 0}}">
+              毕业于{{answer.employee_info.academy}}
+            </label>
+          </view>
+          <view class="qa-detail-kpi-view">
+            <view class="qa-detail-kpi-item-view">
+              <label class="qa-detail-kpi-title">咨询人数</label>
+              <label class="qa-detail-kpi-value">{{answer.employee_info.order_num}}人</label>
+            </view>
+            <view class="qa-detail-kpi-item-view">
+              <label class="qa-detail-kpi-title">考察过{{projectId.length>0?'此':''}}楼盘</label>
+              <label class="qa-detail-kpi-value">{{answer.employee_info.see_num}}次</label>
+            </view>
+          </view>
+        </view>
+        <button class="qa-detail-consult-button" hover-class='qa-detail-consult-hover-button' bindtap="didClickAskEmployeeButton" data-op-type="{{900167}}">
+          向TA提问
+        </button>
+      </view>
+      <view class="qa-detail-answer-content-view">
+        <template is="wxParse" data="{{wxParseData:answer.answer.content.nodes}}" />
+      </view>
+      <view class="qa-detail-right-bottom-view">
+        <label class="qa-detail-time-label">{{qa.question.create_datetime}}</label>
+        <view class="answer-employee-like-view">
+          <image class='answer-employee-like-icon' src="/image/icon_likes_gray.png" />
+          <text class='answer-employee-like-num'>有用({{qa.answer_list[0].answer.like_num}})</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- banner -->
+  <view style='margin-bottom:28rpx'>
+    <bannerToApp showBanner="{{true}}" url="https://imgs.julive.com/l?p=eyJpbWdfcGF0aCI6IlwvbWluaW1ncy9iYW5uZXItdG8tYXBwLXdob2xlLnBuZz93YXRlcm1hcmssdF8wIn0=" width="{{750}}" bindOpenApp="OpenApp" bindCustomerCenter="CustomerCenter" />
+  </view>
+  <view class="qa-detail-relate-view" wx:if="{{relateProjectList.length > 0}}">
+    <view class="qa-detail-section-header" bindtap='didClickQaList'>
+      <label class="qa-detail-section-title">此问答相关楼盘</label>
+    </view>
+    <view class="project-cell-view" wx:for="{{relateProjectList}}" wx:key="item" style="{{index==relateProjectList.length-1?'margin-bottom:20rpx;':''}}">
+      <template is="project-cell" data="{{project:item, index:index, opType:'900168'}}" />
+    </view>
+  </view>
+  <view class="qa-detail-relate-view" wx:if="{{relateQaList.length > 0}}">
+    <view class="qa-detail-section-header" bindtap='didClickQaList'>
+      <label class="qa-detail-section-title">你可能还想了解</label>
+      <label class="qa-detail-section-value" wx:if="{{total > 0}}">查看全部{{total}}条问答 ></label>
+    </view>
+    <view class="question-cell-view" wx:for="{{relateQaList}}" wx:key="item">
+      <template is="question-cell" data="{{question:item, index:index}}" />
+    </view>
+  </view>
+  <view class="qa-detail-ask-view">
+    <label class="qa-detail-ask-title">你的个性化买房问题当然得一对一解答才安心</label>
+    <button class="qa-detail-ask-button" hover-class='button-hover' bindtap='didClickAskButton'>
+      我要问问
+    </button>
+  </view>
+</view>

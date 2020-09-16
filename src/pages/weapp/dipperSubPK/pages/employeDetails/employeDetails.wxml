@@ -1,0 +1,60 @@
+<import src="../../../component/loading/loading.wxml" />
+<import src="../template/qaAnswer.wxml" />
+<import src="../template/userEvaluate.wxml" />
+<import src="../template/wxCode.wxml" />
+<import src="../template/dipperLogin.wxml" />
+<wxs src="../../../utils/util.wxs" module="tools" />
+<view class="loading-view" wx:if="{{!loadingHidden}}">
+  <template is="loading-view" data="{{hidden:loadingHidden}}" />
+</view>
+<view class='container' hidden="{{!loadingHidden}}">
+  <view class='eD-head'>
+    <jlImage className="eD-head-img" url="{{tools.resizeImageUrl(avatar, 750, 422)}}" placeholder="/dipperSubPK/images/icon_base_emploe.png"></jlImage>
+    <view class='masking'></view>
+    <view class='eD-head-info'>
+      <view class='eD-head-lf'>
+        <view>{{employee_name}}</view>
+        <view>毕业于{{academy}}</view>
+      </view>
+      <view class='eD-head-ri' bindtap='diaTapPhone'>戳我咨询</view>
+    </view>
+  </view>
+  <view class='eD-title' wx:if="{{clockNum< 2}}">
+    <view class='eD-title-item' wx:if="{{see_num>=10}}">
+      <view>
+        {{see_num}}
+        <text>次</text>
+      </view>
+      <text>免费带看</text>
+      <view class='upright-line'></view>
+    </view>
+    <view class='eD-title-item' wx:if="{{order_num>=10}}">
+      <view>
+        {{order_num}}
+        <text>人</text>
+      </view>
+      <text>服务客户</text>
+      <view class='upright-line' wx:if="{{high_rate_int>= 95 || order_num<10}}"></view>
+    </view>
+    <view class='eD-title-item' wx:if="{{high_rate_int>= 95}}">
+      <view class='orange'>
+        {{high_rate}}
+        <text>%</text>
+      </view>
+      <text>客户满意度</text>
+    </view>
+  </view>
+  <view class='eD-content'>
+    <view class='eD-content-tag' wx:if="{{tag.length>= 1}}">
+      <text wx:for="{{tag}}" wx:key="{{index}}">{{item}}</text>
+    </view>
+    <view class='eD-content-introduce'>{{introduce}}</view>
+  </view>
+  <block wx:if="{{qa.length>=1}}">
+    <template is="qa-answer" data="{{data: qa}}" />
+  </block>
+  <template is="user-evaluate" data="{{data: comment}}" />
+  <template is="wx-code" data="{{imglist:imglist}}" />
+  <template is="dipper-login" data="{{dipperLoginFlag:dipperLoginFlag}}" />
+  <bottomBar bindhostPhoneCall="hostPhoneCall" bindhostShare="hostShare" />
+</view>

@@ -1,0 +1,71 @@
+
+
+//落地页弹窗
+.pop-view-land-box {
+  .dialog-shell .dialog-wrap {
+    background: none;
+  }
+
+  .pop-view-land {
+    width: 566rpx;
+    height: 860rpx;
+    top: 40%;
+    background-color: transparent;
+
+    .bg-img {
+      width: 566rpx;
+      height: 750rpx;
+      border-radius: 8rpx;
+    }
+
+    .close-pop {
+      margin-top: 40rpx;
+      display: flex;
+      justify-content: center;
+
+      .close {
+        width: 60rpx;
+        height: 60rpx;
+      }
+    }
+  }
+}
+
+// 订阅弹窗
+.subscription-pop-view {
+  width: 566rpx;
+  height: 810rpx;
+  position: relative;
+
+  .dialog-shell .dialog-wrap {
+    background: none;
+  }
+
+  .pop-view-box {
+    .close-box {
+      display: flex;
+      justify-content: end;
+      flex-direction: row-reverse;
+
+      .close {
+        width: 60rpx;
+        height: 60rpx;
+      }
+    }
+
+    .back {
+      width: 566rpx;
+      height: 750rpx;
+    }
+
+    .btn {
+      position: absolute;
+      width: 388rpx;
+      height: 100rpx;
+      bottom: 24rpx;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+  }
+}

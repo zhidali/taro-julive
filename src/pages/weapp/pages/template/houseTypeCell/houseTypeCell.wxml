@@ -1,0 +1,37 @@
+<wxs src="../../../utils/util.wxs" module="tools" />
+
+<template name="house-type-cell">
+  <view class="house-type-cell" hover-class='house-type-hover-cell' bindtap="didTapHouseTypeCell" data-house-type="{{houseType}}" data-index="{{index}}">
+    <jlImage className="house-type-image" url="{{tools.resizeImageUrl(houseType.apart_img[0], 125, 94)}}" placeholder="../../image/placeholder_house_small.png"></jlImage>
+    <view class="house-type-info-view">
+      <view class="house-type-title-view">
+        <label class="house-type-title">{{houseType.summary}}</label>
+        <label class="house-type-status {{houseType.status.value==3?'sale-out':''}}">{{houseType.status.name}}</label>
+      </view>
+      <view class="house-type-item" hidden="{{houseType.orientation.length == 0}}">
+        <label class="house-type-item-title">朝向</label>
+        <label class="house-type-item-value">{{houseType.orientation}}</label>
+      </view>
+      <view class="house-type-area">
+        <view class="house-type-item" hidden="{{houseType.acreage.length == 0 || houseType.acreage == 0}}">
+          <label class="house-type-item-title">建面</label>
+          <label class="house-type-item-value">{{houseType.acreage}}㎡</label>
+        </view>
+        <view class="house-type-item" hidden="{{houseType.ac_acreage.length == 0 || houseType.ac_acreage == 0 || houseType.ac_acreage===null}}">
+          <label class="house-type-item-title">套内</label>
+          <label class="house-type-item-value">{{houseType.ac_acreage}}㎡</label>
+        </view>
+      </view>
+      <view class="house-type-price">
+         <view class="house-type-item">
+            <label class="house-type-item-title">单价</label>
+            <label class="house-type-item-value price-value">{{(houseType.offer_price==0||houseType.offer_price.length==0)?'待定': houseType.offer_price+'元'}}</label>
+         </view>
+         <view class="house-type-item">
+            <label class="house-type-item-title">总价</label>
+            <label class="house-type-item-value price-value">{{houseType.price/10000 || "待定"}}{{(houseType.price.length>0 && houseType.price !="待定" && houseType.price != 0)?"万":""}}</label>
+         </view>
+      </view>
+    </view>
+  </view>
+</template>

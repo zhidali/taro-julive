@@ -1,0 +1,3 @@
+<view bindtap="beforeClickButton" class="before-click-button">
+<button class="phone_btn" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">需要包裹容器隐藏</button>
+</view>

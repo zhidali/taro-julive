@@ -1,0 +1,14 @@
+<!--component/dialogShell/dialogShell.wxml-->
+
+<view class="dialog-shell my-class">
+  <view class="mark" catchtouchmove="preventTouchMove" catchtap="closeDialog"></view>
+  <view class="dialog-wrap" catchtouchmove="preventTouchMove">
+    <image
+      src="/image/icon-close-dialog.png"
+      class="img-close"
+      hidden="{{!hasImg}}"
+      catchtap="closeDialog"
+    />
+    <slot></slot>
+  </view>
+</view>

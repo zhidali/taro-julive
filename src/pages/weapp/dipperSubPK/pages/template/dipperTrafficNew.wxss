@@ -1,0 +1,137 @@
+.map-box-traffic {
+  padding: 0rpx 40rpx;
+  border-radius: 8rpx;
+  overflow: hidden;
+  position: relative;
+}
+
+.cover-select-traffic {
+  background: rgba(255, 255, 255, 0.90);
+  box-shadow: 0 2rpx 4rpx 0 rgba(0, 0, 0, 0.30);
+  border-radius: 8rpx;
+  width: 52rpx;
+  height: 140rpx;
+  position: absolute;
+  top: 20rpx;
+  right: 60rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 20rpx;
+  color: #47b3e3;
+  text-align: center;
+  line-height: 20rpx;
+}
+
+.cover-select-traffic .cover-select-traffic_line {
+  height: 1px;
+  width: 38rpx;
+  margin: 5rpx auto;
+  background-color:  #ECF0F4;
+}
+
+.cover-select-traffic cover-image {
+  width: 32rpx;
+  height: 32rpx;
+  margin: 0rpx auto 2rpx auto;
+}
+
+.cover-select-traffic-driving cover-image {
+  margin-top: 10rpx;
+}
+
+.traffic-box {
+  padding: 0rpx 40rpx;
+}
+
+.dipper-traffic-new  .traffic-box-title-0 {
+  margin: 24rpx 0rpx;
+}
+
+.traffic-box-line{
+  box-sizing: border-box;
+  margin: 0rpx 40rpx;
+  height: 1rpx;
+  margin-top: 31rpx;
+  background-color:  #ECF0F4;
+}
+
+.dipper-traffic-new  .traffic-box-title-1 {
+  margin-top: 31rpx;
+  margin-bottom: 24rpx;
+}
+
+.traffic-box-title {
+  border-radius: 100rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: #ecf0f4;
+}
+
+.traffic-box-title .traffic-box-title-left {
+  width: 160rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  display: inline-block;
+  text-align: center;
+  background: #707798;
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #f8d14b;
+}
+
+.traffic-box-title view {
+  flex: 1;
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  display: flex;
+  align-items: center;
+  color: #001a4a;
+  overflow: hidden; 
+  height: 100%;
+}
+
+.traffic-box-title view text{
+ display: inline-block;
+}
+
+.traffic-box-title .traffic-box-destination {
+  width: 36rpx;
+  height: 36rpx;
+  min-width: 36rpx;
+  min-height: 36rpx;
+  padding-right: 10rpx;
+}
+
+.traffic-box-title .traffic-box-arrows {
+  width: 32rpx;
+  height: 32rpx;
+  min-width: 32rpx;
+  min-height: 32rpx;
+  margin-right: 12rpx
+}
+
+.dipper-traffic-new  .td{
+  width: 100%;
+}
+.dipper-traffic-new .min-width224{
+  max-width: 224rpx;
+  min-width: 224rpx;
+}
+
+.dipper-traffic-new .min-width223{
+  max-width: 223rpx;
+  min-width: 223rpx;
+}
+
+.traffic-black{
+  color: #001A4A;
+}
+
+.traffic-box-title  .Destination-traffic{
+  background-color: #707798;
+  color: #FFF29C ;
+}
+.traffic-box-title  .Destination-traffic view{
+  color: #FFF29C ;
+}

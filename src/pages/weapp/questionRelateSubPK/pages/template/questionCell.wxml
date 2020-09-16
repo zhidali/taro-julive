@@ -1,0 +1,13 @@
+<template name="question-cell">
+  <view class="question-cell" hover-class='qa-hover-cell' bindtap='didTapQuestionCell' data-question="{{question}}" data-index="{{index}}">
+    <view class="question-view" hover-class='question-hover-view'>
+      <view class="qa-tag">
+        <image class="tag-icon" src="/image/icon_tab_question.png"/>
+        <label class="tag-name">问</label>
+      </view>
+      <view class="question-info">
+        <label class="question">{{question.title}}</label>
+      </view>
+    </view>
+  </view>
+</template>

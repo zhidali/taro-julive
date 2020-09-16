@@ -1,0 +1,10 @@
+<image
+  class="my-class {{className}} {{classImage}} {{(isLoadError && placeholder.length ==0) ? 'background-color' : ''}}"
+  src="{{url.length>0?url:placeholder}}"
+  style="{{radiusFlag==1?'border-radius:0 8rpx 8rpx 0':''}}"
+  binderror="binderror"
+  mode="aspectFill"
+  bindtap="didTapImage"
+  data-index="{{index}}"
+  lazy-load
+/>

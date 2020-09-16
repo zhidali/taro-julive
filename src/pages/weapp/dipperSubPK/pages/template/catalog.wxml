@@ -1,0 +1,13 @@
+<template name="catalog">
+  <cover-view class="catalog-box"  hidden='{{!flag}}'>
+    <cover-view class="catalog-box-mark" catchtouchmove="preventTouchMove" bindtap="didClickAatalog" data-type="close"></cover-view>
+    <cover-view class="catalog-box-content">
+      <cover-view class="catalog-box-content-title">目录</cover-view>
+      <block wx:for="{{catalogList}}" wx:key="{{index}}">
+        <cover-view class="catalog-box-content-text {{item.flag?'catalog-active':''}}" data-index="{{index}}" bindtap="didiClickAatalogItem">{{item.name}}</cover-view>
+        <cover-view class="catalog-box-line"></cover-view>
+      </block>
+    </cover-view>
+
+  </cover-view>
+</template>

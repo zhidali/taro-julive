@@ -1,0 +1,91 @@
+@import '../style.wxss';
+
+.modal-dialog {
+  width: 600rpx;
+  height: 840rpx;
+  overflow: hidden;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 51%;
+  z-index: 9999;
+  padding-bottom: 100rpx;
+}
+
+.modal-icon-close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.modal-dialog-view {
+  margin-top: 84rpx;
+  border-radius: 8rpx;
+  background: #fff;
+  position: relative;
+}
+
+.modal-bg {
+  width: 600rpx;
+  height: 312rpx;
+  background: url('http://imgs.julive.com/l?p=eyJpbWdfcGF0aCI6IlwvbWluaW1ncy9maW5kLWhvdXNlLXBvcC1iZy5wbmcifQ==') no-repeat;
+  background-size: 100% 100%;
+}
+
+.modal-top-info {
+  position: absolute;
+  top: 76rpx;
+  left: 40rpx;
+}
+
+.modal-top-info .title {
+  font-size: 48rpx;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+  color: rgba(0, 89, 155, 1);
+  line-height: 66rpx;
+  padding-bottom: 6rpx;
+}
+
+.modal-top-info .info {
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: rgba(0, 89, 155, 1);
+  line-height: 40rpx;
+  max-width: 300rpx;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.modal-content {
+  margin: 32rpx 52rpx 0 52rpx;
+  padding-bottom: 48rpx;
+}
+
+.select-price {
+  margin-top: 16rpx;
+}
+
+.wx-login {
+  position: relative;
+}
+
+.list-find-house-wx-loging {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+}
+
+.tips-img {
+  width: 28rpx;
+  height: 28rpx;
+  margin-right: 4rpx;
+}
+

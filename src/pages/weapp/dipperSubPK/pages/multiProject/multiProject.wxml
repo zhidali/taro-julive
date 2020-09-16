@@ -1,0 +1,172 @@
+<import src="../template/dipperAudio.wxml" />
+<import src="../template/dipperTraffic.wxml" />
+<import src="../template/dipperRecord.wxml" />
+<import src="../template/dipperLogin.wxml" />
+<import src="../../../component/loading/loading.wxml" />
+<import src="../template/loadAlt.wxml" />
+<import src="../template/housesDesc.wxml" />
+<import src="../template/houseBanner.wxml" />
+<import src="../template/catalog.wxml" />
+<import src="../template/housesInfo.wxml" />
+<import src="..//template/dipperTrafficNew.wxml" />
+<import src="../template/houseEvaluating.wxml" />
+<import src="../template/sendIdea.wxml" />
+<import src="../template/diperIntroduceNew.wxml" />
+<wxs src="../../../utils/util.wxs" module="tools" />
+<view class="loading-view" wx:if="{{!loadingHidden}}">
+  <template is="loading-view" data="{{hidden:loadingHidden}}" />
+</view>
+<view class="container {{(dipperLoginFlag&&employee.id)?'mar_top':''}}  {{isIpx?'container_bottm_isIPX':''}}" hidden="{{!loadingHidden}}">
+  <!-- 咨询师顶部卡片 -->
+  <employeCard employePhoneNumber="{{employee.mobile}}" employeName="{{employee.employee_name}}" employeImg="{{employee.avatar}}" employeCode="{{employee.wx_qrcode}}" employeSex="{{employee.sex}}" dipperLoginFlag="{{dipperLoginFlag}}" employeId="{{employee.id}}" bindemployeNavigateTo="employeNavigateTo" bindemployeCardShare="employeCardShare" bindemployeCardEmployeCod="employeCardEmployeCod" bindemployeCardPhoneCall="employeCardPhoneCall" awardImgFlag="{{true}}" bindhostPayAward="hostPayAward" page="{{2}}" order_id="{{o_id}}" business_id="{{share_id}}" />
+  <!-- 咨询师顶部卡片 -->
+  <!-- 提示弹窗 loadAltFlag loadAltType -->
+  <template is="load-alt" data="{{flag:loadAltFlag,type:loadAltType,total_price:total_price,first_price:first_price,acreage:acreage,project_type_list:project_type_list,totalPriceFocus:totalPriceFocus,firstPriceFocus:firstPriceFocus,acreageFocus:acreageFocus,employeName:employee.employee_name,isIosInput:isIosInput}}" />
+  <!-- 提示弹窗 -->
+  <!-- 目录 -->
+  <cover-image src="/image/icon-dipper-catalog.png" class="catalog-flex" wx:if="{{dipperLoginFlag}}" bindtap="didClickAatalog" data-type="open"></cover-image>
+  <template is="catalog" data="{{flag: catalogFlag,catalogList:catalogList}}" />
+  <!-- 购房需求 -->
+  <view class="m_bughouse_need {{(dipperLoginFlag&&employee.id)?'box-sha':''}} " wx:if="{{tags.length > 0}}">
+    <view class="title-box">
+      <image class="title-box-img" src="/image/icon-dipper-yellow.png"></image>
+      <view class="all-flex-between title-box-content">
+        <view>您的购房需求</view>
+        <view bindtap="didClickToOrderConfig" wx:if="{{is_update_require}}" data-index="1">
+          修改住房需求
+          <image src="/image/icon-dipper-more.png"></image>
+        </view>
+      </view>
+    </view>
+    <scroll-view class='head_tags' scroll-x="{{true}}">
+      <text wx:for="{{tags}}" wx:key="{{item}}" wx:if="{{item}}">{{item}}</text>
+    </scroll-view>
+  </view>
+  <!-- 购房需求 -->
+  <!-- 为您推荐楼盘 -->
+  <view class="recommend-map" wx:if="{{markerProjectBubble && markerProjectBubble.length>0}}">
+    <view class="title-box">
+      <image class="title-box-img" src="/image/icon-dipper-yellow.png"></image>
+      <view class="all-flex-between title-box-content">
+        <view>为您推荐楼盘</view>
+      </view>
+    </view>
+    <view class="recommend-map-box">
+      <map id="recommendMap" longitude="{{markerProjectBubble[0].longitude}}" latitude="{{markerProjectBubble[0].latitude}}" bindtap="didClickRecommendMap" scale="{{recommendMapScale}}" markers="{{markerProjectBubble}}" style='width:100%;height:420rpx;'></map>
+      <cover-view class="map-scale">
+        <cover-image class="map-scale-add" bindtap="didClickMapScale" data-type="add" src="/image/icon-dipper-add.png"></cover-image>
+        <cover-image class="map-scale-sub" bindtap="didClickMapScale" data-type="sub" src="/image/icon-dipper-sub.png"></cover-image>
+      </cover-view>
+    </view>
+  </view>
+  <!-- 为您推荐楼盘 -->
+  <!-- 楼盘价格 -->
+  <template is="houses-desc" data="{{down_payments:down_payments,loan_term:loan_term,lending_rate:lending_rate,project_info:project_info,is_virtual_city:is_virtual_city}}" />
+  <!-- 楼盘价格 -->
+  <!-- 楼盘详情信息 -->
+  <template is="house-info" data="{{houseInfoListFix:houseInfoListFix,project_info:project_info,is_virtual_city:is_virtual_city}}" />
+  <!-- 楼盘详情信息 -->
+  <!-- 通勤路线 -->
+  <template is="dipper-traffic-new" data="{{marker:marker,lng:lng,lat:lat,polyline:polyline,commute:commute,selectHouseTraffic:selectHouseTraffic,selectTrafficFlag:selectTrafficFlag,selectDestinationFlag:selectDestinationFlag,selectDestinationIndex:selectDestinationIndex,commuteAction:commuteAction,currentDestnation:currentDestnation,is_virtual_city:is_virtual_city}}" />
+  <!-- 通勤路线 -->
+  <!-- 周边交通 -->
+  <view class='m_surrounding_analysis poss_rela' wx:if="{{matingTitleObj.matingTitleList}}">
+    <view class="title-box">
+      <image class="title-box-img" src="/image/icon-dipper-yellow.png"></image>
+      <view class="all-flex-between title-box-content">
+        <view>周边配套</view>
+      </view>
+    </view>
+    <view class="select-around">
+      <block wx:for="{{matingTitle}}" wx:key="{{index}}">
+        <view class="select-around-item" wx:if="{{item.flag}}" bindtap="didClickMatingItem" data-index="{{index}}" data-key="{{item.key}}">
+          <text class="active-around {{item.isClick?'select_txt':''}}">{{item.name}}</text>
+          <view hidden="{{!item.isClick}}"></view>
+        </view>
+      </block>
+    </view>
+    <view class="table  margin-le-ri-40">
+      <view class="tr rim_traffic ">
+        <view class="th direction_row  min-width223">{{is_virtual_city?'小区名称':'楼盘名称'}}</view>
+        <view class="th direction_row flex-1" wx:if="{{matingTitleObj.type == 0}}">地铁站或公交站</view>
+        <view class="th direction_row flex-1" wx:if="{{matingTitleObj.type == 1}}">学校</view>
+        <view class="th direction_row flex-1" wx:if="{{matingTitleObj.type == 2}}">购物</view>
+        <view class="th direction_row flex-1" wx:if="{{matingTitleObj.type == 3}}">医院</view>
+        <view class="th  flex-1" wx:if="{{matingTitleObj.type == 4}}">
+          <text>最新周边</text>
+          <text>万元/㎡</text>
+        </view>
+        <view class="th  flex-1" wx:if="{{matingTitleObj.type == 4}}">
+          <text>周边二手房</text>
+          <text>万元/㎡</text>
+        </view>
+      </view>
+      <view class="tr" wx:for="{{matingTitleObj.matingTitleList}}" wx:key="{{index}}" wx:if="{{item.first_group_list.length>0||item.two_group_list.length>0}}">
+        <view class="td yellow min-width223" data-module='4' bindtap='toProjectDetail' data-index="{{index}}" data-projectId="{{item.project_id}}" data-url="{{item.project_url}}">
+          {{item.name}}
+        </view>
+        <block wx:if="{{matingTitleObj.type == 0}}">
+          <view class="td txt-aligin-left flex-1">
+            <view class='rim_traffic_td_view' wx:if="{{item.first_group_list.length>0}}">
+              <text style='min-width:72rpx;'>地铁：</text>
+              <view class='rim_traffic_td_view_item'>
+                <view wx:for="{{item.first_group_list}}" wx:for-index="idx" wx:key="{{idx}}" wx:for-item="itemName">
+                  {{itemName}}
+                </view>
+              </view>
+            </view>
+            <view class='rim_traffic_td_view' wx:if="{{item.two_group_list.length>0}}">
+              <text style='min-width:72rpx;'>公交：</text>
+              <view class='rim_traffic_td_view_item'>
+                <view class='rim_traffic_td_view_item'>
+                  <view wx:for="{{item.two_group_list}}" wx:for-index="idx" wx:key="{{idx}}" wx:for-item="itemName">
+                    {{itemName}}
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </block>
+        <block wx:elif="{{matingTitleObj.type === 4}}">
+          <block wx:for="{{item.first_group_list}}" wx:if="{{item.first_group_list.length>0}}" wx:for-index="idx" wx:key="{{idx}}" wx:for-item="itemName">
+            <view class="td txt-aligin-left flex-1">
+              <view>{{itemName.take_address_price?itemName.take_address_price:'暂无'}}</view>
+            </view>
+            <view class="td txt-aligin-left flex-1">
+              <view>{{itemName.second_project_price?itemName.second_project_price:'暂无'}}</view>
+            </view>
+          </block>
+        </block>
+        <block wx:else>
+          <view class="td txt-aligin-left flex-1">
+            <view wx:for="{{item.first_group_list}}" wx:for-index="idx" wx:key="{{idx}}" wx:for-item="itemName">
+              {{itemName}}
+            </view>
+          </view>
+        </block>
+      </view>
+    </view>
+    <view class="price_update_datetime" wx:if="{{matingTitleObj.type == 4}}">
+      更新时间：{{price_update_datetime}}
+    </view>
+  </view>
+  <!-- 周边交通 end -->
+  <!-- 楼盘优劣势 -->
+  <template is="house-evaluating" data="{{houseEvaluatingListFix:houseEvaluatingListFix,project_info:project_info,is_virtual_city:is_virtual_city}}" />
+  <!-- 楼盘优劣势 -->
+  <!-- banner -->
+  <template is="house-banner" data="{{project_img:project_img,project_imglist_current:project_imglist_current,img_current_index:img_current_index,sweiperImgCurrent:sweiperImgCurrent,swiCurrent:swiCurrent,img_type:img_type}}" />
+  <!-- banner end -->
+  <view class="base_banner_height" wx:if="{{!project_imglist_current.img_arr.length>0}}"></view>
+  <!-- 反馈区 -->
+  <template is="send-idea" data="{{forMeCall:forMeCall}}" />
+  <!-- 反馈区 -->
+  <!-- 居理带看 -->
+  <template is="dipper-introduce-new" data="{{serviceIntroduceList:serviceIntroduceList,currentServiceIntroduceIndex:currentServiceIntroduceIndex,isIpx:isIpx}}" />
+  <!-- 居理带看 end -->
+  <!-- 购房宝典 -->
+  <template is="dipper-record" data="{{hide_good_box:hide_good_box,isIpx:isIpx,dipperLoginFlag:dipperLoginFlag,videoFullScreen: true}}" />
+  <!-- 购房宝典 end -->
+  <template is="dipper-login" data="{{dipperLoginFlag:dipperLoginFlag}}" />
+  <contact bindtouchOnGoods="touchOnGoods" bindhostPhoneCall="hostPhoneCall" bindhostDownApp="hostDownApp" open_id="{{open_id}}" share_id="{{share_id}}" show_type="{{type}}" order_id="{{o_id}}" isCollect="{{isCollect}}" dipperLoginFlag="{{dipperLoginFlag}}" />
+</view>

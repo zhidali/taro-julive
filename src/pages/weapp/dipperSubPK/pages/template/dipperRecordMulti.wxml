@@ -1,0 +1,46 @@
+<wxs src="../../../utils/util.wxs" module="tools" />
+<template name="dipper-record-multi">
+  <!-- 多楼盘对比 -->
+  <view data-index='{{hostIndex}}' data-type="multiHouseData" class="multi_house last_child_bom">
+    <view class="multi_house_item {{itemLength==2?'multi_house_item_two':''}}" data-index='{{hostIndex}}' wx:key="{{index}}" wx:for="{{multiHouseData}}" wx:if="{{index<3}}" data-shareid="{{share_id}}" data-orderid="{{order_id}}" data-type="{{type}}" bindtap="didClickMultiItem">
+      <view class='multi_house_item_head'>
+        <jlImage className="{{itemLength==2?'multi-house-item-image-two':'multi-house-item-image-three' }}" url='{{tools.resizeImageUrl(item.index_img,155,118)}}' placeholder="/image/placeholder_house_big.png">
+        </jlImage>
+        <text>VS</text>
+      </view>
+      <view class="multi_house_item_name {{itemLength==2?'max_width':''}} ">{{item.name}}</view>
+      <view class='multi_house_item_footer'>
+        <image class='multi_house-img' src='/image/icon_location_tag.png'></image> <text>{{item.district_name}}</text>
+      </view>
+    </view>
+  </view>
+  <!-- 多楼盘对比 end-->
+</template>
+
+<template name="dipper-record-multi-scroll">
+  <!-- 多楼盘对比 -->
+
+  <view class='scroll-multi-box'>
+    <view data-index='{{hostIndex}}' data-type="multiHouseDataCollect" class="{{hostIndex === leg?'none_border_bot':''}} multi_house {{hostRight === 0?'move-to-start':''}}" bindtouchstart="drawStart" bindtouchmove="drawMove" bindtouchend="drawEnd" style="right:{{hostRight}}rpx">
+      <view class="multi_house_item {{itemLength==2?'multi_house_item_two':''}} " data-index='{{hostIndex}}'  wx:key="{{index}}" wx:for="{{multiHouseData}}" wx:if="{{index<3}}" data-shareid="{{share_id}}" data-orderid="{{order_id}}" data-type="{{type}}" bindtap="didClickMultiItem">
+      <view class='multi_house_item_head'>
+        <jlImage className="{{itemLength==2?'multi-house-item-image-two':'multi-house-item-image-three' }}" url='{{tools.resizeImageUrl(item.index_img,155,118)}}' placeholder="/image/placeholder_house_big.png">
+        </jlImage>
+        <text>VS</text>
+      </view>
+      <view class="multi_house_item_name">{{item.name}}</view>
+      <view class='multi_house_item_footer'>
+        <image class='multi_house-img' src='/image/icon_location_tag.png'></image> <text>{{item.district_name}}</text>
+      </view>
+    </view>
+
+      <view class="remove {{itemLength==2?'multiDel_two':'multiDel_three'}}" data-index='{{hostIndex}}' data-type="multiHouseDataCollect" bindtap="delItem">
+        <view class='remove-body'>
+          <text>取消</text>
+          <text>收藏</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 多楼盘对比 end-->
+</template>

@@ -1,0 +1,87 @@
+<wxs src="../../utils/util.wxs" module="tools" />
+<view class="house-carda-box my-class ">
+  <image
+      src="/image/img-sell-out.png"
+      class="img-sell-out"
+      wx:if="{{projectData.status == '3'}}"
+    />
+  <view class="project-image-wrap {{projectData.status == '3' ? 'project-sell-out' : ''}}">
+    <image src="/image/icon-video.png"  class="video-tag" wx:if="{{projectData.video_path != ''}}"/>
+    <jlImage
+      className="project-image-new"
+      url="{{tools.resizeImageUrl(projectData.index_img, 220, 172)}}"
+      placeholder="https://imgs.julive.com/l?p=eyJpbWdfcGF0aCI6IlwvbWluaW1ncy9pbWctZGVmYXVsdC1BLnBuZyJ9"
+    >
+    </jlImage>
+    <view
+      class="'tag' {{projectData.left_tag_a.type == '1' ? 'special' : ''}} {{projectData.left_tag_a.type == '2' ? 'discount-tag' : ''}} {{projectData.left_tag_a.type == '3' ? 'new' : ''}} {{projectData.left_tag_a.type == '4' ? 'recomm' : ''}}"
+      wx:if="{{projectData.left_tag_a.type != ''}}"
+      >{{projectData.left_tag_a.value}}</view
+    >
+  </view>
+  <view class="project-info {{projectData.status == '3' ? 'project-sell-out' : ''}}">
+    <view class="flex-info name-wrap">
+      <text class="project-name">{{projectData.project_name}}</text>
+      <label class="project-tag" wx:if="{{projectData.project_type.name !== ''}}">{{projectData.project_type.name}}</label>
+      
+      <view class="collect">
+        <authorize-login bind:allow="allowLogin" bind:cancel="cancelLogin" bind:click="clickLogin">
+          <view slot="btn">
+            <image
+              class="collect"
+              src="{{(projectData.is_collect == '1' && loginStatus) ? '/image/icon-collect.png' : '/image/icon-not-collect-a.png'}}"
+            ></image>
+          </view>
+        </authorize-login>
+      </view>
+    </view>
+    <view class="price-wrap">
+      <label class="total">
+        {{projectData.price.price}}{{projectData.price.unit}}
+      </label>
+      <label class="payment">
+        {{projectData.down_pay.price != '' ? '首付':
+        ''}}{{projectData.down_pay.price}}{{projectData.down_pay.unit}}
+      </label>
+    </view>
+    <view class="area-wrap">
+      <view class="district">{{projectData.district_name}} {{projectData.trade_area}}</view>
+      <view class="line"></view>
+      <view class="area">
+        {{projectData.acreage.type == '1' ? '建面' : '套内'}}{{projectData.acreage.acreage_min}}{{(projectData.acreage.acreage_min !=
+        projectData.acreage.acreage_max && projectData.acreage.acreage_min != '' &&
+        projectData.acreage.acreage_max != '') ? "-": '' }}{{ (projectData.acreage.acreage_min !=
+        projectData.acreage.acreage_max) ? projectData.acreage.acreage_max : ''}}{{projectData.acreage.unit}}
+      </view>
+    </view>
+    <view class="tag-wrap" wx-if="{{projectData.billboard_tag != '' || projectData.brand_tag.length>0 || projectData.ascept_tag.length>0}}" >
+      <label class="tag rank-tag" wx:if="{{projectData.billboard_tag != ''}}">
+        <image class="rank" src="/image/icon-rank.png"></image>
+        {{projectData.billboard_tag}}
+      </label>
+      <label class="tag special" wx:for="{{projectData.brand_tag}}" wx:key="index">
+        {{item}}
+      </label>
+      <label class="tag" wx:for="{{projectData.ascept_tag}}" wx:key="index">
+        {{item}}
+      </label>
+    </view>
+    <view class="label-list">
+      <!-- 优惠 -->
+      <label class="label-item" wx:if="{{projectData.discount != ''}}">
+        <image class="label-img" src="/image/icon-discount.png" />
+        <text  class="label-txt">{{projectData.discount}}</text>
+      </label>
+      <!-- 热度 -->
+      <label class="label-item" wx:if="{{projectData.temperature != ''}}">
+        <image class="label-img" src="/image/icon-hot.png" />
+        <text class="label-txt">{{projectData.temperature}}</text>
+      </label>
+      <!-- 推荐 -->
+      <label class="label-item recommend" wx:if="{{projectData.recommend != ''}}">
+        <image class="label-img" src="/image/icon-recommend.png" />
+        <text class="label-txt">{{projectData.recommend}}</text>
+      </label>
+    </view>
+  </view>
+</view>

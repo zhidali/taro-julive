@@ -1,0 +1,21 @@
+/* 宝典 */
+
+.storehouse {
+  position: fixed;
+  bottom: 200rpx;
+  right: 30rpx;
+  width: 144rpx; 
+  height: 132rpx; 
+}
+
+.good_box {
+  width: 32rpx;
+  height: 32rpx;
+  position: fixed;
+  overflow: hidden;
+  left: 80%;
+  top: 80%;
+  z-index: 99;
+}
+
+/* 宝典 end*/

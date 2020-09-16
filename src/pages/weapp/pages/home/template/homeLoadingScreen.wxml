@@ -1,0 +1,58 @@
+<template name="home-loading-screen">
+  <view class="home-screen-view">
+    <view class="screen-view-top">
+      <view class="search"></view>
+      <view class="zhijiao-l"></view>
+      <view class="zhijiao-r"></view>
+    </view>
+    <view class="screen-content-info">
+      <view class="content-info-box">
+        <view class="view1">
+          <view class="item" style="width: 596rpx;height: 50rpx;"></view>
+          <view class="item" style="margin-left:20rpx;width:50rpx;height: 50rpx;"></view>
+        </view>
+        <view class="view2"></view>
+        <view class="content-info-view3">
+          <view class="box">
+            <view class="item"></view>
+            <view class="item" style="margin-top: 10rpx;width: 292rpx;"></view>
+          </view>
+          <view class="line"></view>
+          <view class="box">
+            <view class="item"></view>
+            <view class="item" style="margin-top: 10rpx;width: 292rpx;"></view>
+          </view>
+        </view>
+        <view class="view2"></view>
+        <view class="content-info-view4">
+          <view class="item"></view>
+          <view class="item" style="margin-left: 10rpx;width: 432rpx;"></view>
+        </view>
+        <view class="content-info-view5"></view>
+        <view class="content-info-view6">
+          <view class="box">
+            <view class="item"></view>
+            <view class="item" style="width: 144rpx;margin-right:0;"></view>
+          </view>
+          <view class="box">
+            <view class="item"></view>
+            <view class="item" style="width: 144rpx;margin-right:0;"></view>
+          </view>
+          <view class="box">
+            <view class="item"></view>
+            <view class="item" style="width: 144rpx;margin-right:0;"></view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="screen-content-jingang">
+      <block wx:for="{{[1,2,3,4,5,6,7,8,9,10]}}" wx:key="item">
+        <view class="box">
+          <view class="item"></view>
+          <view class="item" style="margin-top: 10rpx;width: 112rpx;height: 28rpx;margin-left:0"></view>
+        </view>
+      </block>
+    </view>
+    <view class="screen-content-banner"></view>
+  </view>
+</template>

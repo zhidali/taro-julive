@@ -1,0 +1,59 @@
+<template name="banner-module-two">
+  <view
+    class="banner-module-two banner-module-two-{{type}} {{type==2?'banner-two':''}}"
+    wx:if="{{bannerList.length>0}}"
+  >
+    <view class="home-title-box" wx:if="{{type == 2}}">
+      <view class="home-title-box-lf">{{bannerList[0].title}}</view>
+    </view>
+    <view
+      class="banner-module-two-container {{type == 2?'banner-module-two-container-two':'banner-module-two-container-one'}}"
+    >
+      <swiper
+        class="banner-module-two-swiper {{type == 2?'banner-module-two-swiper-two':'banner-module-two-swiper-one'}}"
+        indicator-dots="{{false}}"
+        autoplay="{{bannerPlay}}"
+        interval="2500"
+        duration="500"
+        vertical="{{false}}"
+        circular="true"
+        data-type="{{type}}"
+        bindchange="onNewBannerSwiperChange"
+      >
+        <swiper-item
+          class="{{type == 2?'swiper-item-type-two':'swiper-item-type-one'}}"
+          wx:for="{{bannerList}}"
+          wx:key="item"
+          wx:if="{{index<3}}"
+        >
+          <view class="wxlogin-box" bindtap="pauseBannerOneplay" wx:if="{{item.is_login == 1}}">
+            <wxLogin
+              markType="262"
+              markData="{{bannerModuleTwoData}}"
+              bindClickGetPhoneNumberBtn="passBackGetPhoneNumberBtn"
+              bindWechatUserCancel="passBackFastLoginCallBack"
+              bindFastLoginCallBack="passBackFastLoginCallBack"
+            ></wxLogin>
+          </view>
+          <image
+            class="banner-module-two-image"
+            mode="aspectFill"
+            src="{{item.img}}"
+            bindtap="didClickNewBannerItem"
+            data-type="{{type}}"
+            data-index="{{index}}"
+          />
+        </swiper-item>
+      </swiper>
+      <view class="banner-module-two-indicator" wx:if="{{bannerList.length>1}}">
+        <view
+          class="banner-module-two-indicator-item {{currentBannerIndexShadow==index?'banner-module-two-item-active':''}}"
+          wx:for="{{bannerList}}"
+          wx:key="index"
+          wx:if="{{index<3}}"
+          x
+        ></view>
+      </view>
+    </view>
+  </view>
+</template>

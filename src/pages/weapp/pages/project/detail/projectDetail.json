@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "",
+  "usingComponents": {
+    "contact": "../projectContact/projectContact",
+    "login": "../../../user/login",
+    "orderSuccessAlert": "../../../order/orderSuccessAlert",
+    "dateitem": "../dateitem/dateitem",
+    "jlImage": "../../../component/jlImage/jlImage",
+    "paintingDetail": "../../../component/paintingDetail/paintingDetail",
+    "bannerToApp": "../../../component/bannerToApp/bannerToApp"
+  }
+}

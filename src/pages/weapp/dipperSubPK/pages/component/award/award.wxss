@@ -1,0 +1,14 @@
+.award {
+  position: fixed;
+  height: 108rpx;
+  width: 88rpx;
+  font-family: PingFangSC-Regular;
+  bottom: 372rpx;
+  right: 58rpx;
+  z-index: 999;
+}
+
+.award cover-image {
+  height: 108rpx;
+  width: 88rpx;
+}

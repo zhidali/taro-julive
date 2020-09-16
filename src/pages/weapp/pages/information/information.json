@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "居理情报站",
+  "component": true,
+  "usingComponents": {
+    "essayModule": "./essayModule/essayModule",
+    "questionAnswer": "./questionAnswer/questionAnswer",
+    "houseDynamic": "./houseDynamic/houseDynamic"
+  }
+}

@@ -1,0 +1,22 @@
+<view class='container'>
+	<view class='register-view'>
+		<image class="register-logo-image" src="http://imgs.julive.com/l?p=eyJpbWdfcGF0aCI6IlwvbWluaW1ncy9yZWdpc3Rlcl9sb2dvLnBuZyJ9"></image>
+		<view class="login-view {{isFission?'bottom-496':'bottom-360'}}">
+			<view class="openTypeBox">
+				<button class='login-button' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
+					<image src='http://imgs.julive.com/l?p=eyJpbWdfcGF0aCI6IlwvbWluaW1ncy9yZWdpc3Rlcl93ZWFwcC5wbmcifQ==' class='weixin-icon'></image>
+					<view class='login-button-title'>微信用户快捷登录</view>
+				</button>
+				<view wx:if="{{!flag}}" bindtap="didClickMask" class="mask-btn"></view>
+			</view>
+			<view wx:if="{{!isFission}}" class='login-button login-button-phone' style='margin-top: 40rpx;' bindtap='didTapPhoneNumberLogin'>
+				<image src='http://imgs.julive.com/l?p=eyJpbWdfcGF0aCI6IlwvbWluaW1ncy9yZWdpc3Rlcl9waG9uZS5wbmcifQ==' class='phone-icon'></image>
+				<text class='login-button-title'>手机号登录\注册</text>
+			</view>
+		</view>
+		<view class="footer" wx:if="{{!isFission}}">
+			<view class="footer-img-mask" bindtap="didClickSelectAgreement"></view>
+			<image src="{{use_select_img}}"></image><text>已阅读并同意</text><text class='register-tip' bindtap="didClickSelectAgreementUrl">《居理用户使用协议》</text>
+		</view>
+	</view>
+</view>

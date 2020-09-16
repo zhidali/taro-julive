@@ -1,0 +1,80 @@
+@import "../../../pages/template/imageContainer/imageContainer.wxss";
+
+.dynamic-container-view {
+  margin-left: 2.5vw;
+  margin-right: 2.5vw;
+  width: 95vw;
+  border-radius: 2px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-top: 20rpx;
+  position: relative;
+}
+
+.dynamic-container-hover-view {
+  background-color: #efefef;
+}
+
+.dynamic-title-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.dynamic-title-label {
+  margin-top: 15rpx;
+  margin-left: 15rpx;
+  font-size: 16px;
+  color: #333;
+  word-wrap:break-word;
+}
+
+.dynamic-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 10rpx;
+}
+
+.dynamic-time-label {
+  margin-left: 15rpx;
+  font-size: 14px;
+  color: #aaa;
+}
+
+.dynamic-sorce-label {
+  margin-right: 15rpx;
+  font-size: 14px;
+  color: #aaa;
+}
+
+.dynamic-seperator-line {
+  background-color: #efefef;
+  margin: 15rpx;
+  height: 1px;
+}
+
+.dynamic-content-label {
+  margin-left: 15rpx;
+  margin-right: 15rpx;
+  margin-bottom: 15rpx;
+  font-size: 13px;
+  color: #666;
+  display: -webkit-box;
+  word-break: break-all;
+  overflow: hidden; 
+  text-overflow: ellipsis;            
+  -webkit-box-orient: vertical;    
+  -webkit-line-clamp: 3;
+}
+
+.fake-form-button {
+  position: absolute;
+  top:0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+}

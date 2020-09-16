@@ -1,0 +1,29 @@
+<view class="container">
+  <view class="report-desc-image" />
+  <view style="margin-bottom:{{isIpx?'170rpx':'160rpx'}};" />
+</view>
+
+<view class="order-bottom {{isIpx?'order-bottom-ipx':''}}">
+  <!-- <view class="order-bottom-content" >
+    <input placeholder='请输入手机号码' class='order-bottom-input'              placeholder-class='placeholder-input' value='{{num}}' maxlength='11' bindinput='inputWrite' type='number' ></input>
+      <button class="order-bottom-button" bindtap="didClickOrder">获取购房报告</button>
+  </view>-->
+  <view class="order-bottom-button" bindtap="didClickOrder">一键定制专属报告</view>
+  <view wx:if="{{!userLoginStatus}}" class="order-wx-loging">
+    <wxLogin
+      markOpType="900139"
+      bindClickGetPhoneNumberBtn="passBackGetPhoneNumberBtn"
+      bindFastLoginCallBack="passBackFastLoginCallBack"
+      bindWechatUserCancel="passBackFastLoginCallBack"
+    ></wxLogin>
+  </view>
+</view>
+
+<login
+  showModal="{{showLoginModal}}"
+  bindcancelCallback="cancelCallback"
+  bindloginSuccessCallback="loginSuccessCallback"
+  userInfo="{{loginUserInfo}}"
+  userPhone="{{userPhone}}"
+/>
+<orderSuccessAlert showModal="{{showOrderSuccessAlert}}" content="{{alertContent}}" />

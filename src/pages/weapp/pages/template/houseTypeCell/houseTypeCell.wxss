@@ -1,0 +1,96 @@
+.house-type-cell {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: white;
+}
+
+.house-type-hover-cell {
+  background-color: #efefef;
+}
+
+.house-type-image {
+  background-color: #efefef;
+  width: 125px;
+  height: 94px;
+  margin: 15rpx;
+  margin-top: 0rpx;
+  margin-bottom: 0rpx;
+  border:1px solid #efefef; 
+}
+
+.house-type-info-view {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-top: 10rpx;
+}
+
+.house-type-title-view {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 5rpx;
+}
+
+.house-type-title {
+  font-size: 16px;
+  color: #333;
+}
+
+.house-type-status {
+  font-size: 11px;
+  width: 40px;
+  height: 17px;
+  line-height: 17px;
+  margin-left: 15rpx;
+  border:1px solid #48B3E2; 
+  color: #48B3E2;
+  text-align: center;
+}
+
+.sale-out {
+  color: #aaa;
+  border:1px solid #aaa; 
+}
+
+.house-type-area {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.house-type-item {
+  margin-top: 10rpx;
+  margin-right: 15rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.house-type-item-title {
+  font-size: 12px;
+  color: #999;
+}
+
+.house-type-item-value {
+  font-size: 12px;
+  color: #666;
+  margin-left: 7rpx;
+}
+
+.house-type-price {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.price-value {
+  color: #FF6E72;
+}

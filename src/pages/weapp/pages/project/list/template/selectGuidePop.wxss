@@ -1,0 +1,58 @@
+.select-guide-pop-view {
+  position: fixed;
+  top: 86rpx;
+  left: 40rpx;
+  z-index: 999;
+  width: 384rpx;
+  height: 64rpx;
+  background: rgba(0, 0, 0, 0.7495);
+  border-radius: 8rpx;
+  opacity: 0;
+  animation-duration: 5s;
+  -webkit-animation-duration: 5s;
+  animation-name: fadeInOut;
+  -webkit-animation-name: fadeInOut;
+  animation-delay: 500ms;
+  -webkit-animation-delay: 500ms;
+  animation-timing-function: ease-in-out;
+  -webkit-animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: 1;
+}
+.pop-view-fixedTop {
+  top: 196rpx;
+}
+.select-guide-pop-view .img {
+  position: absolute;
+  top: -12rpx;
+  left: 36rpx;
+  width: 20rpx;
+  height: 12rpx;
+}
+.select-guide-pop-view .content {
+  font-size: 28rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  line-height: 64rpx;
+  padding: 0 24rpx;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  17% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  83% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

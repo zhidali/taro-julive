@@ -1,0 +1,95 @@
+.question-item-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 202rpx;
+  background-color: #f3f6f9;
+  border-radius: 8rpx;
+}
+
+.question-title {
+  margin-top: 20rpx;
+  margin-left: 22rpx;
+  margin-right: 23rpx;
+  font-family: PingFangSC-Medium;
+  font-size: 32rpx;
+  color: #3e4a59;
+  line-height: 52rpx;
+  display: -webkit-box;
+  word-break: break-all;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+}
+
+.question-user-info-view {
+  padding: 16rpx 24rpx 20rpx 24rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.question-user-info {
+  font-size: 24rpx;
+  color: #77808a;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  height: 34rpx;
+
+}
+
+.question-like-view {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  flex: 1;
+}
+
+.question-like-view-con {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 24rpx 24rpx 24rpx;
+  position: relative;
+}
+.question-like-view-con .like-number {
+  font-size: 24rpx;
+  color: #00c0eb;
+}
+.question-like-view-con .like-answer {
+  height:40rpx;
+  font-size: 28rpx;
+  color: #fff;
+  background-color: #00c0eb;
+  border-radius: 10rpx 2rpx;
+  padding: 0 10rpx;
+  line-height: 40rpx;
+  text-align: center;
+  position: absolute;
+  top:-4rpx;
+  right: 0rpx;
+}
+
+.question-like-icon {
+  margin-right: 10rpx;
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.solved-icon {
+  position: absolute;
+  width: 116rpx;
+  height: 116rpx;
+  top: 16rpx;
+  right: 16rpx;
+}
+
+.question-fake-form-button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+}

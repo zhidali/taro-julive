@@ -1,0 +1,14 @@
+<wxs src="util.wxs" module="tools" />
+
+<template name="download-file-cell">
+  <view class="download-file-cell">
+    <image class="icon-download-image" src="{{tools.downloadImageLocation(attachment.suffix)}}"></image>
+    <view class="download-text-view">
+      <label class="download-title">{{attachment.name}}</label>
+      <label class="download-content">{{attachment.suffix + '  •  ' + attachment.size}}</label>
+    </view>
+    <view class="download-tap-view" bindtap="didClickDownload" data-download-model="{{attachment}}">
+      <image class="icon-download-tap-image" src="../../../image/icon_download.png"></image>
+    </view>
+  </view>
+</template>

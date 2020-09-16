@@ -1,0 +1,6 @@
+<template name="dipper-record">
+  <!-- 宝典 -->
+  <cover-image wx:if="{{dipperLoginFlag && videoFullScreen}}" bindtap='navToRecordBox' class="storehouse {{isIpx?'storehouseTop':''}}" src='/dipperSubPK/images/icon_dipper_recprd.png'></cover-image>
+  <cover-image src='/dipperSubPK/images/icon_attention_fly.png' class="good_box" hidden="{{hide_good_box}}" style="left: {{bus_x}}px; top: {{bus_y}}px;"></cover-image>
+  <!-- 宝典 end -->
+</template>

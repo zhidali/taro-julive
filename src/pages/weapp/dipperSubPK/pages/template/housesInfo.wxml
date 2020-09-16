@@ -1,0 +1,81 @@
+<wxs src="../../../utils/util.wxs" module="tools" />
+<template name="house-info">
+  <view class="house-info m_project_details_info">
+    <view class="title-box">
+      <image class="title-box-img" src="/image/icon-dipper-yellow.png"></image>
+      <view class="all-flex-between title-box-content">
+        <view>详细信息</view>
+      </view>
+    </view>
+    <view class="house-info-box">
+      <!-- 固定栏 -->
+      <view class='min-width150 z_index'>
+        <view class="table">
+          <view class="tr">
+            <view class="th all-white-space min-width150">{{is_virtual_city?'小区名称':'楼盘名称'}}</view>
+          </view>
+          <view class="tr  {{index == houseInfoListFix.lengtg -1? 'tr_borde_bott' : '' }}" wx:for="{{houseInfoListFix}}" wx:key="{{index}}">
+            <view class="td yellow min-width150" style="height:{{item.height}}px" data-module='2' bindtap='toProjectDetail' data-index="{{index}}" data-projectId="{{item.project_id}}" data-url="{{item.project_url}}">
+              {{item.name}}
+            </view>
+          </view>
+        </view>
+      </view>
+      <!-- 固定栏 -->
+      <!-- 移动栏 -->
+      <scroll-view class="house-info-box-scroll" scroll-x="{{true}}" bindscroll="scrollHouseInfo">
+        <view class="table">
+          <view class="tr">
+            <view class="th all-white-space min-width150 visibility" style="left:{{scrollLeftHouseInfo}}px;">
+              楼盘名称
+            </view>
+            <view class="th all-white-space min-width168 del_der_left">
+              {{is_virtual_city?'房源名称':'户型面积(㎡)'}}
+            </view>
+            <view class="th all-white-space min-width192">户型图</view>
+            <view class="th all-white-space min-width192">区域位置</view>
+            <view class="th all-white-space min-width128">装修情况</view>
+            <view class="th all-white-space min-width204">开发商</view>
+            <view class="th all-white-space min-width204">物业公司</view>
+            <view class="th all-white-space min-width144">物业费(月)</view>
+            <view class="th all-white-space min-width104">容积率</view>
+            <view class="th all-white-space min-width104 td_bodr_rigth">绿化率</view>
+            <view style="width:40rpx;heigth:1px;visibility:hidden;">无</view>
+          </view>
+          <view class="tr {{index ==project_info.lengtg -1? 'tr_borde_bott' : '' }}" wx:for="{{project_info}}" wx:key="{{index}}" data-index="{{index}}">
+            <view class="visibility house-info-box-scroll-ri{{index}} td yellow min-width150">
+              {{item.name}}
+            </view>
+            <view style="flex:1;">
+              <block wx:for="{{item.house_list}}" wx:for-item="house" wx:key-index="idx" wx:key="{{idx}}">
+                <view class="" style="display:flex; flex-wrap: nowrap;">
+                  <view class="td min-width168 del_der_left">
+                    <text>{{house.summary}}</text>
+                    <text>{{house.acreage}}</text>
+                  </view>
+                  <view class="td min-width192 house-info-box-scroll-img" bindtap="didiClickHouseApartImg" data-projectId="{{item.project_id}}" data-index="{{index}}" data-src="{{house.apart_img[0]}}">
+                    <jlImage url="{{tools.resizeImageUrl(house.apart_img[0], 160, 120)}}" placeholder="/image/placeholder_house_big.png"></jlImage>
+                  </view>
+                  <view class="td min-width192">
+                    {{house.district_desc?house.district_desc:'暂无'}}
+                  </view>
+                  <view class="td min-width128">
+                    {{house.decorate_info?house.decorate_info:'暂无'}}
+                  </view>
+                  <view class="td min-width204">{{house.developer?house.developer:'暂无'}}</view>
+                  <view class="td min-width204">
+                    {{house.property_company?house.property_company:'暂无'}}
+                  </view>
+                  <view class="td min-width144">{{house.manage_fee?house.manage_fee:'暂无'}}</view>
+                  <view class="td min-width104">{{house.far?house.far:'暂无'}}</view>
+                  <view class="td min-width104">{{house.greening?house.greening:'暂无'}}</view>
+                </view>
+              </block>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+      <!-- 移动栏 -->
+    </view>
+  </view>
+</template>

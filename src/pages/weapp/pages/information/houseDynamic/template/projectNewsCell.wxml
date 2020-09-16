@@ -1,0 +1,173 @@
+<!-- <wxs src="util.wxs" module="statusTools" /> -->
+<wxs src="../../../../utils/util.wxs" module="tools" />
+<template name="project-news-cell">
+  <view class="project-news-cell">
+    <view class="slide-view">
+      <view class="circle-view"></view>
+      <view class="vertical-slide-view"></view>
+    </view>
+    <view class="project-news-cell-content">
+      <view class="house-dynamic-time-view">
+        <text class="house-dynamic-time">{{projectNews.update_datetime}}</text>
+        <image class="new-dynamic" src="/image/icon_new_dynamic.png" wx:if="{{index==0}}" />
+        <image
+          class="new-open"
+          src="https://imgs.julive.com/l?p=eyJpbWdfcGF0aCI6IlwvbWluaW1ncy9pY29uX25ld19vcGVuLnBuZz93YXRlcm1hcmssdF8wIn0="
+          wx:if="{{projectNews.is_new_open == 1}}"
+        />
+      </view>
+      <view
+        class="project-house-info-view"
+        bindtap="didTapHouseDetail"
+        data-project-id="{{projectNews.project_info.project_id}}"
+        data-index="{{index}}"
+      >
+        <jlImage
+          classImage="house-image-view project-house-image"
+          url="{{projectNews.project_info.index_img}}"
+          placeholder="/image/placeholder_house_small.png"
+        />
+        <view class="project-house-info-detail">
+          <view class="project-name">{{projectNews.project_info.name}}</view>
+          <view class="total-price">总价：{{tools.formatPrice(projectNews.project_info.total_price)}}</view>
+          <view class="unit-price">单价：{{tools.formatPrice(projectNews.project_info.current_rate)}}</view>
+        </view>
+        <view class="project-house-status-district">
+          <view
+            class="project-house-sale-status"
+            style="{{tools.statusColor(projectNews.project_info.status.value)}}"
+          >{{projectNews.project_info.status.name}}</view>
+          <view class="project-house-district">{{projectNews.project_info.trade_area_desc}}</view>
+        </view>
+      </view>
+      <!-- 普通动态楼盘展示 -->
+      <view wx:if="{{projectNews.type == 3}}">
+        <view
+          class="dynamic-view"
+          bindtap="didTapDynamicDetail"
+          data-dynamic-id="{{projectNews.dynamic.id}}"
+          data-project-id="{{projectNews.project_info.project_id}}"
+          data-index="{{index}}"
+        >
+          <view class="dynamic-title">{{projectNews.dynamic.title}}</view>
+          <view
+            wx:if="{{projectNews.dynamic.content}}"
+            class="dynamic-content"
+          >{{projectNews.dynamic.content}}</view>
+          <text class="look-more">查看全文</text>
+        </view>
+        <jlImage
+          classImage="dynamic-image"
+          wx:if="{{projectNews.dynamic.image_list.length>0}}"
+          url="{{projectNews.dynamic.image_list[0]}}"
+          data-project-news="{{projectNews}}"
+          placeholder="/image/placeholder_house_big.png"
+        ></jlImage>
+      </view>
+      <!-- 优惠楼盘 -->
+      <view wx:if="{{projectNews.type == 2}}">
+        <view class="dynamic-title red-title">{{projectNews.discount.pay_title}}</view>
+        <view
+          wx:if="{{projectNews.discount.pay_info}}"
+          class="dynamic-content"
+        >{{projectNews.discount.pay_info}}</view>
+      </view>
+      <!-- 特价楼盘 -->
+      <view wx:if="{{projectNews.type == 1}}">
+        <view
+          wx:if="{{projectNews.special_price.special_title}}"
+          class="dynamic-title red-title"
+        >{{projectNews.special_price.special_title}}</view>
+        <view class="dynamic-time">
+          距离特价秒杀结束仅剩
+          <countDown
+            target="{{projectNews.special_price.timestamp}}"
+            count-down="time-down"
+            time="time-num"
+            unit="time-unit"
+          />
+        </view>
+        <view
+          wx:if="{{projectNews.special_price.special_price_house_desc}}"
+          class="dynamic-content"
+        >{{projectNews.special_price.special_price_house_desc}}</view>
+      </view>
+      <view class="project-news-cell-bottom-view">
+        <!-- 普通动态楼盘 -->
+        <view class="dynamic-wx-loging-box">
+          <view
+            wx:if="{{projectNews.type == 3}}"
+            class="subscribe-dynamic"
+            bindtap="didTapSubcribeHouseDynamic"
+            data-index="{{index}}"
+            data-dynamic-id="{{projectNews.dynamic.id}}"
+            data-project-id="{{projectNews.project_info.project_id}}"
+          >
+            <image class="show-icon" src="/image/icon_show_dynamic.png" />订阅楼盘动态
+          </view>
+          <view wx:if="{{!userLoginStatus}}" class="dynamic-wx-loging">
+            <wxLogin
+              markOpType="900107"
+              markIndex="{{index}}"
+              bindClickGetPhoneNumberBtn="passBackGetPhoneNumberBtn"
+              bindFastLoginCallBack="passBackFastLoginCallBack"
+            ></wxLogin>
+          </view>
+        </view>
+        <!-- 优惠楼盘咨询 -->
+        <view wx:if="{{projectNews.type == 2}}" class="dynamic-wx-loging-box">
+          <view
+            class="subscribe-dynamic red-btn"
+            bindtap="didTapSpecialConsult"
+            data-index="{{index}}"
+            data-project-id="{{projectNews.project_info.project_id}}"
+            data-type="{{projectNews.type}}"
+            data-content="{{projectNews.discount.pay_title}}"
+          >
+            <image class="show-icon" src="/image/icon_consulting.png" />咨询优惠详情
+          </view>
+          <view wx:if="{{!userLoginStatus}}" class="dynamic-wx-loging">
+            <wxLogin
+              markOpType="900710"
+              markIndex="{{index}}"
+              bindClickGetPhoneNumberBtn="passBackGetPhoneNumberBtn"
+              bindFastLoginCallBack="passBackFastLoginCallBack"
+            ></wxLogin>
+          </view>
+        </view>
+        <!-- 特价楼盘咨询 -->
+        <view class="dynamic-wx-loging-box" wx:if="{{projectNews.type == 1}}">
+          <view
+            class="subscribe-dynamic red-btn"
+            bindtap="didTapSpecialConsult"
+            index="{{index}}"
+            data-project-id="{{projectNews.project_info.project_id}}"
+            data-type="{{projectNews.type}}"
+            data-content="{{projectNews.special_price.special_title}}"
+          >
+            <image class="show-icon" src="/image/icon_consulting.png" />咨询特价详情
+          </view>
+          <view wx:if="{{!userLoginStatus}}" class="dynamic-wx-loging">
+            <wxLogin
+              markOpType="900709"
+              markIndex="{{index}}"
+              bindClickGetPhoneNumberBtn="passBackGetPhoneNumberBtn"
+              bindFastLoginCallBack="passBackFastLoginCallBack"
+            ></wxLogin>
+          </view>
+        </view>
+        <view class="share-dynamic">
+          <image class="share-dynamic-image" src="/image/icon_share.png" />
+          <text class="share-dynamic-text">分享</text>
+          <button
+            class="share-button"
+            open-type="getUserInfo"
+            bindgetuserinfo="onGetUserInfo"
+            data-project-news="{{projectNews}}"
+            data-index="{{index}}"
+          ></button>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>

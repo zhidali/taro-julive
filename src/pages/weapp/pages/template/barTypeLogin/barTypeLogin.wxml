@@ -1,0 +1,51 @@
+<template name="bar-type">
+  <view class="bar-type-box" wx:if="{{barTypeData.isShow}}">
+    <!-- 1.首页条形登录弹窗 -->
+    <view
+      class="bar-type-login _fade-in  {{barTypeData.animation?'_fade-out':''}}"
+      wx:if="{{barTypeData.type == 1}}"
+    >
+      <view class="bar-type-login-close-mask" bindtap="didClickCloseBarType"></view>
+      <image class="bar-type-login-close" src="/image/icon_get_close.png"></image>
+      <image
+        class="bar-type-login-img"
+        src="http://imgs.julive.com/l?p=eyJpbWdfcGF0aCI6IlwvbWluaW1ncy9ob21lLWJhci10eXBlLnBuZyJ9"
+      ></image>
+      <view class="bar-type-login-text"
+        >{{versionFlag ? '领购房礼包，新人买房指南':'登录居理，领取购房福利'}}</view
+      >
+      <view
+        class="bar-type-login-btn {{versionFlag ? 'bar-type-login-btn-font':''}}"
+        bindtap="didClickBarTypeLogin"
+      >
+        <view class="wxlogin-box" wx:if="{{versionFlag}}">
+          <!-- 260版本持有登陆方式 -->
+          <wxLogin
+            markType="261"
+            bindClickGetPhoneNumberBtn="passBackGetPhoneNumberBtn"
+            bindWechatUserCancel="passBackFastLoginCallBack"
+            bindFastLoginCallBack="passBackFastLoginCallBack"
+          ></wxLogin>
+        </view>
+        一键登录</view
+      >
+    </view>
+    
+    <!-- 列表页面引导弹窗A -->
+    <view
+      class="guide-pop-view {{barTypeData.isClose?'fade-out':''}}"
+      wx:if="{{barTypeData.type == 2}}"
+    >
+      <image
+        bindtap="didCloseEmployeePop"
+        class="guide-pop-close"
+        src="/image/icon_close_pop.png"
+      />
+      <view bindtap="didGuidePopADiscount" class="guide-pop-content">
+        <image class="img" mode="aspectFill" src="{{barTypeData.popup.avatar}}" />
+        <view class="text all-ellipsis-two">{{barTypeData.popup.title}}</view>
+        <view class="btn">咨询</view>
+      </view>
+    </view>
+  </view>
+</template>

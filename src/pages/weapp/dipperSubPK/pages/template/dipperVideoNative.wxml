@@ -1,0 +1,25 @@
+<template name="dipper-video">
+  <view class="video-box">
+    <video id="myVideo" src="{{src}}" bindplay="_bindplay" bindpause="_bindpause" bindended="_bindended" bindtimeupdate="_bindtimeupdate" bindwaiting="_bindwaiting" bindfullscreenchange="_bindfullscreenchange" binderror="_videoErrorCallback" bindprogress="_bindprogress"
+      show-center-play-btn="{{false}}" object-fit="cover" controls="{{controls}}" poster="{{video_pic}}" title="{{video_name}}"></video>
+    <cover-view class="video-box-mask" wx:if="{{maskStatus.initPlayFlag||maskStatus.wifiWarnFlag||maskStatus.againPlayFlag}}">
+      <block wx:if="{{maskStatus.initPlayFlag}}">
+        <cover-image class="video-play" bindtap="_didClickVideoPlay" src="/image/icon-video-play.png"></cover-image>
+      </block>
+      <block wx:elif="{{maskStatus.wifiWarnFlag}}">
+        <cover-view class="video-box-mask-content">
+          <cover-view class="video-box-mask-title">正在使用非wifi网，播放将产生流量费用 </cover-view>
+          <text>\n</text>
+          <cover-view bindtap="_didClickWifiVideoPlay" class="video-box-mask-btn">使用流量播放</cover-view>
+        </cover-view>
+      </block>
+      <block wx:elif="{{maskStatus.againPlayFlag}}">
+        <cover-view class="video-again-play-box">
+          <cover-image class="video-again-play-img" bindtap="_didClickVideoAgainPlay" src="/image/icon-video-again-play.png"></cover-image>
+          <cover-view class="video-again-play-font">重播</cover-view>
+        </cover-view>
+        <cover-view class="video-again-play-font viedeo-duration" >{{showVideoDuration}} </cover-view>
+      </block>
+    </cover-view>
+  </view>
+</template>

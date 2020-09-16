@@ -1,0 +1,25 @@
+<view class="contact-view {{isIpx?'fix-iphonex-view':''}}">
+  <view class='contact-attention-view' bindtap='didClickLikeItem' hidden='{{notShowAttention}}'>
+    <image class='attention-icon' src="{{isFavorite?'/image/icon_attention.png':'/image/icon_no_attention.png'}}"></image>
+    <view class='attention-label'>关注</view>
+  </view>
+  <view class='contact-phone-view {{helpHouseUrl.length > 0 ? "contact-phone-max-width" : "contact-phone-min-width"}}'>
+    <view class='contact-phone-item' bindtap='didClickPhoneItem'>
+      <image class='attention-icon' src='/image/icon_bottom_call.png'></image>
+      <view class='attention-label'>咨询热线</view>
+    </view>
+    <view class='contact-line-view' wx:if="{{helpHouseUrl.length > 0}}"></view>
+    <view class='contact-phone-item' bindtap='didClickSearchHouseItem' wx:if="{{helpHouseUrl.length > 0}}">
+      <image class='attention-icon' src='/image/icon_bottom_search.png'></image>
+      <view class='attention-label'>帮您找房</view>
+    </view>
+  </view>
+  <view class="contact-item contact-date-view" hover-class='contact-hover-view' bindtap='didClickDateItem'>
+    <view class="contact-item-label">{{payInfo?'悦享优惠':'我要看房'}}</view>
+  </view>
+  <view class="contact-item contact-consult-view" hover-class='contact-hover-view' bindtap='didClickConsultItem'>
+    <view class="contact-item-label">{{consult?consult:'我要咨询'}}</view>
+  </view>
+</view>
+<login showModal="{{showLoginModal}}" title="{{loginTitle}}" content="{{loginContent}}" contentDown="{{contentDown}}" contentFooter="{{contentFooter}}" buttonTitle="{{loginButtonTitle}}" popType="{{popType}}" bindcancelCallback="cancelCallback" bindloginSuccessCallback="loginSuccessCallback" userInfo="{{loginUserInfo}}" />
+<orderSuccessAlert fromPage='{{fromPage}}' popType="{{popType}}" showModal="{{showOrderSuccessAlert}}" title="{{alertTitle}}" content="{{alertContent}}" />

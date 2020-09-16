@@ -1,0 +1,31 @@
+<wxs src="../../../utils/util.wxs" module="tools" />
+<wxs src="../utils/util.wxs" module="statusTools" />
+<template name='house-type-item'>
+  <view class='house-type-item-container' style='margin-right:{{isLastItem?40:0}}rpx; margin-left:{{index==0?40:20}}rpx;' bindtap="didTapHouseTypeCell" data-op-type="{{900150}}" data-index='{{index}}' data-house-type='{{houseType}}'>
+    <jlImage className='house-type-item-image' url='{{tools.resizeImageUrl(houseType.apart_img[0], 160, 120)}}' placeholder="../../image/placeholder_house_small.png"></jlImage>
+    <view class='house-type-item-base'>
+      <text class='house-type-item-room'>{{houseType.summary}}</text>
+      <text class='house-type-item-status' style="{{statusTools.statusColor(houseType.status.value)}}">{{houseType.status.name}}
+      </text>
+    </view>
+    <view class='house-type-item-base'>
+      <text class='house-type-base-prefix'>单价：</text>
+      <text class='house-type-base-value' style='font-family: PingFangSC-Semibold;'>{{(houseType.offer_price==0||houseType.offer_price.length==0)?'待定': houseType.offer_price+'元'}}
+      </text>
+    </view>
+    <view class='house-type-item-base'>
+      <text class='house-type-base-prefix'>{{houseType.orientation && houseType.orientation.length > 0 ? '朝向：':''}}
+      </text>
+      <text class='house-type-base-value' wx:if="{{houseType.orientation && houseType.orientation.length > 0}}">{{houseType.orientation}}
+      </text>
+      <text class='house-type-base-prefix'>{{houseType.acreage && houseType.acreage.length > 0 ? '建面：': (houseType.ac_acreage && houseType.ac_acreage.length > 0 ? '套内：': '')}}
+      </text>
+      <text class='house-type-base-value' wx:if="{{(houseType.acreage && houseType.acreage.length > 0) || ( houseType.ac_acreage && houseType.ac_acreage.length > 0)}}">{{(houseType.acreage && houseType.acreage.length > 0) ? houseType.acreage : houseType.ac_acreage}}㎡
+      </text>
+    </view>
+    <view class='house-type-total-price-view'>
+      <text class='house-type-total-price'>{{(houseType.price.length>0 && houseType.price !="待定" && houseType.price != 0)?"约":""}}{{houseType.price/10000 || "待定"}}{{(houseType.price.length>0 && houseType.price !="待定" && houseType.price != 0)?"万/套":""}}
+      </text>
+    </view>
+  </view>
+</template>

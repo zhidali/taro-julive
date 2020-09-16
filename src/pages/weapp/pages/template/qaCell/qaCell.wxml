@@ -1,0 +1,61 @@
+<wxs src="../../../utils/util.wxs" module="tools" />
+<template name="qa-cell">
+  <view class="qa-cell" hover-class='qa-hover-cell' bindtap="didTapQaCell" data-op-type="{{900169}}" data-qa="{{qa}}" data-index="{{index}}">
+    <view class="question-view">
+      <view class="qa-tag">
+        <image class="tag-icon" src="/image/icon_tab_question.png" />
+        <label class="tag-name">问</label>
+      </view>
+      <view class="question-info">
+        <label class="question {{limitline?'question-limit-line':''}}">{{qa.question.title}}</label>
+        <view class="question-type-view" wx:if="{{showQuestionType && qa.question.type.length > 0}}">
+          <block wx:for="{{qa.question.type}}" wx:key="item">
+            <label class="question-type-label subjectColor">{{item}}</label>
+          </block>
+        </view>
+        <view class="question-other">
+          <view class="question-tag-view">
+            <label class="question-name">{{qa.question.questioner_nickname}}</label>
+            <label class="question-tag" wx:if='{{tools.formatPrice(qa.question.total_price).length>0}}'>
+              {{tools.formatPrice(qa.question.total_price)}}预算
+            </label>
+            <label class="question-tag" wx:if="{{ showPurpose &&qa.question.purchase_purpose.length > 0}}">
+              {{qa.question.purchase_purpose}}
+            </label>
+            <label class="question-tag" wx:if="{{showDistrict && qa.question.district.length>0}}">
+              {{qa.question.district}}
+            </label>
+          </view>
+          <label class="question-time">{{qa.question.create_datetime}}</label>
+        </view>
+      </view>
+    </view>
+    <view class="answer-view" wx:if="{{showAnswer}}">
+      <view class="qa-tag tag-fixed">
+        <image class="tag-icon" src="/image/icon_tab_question.png" />
+        <label class="tag-name">答</label>
+      </view>
+      <view class="answer-content-view">
+        <view class="answer-info-view">
+          <image class="{{qa.answer_list[0].answer.imgs_info.length > 1 ? 'answer-image-view' : 'answer-only-image-view' }}" src="{{qa.answer_list[0].answer.imgs_info[0].url}}" wx:if="{{qa.answer_list[0].answer.imgs_info.length > 0}}" />
+          <label class="answer-text-view">{{qa.answer_list[0].answer.content}}</label>
+        </view>
+        <view class="answer-employee-view">
+          <view class="answer-employee-info-view">
+            <jlImage className='answer-employee-avatar' url="{{qa.answer_list[0].employee_info.avatar}}" placeholder="{{qa.answer_list[0].employee_info.sex==1?'/image/placeholder_consult_avater_man.png':'/image/placeholder_consult_avater_woman.png'}}" />
+            <label class="answer-employee-academy">
+              {{qa.answer_list[0].employee_info.employee_name}} {{qa.answer_list[0].employee_info.academy.length > 0?'毕业于':''}}{{qa.answer_list[0].employee_info.academy}}
+            </label>
+          </view>
+          <view class="answer-employee-like-view">
+            <image class='answer-employee-like-icon' src="/image/icon_likes_gray.png" />
+            <text class='answer-employee-like-num'>有用({{qa.answer_list[0].answer.like_num}})</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- <form report-submit="true" bindsubmit="didTapQaCell" data-op-type="{{900169}}" data-qa="{{qa}}" data-index="{{index}}">
+      <button class="fake-form-button" form-type='submit'></button>
+    </form> -->
+  </view>
+</template>

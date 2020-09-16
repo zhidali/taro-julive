@@ -1,0 +1,73 @@
+<import src="../../../component/loading/loading.wxml" />
+<import src="../template/loadAlt.wxml" />
+
+<view class="loading-view" wx:if="{{!loadingHidden}}">
+  <template is="loading-view" data="{{hidden:loadingHidden}}" />
+
+</view>
+<view class="container  {{focusFlag?'padding-bom':''}}"   wx:if="{{loadingHidden}}">
+  <template is="load-alt" data="{{type:showModelType,flag:showModelFlag}}" />
+
+  <view class="all-flex-between  heigth45 mar-top-44 padding-bom-40">
+    <text class="title">总价预算</text>
+    <view class="all-flex-between input-box-ord">
+      <input class="input" value="{{total_price.default_val}}" placeholder-class="input-placeholder" placeholder="请输入" bindblur="didClickChangeTotalPrice"></input>{{total_price.unit}}</view>
+  </view>
+  <view class="all-flex-between  heigth45 mar-top-44 padding-bom-40">
+    <text class="title">首付预算</text>
+    <view class="all-flex-between input-box-ord">
+      <input class="input" value="{{first_price.default_val}}" placeholder-class="input-placeholder" placeholder="请输入" bindblur="didClickChangeFirstPrice"></input>{{first_price.unit}}</view>
+  </view>
+  <view class="all-flex-between  heigth45 mar-top-44 padding-bom-40">
+    <text class="title">面积</text>
+    <view class="all-flex-between input-box-ord">
+      <input class="input padding24" value="{{acreage.default_val}}" placeholder-class="input-placeholder" placeholder="请输入" bindblur="didClickChangeAcreage"></input>{{acreage.unit}}</view>
+  </view>
+  <!-- 选择模块 -->
+  <view class="mar-top-44" wx:if="{{project_type_list && project_type_list.length > 0}}">
+    <view class="title">业态</view>
+    <view class="tags-box">
+      <block wx:for="{{project_type_list}}" wx:key="{{index}}">
+        <text class="{{item.flag?'active':''}}" data-index="{{index}}" bindtap="didClickProjectType"> {{item.name}}</text>
+      </block>
+    </view>
+  </view>
+  <view class="mar-top-44" wx:if="{{qualifications_list && qualifications_list.length>0}}">
+    <view class="title">购房资质</view>
+    <view class="tags-box">
+    <block wx:for="{{qualifications_list}}"  wx:key="{{index}}" >
+         <text class="{{item.flag?'active':''}}" data-index="{{index}}" bindtap="didClickQualifications"> {{item.name}}</text>
+      </block>
+    </view>
+  </view>
+  <view class="mar-top-44" wx:if="{{house_type_list && house_type_list.length >0}}">
+    <view class="title">户型</view>
+    <view class="tags-box">
+        <block wx:for="{{house_type_list}}" wx:key="{{index}}" >
+         <text class="{{item.flag?'active':''}}" data-index="{{index}}" bindtap="didClickMuchHouseType"> {{item.name}}</text>
+      </block>
+
+    </view>
+  </view>
+  <view class="mar-top-44" wx:if="{{purchase_purpose_list && purchase_purpose_list.length>0}}">
+    <view class="title">购房目的</view>
+    <view class="tags-box">
+            <block wx:for="{{purchase_purpose_list}}" wx:key="{{index}}" >
+         <text class="{{item.flag?'active':''}}" data-index="{{index}}" bindtap="didClickPurchasePurpose"> {{item.name}}</text>
+      </block>
+
+    </view>
+  </view>
+  <view class="mar-top-44">
+    <view class="title">其他需求</view>
+    <textarea  bindfocus="didClickbindfocus" placeholder-class="textarea-placeholder" bindinput="changeFontNum" value="{{textareaVal}}" bindblur="bindTextAreaBlur" maxlength='300' placeholder="请输入您的需求..." />
+    <view class="textarea-num">{{textareaValLng}}/300</view>
+  </view>
+  <view class="footer-title">
+    您更新的需求，系统会马上通知咨询师关注并结合您的最新需求为您制作专属资料，敬请期待~
+  </view>
+  <view class="footer-btn" bindtap="didClicksendSaveRequiredInfo">
+    提交
+  </view>
+
+</view>

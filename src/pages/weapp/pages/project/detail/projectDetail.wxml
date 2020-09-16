@@ -1,0 +1,251 @@
+<import src="../../../component/loading/loading.wxml" />
+<import src="../../template/slideImage/imageBanner.wxml" />
+<import src="../template/houseTypeItem.wxml" />
+<import src="../../../pages/template/houseTypeCell/houseTypeCell.wxml" />
+<import src="../../template/questionItem/questionItem.wxml" />
+<import src="../../template/employeeReviewItem/employeeReviewItem.wxml" />
+<import src="../../project/template/projectCell.wxml" />
+<import src="../template/dynamicItem.wxml" />
+<import src="./template/loadAlt.wxml" />
+<import src="./template/oneStop.wxml" />
+<import src="../../template/tipModal/tipModal.wxml" />
+<wxs src="../../../utils/util.wxs" module="tools" />
+<wxs src="../utils/util.wxs" module="statusTools" />
+<view class="loading-view" wx:if="{{!loadingHidden}}">
+  <template is="loading-view" data="{{hidden:loadingHidden}}" />
+</view>
+<view class="container" hidden="{{!loadingHidden}}">
+  <cover-view class="animation-toast-view {{isIpx?'iphonex-animation-bottom-margin':''}} {{slideup?'slideup':''}} {{slidedown?'slidedown':''}}">
+    <cover-view class='animation-toast-text'>关注本楼盘，及时获取楼盘动态通知</cover-view>
+    <cover-image class='animation-toast-close-icon' src='../../../image/icon_close_white.png' catchtap="clickCloseAnimation"></cover-image>
+  </cover-view>
+  <!-- banner -->
+  <template is="image-banner" data="{{imageList:imageList, autoPlay:false, indicatorDots:false, pageIndex:curImageIndex, screenWidth:screenWidth,is_special_price_house:info.is_special_price_house,is_discount:info.is_discount,loadImageNum:loadImageNum}}" />
+  <!-- 楼盘详情 -->
+  <view class="project-base-view project-info-view">
+    <label class="project-name">{{info.name}}</label>
+    <view class="project-opreate-view">
+      <image class="img" src="/image/{{isLike?'detail_like_is':'detail_like'}}.png" data-position="1" bindtap="didClickLike" />
+      <image class="img" src="/image/detail_share.png" data-position="1" bindtap="didClickShare" />
+    </view>
+    <view class="project-tag-view">
+      <label class="project-sale-status" style="{{statusTools.statusColor(info.status.value)}}">
+        {{info.status.name}}
+      </label>
+      <label class="project-tag">{{info.project_type.name}}</label>
+      <label wx:if="{{info.tag_str.length>0}}" class="project-tag  project-tag-str">
+        {{info.tag_str}}
+      </label>
+      <block wx:else>
+        <block wx:for="{{info.tag}}" wx:key="item">
+          <label class="project-tag">{{item}}</label>
+        </block>
+      </block>
+    </view>
+    <view class="project-price-view">
+      <block wx:for="{{info.price_info}}" wx:key="item">
+        <view class="project-price-item">
+          <label class="project-price-title">{{item.label}}</label>
+          <label class="project-price-value {{item.highlight==1? 'project-price-value-highlight':''}}">
+            {{item.value}}
+            <label style="font-size:24rpx;">{{item.unit}}</label>
+          </label>
+        </view>
+      </block>
+    </view>
+    <view class="project-info-detail-view">
+      <text decode="{{true}}" class="item-title">开盘时间:</text>
+      <label class="item-value">{{info.current_open_time || '待补充'}}</label>
+    </view>
+    <view class="project-info-detail-view  project-info-detail-view-address" bindtap="didClickNearbyMap">
+      <text decode="{{true}}" class="item-title">楼盘地址:</text>
+      <label class="item-value">{{info.address || '待补充'}}</label>
+      <image class="item-address-icon" src="../../../image/icon_address.png" />
+    </view>
+    <view class="project-expand-detail-view" hidden="{{!isExpand}}">
+      <block wx:for="{{expandItemList}}" wx:key="item">
+        <view class="project-info-detail-view">
+          <text decode="{{true}}" class="item-title">{{item.title}}:</text>
+          <label class="item-value">{{item.value || '待补充'}}</label>
+        </view>
+      </block>
+    </view>
+    <view class="project-expand-click-view" bindtap='didClickExpandView'>
+      <image class="project-expand-icon" src="../../../image/icon_detail_uparrow.png" wx:if="{{!isExpand}}" />
+      <image class="project-expand-icon" src="../../../image/icon_detail_downarrow.png" wx:else />
+      <label class="project-expand-label" wx:if="{{!isExpand}}">展开更多楼盘信息</label>
+      <label class="project-expand-label" wx:else>收起</label>
+    </view>
+    <view class="project-subscribe-notification-view">
+      <view class='project-subscribe-notification-botton' bindtap="didTapChangePriceView">
+        <view class="project-subscribe-notification-label" bindtap="reportForm" data-op-type="{{900135}}">
+          <image class="img" src="/image/icon-detail-notice1.png" />
+          订阅变价通知
+        </view>
+      </view>
+      <view class='project-subscribe-notification-botton' style='margin-left: 40rpx;' bindtap="didTapOpenTimeView">
+        <view class="project-subscribe-notification-label" bindtap="reportForm" data-op-type="{{900133}}">
+          <image class='img' src="/image/icon-detail-notice2.png" />
+          获取开盘通知
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 居理服务 -->
+  <view class='banenr-upright' wx:if="{{subscribeList.length>0}}">
+    <view class='banenr-upright-title'>
+      {{is_Pay_info==true?"楼盘优惠":"居理服务"}}
+      <image wx:if="{{is_Pay_info==true}}" bindtap="didClickDiscountTip" class="banenr-upright-title-image" src="/image/icon_detail.png" />
+    </view>
+    <block wx:for="{{subscribeList}}" wx:key="title">
+      <view class="banenr-container-view discount-banenr-container-view {{item.type == 0? 'banner-erba':''}}" wx:key="item" wx:if="{{item.type == 0 }}">
+        <image class='banenr-image discount-banenr-image discount-banenr-image-big' src='{{item.icon}}' bindtap="didTapDiscountBanenr" data-item="{{item}}"></image>
+      </view>
+      <view class="banenr-container-view discount-banenr-container-view" wx:key="item" wx:if="{{item.type == 1 }}">
+        <image class='banenr-image discount-banenr-image' src='{{item.icon}}'></image>
+        <text class="discount-banenr-title {{item.type == 1 ?'blue':''}}">{{item.title}}</text>
+        <text class="discount-banenr-content {{item.type == 1 ?'blue':''}}">{{item.content}}</text>
+        <view class="discount-banenr-btn {{item.type === 1? 'discount-banenr-back1':'discount-banenr-back2'}}" bindtap="didTapDiscountBanenr" data-item="{{item}}">
+          {{item.btn}}
+        </view>
+      </view>
+    </block>
+  </view>
+  <!-- 户型分析 -->
+  <view class="project-base-view" hidden='{{info.house.length == 0}}'>
+    <view class="project-base-header-view" bindtap='didTapHouseTypeListView' style="margin-top:46rpx;">
+      <label class="project-base-header-title">户型分析</label>
+      <label class="project-base-header-desc">
+        {{info.house_total}}个详细户型
+        <image class="project-header-more-icon" src="/image/icon_view_more.png"></image>
+      </label>
+    </view>
+    <scroll-view class='project_house-type-list-scroll' scroll-x="true" wx:if="{{info.house.length > 1}}">
+      <block wx:for="{{info.house}}" wx:key="item">
+        <template is="house-type-item" data="{{houseType:item, index:index, isLastItem: (index==info.house.length-1 ? true : false)}}" />
+      </block>
+    </scroll-view>
+    <view class='house-type-orientation-view' wx:if="{{info.house.length == 1}}">
+      <block wx:for="{{info.house}}" wx:key="item">
+        <template is="house-type-cell" data="{{houseType:item, index:index}}" />
+      </block>
+    </view>
+  </view>
+  <!-- 楼盘动态 -->
+  <view class="project-base-view" hidden='{{info.dynamic.count == 0}}'>
+    <view class="project-base-header-view" bindtap="didTapDynamicList">
+      <label class="project-base-header-title">楼盘近期动态</label>
+      <label class="project-base-header-desc">
+        {{info.dynamic.count}}条近期动态
+        <image class="project-header-more-icon" src="/image/icon_view_more.png"></image>
+      </label>
+    </view>
+    <view class='project-dynamic-list-view'>
+      <block wx:for='{{info.dynamic.info}}' wx:key='item'>
+        <template is='dynamic-item' data='{{dynamicInfo:item, index:index, isLastDynamic:(index == info.dynamic.info.length-1 ? true : false)}}' />
+      </block>
+    </view>
+    <view class='project-base-view-btn'>
+      <view class='common-button-whole' bindtap="didTapDynamicChange">
+        <image src='/image/icon-home-notice.png'></image>
+        动态变动通知我
+      </view>
+    </view>
+  </view>
+  <!-- 周边分析 -->
+  <view class="project-base-view near-by-analytic-view" style='padding-bottom:{{areaReview.review.length > 0 ? 0 : 56}}rpx;' wx:if="{{areaReview.review.length > 0}}">
+    <view class="project-base-header-view">
+      <label class="project-base-header-title">周边分析</label>
+      <label class="project-base-header-desc" bindtap="didNearByAnalyticView" data-op-type="{{900144}}">
+        现状及规划
+        <image class="project-header-more-icon" src="/image/icon_view_more.png"></image>
+      </label>
+    </view>
+    <text class='near-by-analytic-address'>地址：{{info.address || '待补充'}}</text>
+    <view class='near-by-analytic-map-view'>
+      <map id="map" longitude="{{info.lng}}" latitude="{{info.lat}}" markers="{{markers}}" show-location style="width: 100%; height: 100%;" enable-scroll="{{false}}" enable-zoom="{{false}}" hidden="{{showLoginModal || showContact || showAlert}}" bindtap="didTapMap"></map>
+    </view>
+    <view class='near-by-analytic-search-option-view'>
+      <block wx:for="{{optionsList}}" wx:key="item">
+        <view class='near-by-analytic-search-option' bindtap='didTapOption' data-index="{{index}}">
+          <image class='near-by-analytic-search-option-icon' src="{{item.icon}}"></image>
+          <text class='near-by-analytic-search-option-tag'>{{item.tag}}({{item.resultCount}})</text>
+        </view>
+      </block>
+    </view>
+    <template is="employee-review-item" data="{{review:areaReview, showBest:false, showDistrict:true, notShowTime:true, opType:'900146'}}" />
+  </view>
+  <!-- 居理问答 -->
+  <view class="project-base-view" hidden="{{qa.total == 0}}">
+    <view class="project-base-header-view" bindtap='didTapQaListView'>
+      <label class="project-base-header-title">居理问答</label>
+      <label class="project-base-header-desc">
+        了解更多问问
+        <image class="project-header-more-icon" src="/image/icon_view_more.png"></image>
+      </label>
+    </view>
+    <view class='project-question-view'>
+      <view class="project-question-item-container" wx:for='{{qa.qa_list}}' wx:key='item'>
+        <template is="question-item" data="{{qa:item, index:index, isTestA:true, opType:'900147'}}" />
+      </view>
+    </view>
+    <view class='project-question-button' bindtap='didTapAskButton'>
+      <view class="common-button-whole">
+        <image src="/image/icon_home_ask.png" />
+        <text>我要提问</text>
+      </view>
+    </view>
+  </view>
+  <!-- 咨询师点评 -->
+  <view class="project-base-view" hidden="{{tools.isEmptyObject(info.review)||info.review_count == 0}}">
+    <view class="project-base-header-view" bindtap='didClickEmployeeReview'>
+      <label class="project-base-header-title">咨询师点评</label>
+      <label class="project-base-header-desc">
+        共{{info.review_count}}条
+        <image class="project-header-more-icon" src="/image/icon_view_more.png"></image>
+      </label>
+    </view>
+    <template is="employee-review-item" data="{{review:info.review, showBest:true, notShowTime:true, opType:'900148'}}" />
+  </view>
+  <!-- 一站式购房 start -->
+  <template is="one-stop" data="{{ security:security }}" />
+  <!-- 猜你喜欢 -->
+  <view class="project-recommend-view" wx:if="{{recommendList.length > 0}}">
+    <view class="project-base-header-view" bindtap="didClickMoreProjectList">
+      <label class="project-base-header-title">浏览此楼盘的人还关注</label>
+      <label class="project-base-header-desc">
+        查看全部
+        <image class="project-header-more-icon" src="/image/icon_view_more.png"></image>
+      </label>
+    </view>
+    <view class="project-cell-view" wx:for="{{recommendList}}" wx:key="item" style="{{index==0?'margin-top:32rpx;':''}}">
+      <template is="project-cell" data="{{project:item, index:index, opType:'900149'}}" />
+      <!-- banner -->
+      <view wx:if="{{index==4}}" style='margin-top:52rpx'>
+        <bannerToApp showBanner="{{true}}" url="http://imgs.julive.com/l?p=eyJpbWdfcGF0aCI6IlwvbWluaW1ncy9iYW5uZXItdG8tYXBwLnBuZyJ9ICAg" bindOpenApp="OpenApp" />
+      </view>
+    </view>
+  </view>
+  <!-- 帮我找房运营位 -->
+  <!-- <view class="helpme-findhouse" bindtap="didClickFindHouse">
+    <image class="img" src="{{info.find_house_img.image}}" />
+  </view> -->
+  <!-- 法务描述 -->
+  <view class="duty-box">
+    <view class="duty-box-title">
+      <image class="duty-box-title-img" src="/image/icon-duty.png"></image>
+      <text class="duty-box-title-text">免责声明</text>
+    </view>
+    <view class="duty-box-content">
+      楼盘时效性信息来源于政府公示网站、开发商、第三方公众平台，最终以政府部门登记备案为准，预测性、概括性信息仅供参考，请谨慎核查。
+    </view>
+  </view>
+  <!-- 法务描述 -->
+  <template is="tip-modal" data="{{discountTip:discountTip}}"></template>
+  <view class="{{isIpx?'iphonex-page-bottom-margin':'page-bottom-margin'}}"></view>
+  <template is="load-alt" data="{{alertWiwShow:alertWiwShow,contentTxt:contentTxt}}" />
+  <contact projectId="{{projectId}}" fromPage='p_project_details' opType="{{contactOptype}}" isDiscount="{{info.is_discount==1?true:false}}" consultOpType="900212" source="154" userInfo="{{userInfo}}" isFavorite="{{isFavorite}}" notShowAttention="{{true}}" formOpType="900173" showCommonAlertType="{{true}}" canClick="{{!showLoginModal}}" isLike="{{isLike}}" bindshowLoginCallback="showLoginCallback" bindcancelCallback="cancelCallback" bindshowAlertCallback="showAlertCallback" bindattentionSuccessCallback="attentionSuccessCallback" binddidClickLike="didClickLike" binddidClickShare="didClickShare" />
+  <login showModal="{{showLoginModal}}" title="{{loginTitle}}" content="{{loginContent}}" buttonTitle="{{loginButtonTitle}}" popType="{{popType}}" bindloginSuccessCallback="loginSuccessCallback" bindcancelCallback="cancelCallback" userInfo="{{loginUserInfo}}" contentDown="{{loginContentDown}}" />
+  <orderSuccessAlert fromPage='p_project_details' popType="{{popType}}" showModal="{{showOrderSuccessAlert}}" title="{{alertTitle}}" content="{{alertContent}}" />
+  <paintingDetail showPainter="{{showPainter}}" template="{{template}}" paintInfo="{{paintInfo}}" successImage="{{imagePath}}" binddismissCallback="dismissShare" bindshareImagePath="shareImagePath" />
+</view>

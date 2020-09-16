@@ -1,0 +1,24 @@
+<!-- 居理带看 -->
+<template name="dipper-audio">
+  <view wx:if="{{voice.url.length>1}}">
+    <view class='singleProject_foryou_h2'>
+      <view>
+        咨询师解读:
+        <text class="bottom_line"></text>
+      </view>
+    </view>
+    <view class='singleProject_foryou_audio m_voice_interpretation'>
+      <image class='audio_image' bindtap='audioPlay' src='/dipperSubPK/images/{{audioImg}}'></image>
+      <view class='singleProject_foryou_audio_box'>
+        <view class='singleProject_foryou_audio_box_title'>{{voice.title}}</view>
+        <slider class='singleProject_slider' value="{{sliderValue}}" bindchange="timeSliderChanged" min="0" max="100" block-color="#47B3E3" block-size="12" backgroundColor="#E6E6E6" activeColor="#47B3E3" />
+        <view class='singleProject_foryou_audio_box_details'>
+          <text class='singleProject_foryou_audio_box_details_time'>
+            时长：{{currentDuration}}/{{totalDuration}}
+          </text>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
+<!-- 居理带看 end -->

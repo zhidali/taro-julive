@@ -1,0 +1,281 @@
+<template name="drop-down">
+  <view class="drop-down-container" catchtouchmove="prevent">
+    <!-- 筛选栏选项 -->
+    <view
+      class="drop-down-bar-container {{showCollectPop?'fix-drop-down-bar-collect':'fix-drop-down-bar'}} {{searchCeiling?'ceiling-drop':''}} {{searchCeiling&&showCollectPop?'ceiling-drop-collect':''}}"
+      wx:if="{{dropdown.barFixed}}"
+    >
+      <view
+        class="drop-down-bar"
+        wx:if="{{dropdown.barShow}}"
+        catchtouchmove="prevent"
+        style="min-height:{{dropdown.barHeight}}rpx;max-height:{{dropdown.barHeight}}rpx;"
+      >
+        <view class="drop-down-bar-filter">
+          <view
+            class="droo-down-bar-item"
+            bindtap="didTapBarItem"
+            data-index="{{index}}"
+            id="{{index}}"
+            wx:for="{{dropdown.barItemList}}"
+            wx:key="item"
+          >
+            <view
+              class="bar-item-text {{( (index == dropdown.selectBarItemIndex && dropdown.filterShow) || (index ==0&&item!='区域') || (index ==1&&item!='价格') || (index ==2&&item!='户型'  || (index ==3&&item!='更多')))?'bar-item-text-color':'' }}"
+            >
+              {{item}}
+            </view>
+            <image
+              class="bar-item-indicator"
+              src="/image/icon_triangle_up.png"
+              wx:if="{{(index == dropdown.selectBarItemIndex && dropdown.filterShow) || (index ==0&&item!='区域') || (index ==1&&item!='价格') || (index ==2&&item!='户型'  || (index ==3&&item!='更多')) }}"
+            />
+            <image class="bar-item-indicator" src="/image/icon_triangle_down.png" wx:else />
+          </view>
+        </view>
+        <!-- 排序按钮 -->
+        <image
+          class="bar-sort-item"
+          src="/image/icon_sort_list.png"
+          bindtap="didTapBarSortItem"
+        ></image>
+      </view>
+    </view>
+    <view class="drop-down-bar-container" wx:if="{{dropdown.pageBarShow}}">
+      <view class="drop-down-bar" wx:if="{{dropdown.barShow}}" catchtouchmove="prevent">
+        <view class="drop-down-bar-filter">
+          <view
+            class="droo-down-bar-item"
+            bindtap="didTapBarItem"
+            data-index="{{index}}"
+            id="{{index}}"
+            wx:for="{{dropdown.barItemList}}"
+            wx:key="item"
+          >
+            <text class="bar-item-text">{{item}}</text>
+            <image
+              class="bar-item-indicator"
+              src="../../../image/icon_triangle_up.png"
+              wx:if="{{index == dropdown.selectBarItemIndex && dropdown.filterShow}}"
+            />
+            <image class="bar-item-indicator" src="../../../image/icon_triangle_down.png" wx:else />
+          </view>
+        </view>
+        <!-- 排序按钮 -->
+        <image
+          class="bar-sort-item"
+          src="/image/icon_sort_list.png"
+          bindtap="didTapBarSortItem"
+        ></image>
+      </view>
+    </view>
+    <!-- 背景遮罩 -->
+    <view
+      class="drop-down-mask {{dropdown.filterShow || dropdown.sortShow?'drop-down-mask-opacity':''}}"
+      bindtap="didTapDropdownMask"
+      catchtouchmove="prevent"
+      wx:if="{{dropdown.filterShow||dropdown.sortShow}}"
+    ></view>
+    <!-- 区域 -->
+    <view
+      class="bar-item-expand-view bar-item-district {{dropdown.filterShow ? 'slidedown' : 'slideup'}} {{searchCeiling?'expand-top':''}}"
+      wx:if="{{dropdown.selectBarItemIndex == 0 && dropdown.filterShow}}"
+      catchtouchmove="prevent"
+    >
+      <template
+        is="drop-down-multi-filter"
+        data="{{filterKeys:dropdown.districtKeys, filterValues: dropdown.districtValues, filterSelect: dropdown.districtSelect, type:'district'}}"
+      />
+    </view>
+    <!-- 价格 -->
+    <view
+      class="bar-item-expand-view bar-item-price {{dropdown.filterShow ? 'slidedown' : 'slideup'}} {{searchCeiling?'expand-top':''}}"
+      wx:if="{{dropdown.selectBarItemIndex == 1 && dropdown.filterShow}}"
+      catchtouchmove="prevent"
+    >
+      <view class="bar-item-price-container">
+        <template
+          is="drop-down-multi-filter"
+          data="{{filterKeys:dropdown.priceKeys, filterValues: dropdown.priceValues, filterSelect: dropdown.priceSelect, type:'price'}}"
+        />
+      </view>
+      <!-- 自定义价格区域 -->
+      <view class="bar-price-custom-view">
+        <view class="price-input-view">
+          <input
+            class="price-custom-input"
+            placeholder-class="price-custom-input-placeholder"
+            placeholder="最小"
+            type="number"
+            bindinput="onMinPriceInput"
+            value="{{dropdown.minPriceValue}}"
+            maxlength="4"
+          />
+          <view class="bar-price-custom-seperator-line" />
+          <input
+            class="price-custom-input"
+            placeholder-class="price-custom-input-placeholder"
+            placeholder="最大"
+            type="number"
+            bindinput="onMaxPriceInput"
+            value="{{dropdown.maxPriceValue == '0' ? '' : dropdown.maxPriceValue}}"
+            maxlength="4"
+          />
+          <text class="price-unit-text">万</text>
+        </view>
+        <button class="price-custom-confirm" bindtap="didTapPriceConfirm">确定</button>
+      </view>
+    </view>
+    <!-- 户型 -->
+    <view
+      class="bar-item-expand-view bar-item-house-type {{dropdown.filterShow ? 'slidedown' : 'slideup'}} {{searchCeiling?'expand-top':''}}"
+      wx:if="{{dropdown.selectBarItemIndex == 2 && dropdown.filterShow}}"
+      catchtouchmove="prevent"
+    >
+      <scroll-view class="house-type-scroll-view" scroll-y="true">
+        <view
+          class="house-type-item-view"
+          bindtap="didTapHouseTypeItem"
+          data-item="{{item}}"
+          wx:for="{{dropdown.houseTypeList}}"
+          wx:key="item"
+        >
+          <text class="house-type-item-name">{{item.name}}</text>
+          <image
+            class="house-type-checked-icon"
+            src="{{ item.checked ? '../../../image/icon_dropdown_selected.png' : '../../../image/icon_dropdown_unselected.png'}}"
+            wx:if="{{index != 0}}"
+          ></image>
+        </view>
+      </scroll-view>
+      <template is="action-tool-view" data="{{type:'house-type'}}" />
+    </view>
+    <!-- 更多 -->
+    <view
+      class="bar-item-expand-view bar-item-more {{dropdown.filterShow ? 'slidedown' : 'slideup'}} {{searchCeiling?'expand-top':''}}"
+      wx:if="{{dropdown.selectBarItemIndex == 3 && dropdown.filterShow}}"
+      catchtouchmove="prevent"
+    >
+      <scroll-view class="more-list-scroll-view" scroll-y="true">
+        <view class="more-item-view" wx:for="{{dropdown.moreGroupKeys}}" wx:key="item">
+          <view class="more-item-title-view">
+            <text class="more-item-title">{{item.name}}</text>
+            <text class="more-item-multiselect-tip" wx:if="{{item.multiselect}}">（可多选）</text>
+          </view>
+          <view class="more-item-value-view">
+            <block
+              wx:for="{{dropdown.moreGroupValues[item.key]}}"
+              wx:for-item="valueItem"
+              wx:key="valueItem"
+            >
+              <view
+                class="more-item-highlight-value-item {{valueItem.checked?'more-item-highlight-value-item-check':''}}"
+                bindtap="didClickMoreItem"
+                data-value-item="{{valueItem}}"
+                data-key-item="{{item}}"
+                wx:if="{{valueItem.style==1}}"
+              >
+                <view class="more-item-highlight-value-item-text">{{valueItem.name}}</view>
+              </view>
+              <view
+                class="more-item-highlight-value-item-blue {{valueItem.checked?'more-item-highlight-value-item-check-blue':''}}"
+                bindtap="didClickMoreItem"
+                data-value-item="{{valueItem}}"
+                data-key-item="{{item}}"
+                wx:elif="{{valueItem.style==2}}"
+              >
+                <view class="more-item-highlight-value-item-text highlight-blue-text">
+                  {{valueItem.name}}
+                </view>
+              </view>
+              <view
+                class="more-item-value-item {{valueItem.checked?'more-item-value-item-check':''}}"
+                bindtap="didClickMoreItem"
+                data-value-item="{{valueItem}}"
+                data-key-item="{{item}}"
+                wx:else
+              >
+                <view class="more-item-value-item-text">{{valueItem.name}}</view>
+              </view>
+            </block>
+          </view>
+        </view>
+      </scroll-view>
+      <template is="action-tool-view" data="{{type:'more'}}" />
+    </view>
+    <!-- 排序 -->
+    <view
+      class="bar-item-expand-view bar-item-sort {{dropdown.sortShow ? 'slidedown' : 'slideup'}} {{searchCeiling?'expand-top':''}}"
+      wx:if="{{dropdown.sortShow}}"
+    >
+      <view
+        class="bar-item-sort-item"
+        wx:for="{{dropdown.sortList}}"
+        wx:key="item"
+        bindtap="didClickSortItem"
+        data-item="{{item}}"
+        data-index="{{index}}"
+      >
+        <text
+          class="bar-item-sort-item-title {{item.checked?'bar-item-sort-item-selected-title':''}}"
+        >
+          {{item.name}}
+        </text>
+      </view>
+    </view>
+  </view>
+</template>
+<!-- 左右菜单联动 -->
+<template name="drop-down-multi-filter">
+  <view class="drop-down-multi-filter-view" catchtouchmove="prevent">
+    <!-- 左菜单 -->
+    <scroll-view class="multi-filter-key-view" scroll-y="true">
+      <view
+        class="multi-filter-key-item {{filterSelect.selectKey == item.key ? 'multi-filter-key-item-selected' : ''}}"
+        wx:for="{{filterKeys}}"
+        wx:key="item"
+        bindtap="didTapMultiFilterKey"
+        data-key="{{item.key}}"
+        data-type="{{type}}"
+      >
+        <view
+          class="multi-filter-key-indicator-line"
+          wx:if="{{filterSelect.selectKey == item.key}}"
+        />
+        <text
+          class="multi-filter-key-text {{filterSelect.selectKey == item.key ? 'multi-filter-key-selected' : ''}}"
+          >{{item.name}}</text
+        >
+      </view>
+    </scroll-view>
+    <!-- 右菜单 -->
+    <scroll-view class="multi-filter-value-view" scroll-y="true">
+      <view
+        class="multi-filter-value-item"
+        wx:for="{{filterValues[filterSelect.selectKey]}}"
+        wx:key="item"
+        bindtap="didTapMultiFilterValue"
+        data-item="{{item}}"
+        data-type="{{type}}"
+        data-select-key="{{filterSelect.selectKey}}"
+      >
+        <text
+          id="{{index}}"
+          class="{{item.value === filterSelect.selectValue.value ?'multi-filter-value-text-selected':'multi-filter-value-text'}}"
+        >
+          {{item.name}}
+        </text>
+      </view>
+    </scroll-view>
+  </view>
+</template>
+<template name="action-tool-view">
+  <view class="action-tool-view">
+    <button class="action-clear-button" bindtap="didTapClearButton" data-type="{{type}}">
+      清空
+    </button>
+    <button class="action-confirm-button" bindtap="didTapConfirmButton" data-type="{{type}}">
+      确定
+    </button>
+  </view>
+</template>

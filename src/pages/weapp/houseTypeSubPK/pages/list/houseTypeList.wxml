@@ -1,0 +1,59 @@
+<import src="../../../pages/template/houseTypeCell/houseTypeCell.wxml" />
+<import src="../../../component/loading/loading.wxml" />
+
+ <view class="loading-view" wx:if="{{!loadingHidden}}">
+    <template is="loading-view" data="{{hidden:loadingHidden}}"/>
+ </view> 
+
+ <view class="container" hidden="{{!loadingHidden}}">
+  <view class="houseTypeHeader">
+    <view class="header-room-type">
+      <block wx:for="{{roomTypeList}}" wx:key="index">
+       <text class="header-room-text-selected" bindtap="didTapRoomText" id="{{index}}" wx:if="{{index == roomIndex}}" >{{item.name}}({{item.num}})</text>
+       <text class="header-room-text" bindtap="didTapRoomText" id="{{index}}" wx:else>{{item.name}}({{item.num}})</text>
+      </block>
+    </view>
+
+    <view class="header-sell-status" bindtap="didTapSellStatus">
+      <text class="header-sell-status-text" wx:if="{{isTapItem}}">{{statusName}}</text>
+       <text class="header-sell-status-text" wx:else>销售状态</text>
+       <image src="../../../image/icon_triangle_up.png" class="header-sell-status-image" wx:if="{{isShow==true}}" />
+       <image src="../../../image/icon_triangle_down.png" class="header-sell-status-image" wx:else="{{isShow==false}}" />
+      </view>
+    </view>
+    <view class="header-status-menu" hidden="{{!isShow}}">
+      <view class="header-status-menu-up"></view>
+      <view class="header-status-menu-box">
+       <block wx:for="{{statusList}}" wx:key="index">
+        <text class="header-status-menu-item-selected" id="{{index}}" bindtap="didTapStatusItem" wx:if="{{index == statusIndex && isTapItem == true}}">{{item.name}}</text>
+        <text class="header-status-menu-item" id="{{index}}" bindtap="didTapStatusItem" wx:else>{{item.name}}</text>
+       </block>
+      </view>
+    </view>
+
+    <block wx:if="{{houseTypeList.length>0}}">
+      <block wx:for="{{houseTypeList}}" wx:key='index'> 
+      <view class="housetype-list-view">
+        <template is="house-type-cell" data="{{houseType:item, index:index}}"/>
+      </view>
+      </block>
+      <block wx:if="{{hasNoMore}}">
+        <view class="loading-tip">没有更多了</view>
+      </block>
+    </block>
+    <block wx:else>
+      <nocontent src="../../image/placeholder_nodata.png" tip="暂无数据"/>
+    </block>
+    <view class="{{isIpx?'iphonex-page-bottom-margin':'page-bottom-margin'}}"/>
+    <contact projectId="{{projectId}}"
+    fromPage="p_house_type_list"
+    opType="900079"
+    source="154"
+    consultOpType="900230"
+    consultContent="户型是否居住舒适？具体优劣势有哪些？装修有无讲究......"
+    consult="咨询户型分析"
+    userInfo="{{userInfo}}"
+    notShowAttention="{{true}}"/>
+  </view>
+
+

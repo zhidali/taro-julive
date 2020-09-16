@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "楼盘近期动态",
+  "usingComponents": {
+    "contact": "../../../pages/project/contact/contact"
+  }
+}

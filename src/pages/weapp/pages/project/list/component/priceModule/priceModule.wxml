@@ -1,0 +1,27 @@
+<view class="price-module my-class">
+  <view class="tit">
+    {{priceModuleData.title}}
+  </view>
+  <view class="tit-tips">
+    {{priceModuleData.sub_title}}
+  </view>
+  <view class="region-list">
+    <view
+      class="item item-more"
+      wx:for="{{priceModuleData.filter.c}}"
+      wx:key="index"
+      wx:if="{{index < 2}}"
+      catchtap="filterPrice"
+      data-value="{{item.value}}"
+    >
+      <view class="text">{{item.name}}</view>
+    </view>
+    <view class="item item-more" catchtap="filterPrice" data-value="more">
+      <view class="text">更多范围</view>
+    </view>
+  </view>
+  <image
+    class="bg-img"
+    src="https://imgs.julive.com/l?p=eyJpbWdfcGF0aCI6IlwvbWluaW1ncy9iZy1maWx0ZXItcHJpY2UucG5nP3dhdGVybWFyayx0XzAifQ=="
+  />
+</view>

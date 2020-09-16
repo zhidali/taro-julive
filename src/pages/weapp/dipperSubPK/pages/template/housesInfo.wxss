@@ -1,0 +1,57 @@
+.house-info-box {
+  display: flex;
+  flex-wrap: nowrap;
+  padding-left: 40rpx;
+}
+
+.house-info-box-scroll {
+  overflow: hidden;
+  /* white-space: nowrap; */
+  position: relative;
+  margin-left: -159rpx;
+}
+
+.house-info-box-scroll-img  image{
+  width: 160rpx;
+  height: 120rpx;
+  border-radius: 4rpx;
+}
+
+.tr .td-width-168 {
+  width: 168rpx !important;
+}
+
+.house-info-box  .table{
+  width: 100%;
+}
+
+.house-info-box  .min-width168{
+  min-width: 168rpx;
+  max-width: 168rpx;
+}
+
+
+.house-info-box  .min-width192 {
+  min-width: 192rpx;
+  max-width: 192rpx;
+}
+
+.house-info-box  .min-width128 {
+  min-width: 128rpx;
+  max-width: 128rpx;
+}
+
+.house-info-box  .min-width204 {
+  min-width: 204rpx;
+  max-width: 204rpx;
+}
+
+.house-info-box  .min-width104 {
+  min-width: 104rpx;
+  max-width: 104rpx;
+}
+
+.house-info-box  .min-width144 {
+  min-width: 144rpx;
+  max-width: 144rpx;
+}

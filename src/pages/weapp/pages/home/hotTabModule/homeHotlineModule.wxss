@@ -1,0 +1,137 @@
+.home-hotline-view {
+  width: 432rpx;
+  height: 80rpx;
+  font-size: 28rpx;
+  line-height: 80rpx;
+  color: #fff;
+  background-color: #00c0eb;
+  border-radius: 40rpx 0 0 40rpx;
+  box-shadow: 0 6px 23px 0 rgba(0, 192, 235, 0.14);
+  display: flex;
+  justify-content: space-between;
+  padding: 0 32rpx;
+  box-sizing: border-box;
+  position: fixed;
+  bottom: 40rpx;
+  right: -432rpx;
+  z-index: 3;
+}
+.slider-show {
+  right: 0;
+  -webkit-transition: all 0.5s ease-in;
+  -moz-transition: all 0.5s ease-in;
+  transition: all 0.5s ease-in;
+}
+.slider-hide {
+  right: -432rpx;
+  -webkit-transition: all 0.5s ease-in;
+  -moz-transition: all 0.5s ease-in;
+  transition: all 0.5s ease-in;
+}
+.home-hotline-view .line {
+  width: 2rpx;
+  height: 40rpx;
+  background-color: #fff;
+  margin-top: 20rpx;
+}
+.home-hotline-view .img {
+  width: 40rpx;
+  height: 40rpx;
+  vertical-align: middle;
+}
+
+.home-hotline-box {
+  width: 100rpx;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0px 4rpx 8rpx 0px rgba(0, 0, 0, 0.14);
+  border-radius: 50rpx;
+  position: fixed;
+  bottom: 70rpx;
+  right: 40rpx;
+  box-sizing: border-box;
+  padding: 40rpx 20rpx 16rpx 20rpx;
+  z-index: 100;
+}
+
+.increase {
+  bottom: 140rpx;
+}
+.hotline-box-item {
+  border-bottom: 2rpx solid #f3f6f9;
+  margin-bottom: 20rpx;
+  position: relative;
+}
+.hotline-box-item .img {
+  width: 40rpx;
+  height: 40rpx;
+  position: absolute;
+  top: 0;
+  left: 10rpx;
+}
+.hotline-box-item .text {
+  font-size: 20rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: rgba(62, 74, 89, 1);
+  line-height: 28rpx;
+  padding: 44rpx 0 22rpx 0;
+  text-align: center;
+}
+.customer-btn {
+  position: absolute;
+  background-color: #fff;
+  width: 60rpx;
+  height: 90rpx;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+.hotline-box-flod {
+  width: 46rpx;
+  height: 28rpx;
+  padding-left: 8rpx;
+}
+.hotline-box-unfold {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  background: rgba(0, 192, 235, 1);
+  box-shadow: 0px 12rpx 46rpx 0px rgba(0, 192, 235, 0.14);
+  position: fixed;
+  z-index: 999;
+  right: 40rpx;
+  bottom: 60rpx;
+}
+.increaseBtn {
+  bottom: 140rpx;
+}
+.hotline-box-unfold .text {
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
+  line-height: 30rpx;
+  margin: 20rpx 0 0 20rpx;
+}
+.hotline-box-unfold .text:nth-of-type(2) {
+  margin-top: 0;
+}
+.bottom192 {
+  bottom: 192rpx;
+}
+.home-consult-wx-loging {
+  position: absolute;
+  z-index: 2;
+  width: 80rpx;
+  height: 96rpx;
+  bottom: 84rpx;
+  left: 10rpx;
+}
+.list-consult-wx-loging {
+  position: absolute;
+  z-index: 2;
+  width: 160rpx;
+  height: 80rpx;
+  left: 30rpx;
+  top: 0;
+}

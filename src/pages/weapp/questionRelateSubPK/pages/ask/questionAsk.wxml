@@ -1,0 +1,49 @@
+<view class="container">
+  <view class="question-ask-header-view" wx:if="{{employeeId.length == 0}}">
+    <image class="question-ask-header-image" />
+  </view>
+  <view class="question-ask-employee-header-view" wx:else>
+    <jlImage className="question-ask-employee-avatar" url="{{employee.avatar}}" placeholder="{{employee.sex==1?'/image/placeholder_consult_avater_man.png':'/image/placeholder_consult_avater_woman.png'}}" />
+    <view class="question-ask-right-view">
+      <view class="question-ask-name-view">
+        <label class="question-ask-name-label">{{employee.employee_name}}</label>
+        <label class="question-ask-academy-label" wx:if="{{employee.academy.length > 0}}">
+          毕业于{{employee.academy}}
+        </label>
+      </view>
+      <view class="question-ask-kpi-view">
+        <view class="question-ask-kpi-item-view">
+          <label class="question-ask-kpi-title">咨询人数</label>
+          <label class="question-ask-kpi-value">{{employee.order_num}}人</label>
+        </view>
+        <view class="question-ask-kpi-item-view">
+          <label class="question-ask-kpi-title">考察过{{projectId.length>0?'此':''}}楼盘</label>
+          <label class="question-ask-kpi-value">{{employee.see_num}}次</label>
+        </view>
+      </view>
+      <label class="question-ask-employee-desc">{{employee.introduce}}</label>
+    </view>
+  </view>
+  <view class="question-ask-wx-loging-box">
+    <button class="question-ask-button" hover-class='question-ask-hover-button' bindtap="didClickQuicklyConsultButton">
+      快速预约咨询
+    </button>
+    <view wx:if="{{!userLoginStatus}}" class="question-ask-wx-loging">
+      <wxLogin markOpType="900211" bindClickGetPhoneNumberBtn="passBackGetPhoneNumberBtn" bindFastLoginCallBack="passBackFastLoginCallBack"></wxLogin>
+    </view>
+  </view>
+  <label class="question-ask-or-label">或者</label>
+  <view class="textarea-container">
+    <textarea hidden="{{isPop}}" class="question-ask-text" placeholder='在这里输入您的问题' placeholder-class='question-ask-text-placeholder' bindinput='inputQuestionChange' auto-height='true' auto-focus='true'></textarea>
+  </view>
+  <view class="question-ask-wx-loging-box">
+    <button class="question-ask-button" hover-class="question-ask-hover-button" bindtap='didClickSubmitQuestionButton'>
+      提交问题
+    </button>
+    <view wx:if="{{!userLoginStatus}}" class="question-ask-wx-loging">
+      <wxLogin markOpType="900074" bindClickGetPhoneNumberBtn="passBackGetPhoneNumberBtn" bindFastLoginCallBack="passBackFastLoginCallBack"></wxLogin>
+    </view>
+  </view>
+</view>
+<login showModal="{{showLoginModal}}" title="我们会第一时间为您提供答疑服务" content="" buttonTitle="提交" bindloginSuccessCallback="loginSuccessCallback" bindcancelCallback="cancelCallback" userInfo="{{loginUserInfo}}" />
+<orderSuccessAlert showModal="{{showSuccessAlert}}" content="{{alertContent}}" fromPage="{{loginUserInfo.fromPage}}" bindconfirmCallback="confirmCallback" />

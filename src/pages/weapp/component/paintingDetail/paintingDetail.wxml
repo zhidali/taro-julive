@@ -1,0 +1,25 @@
+<view wx:if="{{showPainter}}">
+  <view class="pop-mask" catchtouchmove="preventTouchMove" catchtap="didClosePainter"></view>
+  <view class="pop-view" catchtouchmove="preventTouchMove">
+    <view wx:if="{{successImage==''}}" class="pop-view-content">
+      <painter palette="{{template}}" bind:imgOK="onImgOK" bind:imgErr="onImgErr" />
+    </view>
+    <view wx:else class="pop-view-content">
+      <image class="share-image" src="{{successImage}}" />
+    </view>
+    <view style="{{isIpx?'height:160rpx;':'height:140rpx;'}}" catchtap="didClosePainter"></view>
+  </view>
+  <!-- 底部按钮 -->
+  <cover-view class="pop-mask-bottom" catchtouchmove="preventTouchMove" catchtap="didClosePainter" style="{{isIpx?'height:240rpx;':'height:180rpx;'}}"></cover-view>
+  <cover-view class='pop-bottom-view' style="bottom:{{isIpx?'170rpx':'70rpx'}}">
+    <button class="share-button" hover-class="none" open-type='share' bindtap="shareFriend">
+      分享给好友
+    </button>
+    <button class="painter-button" hover-class="none" bindtap="didClickSaveImage">保存到相册</button>
+  </cover-view>
+</view>
+<cover-view wx:if="{{popSettingShow}}" class="pop-mask" catchtouchmove="preventTouchMove" catchtap="didCloseSetting" style="z-index: 10001"></cover-view>
+<cover-image wx:if="{{popSettingShow}}" class="setting-image" src="http://imgs.julive.com/l?p=eyJpbWdfcGF0aCI6IlwvbWluaW1ncy9kZXRhaWxfc2hhcmVfc2V0dGluZy5wbmcifQ==" />
+<cover-view wx:if="{{popSettingShow}}" class="setting-close" bindtap="didClickCliseTip">
+  我知道了
+</cover-view>

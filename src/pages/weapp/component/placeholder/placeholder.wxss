@@ -1,0 +1,25 @@
+
+.no-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+  align-items: center;
+  margin-top: 150rpx;
+  color: #999;
+}
+
+.no-content-icon { 
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.no-content-font { 
+	font-size: 30rpx; 
+	text-align:center;
+	margin-top:30rpx; 
+}
+
+.no-content-button {
+  margin-top: 80rpx;
+}

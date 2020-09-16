@@ -1,0 +1,13 @@
+<template name="dipper-login">
+  <cover-view class="moald-box" hidden='{{dipperLoginFlag}}'>
+    <cover-view catchtouchmove='prevent' class='modal-mask'></cover-view>
+    <cover-view class='modal-dialog'>
+      <cover-image class='modal-dialog-img' src="http://imgs.julive.com/l?p=eyJpbWdfcGF0aCI6IlwvbWluaW1ncy9pY29uX3JlZ2lzdGVyX2xvZ28ucG5nIn0gICA=" ></cover-image>
+      <cover-view class='modal-dialog-title'>居理新房 省钱买好房</cover-view>
+      <cover-view class='modal-dialog-content'>请确认授权以下信息，可享受更多服务</cover-view>
+      <cover-view class='modal-dialog-info'>获得你的公开信息（昵称、头像等）</cover-view>
+      <button class='modal-dialog-btn' open-type='getUserInfo' bindgetuserinfo='acquireWxLogin'>确认登录</button>
+      <cover-view class='modal-dialog-footer' bindtap='skipOut'>跳过</cover-view>
+    </cover-view>
+  </cover-view>
+</template>

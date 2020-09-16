@@ -1,0 +1,138 @@
+page{
+  background-color:#fff;
+}
+
+.container {
+  background-color: rgb(243, 243, 243);
+  width: 100vw;
+  box-sizing: border-box;
+  min-height: 100vh;
+}
+
+.msg-box {
+  padding: 0rpx 40rpx;
+}
+
+.msg-box-time {
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  line-height: 40rpx;
+  color: #b5b5b5;
+  text-align: center;
+  margin-top: 44rpx;
+}
+
+.msg-box-content {
+  display: flex;
+  flex-direction: row-reverse;
+  margin-top: 32rpx;
+  flex-wrap:wrap;
+}
+
+.msg-box-content view {
+  background-color: #707798;
+  border-radius: 8rpx;
+  color: #fff;
+  font-family: PingFangSC-Regular;
+  font-size: 32rpx;
+  line-height: 45rpx;
+  margin-left: 82rpx;
+  padding: 16rpx 24rpx;
+  position: relative;
+  word-wrap: break-word;
+  box-sizing: border-box;
+  max-width: 496rpx;
+}
+
+.triangle {
+  width: 8rpx;
+  height: 16rpx;
+  position: absolute;
+  right: -8rpx;
+  top: 30rpx;
+}
+
+.isfail {
+  width: 32rpx;
+  height: 32rpx;
+  left: -48rpx;
+  position: absolute;
+  top: 30rpx;
+}
+
+.msg-box-content-role {
+  min-width: 76rpx;
+  max-width: 76rpx;
+  min-height: 76rpx;
+  max-height: 76rpx;
+  margin-left: 16rpx;
+}
+
+.footer {
+  background: #f4f8f9;
+  border: 1rpx solid #ecf0f4;
+  width: 100vw;
+  position: fixed;
+  bottom: 0rpx;
+  overflow: hidden;
+}
+
+.footer-item{
+  display: flex;
+  align-items: flex-end;
+  box-sizing: border-box;
+  padding: 24rpx 40rpx;
+}
+
+textarea {
+  padding: 0rpx 24rpx;
+
+  min-height: 80rpx;
+  line-height: 45rpx;
+  font-size: 32rpx;
+  color: #001a4a;
+  box-sizing: border-box;
+  border: 1px solid #ECF0F4;
+  background-color: #fff;
+}
+
+.paddTop{
+  padding-top: 22rpx;
+}
+.footer-item text {
+  height: 80rpx;
+  line-height: 80rpx;
+  min-width: 140rpx;
+  padding: 0rpx 38rpx;
+  font-family: PingFangSC-Medium;
+  font-size: 32rpx;
+  color: #fff29c;
+  background: #001a4a;
+  border-radius: 4rpx;
+  text-align: center;
+  box-sizing: border-box;
+  margin-left: 16rpx;
+}
+
+.content {
+  margin-bottom: 168rpx;
+}
+
+.iphonex{
+  padding-bottom: 40rpx;
+}
+
+.focusHig_ios{
+  height: 500rpx;
+  padding-bottom: 330rpx;
+}
+
+.focusHig_an{
+  height: 200rpx;
+  /* padding-bottom: 330rpx; */
+}
+
+.base_heigth{
+  height: 40rpx;
+  width: 100%;
+}

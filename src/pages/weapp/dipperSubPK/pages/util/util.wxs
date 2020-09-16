@@ -1,0 +1,8 @@
+var startBackColor = ['#47B3E3', '#0AD487', '#5DAAF8', '#378EB5', '#08CED9', '#A3DBE1', '#E09230', '#FFCF2B', '#E3CF47', '#E9B488']
+var backColor = function (index) {
+  return startBackColor[index]
+}
+
+module.exports = {
+  backColor: backColor
+}

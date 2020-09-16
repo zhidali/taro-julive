@@ -1,0 +1,32 @@
+<view class="region-module my-class">
+  <view class="tit">
+    {{regionData.title}}
+  </view>
+  <view class="tit-tips">
+    {{regionData.sub_title}}
+  </view>
+  <view class="region-list">
+    <view
+      class="item"
+      wx:for="{{regionData.filter.a}}"
+      wx:key="index"
+      wx:if="{{index < 2}}"
+      catchtap="filterRegion"
+      data-value="{{item.value}}"
+    >
+      <view class="region-name">
+        {{item.name}}
+      </view>
+      <view class="region-desc">
+        {{item.percent}}用户选择
+      </view>
+    </view>
+    <view class="item item-more" catchtap="filterRegion" data-value="more">
+      更多区域
+    </view>
+  </view>
+  <image
+      class="bg-img"
+      src="https://imgs.julive.com/l?p=eyJpbWdfcGF0aCI6IlwvbWluaW1ncy9iZy1maWx0ZXItbG9jYXRpb24ucG5nP3dhdGVybWFyayx0XzAifQ=="
+    />
+</view>

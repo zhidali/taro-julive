@@ -1,0 +1,42 @@
+.nocontent-view {
+  padding-top: 50px;
+  padding-bottom: 15px;
+  width: 100vw;
+  height: 100%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.nocontent-icon {
+  width: 191px;
+  height: 148px;
+}
+
+.nocontent-text {
+  text-align: center;
+  padding:20px;
+  font-size: 16px;
+  color: #999;
+}
+
+.nocontent-button {
+  width: 180px;
+  height: 44px;
+  line-height: 44px;
+  background-color: #48B3E2;
+  border-radius: 4px;
+  margin-top: 20px;
+  color: white;
+  font-size: 15px;
+}
+
+.nocontent-button::after {
+  border:none;
+}
+
+.nocontent-hover-button {
+  opacity: 0.8;
+}

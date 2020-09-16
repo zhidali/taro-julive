@@ -1,0 +1,15 @@
+<!-- 居理带看  -->
+<template name="dipper-introduce-new">
+  <view class="commonality m_julive_service {{isIpx?'isIpxMar':'julive_look_margin_bot'}}">
+    <view class="title-box">
+      <image class="title-box-img" src="/image/icon-dipper-yellow.png"></image>
+      <view class="all-flex-between title-box-content">
+        <view>居理新房
+          <text class="lf_stand">一站式购房</text>
+        </view>
+      </view>
+    </view>
+    <image class='diperIntroduce_img'></image>
+  </view>
+</template>
+<!-- 居理带看 end -->

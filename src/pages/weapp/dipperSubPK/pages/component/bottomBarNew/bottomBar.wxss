@@ -1,0 +1,113 @@
+.contact-view {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  height: 144rpx;
+  position: fixed;
+  bottom: 0;
+  z-index: 99;
+  background-color: white;
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.10);
+  border-top: 2rpx solid #f3f6f9;
+}
+
+.body {
+  display: flex;
+  width: 100%;
+  height: 104rpx;
+  margin-bottom: 40rpx;
+}
+
+.fix-iphonex-view {
+  padding-bottom: 30rpx;
+}
+
+.contact-attention-view {
+  margin-top: 46rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 130rpx;
+  max-width: 130rpx;
+}
+
+.attention-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.attention-label {
+  margin-top: 4rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  line-height: 33rpx;
+  color: #707798;
+  text-align: center;
+}
+
+button {
+  background-color: #fff;
+  color: #77808a;
+  font-family: PingFang-SC-Medium;
+  font-size: 24rpx;
+  line-height: 1.2;
+}
+
+.contact-phone-view {
+  margin-top: 12rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-right: 39rpx;
+}
+
+.contact-phone-view:nth-of-type(1) {
+  margin-left: 50rpx;
+}
+
+.contact-line-view {
+  margin-left: 16rpx;
+  margin-right: 16rpx;
+  min-width: 1rpx;
+  max-width: 1rpx;
+  height: 60rpx;
+  background-color: #a9bacf;
+}
+
+.contact-phone-item {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.contact-item-box {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+}
+
+.contact-item {
+  margin: 0 auto;
+  width: 100%;
+  height: 104rpx;
+  font-weight: 500;
+  font-family: PingFangSC-Medium;
+  font-size: 28rpx;
+  color: #fff29c;
+  line-height: 104rpx;
+  text-align: center;
+  background-color: #001a4a;
+}
+
+.contact-hover-view {
+  opacity: 0.8;
+}
+
+.average-space {
+  margin-left: 40rpx;
+  margin-right: 40rpx;
+}
+
+.hide {
+  display: none;
+}

@@ -1,0 +1,39 @@
+<template name="home-banner-module">
+  <view class="new-project-banner-view" wx:if="{{bannerList.length>0}}">
+    <view class="new-project-banner-container-view">
+      <!-- 260banner上 用的蒙层别用网络图 容易露馅  -->
+      <image class="home-banner-module-mask" src="/image/banner-bottom-mask.png" />
+      <swiper
+        class="new-project-banner-swiper"
+        indicator-dots="{{false}}"
+        autoplay="{{true}}"
+        interval="3000"
+        duration="500"
+        vertical="{{false}}"
+        circular="true"
+        current="{{currentBannerIndex}}"
+        bindchange="onBannerSwiperChange"
+      >
+        <swiper-item wx:for="{{bannerList}}" wx:key="item">
+          <image
+            class="new-banner-image"
+            mode="scaleToFill"
+            src="{{item.img}}"
+            bindtap="didClickBannerItem"
+            data-index="{{index}}"
+          />
+        </swiper-item>
+      </swiper>
+      <view
+        class="swiper-banner-indicator swiper-banner-indicator-bottom}}"
+        wx:if="{{bannerList.length>1}}"
+      >
+        <view
+          class="swiper-banner-indicator-item {{currentBannerIndexShadow==index?'swiper-banner-indicator-item-active':''}}"
+          wx:for="{{bannerList}}"
+          wx:key="index"
+        ></view>
+      </view>
+    </view>
+  </view>
+</template>

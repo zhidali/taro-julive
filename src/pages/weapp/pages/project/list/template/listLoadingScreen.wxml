@@ -1,0 +1,51 @@
+<template name="list-loading-screen">
+  <view class="list-screen-view">
+    <view class="list-screen-top">
+      <view class="search"></view>
+      <view class="box">
+        <block wx:for="{{[1,2,3,4,5]}}" wx:key="item">
+          <view class="item"></view>
+        </block>
+      </view>
+    </view>
+    <view class="screen-line"></view>
+    <view class="list-screen-top list-screen-top2">
+      <view class="box">
+        <block wx:for="{{[1,2,3,4,5]}}" wx:key="item">
+          <view class="item"></view>
+        </block>
+      </view>
+    </view>
+    <view class="list-screen-project">
+      <block wx:for="{{[1,2,3,4]}}" wx:key="item">
+        <view class="project-item">
+          <view class="project-left"></view>
+          <view class="project-right">
+            <view class="box">
+              <view class="item" style="width: 374rpx;margin-right:16rpx"></view>
+              <view class="item" style="width:60rpx"></view>
+            </view>
+            <view class="box">
+              <view class="item" style="width: 328rpx"></view>
+            </view>
+            <view class="box">
+              <view class="item" style="width: 288rpx"></view>
+            </view>
+            <view class="box">
+              <view class="item" style="width: 248rpx;margin-right:42rpx"></view>
+              <view class="item" style="width:160rpx"></view>
+            </view>
+            <view class="box">
+              <view class="item" style="width: 28rpx;margin-right:14rpx"></view>
+              <view class="item" style="width:408rpx"></view>
+            </view>
+            <view class="box">
+              <view class="item" style="width: 28rpx;margin-right:14rpx"></view>
+              <view class="item" style="width:374rpx"></view>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+</template>

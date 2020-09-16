@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "多楼盘对比",
+  "usingComponents": {
+    "jlImage": "../../../component/jlImage/jlImage",
+    "contact": "../component/bottomBarNew/bottomBar",
+    "employeCard":"../component/employeCard/employeCard",
+    "award":"../component/award/award"
+  }
+}

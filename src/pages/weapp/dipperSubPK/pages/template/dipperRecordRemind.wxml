@@ -1,0 +1,55 @@
+<wxs src="../../../utils/util.wxs" module="tools" />
+<template name="dipper-record-remind">
+  <!-- 简介提醒 -->
+  <!-- <block wx:key="item" wx:for="{{remindData}}"> -->
+  <!-- <view class='remind-box' > -->
+  <view class="order-item remind  last_child_bom">
+    <view class="content remind-content" data-item="{{item}}" data-index='{{index}}' bindtap="didClickItem">
+      <view class='remind-content-lt' hidden="{{!item.myKey}}">
+        <image class='remind-content-ft-image' src='/dipperSubPK/images/icon_record_box_placeholder.png'></image>
+      </view>
+      <view class="remind-content-ft {{!item.myKey?'delflex':''}}">
+        <view class="remind-content-ft-title {{!item.myKey?'delline':''}}">{{item.title}}</view>
+        <view class='remind-content-ft-content' hidden="{{!item.myKey}}">
+          预签约日期：{{item.plan_real_begin_datetime}}
+        </view>
+        <view class="remind-content-ft-footer {{!item.myKey?'line-clamp_two':''}}">
+          <text hidden="{{!item.myKey}}">{{item.myKey}}：</text>
+          {{item.myVal}}
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- </view> -->
+  <!-- </block> -->
+  <!-- 简介提醒 end -->
+</template>
+<template name="dipper-record-remind-scroll">
+  <!-- 简介提醒 -->
+  <!-- <block wx:key="{{index}}" wx:for="{{remindData}}"> -->
+  <!-- <view class='remind-box'> -->
+  <view data-index='{{index}}' data-type="remindDataCollect" data-item="{{item}}" bindtap="didClickItem" class="order-item remind {{item.right === 0?'move-to-start':''}} {{index === leg?'none_border_bot':''}}" bindtouchstart="drawStart" bindtouchmove="drawMove" bindtouchend="drawEnd" style="right:{{item.right}}rpx">
+    <view class="content remind-content">
+      <view class='remind-content-lt' hidden="{{!item.myKey}}">
+        <image class='remind-content-ft-image' src='/dipperSubPK/images/icon_record_box_placeholder.png'></image>
+      </view>
+      <view class="remind-content-ft  {{!item.myKey?'delflex':''}}">
+        <view class="remind-content-ft-title {{!item.myKey?'delline':''}}">{{item.title}}</view>
+        <view class='remind-content-ft-content' hidden="{{!item.myKey}}">
+          预签约日期：{{item.plan_real_begin_datetime}}
+        </view>
+        <view class="remind-content-ft-footer {{!item.myKey?'line-clamp_two':''}}">
+          <text hidden="{{!item.myKey}}">{{item.myKey}}：</text>
+          {{item.myVal}}
+        </view>
+      </view>
+    </view>
+    <view class="remove remindDel" data-index='{{index}}' data-type="remindDataCollect" bindtap="delItem">
+      <text>取消</text>
+      <text>收藏</text>
+    </view>
+  </view>
+  <!-- </view> -->
+  <!-- </block> -->
+  <!-- 简介提醒 end -->
+</template>

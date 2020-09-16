@@ -1,0 +1,38 @@
+<view class='container'>
+  <view class='phone-number-login-view'>
+    <view class='phone-number-login-title'>手机快捷登录</view>
+    <view class='input-view'>
+      <view class="input-phone-view" style='margin-top:64rpx;'>
+        <input placeholder-class="input-holder" type="number" maxlength="11" bindinput="inputPhoneChange" class="input" placeholder="请输入手机号" confirm-type='next' confirm-hold='true' value="{{phoneNumber}}"></input>
+        <image src="/image/login_phone_clear.png" class="input-phone-clear" wx:if="{{phoneFocus}}" bindtap="inputPhoneClear"/>
+        <view class='verification-code' bindtap='getVerificationCode' wx:if="{{step == 1 || step == 3}}">
+          获取验证码
+        </view>
+        <view class='verification-code' wx:if="{{leftSecond > 0 && step == 2}}">
+          {{leftSecond}}s后重新获取
+        </view>
+        <view class="verification-code" hover-class='hover-view' bindtap="onFetchCheckCode" wx:if="{{leftSecond == 0 && step == 2}}">
+          重新获取
+        </view>
+      </view>
+      <view class='separate-line'></view>
+      <view class="input-phone-view" wx:if="{{step==3}}">
+        <input placeholder-class="input-holder" bindinput="inputImageCodeChange" class="input" placeholder="请输入右侧图片验证码" confirm-type='next' confirm-hold='true'></input>
+        <image class="check-code-image" src="{{imageCodeUrl}}" bindtap="didTapImageCode"></image>
+      </view>
+      <view class='separate-line' wx:if="{{step==3}}"></view>
+      <view class="input-phone-view">
+        <input placeholder-class="input-holder" type="number" maxlength="4" bindinput="inputCheckCodeChange" class="input" placeholder="请输入验证码" confirm-type='next' confirm-hold='true'></input>
+      </view>
+      <view class='separate-line'></view>
+      <view class='phone-number-login-button' bindtap='didTapLoginButton'>登录</view>
+      <view class='phone-number-login-tip-view'>
+        <text class='phone-number-login-tip'>获取验证码若您输入手机号未注册，将为您直接注册。</text>
+        <view class="phone-number-login-protocol-view">
+          <text class="phone-number-login-tip">注册即视为同意</text>
+          <text class="phone-number-protocol-text" bindtap="didClickProtocol">《居理新房用户注册协议》</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

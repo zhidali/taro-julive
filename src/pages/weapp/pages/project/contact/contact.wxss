@@ -1,0 +1,117 @@
+.contact-view {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  height: 160rpx;
+  position: fixed;
+  bottom: 0;
+  z-index: 99;
+  background-color: white;
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.1);
+}
+
+.fix-iphonex-view {
+  height: 202rpx !important;
+  bottom: 0 !important;
+}
+
+.contact-attention-view {
+  margin-top: 46rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 130rpx;
+  max-width: 130rpx;
+}
+
+.attention-icon {
+  width: 52rpx;
+  height: 52rpx;
+}
+
+.attention-label {
+  margin-top: 4rpx;
+  font-family: PingFang-SC-Medium;
+  font-size: 24rpx;
+  color: #77808a;
+  text-align: center;
+}
+
+.contact-phone-view {
+  margin-top: 38rpx;
+  margin-left: 40rpx;
+  margin-right: 30rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.contact-phone-max-width {
+  min-width: 230rpx;
+  max-width: 230rpx;
+}
+
+.contact-phone-min-width {
+  min-width: 100rpx;
+  max-width: 100rpx;
+}
+
+.contact-line-view {
+  margin-left: 16rpx;
+  margin-right: 16rpx;
+  min-width: 1rpx;
+  max-width: 1rpx;
+  height: 60rpx;
+  background-color: #a9bacf;
+}
+
+.contact-phone-item {
+  min-width: 100rpx;
+  max-width: 100rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+}
+
+.contact-item {
+  margin-top: 40rpx;
+  width: 50%;
+  height: 80rpx;
+  border-radius: 8rpx;
+  font-family: PingFangSC-Semibold;
+  font-size: 32rpx;
+  line-height: 80rpx;
+  color: white;
+  text-align: center;
+  position: relative;
+}
+
+.contact-date-view {
+  background-color: #00C0EB;
+  margin-right: 20rpx;
+}
+
+.contact-consult-view {
+  background-color: #FA5F35;
+  margin-right: 40rpx;
+}
+
+.contact-hover-view {
+  opacity: 0.8;
+}
+
+.average-space {
+  margin-left: 40rpx;
+  margin-right: 40rpx;
+}
+
+.contact-view-fake-form-button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+}

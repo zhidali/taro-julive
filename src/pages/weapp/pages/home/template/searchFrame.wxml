@@ -1,0 +1,21 @@
+<template name="search-frame">
+  <view
+    class="search-frame {{bannerList.length ==0?'search-frame-cancel':'search-frame-sure'}} {{showCollectPop && bannerList.length > 0 ?'search-frame-top':''}}"
+  >
+    <view class="search-frame-city-content" bindtap="didClickSwitchCity">
+      <text class="search-frame-city">{{city.city_name}}</text>
+      <image class="search-frame-city-image" src="/image/icon_search_triangle_gray.png" />
+    </view>
+    <view class="search-frame-content-box">
+      <view class="search-frame-content" bindtap="didTapSearch" data-op-type="900567">
+        <image src="/image/icon_home_search_gray.png" class="search-frame-content-image" />
+        <text
+          wx:if="{{abTest.p_project_list_optimization == 'A'}}"
+          class="search-frame-content-input-ph"
+          >请输入楼盘名称或区域</text
+        >
+        <text wx:else class="search-frame-content-input-ph input-ph-B">请输入搜索内容</text>
+      </view>
+    </view>
+  </view>
+</template>

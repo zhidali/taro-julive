@@ -1,0 +1,57 @@
+<template name="search-result">
+  <view class="search-result">
+    <block wx:if="{{is_all_sell_out != 1}}">
+      <view class="search-result-normal  exposure-sell-out-employee {{leg>5?'margin-bom-zero':''}}">
+        <view class="search-result-normal-left">
+          <image />
+        </view>
+        <view class="search-result-normal-right">
+          <view class="name">居理咨询师</view>
+          <view class="search-result-character">
+            <text class="result-original-point"></text>
+            <text class="result-gray">100%本科学历，80%属于985/211院校。</text>
+          </view>
+          <view class="search-result-character">
+            <text class="result-original-point"></text>
+            <text class="result-gray">全城楼盘带看，免费专车接送。</text>
+          </view>
+          <view class="search-result-character">
+            <text class="result-original-point"></text>
+            <text class="result-gray">拥有楼盘优劣、贷款落户等一手信息。</text>
+          </view>
+          <view class="search-result-btn">
+            <view class="tel" bindtap="didClickHotline" data-index="{{2}}">电话咨询</view>
+            <view class="result-sell-out-view">
+              <view class="house" bindtap="didClickHelpFindHouse">帮我找房</view>
+              <view wx:if="{{!userLoginStatus}}" class="sell-out-wx-loging">
+                <wxLogin
+                  markOpType="900511"
+                  bindClickGetPhoneNumberBtn="passBackGetPhoneNumberBtn"
+                  bindFastLoginCallBack="passBackFastLoginCallBack"
+                  bindWechatUserCancel="FastLoginCallBack"
+                ></wxLogin>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="result-sell-out-view  exposure-sell-out-img">
+        <view
+          class="search-result-sell-out {{leg>5?'margin-bom-zero':''}}"
+        >
+          <image src="/image/imge-projectlist-reba.png" bindtap="didClickSearchSellOut" />
+        </view>
+        <view wx:if="{{!userLoginStatus}}" class="sell-out-wx-loging">
+          <wxLogin
+            markOpType="900512"
+            bindClickGetPhoneNumberBtn="passBackGetPhoneNumberBtn"
+            bindFastLoginCallBack="passBackFastLoginCallBack"
+            bindWechatUserCancel="FastLoginCallBack"
+          ></wxLogin>
+        </view>
+      </view>
+    </block>
+  </view>
+</template>

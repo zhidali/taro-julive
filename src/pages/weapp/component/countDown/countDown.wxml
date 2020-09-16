@@ -1,0 +1,14 @@
+<!--dynamicSubPK/pages/houseDynamic/template/countDown.wxml-->
+<view class="count-down">
+  <text wx:if="{{result!==''}}">{{result}}</text>
+  <block wx:else>
+    <text wx:if="{{d>0}}" class="time">{{d}}</text>
+    <text wx:if="{{d>0}}" class="unit">天</text>
+    <text class="time">{{h}}</text>
+    <text class="unit">时</text>
+    <text class="time">{{m}}</text>
+    <text class="unit">分</text>
+    <text class="time">{{s}}</text>
+    <text class="unit">秒</text>
+  </block>
+</view>

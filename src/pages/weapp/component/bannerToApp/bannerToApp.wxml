@@ -1,0 +1,11 @@
+<view wx:if="{{showBanner}}" class="{{page=='essay'?'banner-to-app-fixed':''}}">
+  <view class="banner-to-app">
+    <image class='banner-img' src="{{url}}" style="width:{{width}}rpx" />
+    <button class="{{width==750?'banner-btn,banner-btn-item':'banner-btn'}}" show-message-card='{{true}}' open-type="contact" bindtap="didClickOPen" send-message-path='/pages/home/home' send-message-title='居理新房' send-message-img='https://imgs.julive.com/l?p=eyJpbWdfcGF0aCI6IlwvbWluaW1ncy9jdXN0b21lci1sb2dvLnBuZz93YXRlcm1hcmssdF8wIn0='>
+      打开APP
+    </button>
+    <block wx:if='{{width==750}}'>
+      <button class='cell-customer' show-message-card='{{true}}' open-type="contact" bindtap="didClickContact" send-message-path='/pages/home/home' send-message-title='居理新房' send-message-img='https://imgs.julive.com/l?p=eyJpbWdfcGF0aCI6IlwvbWluaW1ncy9jdXN0b21lci1sb2dvLnBuZz93YXRlcm1hcmssdF8wIn0='></button>
+    </block>
+  </view>
+</view>

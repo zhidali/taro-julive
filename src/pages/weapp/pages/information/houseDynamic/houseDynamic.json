@@ -1,0 +1,13 @@
+{
+  "navigationBarTitleText": "楼盘看点",
+  "backgroundTextStyle": "light",
+  "usingComponents": {
+    "login": "../../../user/login",
+    "orderSuccessAlert": "../../../order/commonOrderSuccessAlert/commonOrderSuccessAlert",
+    "painting": "../../../component/painting/painting",
+    "jlImage": "../../../component/jlImage/jlImage",
+    "nocontent": "../../../component/nocontent/nocontent",
+    "countDown": "../../../component/countDown/countDown",
+    "wxLogin": "../../../component/wxLogin/wxLogin"
+  }
+}

@@ -1,0 +1,470 @@
+@import "../template/diperIntroduceNew";
+@import "../template/dipprAudio";
+@import "../template/dipperTraffic";
+@import "../template/dipperRecord";
+@import "../template/dipperLogin";
+@import "../template/loadAlt";
+@import "../template/housesDesc";
+@import "../template/houseBanner";
+@import "../template/catalog";
+@import "../template/housesInfo";
+@import "../template/dipperTrafficNew";
+@import "../template/sendIdea";
+@import "../template/houseEvaluating";
+
+/* 公共 */
+
+.container {
+  background-color: #fff;
+  padding-bottom: 240rpx;
+}
+
+.container_bottm_isIPX {
+  padding-bottom: 280rpx;
+}
+
+.icon_ft {
+  width: 26rpx;
+  height: 44rpx;
+  display: inline-block;
+  margin-left: 8rpx;
+}
+
+.title-box {
+  position: relative;
+  height: 50rpx;
+  margin-top: 44rpx;
+  margin-bottom: 24rpx;
+}
+
+.title-box-content {
+  height: 50rpx;
+  align-items: center;
+  padding: 0rpx 40rpx;
+}
+
+.title-box-content view:nth-child(1) {
+  font-family: PingFangSC-Medium;
+  font-size: 36rpx;
+  color: #001a4a;
+  display: flex;
+  align-items: center;
+}
+
+.title-box-content view:nth-child(2) {
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #707798;
+  display: flex;
+  align-items: center;
+}
+
+.title-box-content  image {
+  width: 32rpx;
+  height: 32rpx;
+  margin-left: 10rpx;
+}
+
+.title-box-img {
+  position: absolute;
+  left: 0rpx;
+  top: 4rpx;
+  width: 8rpx;
+  height: 42rpx;
+}
+
+.padding-le-ri-40 {
+  padding: 0rpx 40rpx;
+}
+
+.margin-le-ri-40 {
+  margin: 0rpx 40rpx;
+}
+
+/* 公共end */
+
+/* head */
+
+.mar_top {
+  margin-top: 100rpx;
+}
+
+.head_tags {
+  margin-top: 24rpx;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.head_tags text {
+  display: inline-block;
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #001a4a;
+  background: #f4f8f9;
+  line-height: 60rpx;
+  height: 60rpx;
+  border-radius: 30rpx;
+  padding: 0rpx 20rpx;
+  text-align: center;
+  margin-right: 20rpx;
+}
+
+.head_tags text:first-child {
+  margin-left: 40rpx;
+}
+
+.margin_bot_head {
+  margin-bottom: 20rpx;
+}
+
+/* head end */
+
+/* 概述 */
+
+.house_loan {
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  color: #001a4a;
+  line-height: 33rpx;
+  margin-bottom: 24rpx;
+}
+
+/* .table {
+  border-right: 1rpx solid #ecf0f4;
+  border-bottom: 1rpx solid #ecf0f4;
+} */
+
+.tr {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.th {
+  font-family: PingFangSC-Medium;
+  font-size: 24rpx;
+  line-height: 33rpx;
+  color: #b77400;
+  padding: 20rpx 16rpx;
+  background: #fef9e9;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid #ecf0f4;
+  border-top: 1px solid #ecf0f4;
+  box-sizing: border-box;
+}
+
+.td {
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  line-height: 33rpx;
+  color: #707798;
+  padding: 20rpx 16rpx 20rpx 17rpx;
+  border-left: 1px solid #ecf0f4;
+  border-top: 1px solid #ecf0f4;
+  overflow: hidden;
+  word-wrap: break-word;
+  box-sizing: border-box;
+}
+
+.tr .th:last-of-type {
+  border-right: 1px solid #ecf0f4;
+}
+
+.tr .td:last-of-type {
+  border-right: 1px solid #ecf0f4;
+}
+
+.tr .td_bodr_rigth{
+    border-right: 1px solid #ecf0f4;
+}
+.table .tr:last-of-type .td {
+  border-bottom: 1px solid #ecf0f4;
+}
+
+.table .tr_borde_bott {
+  border-bottom: 1px solid #ecf0f4;
+}
+
+.container .table  .del_der_left {
+  border-left: none;
+}
+
+.td text {
+  display: block;
+  line-height: 34rpx;
+  overflow: hidden;
+  overflow-wrap: break-word;
+}
+
+.border_top {
+  border-top: 2rpx solid #f3f6f9;
+}
+
+.direction_row {
+  flex-direction: row;
+}
+
+/* 概述end */
+
+/* 周边交通 */
+
+.singleProject_traffic_distance_img {
+  min-width: 28rpx;
+  width: 28rpx;
+  min-height: 28rpx;
+  height: 28rpx;
+  display: inline-block;
+  margin-right: 8rpx;
+  margin-top: 4rpx;
+}
+
+.td view {
+  display: flex;
+  align-items: center;
+}
+
+.td .rim_traffic_td_view {
+  align-items: flex-start;
+  line-height: 34rpx;
+  color: #707798;
+}
+
+.td .rim_traffic_td_view:first-child {
+  padding-bottom: 24rpx;
+}
+
+.td .rim_traffic_td_view_item {
+  flex-direction: column;
+  align-items: flex-start;
+  padding-right: 20rpx;
+}
+
+.td .rim_traffic_td_view:last-child {
+  padding-bottom: 0rpx;
+}
+
+.text_inline {
+  display: inline-block;
+}
+
+.rim_traffic  .th {
+  padding-left: 24rpx;
+  justify-content: flex-start;
+}
+
+.rim_traffic  .th:first-child {
+  width: 223rpx !important;
+}
+
+.rim_traffic .txt-aligin-left {
+  text-align: left;
+}
+
+.rim_traffic  .td {
+  padding: 32rpx 0px 16rpx 30rpx;
+  justify-content: flex-start;
+  flex-direction: row;
+  /* justify-content: flex-start; */
+}
+
+.rim_traffic .delAligin {
+  padding-top: 32rpx;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.rim_traffic  .td:first-child {
+  width: 223rpx !important;
+}
+
+/* 周边交通end */
+
+.review-content {
+  display: -webkit-box;
+  word-break: break-all;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.blue {
+  color: #fa5f35;
+}
+
+.blueOld {
+  color: #47b3e3;
+}
+
+/* 综述end */
+
+.circum_price {
+  display: flex;
+  justify-content: space-between;
+}
+
+.circum_price text:last-of-type {
+  opacity: 0.45;
+  font-family: PingFangSC-Medium;
+  font-size: 14px;
+  color: #3e4a59;
+}
+
+/*隐藏在map 内 */
+
+.nearby_price_btn {
+  margin-top: 44rpx;
+  border-radius: 8rpx;
+  background-color: #f3f6f9;
+  height: 92rpx;
+  line-height: 92rpx;
+  font-size: 28rpx;
+  color: #47b3e3;
+  font-family: PingFangSC-Medium;
+  text-align: center;
+}
+
+.nearby_price_btn_img {
+  width: 36rpx;
+  height: 36rpx;
+  display: inline-block;
+  /* margin-right: 14rpx; */
+  vertical-align: middle;
+  margin-bottom: 4rpx;
+}
+
+.yellow {
+  color: #b77400;
+}
+
+.container .min-width150 {
+  min-width: 159rpx;
+  max-width: 159rpx;
+  box-sizing: border-box;
+}
+
+.catalog-flex {
+  width: 150rpx;
+  height: 76rpx;
+  position: fixed;
+  right: 0rpx;
+  bottom: 204rpx;
+  z-index: 99;
+}
+
+.recommend-map-box {
+  padding: 0rpx 40rpx;
+  position: relative;
+}
+
+.map-scale {
+  width: 68rpx;
+  height: 140rpx;
+  background: #fff;
+  border: 1rpx solid #c4cbcc;
+  border-radius: 4px;
+  position: absolute;
+  bottom: 20rpx;
+  right: 60rpx;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.map-scale cover-image {
+  width: 40rpx;
+  height: 40rpx;
+  padding-top: 20rpx;
+  padding-left: 14rpx;
+}
+
+/* 购房宝典 */
+
+.container .storehouse {
+  left: 40rpx;
+  bottom: 144rpx;
+  width: 130rpx;
+  height: 119rpx;
+}
+
+.container .storehouseTop {
+  bottom: 176rpx;
+}
+
+.select-around {
+  display: flex;
+  padding-left: 40rpx;
+}
+
+.select-around-item {
+  margin-right: 50rpx;
+}
+
+.select-around-item text:first-child {
+  font-family: PingFangSC-Regular;
+  font-size: 32rpx;
+  height: 45rpx;
+  line-height: 45rpx;
+  color: #39487f;
+  display: inline-block;
+  margin-bottom: 10rpx;
+}
+
+.select-around-item  .select_txt {
+  font-family: PingFangSC-Medium;
+  font-weight: 600;
+  color: #001a4a;
+}
+
+.select-around-item view {
+  background: #f8d14b;
+  border-radius: 2rpx;
+  height: 4rpx;
+  width: 100%;
+  margin-bottom: 24rpx;
+}
+
+.min-width223 {
+  min-width: 223rpx;
+  max-width: 223rpx;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.visibility {
+  visibility: hidden;
+}
+
+.z_index {
+  z-index: 9;
+}
+
+.z_index  .td {
+  background-color: #fff;
+}
+
+.direction_row text {
+  display: block;
+}
+
+.poss_rela {
+  position: relative;
+}
+
+.price_update_datetime {
+  position: absolute;
+  bottom: -41rpx;
+  right: 40rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  color: #707798;
+  line-height: 33rpx;
+}
+
+.base_banner_height{
+  width: 100vw;
+  height: 32rpx;
+}

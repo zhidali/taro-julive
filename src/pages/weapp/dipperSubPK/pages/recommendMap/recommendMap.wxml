@@ -1,0 +1,7 @@
+<view class="recommend-map-box">
+  <map id="recommendMap"  bindcallouttap="didiClickcallouttap"   longitude="{{longitude}}" latitude="{{latitude}}"  scale="{{recommendMapScale}}" markers="{{markerProjectBubble}}" style='width:100vw;height:100vh'></map>
+  <cover-view class="map-scale">
+    <cover-image class="map-scale-add" bindtap="didClickMapScale" data-type="add" src="/image/icon-dipper-add.png"></cover-image>
+    <cover-image class="map-scale-sub" bindtap="didClickMapScale" data-type="sub" src="/image/icon-dipper-sub.png"></cover-image>
+  </cover-view>
+</view>

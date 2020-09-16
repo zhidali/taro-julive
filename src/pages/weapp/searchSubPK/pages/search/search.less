@@ -1,0 +1,478 @@
+.container {
+    background: #fff;
+    padding: 0 30rpx;
+    min-height: 100%;
+}
+
+// 搜索区
+.search-area {
+    height: 80rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .search-box {
+        width: 604rpx;
+        height: 80rpx;
+        background: rgba(243, 246, 249, 1);
+        border-radius: 40rpx;
+        display: flex;
+
+        .search-icon {
+            padding: 26rpx 16rpx 0 32rpx;
+
+            image {
+                width: 32rpx;
+                height: 32rpx;
+            }
+        }
+
+        .search-close {
+            padding: 24rpx 32rpx 24rpx 16rpx;
+
+            image {
+                width: 32rpx;
+                height: 32rpx;
+            }
+        }
+
+        input {
+            width: 440rpx;
+            padding-top: 20rpx;
+            caret-color: #00C0EB;
+        }
+    }
+
+    .cancel-btn {
+        height: 80rpx;
+        font-size: 28rpx;
+        font-family: PingFangSC-Regular, PingFang SC;
+        font-weight: 400;
+        color: rgba(3, 26, 31, 1);
+        line-height: 80rpx;
+        padding-left: 30rpx;
+    }
+}
+
+// 搜索内容
+.search-page {
+    padding-top: 48rpx;
+    .item-search {
+        .title-box {
+            margin-bottom: 24rpx;
+            display: flex;
+            height: 44rpx;
+            line-height: 44rpx;
+            justify-content: space-between;
+
+            .title {
+                font-size: 32rpx;
+                font-family: PingFangSC-Medium, PingFang SC;
+                font-weight: 500;
+                color: rgba(3, 26, 31, 1);
+            }
+
+            .opearation-box {
+                font-size: 24rpx;
+                font-family: PingFangSC-Regular, PingFang SC;
+                font-weight: 400;
+                color: rgba(141, 151, 153, 1);
+                display: flex;
+                align-items: center;
+
+                image {
+                    width: 32rpx;
+                    height: 32rpx;
+                    margin-right: 2rpx;
+                }
+            }
+        }
+
+        .item-search-main {}
+    }
+
+    // 最近搜索
+    .nearly-search {
+        margin-bottom: 36rpx;
+        .nearly-search-main {
+            display: flex;
+            flex-wrap: wrap;
+            overflow: hidden;
+            margin-left: -16rpx;
+
+            .item-nearly-search {
+                height: 52rpx;
+                background: rgba(243, 246, 249, 1);
+                border-radius: 4rpx;
+                margin: 0 0 16rpx 16rpx;
+                text-align: center;
+                line-height: 52rpx;
+                font-size: 24rpx;
+                font-family: PingFangSC-Regular, PingFang SC;
+                font-weight: 400;
+                color: rgba(86, 99, 102, 1);
+                max-width: 264rpx;
+                padding: 0 24rpx;
+                box-sizing: border-box;
+                display: -webkit-box;
+                word-break: break-all;
+                text-overflow: ellipsis;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 1;
+                overflow: hidden;
+            }
+        }
+
+        .nearly-search-more {
+            height: 34rpx;
+            font-size: 24rpx;
+            font-family: PingFangSC-Regular, PingFang SC;
+            font-weight: 400;
+            color: rgba(141, 151, 153, 1);
+            line-height: 34rpx;
+            text-align: center;
+            margin-top: 8rpx;
+        }
+    }
+
+    // 热门搜索
+    .hot-search-main {
+        display: flex;
+        flex-wrap: wrap;
+
+        .item-hot-search {
+            width: 336rpx;
+            height: 180rpx;
+            box-shadow: 0 0 20rpx 0 rgba(0, 0, 0, 0.08);
+            border-radius: 8rpx;
+            padding: 24rpx 0 0 16rpx;
+            box-sizing: border-box;
+            position: relative;
+            margin-bottom: 16rpx;
+
+            &:nth-of-type(2n-1) {
+                margin-right: 16rpx;
+            }
+
+            .item-hot-search-top {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                height: 40rpx;
+                line-height: 40rpx;
+                padding-right: 16rpx;
+
+                .item-hot-search-top-title {
+                    font-size: 28rpx;
+                    font-family: PingFangSC-Medium, PingFang SC;
+                    font-weight: 500;
+                    color: rgba(86, 99, 102, 1);
+                    margin-right: 8rpx;
+                    display: -webkit-box;
+                    word-break: break-all;
+                    text-overflow: ellipsis;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 1;
+                    overflow: hidden;
+                }
+
+                .item-hot-search-top-tag {
+                    font-size: 24rpx;
+                    font-family: PingFangSC-Regular, PingFang SC;
+                    font-weight: 400;
+                    color: rgba(141, 151, 153, 1);
+                    white-space: nowrap;
+                }
+
+                .item-hot-search-tag {
+                    padding-top: 6rpx;
+
+                    .search-tag {
+                        width: 28rpx;
+                        height: 28rpx;
+                    }
+                }
+            }
+
+            .search-hot-icon {
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                width: 60rpx;
+                height: 72rpx;
+            }
+
+            .item-hot-search-deal-avarage {
+                display: flex;
+                height: 44rpx;
+                font-family: PingFangSC-Medium, PingFang SC;
+                font-weight: 500;
+                color: rgba(0, 192, 235, 1);
+                box-sizing: border-box;
+
+                .item-hot-search-deal-num {
+                    font-size: 32rpx;
+                    line-height: 44rpx;
+                }
+
+                .item-hot-search-deal-unit {
+                    font-size: 24rpx;
+                    line-height: 32rpx;
+                    padding-top: 8rpx;
+                }
+            }
+        }
+
+        .item-hot-search-area {
+            .item-hot-search-deal-title {
+                height: 32rpx;
+                font-size: 24rpx;
+                font-family: PingFangSC-Regular, PingFang SC;
+                font-weight: 400;
+                color: rgba(0, 192, 235, 1);
+                line-height: 32rpx;
+                margin-top: 16rpx;
+            }
+        }
+
+        .item-hot-search-project {
+            .project-tag-box {
+                display: flex;
+                margin: 4rpx 0 12rpx;
+                flex-wrap: wrap;
+                overflow: hidden;
+                height: 32rpx;
+
+                .item-project-tag {
+                    height: 32rpx;
+                    line-height: 32rpx;
+                    padding: 0 8rpx;
+                    border-radius: 4rpx;
+                    border: 0.5px solid rgba(109, 145, 154, 1);
+                    color: #6D919A;
+                    font-size: 22rpx;
+                    margin-right: 8rpx;
+                    box-sizing: border-box;
+                    display: -webkit-box;
+                    word-break: break-all;
+                    text-overflow: ellipsis;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 1;
+                    overflow: hidden;
+                }
+
+                .item-project-tag-type {
+                    max-width: 106rpx;
+                }
+
+                .item-project-district {
+                    max-width: 194rpx;
+                }
+                .item-project-ju {
+                    display: flex;
+                }
+            }
+
+            .project-dec-box {
+                display: flex;
+                align-items: center;
+                margin: 2rpx 0 12rpx;
+
+                image {
+                    width: 26rpx;
+                    height: 26rpx;
+                    margin-right: 4rpx;
+                }
+
+                .project-dec-txt {
+                    height: 34rpx;
+                    font-size: 24rpx;
+                    font-family: PingFangSC-Regular, PingFang SC;
+                    font-weight: 400;
+                    color: rgba(141, 151, 153, 1);
+                    line-height: 34rpx;
+                    display: -webkit-box;
+                    word-break: break-all;
+                    text-overflow: ellipsis;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 1;
+                    overflow: hidden;
+                }
+
+            }
+        }
+    }
+}
+
+// 搜索联想
+.search-association {
+    margin-top: 24rpx;
+
+    .association-box {
+        height: 96rpx;
+        border-bottom: .5px solid #E3E7EB;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .association-box-left {
+            height: 44rpx;
+            font-size: 32rpx;
+            font-family: PingFangSC-Medium, PingFang SC;
+            font-weight: 500;
+            color: rgba(3, 26, 31, 1);
+            line-height: 44rpx;
+            display: flex;
+            align-items: center;
+            margin-right: 16rpx;
+
+            .association-text {
+                display: flex;
+
+                .association-title {
+                    display: -webkit-box;
+                    word-break: break-all;
+                    text-overflow: ellipsis;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 1;
+                    overflow: hidden;
+                }
+            }
+
+            .association-project-text {
+                max-width: 370rpx;
+            }
+
+            .association-tag {
+                margin-left: 8rpx;
+                height: 32rpx;
+                border-radius: 4rpx;
+                color: #fff;
+                font-size: 22rpx;
+                font-family: PingFangSC-Regular, PingFang SC;
+                font-weight: 400;
+                line-height: 32rpx;
+                padding: 0 8rpx;
+                white-space: nowrap;
+            }
+
+            .association-tag-city {
+                background: rgba(0, 192, 235, 1);
+            }
+
+            .association-tag-characteristic {
+                background: #FFE7D8;
+                color: #FA5F35;
+            }
+
+            .search-text {
+                color: #00C0EB;
+            }
+        }
+
+        .association-box-right {
+            height: 40rpx;
+            font-size: 28rpx;
+            font-family: PingFangSC-Regular, PingFang SC;
+            font-weight: 400;
+            color: rgba(141, 151, 153, 1);
+            line-height: 40rpx;
+            white-space: nowrap;
+
+            image {
+                width: 12rpx;
+                height: 24rpx;
+            }
+        }
+    }
+
+    // 联想词
+    .association-text-box {}
+
+    // 联想楼盘
+    .item-project {
+        padding: 28rpx 0 26rpx;
+        border-bottom: .5px solid #E3E7EB;
+
+        .association-title {
+            height: 44rpx;
+            font-size: 32rpx;
+            font-family: PingFangSC-Medium, PingFang SC;
+            font-weight: 500;
+            color: #031A1F;
+            line-height: 44rpx;
+            margin-bottom: 2rpx;
+            display: -webkit-box;
+            word-break: break-all;
+            text-overflow: ellipsis;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 1;
+            overflow: hidden;
+            max-width: 370rpx;
+        }
+
+        .project-bottom {
+            display: flex;
+            justify-content: space-between;
+
+            .project-content {
+                padding-top: 15rpx;
+                height: 24rpx;
+                line-height: 24rpx;
+                display: flex;
+                color: #031A1F;
+                font-size: 24rpx;
+
+                .project-type {
+                    white-space: nowrap;
+                }
+
+                .project-address {
+                    display: -webkit-box;
+                    word-break: break-all;
+                    text-overflow: ellipsis;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 1;
+                    overflow: hidden;
+                }
+
+                .project-measure {
+                    white-space: nowrap;
+                    display: flex;
+                    align-items: center;
+                }
+            }
+
+            .project-price {
+                display: flex;
+                justify-content: flex-start;
+                height: 44rpx;
+                font-family: PingFangSC-Medium, PingFang SC;
+                font-weight: 500;
+                color: rgba(250, 95, 53, 1);
+                box-sizing: border-box;
+                white-space: nowrap;
+                margin: 0 16rpx 0 32rpx;
+
+                .price-num {
+                    font-size: 32rpx;
+                    line-height: 44rpx;
+                }
+                .price-wait {
+                    font-size: 28rpx;
+                    line-height: 44rpx;
+                }
+
+                .price-unit {
+                    font-size: 22rpx;
+                    line-height: 32rpx;
+                    padding-top: 8rpx;
+                }
+            }
+        }
+    }
+    // 搜索词高亮颜色
+    .high-light-color {
+        color: #00C0EB;
+    }
+}

@@ -1,0 +1,70 @@
+@import "../../../utils/wxParse/wxParse.wxss";
+@import "../../../pages/template/houseTypeCell/houseTypeCell.wxss";
+
+.container {
+  background-color: #fff;
+  min-height: 100%;
+}
+
+.dynamic-detail-title {
+  margin: 15rpx;
+  font-size: 18px;
+  color: #333;
+  word-wrap: break-word;
+}
+
+.dynamic-detail-info-view {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-left: 15rpx;
+  margin-right: 15rpx;
+}
+
+.dynamic-detail-time-label,
+.dynamic-detail-source-label {
+  font-size: 14px;
+  color: #999;
+}
+
+.dynamic-detail-line-view {
+  background-color: #e2e2e2;
+  margin: 15rpx;
+  height: 1px;
+}
+
+.dynamic-detail-content-view {
+  font: 15px;
+  color: #666;
+  margin-left: 15rpx;
+  margin-right: 15rpx;
+  align-items: center;
+  align-content: center;
+  word-wrap: break-word;
+}
+
+.wxParse-img {
+  width: 96vw;
+  margin-top: 10rpx;
+  margin-right: 5rpx;
+  background-color: #efefef;
+}
+
+.dynamic-detail-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.dynamic-detail-section-header {
+  font-size: 16px;
+  color: #333;
+  margin: 15rpx;
+}
+
+.house-type-cell-view {
+  background-color: white;
+  margin: 15rpx;
+  padding: 15rpx;
+  padding-left: 0rpx;
+}

@@ -1,0 +1,24 @@
+<import src="../../../utils/wxParse/wxParse.wxml"/>
+<import src="../template/downloadFileCell.wxml"/>
+
+<view class="pop-mask" wx:if="{{showModal}}" catchtouchmove="preventTouchMove">
+</view> 
+
+<view class="pop-view" wx:if="{{showModal}}">
+  <view class="pop-view-content">
+    <view class="top-view">
+      <image class="close-icon" src="../../../image/icon_close_gray.png" catchtap="didClosePopView"></image>
+      <text class="block-title-text">{{blockTitle}}</text>
+    </view>
+    <scroll-view class="scroll-view" scroll-y="true" catchtouchmove='preventTouchMove'>
+      <text class="title-text">{{title}}</text>
+      <view class="content-text">
+        <template is="wxParse" data="{{wxParseData:content.nodes}}"/>
+      </view>
+      <text class="download-file-block-title" wx:if="{{downloadList.length > 0}}">附件</text>
+      <block wx:for="{{downloadList}}" wx:key="item" wx:if="{{downloadList.length > 0}}">
+        <template is="download-file-cell" data="{{attachment:item}}"/>
+      </block>
+    </scroll-view>
+  </view>
+</view>

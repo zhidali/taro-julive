@@ -1,0 +1,209 @@
+/* 通勤路线 */
+
+map {
+  border-radius: 4rpx;
+}
+
+.shadow {
+  background: #fff;
+  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.07);
+  border-radius: 4px;
+}
+
+.map_box {
+  overflow: hidden;
+  position: relative;
+}
+
+.cover-select-traffic {
+  background: rgba(255, 255, 255, 0.90);
+  box-shadow: 0 2rpx 4rpx 0 rgba(0, 0, 0, 0.30);
+  border-radius: 8rpx;
+  width: 52rpx;
+  height: 140rpx;
+  position: absolute;
+  top: 20rpx;
+  right: 60rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 20rpx;
+  color: #47b3e3;
+  text-align: center;
+  line-height: 20rpx;
+}
+
+.cover-select-traffic .cover-select-traffic_line {
+  height: 1px;
+  width: 38rpx;
+  margin: 5rpx auto;
+  background-color: red;
+}
+
+.cover-select-traffic cover-image {
+  width: 32rpx;
+  height: 32rpx;
+  margin: 0rpx auto 2rpx auto;
+}
+
+.cover-select-traffic-driving cover-image{
+  margin-top: 10rpx;
+}
+
+.select-destination {
+  margin-top: 40rpx;
+  margin-bottom: 40rpx;
+  display: flex;
+  overflow: hidden;
+}
+
+.select-destination view {
+  min-width: 140rpx;
+  box-sizing: border-box;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-radius: 30rpx;
+  font-size: 28rpx;
+  line-height: 40rpx;
+  padding: 10rpx 24rpx;
+  color: #3e4a59;
+  background: #f3f6f9;
+}
+
+.select-destination view:first-of-type {
+  margin-right: 24rpx;
+}
+
+.select-destination .target_destination {
+  box-shadow: 0 4rpx 8rpx 0 rgba(71, 179, 227, 0.30);
+  background-image: linear-gradient(-93deg, #45c0f6 6%, #30b0e9 97%);
+  color: #fff;
+}
+
+.traffic_opa {
+  opacity: 0.5;
+}
+
+.ball_right {
+  position: absolute;
+  left: 4rpx;
+  top: 4rpx;
+  width: 16rpx;
+  height: 12rpx;
+}
+
+/* old */
+
+.singleProject_traffic_tool {
+  height: 60rpx;
+  margin-bottom: 32rpx;
+}
+
+.singleProject_traffic_tool_but {
+  font-family: PingFangSC-Medium;
+  border-radius: 30px;
+  width: 136rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  display: inline-block;
+  margin-left: 40rpx;
+}
+
+.singleProject_traffic_tool_bus {
+  width: 176rpx;
+  margin-left: 32rpx;
+}
+
+.select_info_true {
+  background-image: linear-gradient(-93deg, #45c0f6 6%, #30b0e9 97%);
+  color: #fff;
+  box-shadow: 0 2px 4px 0 rgba(71, 179, 227, 0.30);
+}
+
+.select_info_false {
+  color: #3e4a59;
+  background: #f3f6f9;
+}
+
+.singleProject_traffic_path {
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  line-height: 40rpx;
+  color: #3e4a59;
+  display: flex;
+  position: relative;
+}
+
+.singleProject_traffic_path text {
+  white-space: nowrap;
+}
+
+.ball {
+  display: inline-block;
+  min-height: 20rpx;
+  max-height: 20rpx;
+  min-width: 20rpx;
+  max-width: 20rpx;
+  margin-right: 22rpx;
+  margin-bottom: 2rpx;
+  border-radius: 50%;
+  position: relative;
+  top: 12rpx;
+}
+
+.vertical_line {
+  position: absolute;
+  width: 2rpx;
+  height: 26rpx;
+  left: 50%;
+  margin-left: -1rpx;
+  top: -31rpx;
+  background-color: #f3f6f9;
+}
+
+.text_color {
+  color: rgb(69, 162, 202);
+}
+
+.orangeBall {
+  background: #fa5f35;
+}
+
+.singleProject_traffic_head {
+  font-family: PingFangSC-Bold;
+  font-weight: 600;
+  font-size: 44rpx;
+  line-height: 60rpx;
+  color: #3e4a59;
+  margin-bottom: 40rpx;
+}
+
+.borderTop {
+  margin-top: 30rpx;
+}
+
+.borderBom {
+  padding-bottom: 30rpx;
+  border-bottom: 2rpx solid #f3f6f9;
+}
+
+.borderBom:last-child {
+  margin-bottom: 40rpx;
+  border: none;
+  padding-bottom: 0px;
+}
+
+.magBom {
+  margin-bottom: 40rpx;
+}
+
+.traffi_go_stop {
+  display: -webkit-box;
+  word-break: break-all;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+/* 通勤路线 end */

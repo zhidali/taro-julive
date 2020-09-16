@@ -1,0 +1,14 @@
+<wxs src="../../../utils/util.wxs" module="tools" />
+
+<template name="image-container-view">
+  <view class="image-container-view" wx:if="{{imageList.length>0}}">
+    <block wx:if="{{imageList.length == 1}}">
+      <image id="image-container" class="container-one-image contaier-margin" hover-class='hover-view' src="{{tools.resizeImageUrl(imageList[0].img_url, screenWidth*0.7, screenWidth*0.4)}}" bindtap="didClickImageContainer" data-index="{{0}}" data-item-index="{{itemIndex}}" data-image-list="{{imageList}}"></image>
+    </block>
+    <block wx:else>
+      <block wx:for="{{imageList}}" wx:key="item">
+        <image id="image-container" class="container-image contaier-margin" hover-class='hover-view' src="{{tools.resizeImageUrl(item.img_url, 50, 50)}}" bindtap="didClickImageContainer" data-index="{{index}}" data-item-index="{{itemIndex}}" data-image-list="{{imageList}}" data-dynamic-id="{{dynamicId}}"/>
+      </block>
+    </block>
+  </view>
+</template>

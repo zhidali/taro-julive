@@ -1,0 +1,107 @@
+<import src="../../../component/loading/loading.wxml" />
+
+<view class="my-favorite-wrap">
+  <view class="favorite-tab">
+    <view class="favorite-tab-box">
+      <block wx:for="{{favoriteTab}}" wx:key="item">
+        <view
+          class="item {{currentTabIndex==index?'current':''}}"
+          bindtap="didClickChangeTab"
+          data-index="{{index}}"
+          >{{item}}<view wx:if="{{currentTabIndex==index}}" class="line"></view
+        ></view>
+      </block>
+    </view>
+  </view>
+
+  <view class="favorite-content">
+    <view class="loading-view" wx:if="{{!loadingHidden}}">
+      <template is="loading-view" data="{{hidden:loadingHidden,type:1}}" />
+    </view>
+    <!-- 浏览的-楼盘列表 -->
+    <view class="{{(loadingHidden &&currentTabIndex==0)?'':'displayNone'}}">
+      <view wx:if="{{viewList.length>0}}" class="favorite-list">
+        <block wx:for="{{viewList}}" wx:key="item">
+          <view class="list-item list-item{{index}}">
+            <houseCardA
+              projectData="{{item}}"
+              catchtap="didTapProjectCellView"
+              data-id="{{item.project_id}}"
+              data-index="{{index}}"
+              bind:changeCollect="changeCollect"
+            />
+          </view>
+        </block>
+        <!--  加载中效果 -->
+        <block>
+          <block wx:if="{{viewHasMore}}">
+            <view class="loading-tip">加载中…</view>
+          </block>
+          <block wx:else>
+            <view class="loading-tip">没有更多了</view>
+          </block>
+        </block>
+      </view>
+      <view wx:else class="list-none">
+        <view class="none-img"></view>
+        <view class="tips">您还没有浏览哦～</view>
+      </view>
+    </view>
+
+    <!-- 收藏的-楼盘列表 -->
+    <view class="{{(loadingHidden &&currentTabIndex==1)?'':'displayNone'}}">
+      <view wx:if="{{favoriteList.length>0}}" class="favorite-list">
+        <block wx:for="{{favoriteList}}" wx:key="item">
+          <view class="list-item list-item{{index}}">
+            <houseCardA
+              projectData="{{item}}"
+              catchtap="didTapProjectCellView"
+              data-id="{{item.project_id}}"
+              data-index="{{index}}"
+              bind:changeCollect="changeCollect"
+            />
+          </view>
+        </block>
+        <!--  加载中效果 -->
+        <block>
+          <block wx:if="{{favoriteHasMore}}">
+            <view class="loading-tip">加载中…</view>
+          </block>
+          <block wx:else>
+            <view class="loading-tip">没有更多了</view>
+          </block>
+        </block>
+      </view>
+      <view wx:else class="list-none">
+        <view class="none-img"></view>
+        <view class="tips">您还没有收藏哦～</view>
+      </view>
+    </view>
+  </view>
+  <!-- 对比 留电 -->
+  <image class="favorite-pk" src="/image/favorite_pk.png" catchtap="didClickFavoritePK" />
+</view>
+
+<!-- 对比报告 弹窗 -->
+<dialog-shell
+  class="dialog-shell-pk"
+  bind:close="closeLeavePhone"
+  wx:if="{{isShowFavoritePK}}"
+  hasImg="{{false}}"
+>
+  <div class="dialog-shell-box">
+    <image class="close" src="/image/icon_close_270.png" catchtap="closeLeavePhone" />
+    <view class="title">楼盘对比报告</view>
+    <view class="info">专属咨询师，为您分析房源优劣势！</view>
+    <view class="btn" catchtap="onCloseFavoritePK">免费预约</view>
+  </div>
+</dialog-shell>
+
+<!-- 留电成功弹窗 -->
+<orderSuccessAlert
+  popType="{{1}}"
+  fromPage="p_project_list"
+  showModal="{{showOrderSuccessAlert}}"
+  title="{{alertTitle}}"
+  content="{{alertContent}}"
+/>

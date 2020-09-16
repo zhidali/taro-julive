@@ -1,0 +1,69 @@
+<wxs src="../../../pages/project/list/projectList.wxs" module="format" />
+<wxs src="../../../utils/util.wxs" module="tools" />
+
+<template name="project-cell">
+  <view class="project-list-cell last_child_bom">
+    <view class="project-list-top-view" data-index='{{index}}' data-item="{{project}}" bindtap="didClickItem">
+      <image class="project-sale-activity" wx:if="{{project.app_acitivity_pic.length>0}}" src="{{project.app_acitivity_pic}}" />
+      <jlImage className="multi-project-image" url="{{tools.resizeImageUrl(project.index_img, 120, 90)}}" placeholder="/image/placeholder_house_small.png">
+      </jlImage>
+      <view class="project-cell-info-view">
+        <view class="project-info-name-view">
+          <text class="project-info-name">{{project.name}}</text>
+        </view>
+        <view class="project-list-price">
+          <text class="project-list-price-label">参考单价：</text>
+          <text class="project-list-info-unit">{{project.price_info[0].value}}{{project.price_info[0].unit}}</text>
+        </view>
+        <text class='project-list-info-deatil'><text class="project-list-price-label">参考总价：</text>
+        <text class='project-list-info-deatil-text'></text>{{project.price_info[1].value}}{{project.price_info[1].unit}}</text>
+        <view class="project-list-info-tags">
+          <view class="project-coopration-tag-item" wx:if="{{project.cooperation_tag}}">
+            <text class="project-coopration-tag-item-text">{{project.cooperation_tag}}</text>
+          </view>
+          <view class="project-other-tag-item" wx:for="{{project.tag}}" wx:key="item" wx:if="{{index<2}}">
+            <text class="project-other-tag-item-text">{{item}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
+<template name="project-cell-scroll">
+  <view class='cell-scroll-box'>
+    <view data-type="singleHouseDataCollect" data-index='{{index}}' data-item="{{project}}" class="project-list-cell {{hostRight=== 0?'move-to-start':''}} {{index === leg?'none_border_bot':''}}" bindtouchstart="drawStart" bindtouchmove="drawMove" bindtouchend="drawEnd" style="right:{{hostRight}}rpx">
+      <view class="project-list-top-view" data-index='{{index}}' data-item="{{project}}" bindtap="didClickItem">
+        <image class="project-sale-activity" wx:if="{{project.app_acitivity_pic.length>0}}" src="{{project.app_acitivity_pic}}" />
+        <jlImage className="multi-project-image" url="{{tools.resizeImageUrl(project.index_img, 120, 90)}}" placeholder="/image/placeholder_house_small.png">
+        </jlImage>
+        <view class="project-cell-info-view">
+          <view class="project-info-name-view">
+            <text class="project-info-name">{{project.name}}</text>
+          </view>
+          <!-- <view class="project-list-price">
+          <text class="project-list-price-label">{{project.card_price.label}}</text>
+          <text class="project-list-info-unit">{{project.card_price.value}}{{project.card_price.unit}}</text>
+        </view> -->
+          <view class="project-list-price">
+            <text class="project-list-price-label">参考单价：</text>
+            <text class="project-list-info-unit">{{project.price_info[0].value}}{{project.price_info[0].unit}}</text>
+          </view>
+          <text class='project-list-info-deatil'><text class="project-list-price-label">参考总价：</text>
+          <text class='project-list-info-deatil-text'>{{project.price_info[1].value}}{{project.price_info[1].unit}}</text></text>
+          <view class="project-list-info-tags">
+            <view class="project-coopration-tag-item"  wx:if="{{project.cooperation_tag}}">
+              <text class="project-coopration-tag-item-text">{{project.cooperation_tag}}</text>
+            </view>
+            <view class="project-other-tag-item" wx:for="{{project.tag}}" wx:key="item" wx:if="{{index<2}}">
+              <text class="project-other-tag-item-text">{{item}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="remove singleDel" data-index='{{index}}' data-type="singleHouseDataCollect" bindtap="delItem">
+        <text>取消</text>
+        <text>收藏</text>
+      </view>
+    </view>
+  </view>
+</template>

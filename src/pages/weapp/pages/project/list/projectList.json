@@ -1,0 +1,27 @@
+{
+  "enablePullDownRefresh": false,
+  "navigationBarTitleText": "居理新房",
+  "backgroundTextStyle": "light",
+  "backgroundColor": "#fff",
+  "usingComponents": {
+    "nocontent": "../../../component/nocontent/nocontent",
+    "jlImage": "../../../component/jlImage/jlImage",
+    "login": "../../../user/login",
+    "orderSuccessAlert": "../../../order/orderSuccessAlert",
+    "bannerToApp": "../../../component/bannerToApp/bannerToApp",
+    "findHousePop": "../../../component/findHousePop/findHousePop",
+    "wxLogin": "../../../component/wxLogin/wxLogin",
+    "dialog-shell": "../../../component/dialogShell/dialogShell",
+    "region-module": "./component/regionModule/regionModule",
+    "little-res-module": "./component/littleResModule/littleResModule",
+    "price-module": "./component/priceModule/priceModule",
+    "filter": "../../home/component/filter/filter",
+    "houseCardB": "./component/houseCardB/houseCard",
+    "houseCardA": "../../../component/houseCard/houseCard",
+    "dynamicState": "./component/dynamicState/dynamicState",
+    "findRoom": "./component/findRoom/findRoom",
+    "authorize-login": "../../../component/authorizeLogin/authorizeLogin",
+    "bottomBar": "./component/bottomBar/bottomBar",
+    "brandPublic": "../../../component/brandPublic/brandPublic"
+  }
+}

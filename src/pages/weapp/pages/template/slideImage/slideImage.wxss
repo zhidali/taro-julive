@@ -1,0 +1,52 @@
+.slide-image-container {
+  position: relative;
+}
+
+.slide-swiper-box {
+  height: 56vw;
+  width: 100vw;
+}
+
+.house-type-slide-image {
+  width: 100vw;
+  height: 56vw;
+  overflow: hidden;
+}
+
+.page-number-box {
+  min-width: 2em;
+  height: 1.3em;
+  color: #fff;
+  line-height: 1.5em;
+  border-radius: 1em;
+  background: #000;
+  opacity: 0.6;
+  position: absolute;
+  padding: 5px;
+  font-size: 0.5em;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  bottom: 28rpx;
+  right: 28rpx;
+}
+
+.page-image {
+  width: 20rpx;
+  height: 20rpx;
+  padding-top: 2rpx;
+  padding-right: 7rpx;
+}
+
+.fake-slide-form-button {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+}
+
+.slider-swiper-item {
+  position: relative;
+}

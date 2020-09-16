@@ -1,0 +1,8 @@
+@import "./template/employeeReviewCell.wxss";
+
+.employee-review-list {
+  background-color: white;
+  margin: 20rpx;
+  margin-bottom: 0rpx;
+  border-radius: 2px;
+}

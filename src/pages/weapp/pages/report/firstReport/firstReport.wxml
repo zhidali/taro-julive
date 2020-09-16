@@ -1,0 +1,197 @@
+<import src="../../../component/loading/loading.wxml" />
+<import src="../../project/template/projectCell.wxml" />
+<import src="../../../utils/wxParse/wxParse.wxml" />
+<wxs src="../../../utils/util.wxs" module="tools" />
+<view class="loading-view" wx:if="{{!loadingHidden}}">
+  <template is="loading-view" data="{{hidden:loadingHidden}}" />
+</view>
+<view class="container {{showBlockDetail?'container-fixed':''}}" hidden="{{!loadingHidden}}">
+  <view class="report-logo-header">
+    <image class="report-logo-icon" src="https://imgs.julive.com/l?p=eyJpbWdfcGF0aCI6IlwvbWluaW1ncy9sb2dvX25ld190aXRsZS5wbmc/d2F0ZXJtYXJrLHRfMCJ9"></image>
+  </view>
+  <view class="work-flow-view-container">
+    <view class="work-flow-view">
+      <view class="work-flow-header-view">
+        <view class="work-flow-tab-view" style="width:{{flowTabWidth*report.flow.list.length}}px">
+          <view class="{{flowActiveIndex == index?'flow-tab-active':'work-flow-tab-item'}}" style="min-width:{{flowTabWidth}}px" wx:for="{{report.flow.list}}" wx:key="item" bindtap="didClickFlowTabItem" data-index="{{index}}">
+            <text class="{{flowActiveIndex == index?'flow-tab-name-active':'flow-tab-name'}}">{{item.name}}</text>
+          </view>
+        </view>
+        <text class="work-flow-link" bindtap="didClickFlowTitle">{{report.flow.title}} ></text>
+      </view>
+      <view class="work-flow-desc-view">
+        <text class="work-flow-desc">{{report.flow.list[flowActiveIndex].value||'暂无内容'}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="block-view">
+    <view class="block-header-view">
+      <text class="block-title">{{report.you_needs.title}}</text>
+    </view>
+    <view class="block-content-view">
+      <view class="need-item" wx:for="{{report.you_needs.needs}}" wx:key="item">{{item}}</view>
+    </view>
+  </view>
+  <view class="block-view">
+    <view class="block-header-view">
+      <text class="block-title">{{report.recommend_project.title}}</text>
+      <text class="work-flow-link" bindtap="didClickProjectMore">
+        {{report.recommend_project.url_title}} >
+      </text>
+    </view>
+    <view class="block-project-view">
+      <text class="recomment-title">{{report.recommend_project.chesive}}</text>
+      <view class="recommend-project-view" wx:for="{{report.recommend_project.project_list}}" wx:key="item">
+        <view class="project-cell-view">
+          <template is="project-cell" data="{{project:item,index:index}}" />
+        </view>
+        <view class="project-review">
+          <template is="wxParse" data="{{wxParseData:item.content.nodes}}" />
+        </view>
+        <view class="seperator-line" wx:if="{{index<report.recommend_project.project_list.length-1}}"></view>
+      </view>
+    </view>
+  </view>
+  <view class="block-view">
+    <view class="block-header-view">
+      <view class="block-title">
+        居理新房
+        <text>一站式购房</text>
+      </view>
+      <text class="work-flow-link" bindtap="didClickServiceIntroduce">查看详细服务介绍 ></text>
+    </view>
+    <!-- <view class="block-service-introduce-view">
+      <swiper class="service-introduce-swiper" previous-margin='10px' next-margin='150rpx' circular="{{true}}" bindchange='onServiceSwiperChange'>
+        <swiper-item wx:for="{{serviceIntroduceList}}" wx:key="item">
+          <view class="service-introduce-swiperitem">
+            <image class="service-introduce {{item}}"></image>
+          </view>
+        </swiper-item>
+      </swiper>
+      <view class="swiper-indicator">
+        <view class="swiper-indicator-item {{currentServiceIntroduceIndex==index?'swiper-indicator-item-active':''}}" wx:for="{{serviceIntroduceList}}" wx:key="index"></view>
+      </view>
+    </view> -->
+    <image class="block-header-view-img" src="/image/icon_diperIntroduce.png"></image>
+  </view>
+  <view class="block-view" wx:if="{{report.question.list.length>0}}">
+    <view class="block-header-view">
+      <text class="block-title">{{report.question.title}}</text>
+      <text class="work-flow-link" bindtap="didClickQuestionMore">
+        {{report.question.url_title}} >
+      </text>
+    </view>
+    <view class="block-question-view">
+      <swiper class="question-answer-swiper" previous-margin='10px' next-margin="{{report.question.list.length==1?'10px':'150rpx'}}" bindchange='onQuestionSwiperChange'>
+        <swiper-item wx:for="{{report.question.list}}" wx:key="item">
+          <view class="{{report.question.list.length==1?'question-swiperitem-onlyone':'question-swiperitem'}}" bindtap="didClickQuestion" data-question="{{item}}">
+            <view class="card-info">
+              <text class="card-title">{{item.title}}</text>
+              <text class="card-desc">{{item.contentText}}</text>
+            </view>
+            <view class="question-button {{item.color==1?'button-subject':'button-red'}}">
+              {{item.color==1?'我的问题':'热门问题'}}
+            </view>
+          </view>
+        </swiper-item>
+      </swiper>
+      <view class="swiper-indicator" wx:if="{{report.question.list.length>1}}">
+        <view class="swiper-indicator-item {{currentQuestionIndex==index?'swiper-indicator-item-active':''}}" wx:for="{{report.question.list}}" wx:key="index"></view>
+      </view>
+    </view>
+  </view>
+  <view class="block-view" wx:if="{{report.district.list.length>0}}">
+    <view class="block-header-view">
+      <text class="block-title">{{report.district.title}}</text>
+    </view>
+    <view class="block-question-view">
+      <swiper class="question-answer-swiper" previous-margin='10px' next-margin="{{report.district.list.length==1?'10px':'150rpx'}}" bindchange='onDistrictSwiperChange'>
+        <swiper-item wx:for="{{report.district.list}}" wx:key="item">
+          <view class="{{report.district.list.length==1?'question-swiperitem-onlyone':'question-swiperitem'}}" bindtap="didClickDistrict" data-district="{{item}}">
+            <view class="card-info">
+              <text class="card-title">{{item.district_name}}</text>
+              <text class="card-district-desc">{{item.contentText}}</text>
+            </view>
+          </view>
+        </swiper-item>
+      </swiper>
+      <view class="swiper-indicator" wx:if="{{report.district.list.length>1}}">
+        <view class="swiper-indicator-item {{currentDistrictIndex==index?'swiper-indicator-item-active':''}}" wx:for="{{report.district.list}}" wx:key="index"></view>
+      </view>
+    </view>
+  </view>
+  <view class="block-view" wx:if="{{report.market_case.list.length>0}}">
+    <view class="block-header-view">
+      <text class="block-title">{{report.market_case.title}}</text>
+      <text class="work-flow-link" bindtap="didClickMarketCaseMore">
+        {{report.market_case.url_title}} >
+      </text>
+    </view>
+    <view class="block-market-case-view">
+      <view class="block-market-case-item" wx:for="{{report.market_case.list}}" wx:key="item">
+        <text class="market-case-item-title">{{item.title}}</text>
+        <view class="market-case-item-card" bindtap='didClickMarketCase' data-market-case="{{item}}">
+          <text class="card-title">{{item.name}}</text>
+          <text class="card-district-desc">{{item.contentText}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="block-view" wx:for="{{report.blank_module}}" wx:key="item">
+    <view class="block-header-view">
+      <text class="block-title">{{item.title || '更多信息'}}</text>
+    </view>
+    <view class="block-blank-view">
+      <text class="block-blank-module">{{item.contentText}}</text>
+    </view>
+  </view>
+  <view class="block-view">
+    <view class="block-header-view">
+      <text class="block-title">我是您的专属咨询师</text>
+    </view>
+    <view class="employee-card-view">
+      <jlImage className="employee-avatar" url="{{tools.resizeImageUrl(report.employee.avatar, 60, 60)}}" placeholder="{{report.employee.sex==1?'../../image/placeholder_consult_avater_man.png':'../../image/placeholder_consult_avater_woman.png'}}" />
+      <view class="employee-info">
+        <view class='employee-name-view'>
+          <text class="employee-name">{{report.employee.employee_name}}</text>
+          <view class="employee-tag-view">
+            <view class="employee-tag-item" wx:for="{{report.employee.tag}}" wx:key="item">
+              {{item}}
+            </view>
+          </view>
+        </view>
+        <text class="employee-academy">毕业于{{report.employee.academy}}</text>
+        <view class="employee-kpi-view">
+          <view class="employee-kpi-item">
+            <text class="employee-kpi-title">累计服务客户：</text>
+            <text class="employee-kpi-value">{{report.employee.order_num}}人</text>
+          </view>
+          <view class="employee-kpi-item">
+            <text class="employee-kpi-title">客户满意度：</text>
+            <text class="employee-kpi-value">{{report.employee.high_rate}}%</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="julive-introduce-view">
+    <text class="julive-introduce-title">居理新房一站式购房平台</text>
+    <!-- <view class="julive-introduce-subtitle">
+       <text class="julive-introduce-subtitle-desc">累计已帮助居理购房人节省</text>
+       <text class="julive-introduce-subtitle-money">{{report.money}}元</text>
+       <text class="julive-introduce-subtitle-desc">购房经费</text>
+     </view> -->
+    <view class="julive-introduce-image" />
+  </view>
+  <button class="julive-introduce-button" bindtap="didClickJuliveIntroduceButton">查看完整居理介绍</button>
+  <view class="julive-company-view">
+    <image class="julive-introduce-logo" src="../../../image/img_record_box_end.png"></image>
+  </view>
+  <view class="img_end">
+    <text class="img_end_line_ft"></text>
+    <text class="img_end_line_mi">END</text>
+    <text class="img_end_line_ri"></text>
+  </view>
+</view>
+<view class="tool-bar" hover-class='tool-bar-hover' bindtap="didClickPayItem" hidden="{{!loadingHidden}}"></view>
+<firstReportDetail wx:if="{{showBlockDetail}}" showModal="{{showBlockDetail}}" blockTitle="{{blockTitle}}" title="{{title}}" content="{{content}}" downloadList="{{downloadList}}" bindclosePopViewCallback="closePopViewCallback" />

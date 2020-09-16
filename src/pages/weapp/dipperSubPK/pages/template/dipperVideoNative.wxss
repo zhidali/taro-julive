@@ -1,0 +1,92 @@
+video {
+  width: 100%;
+  height: 380rpx;
+  display: block;
+}
+
+.video-box {
+  width: 100%;
+  height: 380rpx;
+  background-color: #fff;
+  position: relative;
+  overflow: hidden;
+  box-sizing: content-box;
+}
+
+.video-box-mask {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  top: 0rpx;
+  left: 0rpx;
+  background: rgba(0, 0, 0, 0.10);
+}
+
+.video-play {
+  width: 70rpx;
+  height: 70rpx;
+  position: absolute;
+  top: calc(50% - 35rpx);
+  left: calc(50% - 35rpx);
+}
+
+.video-again-play-box {
+  width: 70rpx;
+  position: absolute;
+  left: calc(50% - 35rpx);
+  top: 130rpx;
+}
+
+.video-again-play-img {
+  width: 70rpx;
+  height: 70rpx;
+  margin-bottom: 10rpx;
+}
+
+.video-again-play-font {
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  padding: 0 6rpx;
+  color: #fff;
+}
+
+.video-box-mask-content {
+  text-align: center;
+}
+
+.video-box-mask-title {
+  background: rgba(0, 0, 0, 0.80);
+  border-radius: 60rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  line-height: 60rpx;
+  height: 60rpx;
+  padding: 0rpx 20rpx;
+  color: #fff;
+  letter-spacing: 0;
+  text-align: center;
+  margin-top: 110rpx;
+  display: inline-block;
+  white-space: pre-wrap;
+}
+
+.video-box-mask-btn {
+  background: #00c0eb;
+  border-radius: 8rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  line-height: 24rpx;
+  padding: 22rpx 40rpx;
+  color: #fff;
+  text-align: center;
+  display: inline-block;
+  margin-top: 22rpx;
+}
+
+.viedeo-duration{
+  position: absolute;
+  right: 30rpx;
+  bottom: 22rpx;
+  white-space: pre-wrap;
+}

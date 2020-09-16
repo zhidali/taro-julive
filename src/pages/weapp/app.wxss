@@ -1,0 +1,236 @@
+@import 'component/index.wxss';
+@import './utils/wxParse/wxParse.wxss';
+
+page {
+  height: 100%;
+  background-color: #f2f2f2;
+  font-family: -apple-system-font, Helvetica Neue, Helvetica, sans-serif;
+  font-family: '微软雅黑', Helvetica, 'Hiragino Sans GB', 'Microsoft Yahei',
+    Arial, sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.subjectColor {
+  color: #48b3e2;
+}
+
+.white {
+  color: white;
+}
+
+button {
+  border-radius: 0;
+}
+
+button::after {
+  border-radius: 0;
+  border: none;
+}
+
+.button-hover {
+  background: #48b3e2;
+  color: white !important;
+}
+
+.loading-tip {
+  padding-top: 30rpx;
+  padding-bottom: 30rpx;
+  width: 100%;
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  color: #ccc;
+  font-size: 25rpx;
+}
+
+.loading-view {
+  position: absolute;
+  padding-top: 30vh;
+  align-items: center;
+  width: 100vw;
+  z-index: 1000;
+}
+
+.hover-view {
+  background-color: #efefef;
+}
+
+.page-bottom-margin {
+  margin-bottom: 80px;
+}
+
+.iphonex-page-bottom-margin {
+  margin-bottom: 100px;
+}
+
+.project-sale-status {
+  background: #effbfe;
+  border-radius: 4rpx;
+  color: #12c48e;
+  font-size: 22rpx;
+  margin-right: 0rpx;
+  white-space: nowrap;
+  flex-wrap: nowrap;
+  padding: 0 8rpx;
+  height: 32rpx;
+  line-height: 32rpx;
+}
+
+.project-sale-out {
+  color: white;
+  background: #aaa;
+}
+
+.common-button-two {
+  display: flex;
+  justify-content: space-between;
+}
+
+.common-button-two .button-left,
+.common-button-two .button-right {
+  height: 72rpx;
+  border-radius: 8rpx;
+  font-size: 28rpx;
+  color: #00c0eb;
+  width: 284rpx;
+  border: 1rpx solid #00c0eb;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.common-button-two .button-right {
+  margin-left: 22rpx;
+  color: #fff;
+  background-color: #00c0eb;
+  border-color: #00c0eb;
+}
+
+.common-button-two .button-left image,
+.common-button-two .button-right image {
+  width: 32rpx;
+  height: 32rpx;
+  vertical-align: middle;
+  padding-right: 8rpx;
+}
+
+.common-button-whole {
+  font-family: PingFangSC-Medium;
+  width: 100%;
+  margin: 0 auto;
+  height: 92rpx;
+  background-color: #e1faff;
+  border-radius: 8rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 28rpx;
+  color: #00c0eb;
+  box-sizing: border-box;
+}
+
+.common-button-whole image {
+  width: 38rpx;
+  height: 38rpx;
+  padding-right: 10rpx;
+}
+
+.common-button-whole text {
+  font-size: 28rpx;
+  color: #00c0eb;
+  line-height: 28rpx;
+}
+
+.common-button-content {
+  width: 160rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  border-radius: 100rpx;
+  color: #fff;
+  text-align: center;
+  font-family: PingFangSC-Medium;
+  font-size: 28rpx;
+  background-color: #00c0eb;
+}
+
+.all-flex-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.all-white-space {
+  white-space: nowrap;
+}
+
+.all-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.all-ellipsis-two {
+  display: -webkit-box;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.common-text-color {
+  color: #00c0eb;
+}
+/* //弹窗相关 */
+.modal-mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.5;
+  overflow: hidden;
+  z-index: 1000;
+}
+.modal-dialog {
+  width: 600rpx;
+  overflow: hidden;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  z-index: 9999;
+  background: #fff;
+  border-radius: 8rpx;
+  padding: 0 52rpx;
+  box-sizing: border-box;
+}
+.modal-icon-close {
+  width: 36rpx;
+  height: 36rpx;
+  position: absolute;
+  top: 16rpx;
+  right: 16rpx;
+}
+.common-dialog-tips {
+  margin: 32rpx 0;
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  color: rgba(141, 151, 153, 1);
+  line-height: 34rpx;
+}
+
+.wxlogin-box{
+  position: absolute;
+  top: 0rpx;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  /* opacity: 0; */
+}

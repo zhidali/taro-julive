@@ -1,0 +1,85 @@
+<import src="../template/projectCell.wxml" />
+<import src="../template/dipperRecordRemind.wxml" />
+<import src="../template/dipperRecordMulti.wxml" />
+<import src="../../../component/loading/loading.wxml" />
+<view class="loading-view" wx:if="{{!loadingHidden}}">
+  <template is="loading-view" data="{{hidden:loadingHidden}}" />
+</view>
+<view class='container' wx:if="{{loadingHidden}}">
+  <view class='record-head'>
+    <view class="record-head-lf {{activeFlag?'active':''}}" data-flag='1' bindtap='selectActive'>全部<text hidden='{{!activeFlag}}' class='border_bom_line'></text></view>
+    <view class="record-head-ri {{activeFlag?'':'active'}}" data-flag='0' bindtap='selectActive'>我的收藏<text hidden='{{activeFlag}}' class='border_bom_line'></text></view>
+  </view>
+  <view class='all_box' hidden="{{!activeFlag}}">
+    <view class='all_box_body' wx:if="{{list.length>0}}">
+      <view>
+        <!-- 简介提醒 -->
+        <block wx:for="{{list}}" wx:key="{{index}}">
+          <block wx:if="{{item.leixing==1}}">
+            <template is="dipper-record-remind" data="{{item:item,index:index}}" />
+          </block>
+          <!-- 简介提醒 end -->
+          <block wx:if="{{item.leixing == 3}}">
+            <template is="dipper-record-multi" data="{{multiHouseData:item.project,hostIndex:index,share_id:item.id,order_id:item.order_id,type:item.type,itemLength:item.project.length}}" />
+          </block>
+          <block wx:if="{{item.leixing == 2}}">
+            <template is="project-cell" data="{{project:item,index:index,opType:'1'}}" />
+          </block>
+        </block>
+      </view>
+      <view class='scroll_pull_down_refresh'>
+        <jlImage className='scroll_pull_down_refresh_img' url="{{'/image/img_record_box_end.png'}}" placeholder="/dipperSubPK/images/img_record_box_collect.png"></jlImage>
+      </view>
+      <view class="img_end">
+        <text class="img_end_line_ft"></text>
+        <text class="img_end_line_mi">END</text>
+        <text class="img_end_line_ri"></text>
+      </view>
+    </view>
+    <view class='footer' wx:else>
+      <jlImage className='record_box_footer_img' url="{{'/dipperSubPK/images/img_record_box_collect.png'}}" placeholder="/image/placeholder_house_big.png"></jlImage>
+      <view class='footer-title'>没有攻略</view>
+      <view class='footer-content'>当前还没有购房攻略，联系咨询师获取</view>
+    </view>
+  </view>
+  <!-- 华丽的分割线～～～～～～～～～～～～～～～ -->
+  <view class="enshrine_box " hidden="{{activeFlag}}">
+    <view class='enshrine_box_body ' wx:if="{{collectList.length>0}}">
+      <block wx:for="{{collectList}}" wx:key="{{index}}">
+        <block wx:if="{{item.leixing==1}}">
+          <template is="dipper-record-remind-scroll" data="{{item:item,index:index,leg:collectList.length-1}}" />
+        </block>
+        <block wx:if="{{item.leixing == 3}}">
+          <template is="dipper-record-multi-scroll" data="{{multiHouseData:item.project,hostIndex:index,hostRight:item.right,share_id:item.id,order_id:item.order_id,type:item.type,itemLength:item.project.length,leg:collectList.length-1}}" />
+        </block>
+        <block wx:if="{{item.leixing == 2}}">
+          <template is="project-cell-scroll" data="{{project:item,index:index,opType:'1',hostRight:item.right,leg:collectList.length-1}}" />
+        </block>
+      </block>
+      <view class='scroll_pull_down_refresh'>
+        <jlImage className='scroll_pull_down_refresh_img' url="{{'/image/img_record_box_end.png'}}" placeholder="/image/placeholder_house_big.png"></jlImage>
+      </view>
+      <view class="img_end">
+        <text class="img_end_line_ft"></text>
+        <text class="img_end_line_mi">END</text>
+        <text class="img_end_line_ri"></text>
+      </view>
+    </view>
+    <view class='footer' wx:else>
+      <block wx:if="{{reachBottomFlag}}">
+        <view class="loading-tip">加载中…</view>
+      </block>
+      <block wx:else>
+        <jlImage className='record_box_footer_img' url="{{'/dipperSubPK/images/img_record_box_all.png'}}" placeholder="/image/placeholder_house_big.png"></jlImage>
+        <view class='footer-title'>没有收藏</view>
+        <view class='footer-content'>还没有收藏的购房攻略哦~~</view>
+      </block>
+    </view>
+  </view>
+  <!-- 大吉大利的结束线 -->
+  <!-- 联系我的咨询师 -->
+  <view class='record-footer '>
+    <view class="record-footer-btn {{isIpx?'isphoneX':''}}" bindtap='phoneCall'>联系我的咨询师</view>
+  </view>
+  <!-- 联系我的咨询师 end -->
+</view>

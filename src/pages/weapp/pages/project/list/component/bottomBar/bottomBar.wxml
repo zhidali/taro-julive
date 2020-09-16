@@ -1,0 +1,33 @@
+<view class="bottom-bar-wrap my-class">
+  <view
+    class="bottom-bar-box {{!bottomBarData.isShow?'fade-out':''}}"
+    wx:if="{{bottomBarData.isShow && !userHasOrder}}"
+  >
+    <image bindtap="didCloseBottomBarPop" class="close-img" src="/image/icon_close_pop_bar.png" />
+    <view class="bottom-bar-content-box">
+      <authorize-login bind:allow="allowLogin" bind:cancel="cancelLogin" bind:click="clickLogin">
+        <view class="bottom-bar-content" slot="btn">
+          <image
+            class="img"
+            mode="aspectFill"
+            src="{{bottomBarData.popup.avatar?bottomBarData.popup.avatar:'https://imgs.julive.com/l?p=eyJpbWdfcGF0aCI6IlwvbWluaW1ncy9lbXBsb3llZV9naXJsLnBuZz93YXRlcm1hcmssdF8wIn0='}}"
+          />
+          <view class="text">
+            <text class="txt">{{bottomBarData.popup.title}}</text>
+            <text class="txt">{{bottomBarData.popup.content}}</text>
+          </view>
+          <view class="btn">{{bottomBarData.popup.button}}</view>
+        </view>
+      </authorize-login>
+    </view>
+  </view>
+
+  <!-- 留电成功弹窗 -->
+  <orderSuccessAlert
+    popType="{{1}}"
+    fromPage="p_project_list"
+    showModal="{{showOrderSuccessAlert}}"
+    title="{{alertTitle}}"
+    content="{{alertContent}}"
+  />
+</view>

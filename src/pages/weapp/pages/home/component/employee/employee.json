@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "jlImage": "/component/jlImage/jlImage",
+    "dialog-shell": "/component/dialogShell/dialogShell",
+    "authorize-login": "/component/authorizeLogin/authorizeLogin"
+  }
+}

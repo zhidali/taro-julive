@@ -1,0 +1,64 @@
+<wxs src="../util/util.wxs" module="tools" />
+<template name="dipper-traffic">
+  <view class='commonality m_commuting_route' wx:if="{{lng&&lat}}">
+    <view class='commonality_head'>
+      <view class='commonality_head_lf'>通勤路线</view>
+      <view bindtap='didClickMap' class='commonality_head_ri'>
+        点击地图可放大查看路线
+        <image class='icon_ft' src='/image/icon_view_more.png'></image>
+      </view>
+    </view>
+    <view class='map_box shadow'>
+      <map id="map" bindtap="didClickMap" polyline="{{polyline}}" markers="{{marker}}" style='width:100%;height:360rpx;' longitude="{{lng}}" latitude="{{lat}}"></map>
+      <cover-view class='cover-select-traffic'>
+        <cover-view class='cover-select-traffic-driving' bindtap='selectTraffic' data-index='0'>
+          <cover-image src="/dipperSubPK/images/{{selectTrafficFlag?'select_traffic_driving_b.png':'select_traffic_driving_a.png'}}"></cover-image>
+          <cover-view>自驾</cover-view>
+        </cover-view>
+        <cover-view class='cover-select-traffic_line'></cover-view>
+        <cover-view class='cover-select-traffic-transit' bindtap='selectTraffic' data-index='1'>
+          <cover-image src="/dipperSubPK/images/{{selectTrafficFlag?'select_traffic_transit_a.png':'select_traffic_transit_b.png'}}"></cover-image>
+          <cover-view>公交</cover-view>
+        </cover-view>
+      </cover-view>
+    </view>
+    <view class='select-destination'>
+      <view data-index="0" class="{{selectDestinationFlag?'':'target_destination'}}" bindtap='selectDestination'>
+        {{commute[0][0].commute_address}}
+      </view>
+      <view data-index="1" wx:if="{{commute.length>1}}" class="{{selectDestinationFlag?'target_destination':''}}" bindtap='selectDestination'>
+        {{commute[1][0].commute_address}}
+      </view>
+    </view>
+    <view wx:for="{{commuteAction}}" wx:key="{{index}}" data-index="{{index}}" class="{{commuteAction.length - 1 >index?'borderBom':''}}" bindtap="selectHouseTraffic">
+      <view class="singleProject_traffic_path {{index>0?'borderTop':''}} ">
+        <view class='ball' style="background-color:{{tools.backColor(index)}}">
+          <image class='ball_right' src='/image/icon_nike.png' hidden="{{houseTrafficIndex != index}}" />
+        </view>
+        <text class="{{houseTrafficIndex ==index?'':'traffic_opa'}}">
+          {{selectTrafficFlag?'公交':'自驾'}}：
+        </text>
+        <view class="{{houseTrafficIndex ==index?'':'traffic_opa'}}">
+          <text class="{{houseTrafficIndex ==index?'text_color':''}}">
+            {{selectTrafficFlag?item.by_bus_time:item.drive_time}}分钟
+          </text>
+          左右
+        </view>
+      </view>
+      <view class="singleProject_traffic_path " style="margin-top:12rpx;">
+        <view class='orangeBall ball'>
+          <image class='ball_right' src='/image/icon_nike.png' hidden="{{houseTrafficIndex != index}}" />
+          <text class='vertical_line'></text>
+        </view>
+        <text class="{{houseTrafficIndex ==index?'':'traffic_opa'}}">地址：</text>
+        <view class="traffi_go_stop {{houseTrafficIndex ==index?'':'traffic_opa'}}">
+          {{item.project_name}}>{{item.commute_address}}
+        </view>
+      </view>
+    </view>
+    <view class='nearby_price_btn' bindtap='didClickProjectdetails' wx:if="{{!aroundPrice.second_project_price&&aroundPrice.take_address_price}}">
+      <image class='nearby_price_btn_img' src='../../../image/icon_get_notice.png'></image>
+      点击了解更多配套/教育信息
+    </view>
+  </view>
+</template>

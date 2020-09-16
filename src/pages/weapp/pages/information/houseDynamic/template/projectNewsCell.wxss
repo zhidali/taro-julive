@@ -1,0 +1,378 @@
+.project-news-cell {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 100%;
+  background-color: white;
+}
+
+.slide-view {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.circle-view {
+  margin-top: 8rpx;
+  margin-left: 28rpx;
+  width: 16rpx;
+  height: 16rpx;
+  min-height: 16rpx;
+  max-height: 16rpx;
+  border-radius: 8rpx;
+  background-color: #00c0eb;
+}
+
+.vertical-slide-view {
+  margin-top: 6px;
+  margin-left: 34rpx;
+  width: 2rpx;
+  height: 100%;
+  background-color: #f3f6f9;
+}
+
+.project-news-cell-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-left: 16rpx;
+  margin-right: 28rpx;
+  margin-top: 0px;
+  width: 100%;
+}
+
+.house-dynamic-time-view {
+  margin-left: 0;
+  /* margin-top: -8rpx; */
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.house-dynamic-time {
+  margin-left: 0;
+  margin-top: 0;
+  font-family: PingFangSC-Medium;
+  font-size: 28rpx;
+  color: #77808a;
+  letter-spacing: 0;
+  line-height: 28rpx;
+}
+
+.new-dynamic {
+  margin-left: 20rpx;
+  /* margin-top: 4rpx; */
+  vertical-align: middle;
+  width: 62rpx;
+  height: 32rpx;
+}
+
+.new-open {
+  margin-left: 20rpx;
+  vertical-align: middle;
+  width: 92rpx;
+  height: 32rpx;
+}
+
+.project-house-info-view {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  overflow: hidden;
+  margin-left: 0;
+  margin-top: 40rpx;
+  margin-right: 0;
+  width: 100%;
+}
+
+.house-image-view {
+  max-height: 112rpx;
+  width: 144rpx;
+  height: 112rpx;
+}
+
+.project-house-image {
+  margin-left: 0;
+  margin-top: 0;
+  min-width: 144rpx;
+  min-height: 112rpx;
+  max-width: 144rpx;
+  max-height: 112rpx;
+  border-radius: 8rpx;
+  background-color: #f3f6f9;
+}
+
+.project-house-info-detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow: hidden;
+  margin-top: 0;
+  margin-left: 24rpx;
+  margin-right: -10rpx;
+  width: 100%;
+}
+
+.project-name {
+  margin: 2rpx 0 8rpx;
+  display: -webkit-box;
+  word-break: break-all;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  font-family: PingFangSC-Medium;
+  font-size: 32rpx;
+  line-height: 32rpx;
+  height: 32rpx;
+  color: #031a1f;
+  letter-spacing: 0;
+}
+
+.total-price {
+  margin-top: 0;
+  margin-left: 0;
+  display: -webkit-box;
+  word-break: break-all;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  font-family: PingFang-SC-Medium;
+  font-size: 24rpx;
+  line-height: 34rpx;
+  color: #8d9799;
+}
+
+.unit-price {
+  margin-top: 0;
+  margin-left: 0;
+  display: -webkit-box;
+  word-break: break-all;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  font-family: PingFang-SC-Medium;
+  font-size: 24rpx;
+  line-height: 34rpx;
+  color: #8d9799;
+  letter-spacing: 0;
+}
+
+.project-house-status-district {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-right: 0;
+  min-width: 140rpx;
+  max-width: 140rpx;
+}
+
+.project-house-sale-status {
+  margin-left: 72rpx;
+  max-width: 68rpx;
+  max-height: 32rpx;
+  min-width: 68rpx;
+  min-height: 32rpx;
+  text-align: center;
+  line-height: 32rpx;
+  border-radius: 4rpx;
+  font-family: PingFang-SC-Medium;
+  font-size: 24rpx;
+  color: #ffffff;
+}
+
+.project-house-district {
+  margin-top: 46rpx;
+  margin-left: 0;
+  margin-right: 0;
+  display: -webkit-box;
+  word-break: break-all;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  text-align: right;
+  font-family: PingFang-SC-Medium;
+  font-size: 24rpx;
+  line-height: 34rpx;
+  color: #8d9799;
+  letter-spacing: 0;
+}
+
+.dynamic-view {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-left: 0;
+  margin-top: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.dynamic-title {
+  margin-left: 0;
+  margin-top: 40rpx;
+  display: -webkit-box;
+  word-break: break-all;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  font-family: PingFangSC-Medium;
+  font-size: 32rpx;
+  color: #031a1f;
+  letter-spacing: 0;
+  line-height: 32rpx;
+}
+
+.red-title {
+  color: #ff2844;
+}
+
+.dynamic-content {
+  display: -webkit-box;
+  word-break: break-all;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  margin-left: 0;
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  line-height: 44rpx;
+  color: #031a1f;
+  margin-top: 24rpx;
+}
+
+.dynamic-time {
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular;
+  color: #8d9799;
+  line-height: 32rpx;
+  margin-top: 24rpx;
+}
+.time-down {
+  display: inline-block;
+  padding-left: 16rpx;
+}
+.time-num {
+  font-size: 36rpx;
+  font-family: PingFangSC-Medium;
+  color: #ff2844;
+  line-height: 50rpx;
+}
+.time-unit {
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular;
+  color: #8d9799;
+  line-height: 34rpx;
+  padding: 0 4rpx;
+}
+
+.look-more {
+  margin-top: 24rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #00c0eb;
+  text-align: left;
+  line-height: 28rpx;
+}
+
+.dynamic-image {
+  margin-top: 12rpx;
+  margin-left: 0;
+  margin-right: 0;
+  width: 100%;
+  height: 320rpx;
+  border-radius: 16rpx;
+}
+
+.project-news-cell-bottom-view {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 0;
+  margin-left: 0;
+  margin-right: 0;
+  width: 100%;
+  padding-bottom: 52rpx;
+  margin-top: 24rpx;
+  align-items: center;
+}
+
+.share-dynamic {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-right: 0;
+  width: 108rpx;
+  height: 48rpx;
+  position: relative;
+}
+
+.share-dynamic-image {
+  margin-left: 0;
+  margin-right: 4rpx;
+  width: 48rpx;
+  height: 48rpx;
+}
+
+.share-dynamic-text {
+  margin-top: 4rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #031a1f;
+  letter-spacing: 0;
+}
+
+.subscribe-dynamic {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 16rpx;
+  width: 536rpx;
+  height: 80rpx;
+  border-radius: 8rpx;
+  font-family: PingFangSC-Medium;
+  font-size: 28rpx;
+  color: #00C0EB;
+  box-sizing: border-box;
+  border-radius:8rpx;
+  border:2rpx solid rgba(0,192,235,1);
+  background-color: #fff;
+}
+
+.subscribe-dynamic.red-btn {
+  color: #FF2844;
+  border:2rpx solid rgba(255,40,68,1);
+}
+
+.show-icon {
+  width: 36rpx;
+  height: 36rpx;
+  padding-right: 10rpx;
+  vertical-align: middle;
+}
+
+.share-button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0);
+}
+.dynamic-wx-loging-box {
+  position: relative;
+}
+.dynamic-wx-loging {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}

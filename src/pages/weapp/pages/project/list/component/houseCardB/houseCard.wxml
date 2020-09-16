@@ -1,0 +1,93 @@
+<wxs src="../../../../../utils/util.wxs" module="tools" />
+<view class="my-class house-cardb-box ">
+  <image wx:if="{{projectData.status == '3'}}" src="/image/img-sell-out.png" class="img-sell-out" />
+  <view class="project-image-wrap {{projectData.status == '3' ? 'project-sell-out' : ''}} ">
+    <view class="icon-wrap">
+      <view
+        class="'tag' {{projectData.left_tag_b.type == '1' ? 'special' : ''}} {{projectData.left_tag_b.type == '2' ? 'discount-tag' : ''}} {{projectData.left_tag_b.type == '3' ? 'new' : ''}} {{projectData.left_tag_b.type == '4' ? 'recomm' : ''}}"
+        wx:if="{{projectData.left_tag_b.type != ''}}"
+        >{{projectData.left_tag_b.value}}
+      </view>
+      <authorize-login bind:allow="allowLogin" bind:cancel="cancelLogin" bind:click="clickLogin">
+        <view slot="btn">
+          <image
+            class="collect"
+            src="{{projectData.is_collect == 1 && loginStatus ? '/image/icon-collect.png' : '/image/icon-not-collect.png'}}"
+          ></image>
+        </view>
+      </authorize-login>
+    </view>
+    <swiper
+      class="swiper-box"
+      indicator-dots="{{false}}"
+      duration="500"
+      circular="true"
+      current="{{currentBannerIndex}}"
+      bindchange="projectSwiperChange"
+    >
+      <swiper-item wx:for="{{projectData.img_list}}" wx:for-index="index" wx:key="item">
+        <view class="swiper-item">
+          <image
+            class="project-image-b"
+            src="{{ item.url.length > 0 ?  tools.resizeImageUrl(item.url, 345, 180) : 'https://imgs.julive.com/l?p=eyJpbWdfcGF0aCI6IlwvbWluaW1ncy9iZy1kZWZhdWx0LXBsYW5iLnBuZz93YXRlcm1hcmssdF8wIn0=' }}"
+            data-index="{{index}}"
+            data-img="https://imgs.julive.com/l?p=eyJpbWdfcGF0aCI6IlwvbWluaW1ncy9iZy1kZWZhdWx0LXBsYW5iLnBuZz93YXRlcm1hcmssdF8wIn0="
+            binderror="errLoad"
+          ></image>
+          <image wx:if="{{projectData.video_path != '' && index == 0}}" src="/image/icon-video.png"  class="video-tag"/>
+        </view>
+      </swiper-item>
+    </swiper>
+    <view
+      class="swiper-banner-indicator swiper-banner-indicator-bottom"
+      wx:if="{{projectData.img_list.length > 1}}"
+    >
+      <view
+        class="swiper-banner-indicator-item {{currentBannerIndex == index?'swiper-banner-indicator-item-active':''}}"
+        wx:for="{{projectData.img_list}}"
+        wx:key="index"
+      ></view>
+    </view>
+  </view>
+  <view class="project-info {{projectData.status == '3' ? 'project-sell-out' : ''}} ">
+    <view class="flex-info name-wrap">
+      <text class="project-name">{{projectData.project_name}}</text>
+      <text class="project-tag" wx:if="{{projectData.project_type.name !== ''}}">{{projectData.project_type.name}}</text>
+    </view>
+    <view class="area-wrap space">
+      <view class="district">{{projectData.district_name}} {{projectData.trade_area}} </view>
+      <view class="line"></view>
+      <view class="area">
+        {{projectData.acreage.type == '1' ? '建面' :
+        '套内'}}{{projectData.acreage.acreage_min}}{{(projectData.acreage.acreage_min !=
+        projectData.acreage.acreage_max && projectData.acreage.acreage_min != '' &&
+        projectData.acreage.acreage_max != '') ? "-": ''
+        }}{{projectData.acreage.acreage_max}}{{projectData.acreage.unit}}
+      </view>
+    </view>
+    <view class="tag-wrap space" wx-if="{{projectData.billboard_tag != '' || projectData.brand_tag.length>0 || projectData.ascept_tag.length>0}}">
+      <view class="tag rank-tag" wx:if="{{projectData.billboard_tag != ''}}">
+        <image class="rank" src="/image/icon-rank.png"></image>
+        {{projectData.billboard_tag}}
+      </view>
+      <view class="tag special" wx:for="{{projectData.brand_tag}}" wx:key="index">
+        {{item}}
+      </view>
+      <view class="tag" wx:for="{{projectData.ascept_tag}}" wx:key="index">
+        {{item}}
+      </view>
+    </view>
+    <view class="price-wrap">
+      <label class="total">
+        {{projectData.price.price}}{{projectData.price.unit}}
+      </label>
+      <label class="payment">
+        {{projectData.down_pay.price != '' ? '首付':
+        ''}}{{projectData.down_pay.price}}{{projectData.down_pay.unit}}
+      </label>
+      <label class="discounts" wx:if="{{projectData.pay_info != ''}}">
+        {{projectData.pay_info}}
+      </label>
+    </view>
+  </view>
+</view>

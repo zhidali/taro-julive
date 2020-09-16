@@ -1,0 +1,99 @@
+.search-result {
+  overflow: hidden;
+}
+
+.search-result-normal {
+  display: flex;
+  overflow: hidden;
+  margin: 52rpx 0rpx;
+}
+
+.search-result-normal-left image {
+  display: block;
+  height: 300rpx;
+  width: 268rpx;
+  background-size: cover;
+  background-image: url('http://imgs.julive.com/l?p=eyJpbWdfcGF0aCI6IlwvbWluaW1ncy9pbWctcHJvamVjdC1kaWxpLnBuZz93YXRlcm1hcmssdF8wIn0gICA=');
+}
+
+.search-result-normal-right .name {
+  font-family: PingFangSC-Medium;
+  font-size: 32rpx;
+  line-height: 44rpx;
+  color: #3e4a59;
+  margin-top: 20rpx;
+}
+
+.search-result-character {
+  margin-top: 16rpx;
+  font-family: PingFÏangSC-Regular;
+  font-size: 24rpx;
+  line-height: 34rpx;
+  color: #77808a;
+  display: flex;
+  align-items: center;
+}
+
+.search-result-btn {
+  margin-top: 24rpx;
+  display: flex;
+}
+
+.search-result-btn .tel,
+.search-result-btn .house {
+  color: #fff;
+  font-family: PingFangSC-Medium;
+  font-size: 28rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  padding: 0 28rpx;
+  border-radius: 8rpx;
+}
+
+.search-result-btn .tel {
+  background-color: #00c0eb;
+}
+
+.search-result-btn .house {
+  margin-left: 20rpx;
+  background-color: #fa5f35;
+}
+
+.result-original-point {
+  width: 6rpx;
+  height: 6rpx;
+  border-radius: 50%;
+  background: #3e4a59;
+  display: inline-block;
+  margin-right: 8rpx;
+}
+
+.search-result-sell-out {
+  margin: 54rpx 40rpx;
+}
+
+.search-result-sell-mar-none{
+  margin: 54rpx 0rpx;
+}
+
+.search-result-sell-out image {
+  width: 100%;
+  height: 200rpx;
+  background-size: cover;
+  background-image: url('http://imgs.julive.com/l?p=eyJpbWdfcGF0aCI6IlwvbWluaW1ncy9pbWdlLXByb2plY3RsaXN0LXJlYmEucG5nIn0gICA=');
+}
+
+.margin-bom-zero {
+  margin-bottom: 0rpx;
+}
+.result-sell-out-view {
+  position: relative;
+}
+.sell-out-wx-loging {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+}

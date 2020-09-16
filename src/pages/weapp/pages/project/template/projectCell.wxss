@@ -1,0 +1,202 @@
+button {
+  border-radius: 0;
+  padding: 0;
+}
+.project-list-cell {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: white;
+  width: 670rpx;
+  position: relative;
+}
+
+.project-list-hover-cell {
+  background-color: #efefef;
+}
+
+.project-list-top-view {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  position: relative;
+}
+
+.project-image {
+  width: 224rpx;
+  min-width: 224rpx;
+  max-width: 224rpx;
+  height: 168rpx;
+  background-color: #efefef;
+  border-radius: 4rpx;
+  display: block;
+}
+
+.project-cell-info-view {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-left: 16rpx;
+  flex: 1;
+  max-width: 430rpx;
+  width: 430rpx;
+}
+
+.project-info-name-view {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.project-sale-activity {
+  position: absolute;
+  width: 84rpx;
+  height: 32rpx;
+  left: 0rpx;
+  top: 0rpx;
+}
+
+.project-info-name {
+  display: -webkit-box;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  font-family: PingFangSC-Semibold;
+  font-size: 32rpx;
+  color: #3e4a59;
+  line-height: 44rpx;
+  height: 44rpx;
+  margin-right: 20rpx;
+}
+
+.project-list-price {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 28rpx;
+  line-height: 40rpx;
+  margin: 4rpx 0;
+}
+
+.project-list-price-label {
+  font-family: PingFangSC-Semibold;
+  font-size: 22rpx;
+  color: #666;
+  margin-right: 10rpx;
+}
+
+.project-list-info-unit {
+  font-size: 28rpx;
+  color: #fa5f35;
+  font-family: PingFangSC-Semibold;
+}
+.project-list-info-area {
+  font-size: 24rpx;
+  color: #77808a;
+  line-height: 34rpx;
+  margin-left: 10rpx;
+}
+
+.project-list-info-deatil {
+  font-size: 24rpx;
+  color: #77808a;
+  display: -webkit-box;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  line-height: 34rpx;
+  margin-bottom: 6rpx;
+}
+
+.project-list-info-tags {
+  align-items: center;
+}
+
+.list-info-tags-first-r {
+  color: #a9bacf;
+  line-height: 36rpx;
+  height: 36rpx;
+  font-size: 24rpx;
+  margin-left: 10rpx;
+}
+
+.project-list-info-tags-item {
+  overflow: hidden;
+  height: 36rpx;
+}
+.project-list-info-tags-item-img {
+  width: 152rpx;
+  height: 36rpx;
+  margin-right: 8rpx;
+}
+.project-list-info-tags-item .left {
+  height: 36rpx;
+  line-height: 36rpx;
+  overflow: hidden;
+  float: left;
+}
+.project-list-info-tags-item .left view {
+  background-color: #f3f6f9;
+  height: 36rpx;
+  line-height: 36rpx;
+  font-size: 22rpx;
+  color: #77808a;
+  margin-right: 10rpx;
+  padding: 0 10rpx;
+  white-space: nowrap;
+  /* display: inline-block; */
+  float: left;
+}
+.project-list-info-tags-item .right {
+  font-size: 24rpx;
+  color: #a9bacf;
+  height: 36rpx;
+  white-space: nowrap;
+  float: right;
+}
+
+.project-list-info-discount {
+  color: #77808a;
+  font-size: 24rpx;
+}
+.project-list-info-discount-item {
+  margin-top: 12rpx;
+  height: 32rpx;
+  display: flex;
+}
+.project-list-info-discount-item .tag {
+  width: 28rpx;
+  height: 28rpx;
+  min-width: 28rpx;
+  min-height: 28rpx;
+  margin-right: 10rpx;
+}
+.project-list-info-discount-item .content {
+  display: -webkit-box;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  white-space: normal;
+  height: 32rpx;
+  line-height: 32rpx;
+  max-width: 377rpx;
+}
+.project-cell-fake-form-button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+}

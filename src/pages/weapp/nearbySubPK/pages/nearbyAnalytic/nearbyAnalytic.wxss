@@ -1,0 +1,248 @@
+@import '../../../pages/template/employeeReviewItem/employeeReviewItem.wxss';
+@import '../../../pages/project/template/projectCell.wxss';
+
+.near-by-analytic-district-review {
+  margin: 0;
+  background-color: white;
+}
+
+.near-by-analytic-view {
+  margin-top: 20rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-color: white;
+}
+
+.near-by-analytic-map-view {
+  margin: 40rpx;
+  height: 320rpx;
+}
+
+.near-by-analytic-address-base {
+  margin-left: 40rpx;
+  margin-right: 40rpx;
+  color: #3e4a59;
+}
+
+.near-by-analytic-address-tag {
+  font-family: PingFangSC-Medium;
+  font-size: 32rpx;
+}
+
+.near-by-analytic-address {
+  margin-top: 8rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+}
+
+.near-by-analytic-options-view {
+  margin-top: 30rpx;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 126rpx;
+  background-color: white;
+}
+
+.options-line {
+  margin-left: 40rpx;
+  margin-right: 40rpx;
+  height: 2rpx;
+  background-color: #f3f6f9;
+}
+
+.select-option-view {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 100vw;
+  min-height: 122rpx;
+  line-height: 122rpx;
+}
+
+.select-option-bottom-line {
+  margin-left: 50%;
+  transform: translate(-50%, 0);
+  margin-bottom: 0;
+  width: 40rpx;
+  height: 6rpx;
+  background-color: #47b3e3;
+  border-radius: 3rpx;
+}
+
+.menu_item {
+  width: 45%;
+  font-family: PingFang-SC-Medium;
+  font-size: 32rpx;
+  color: #77808a;
+  background-color: white;
+}
+
+.menu_hover_item {
+  background-color: rgba(166, 231, 166, 0.2);
+}
+
+.active {
+  font-size: 32rpx;
+  color: #47b3e3;
+}
+
+.near-by-facility-container {
+  background-color: white;
+}
+
+.near-by-facility-tag {
+  font-family: PingFangSC-Medium;
+  font-size: 32rpx;
+  color: #3e4a59;
+  margin-left: 40rpx;
+  margin-top: 32rpx;
+}
+
+.near-by-facility-top-view {
+  margin-top: 16rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.near-by-facility-circle {
+  margin-left: 40rpx;
+  background: #47b3e3;
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 8rpx;
+}
+
+.near-by-facility-option-name {
+  margin-left: 8rpx;
+  font-family: PingFang-SC-Medium;
+  font-size: 28rpx;
+  color: #3e4a59;
+}
+
+.near-by-facility-row {
+  margin-top: 8rpx;
+  margin-left: 40rpx;
+  margin-right: 40rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* align-items: center; */
+}
+
+.nearby-facility-address-view {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  margin-left: 0rpx;
+}
+
+.near-by-facility-distance {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  margin-right: 0rpx;
+  min-width: 144rpx;
+}
+
+.near-by-facility-address {
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  color: #3e4a59;
+  min-width: 144rpx;
+}
+
+.near-by-facility-location-tag {
+  margin-top: 8rpx;
+  margin-left: 8rpx;
+  width: 24rpx;
+  height: 24rpx;
+}
+
+.near-by-facility-traffic {
+  margin-left: 8rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #9fa6af;
+  line-height: 40rpx;
+}
+
+.near-by-facility-no-data {
+  margin-top: 40rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #3e4a59;
+  text-align: center;
+}
+
+.near-by-facility-traffic-bottom {
+  background-color: white;
+  height: 48rpx;
+}
+
+.look-more-facility-view {
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #47b3e3;
+  text-align: center;
+  height: 136rpx;
+  line-height: 136rpx;
+}
+
+.environment-analytic-title {
+  font-family: PingFangSC-Semibold;
+  font-size: 44rpx;
+  color: #3e4a59;
+  margin-top: 56rpx;
+  margin-left: 40rpx;
+}
+
+.environment-analytic-base {
+  margin-top: 40rpx;
+  margin-left: 40rpx;
+  margin-right: 40rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow: hidden;
+}
+
+.environment-analytic-base-tilte {
+  font-family: PingFangSC-Semibold;
+  font-size: 32rpx;
+  color: #3e4a59;
+}
+
+.environment-analytic-base-content {
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #3e4a59;
+  line-height: 48rpx;
+  display: -webkit-box;
+  word-break: break-all;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.environment-analytic-map-image {
+  margin: 40rpx;
+}
+
+.project-cell-top-view {
+  margin-top: 36rpx;
+  background-color: white;
+}
+
+.project-cell-view {
+  margin-left: 40rpx;
+  margin-right: 40rpx;
+  margin-bottom: 56rpx;
+  flex: 1;
+}

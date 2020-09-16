@@ -1,0 +1,67 @@
+<wxs src="../../../utils/util.wxs" module="tools" />
+<template name="project-swiper-item">
+  <view class="project-swiper-item-view" hover-class="project-hover-item-view">
+    <image class="project-swiper-sale-activity" wx:if="{{project.app_acitivity_pic.length>0}}" src="{{project.app_acitivity_pic}}" />
+    <jlImage className="project-swiper-image" url="{{tools.resizeImageUrl(project.index_img, 160, 120)}}" placeholder="../../image/placeholder_house_small.png"></jlImage>
+    <text class="project-swiper-name">{{project.name}}</text>
+    <text class="project-swiper-desc">{{project.pay_info.length==0?'优惠楼盘':project.pay_info}}</text>
+    <view bindtap="didClickProjectCardItem" data-op-type="{{opType}}" data-id="{{project.project_id}}" data-index="{{index}}">
+      <view class="project-swiper-price">
+        <text class="project-swiper-price-label" wx:if="{{project.card_price.label.length>0}}">
+          {{project.card_price.label}}
+        </text>
+        <text class="project-swiper-info-unit">
+          {{project.card_price.value}}{{project.card_price.unit}}
+        </text>
+      </view>
+      <view class="project-swiper-tags">
+        <view class="project-swiper-tag-item" wx:for="{{project.clientTags}}" wx:key="{{item}}" wx:if="{{index<2}}">
+          <text class="project-swiper-tag-text">{{item}}limengge</text>
+        </view>
+      </view>
+    </view>
+    <!-- <form wx:if="{{opType.length > 0}}" report-submit="true" bindsubmit="didClickProjectCardItem" data-op-type="{{opType}}" data-id="{{project.project_id}}" data-index="{{index}}">
+      <button class="project-fake-form-button" form-type='submit'></button>
+    </form> -->
+  </view>
+</template>
+<template name="project-swiper-single-item">
+  <view class="project-swiper-single-item-view" hover-class='project-hover-item-view'>
+    <view class="project-item-top-view">
+      <jlImage className="project-swiper-single-image" url="{{tools.resizeImageUrl(project.index_img, 148, 111)}}" placeholder="../../image/placeholder_house_small.png"></jlImage>
+      <view class="project-item-info-view">
+        <view class="project-item-name-view">
+          <text class="project-item-name">{{project.name}}</text>
+          <text class="project-item-status {{project.status.value==3?'project-item-sale-out':''}}">
+            {{project.status.name}}
+          </text>
+        </view>
+        <view class="project-swiper-price" style="margin-top:16rpx;">
+          <text class="project-swiper-price-label" wx:if="{{project.card_price.label.length>0}}">
+            {{project.card_price.label}}
+          </text>
+          <text class="project-swiper-info-unit">
+            {{project.card_price.value}}{{project.card_price.unit}}
+          </text>
+        </view>
+        <view class="project-swiper-tags">
+          <view class="project-swiper-tag-item" wx:for="{{project.clientTags}}" wx:key="{{item}}" wx:if="{{index<2}}">
+            <text class="project-swiper-tag-text">{{item}}</text>
+          </view>
+        </view>
+        <view class="project-special-tags">
+          <view class="project-special-tag-item" wx:for="{{project.tags}}" wx:key="{{item}}">
+            <text class="project-special-tag-text">{{item}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="project-special-desc" wx:if="{{project.pay_info.length>0}}" bindtap="didClickProjectCardItem" data-op-type="{{opType}}" data-id="{{project.project_id}}" data-index="{{0}}">
+      <text class="project-special-desc-text-tip">居理优惠：</text>
+      <text class="project-special-desc-text">{{project.pay_info}}</text>
+    </view>
+    <!-- <form wx:if="{{opType.length > 0}}" report-submit="true" bindsubmit="didClickProjectCardItem" data-op-type="{{opType}}" data-id="{{project.project_id}}" data-index="{{0}}">
+      <button class="project-fake-form-button" form-type='submit'></button>
+    </form> -->
+  </view>
+</template>

@@ -1,0 +1,41 @@
+<import src="../../../utils/wxParse/wxParse.wxml" />
+<import src="../template/dipperLogin.wxml" />
+<import src="../template/diperIntroduce.wxml" />
+<import src="../template/dipperRecord.wxml" />
+<import src="../../../component/loading/loading.wxml" />
+<import src="../template/dipperProjectCellNew.wxml" />
+<import src="../template/dipperVideoNative.wxml" />
+
+<view class="loading-view" wx:if="{{!loadingHidden}}">
+  <template is="loading-view" data="{{hidden:loadingHidden}}" />
+</view>
+<view class="container {{(dipperLoginFlag&&employee.id)?'mar_top':''}} {{isIpx?'padding-bot-none':''}}"  hidden="{{!loadingHidden}}">
+  <employeCard employePhoneNumber="{{employee.mobile}}" employeName="{{employee.employee_name}}" employeImg="{{employee.avatar}}" employeId="{{employee.id}}" employeCode="{{employee.wx_qrcode}}" dipperLoginFlag="{{dipperLoginFlag && videoFullScreen}}"    employeSex="{{employee.sex}}"bindemployeNavigateTo="employeNavigateTo"
+    bindemployeCardShare="employeCardShare" bindemployeCardEmployeCod="employeCardEmployeCod" bindemployeCardPhoneCall="employeCardPhoneCall" posiTop="{{posiTop}}" />
+  <view class="report-video-box" wx:if="{{src}}" >
+    <text class="report-video-box-title">{{title}}</text>
+    <template is="dipper-video" data="{{src:src,maskStatus:videoData.maskStatus,showVideoDuration:videoData.showVideoDuration,controls:videoData.controls,video_pic:video_pic,video_name:video_name}}"   />
+  </view>  
+  <view class='box'>
+    <template is="wxParse" data="{{wxParseData:content.nodes}}" />
+  </view>
+  <view class="project-box" wx:if="{{recommend_project&&recommend_project.length>0}}">
+    <view class="project-box-title">为您推荐楼盘</view>
+    <view class="project-box-dsc">基于以上的信息，我帮您匹配了几个适合您的楼盘，您这边可以了解一下，如果有感兴趣的楼盘，可以随时联系我，我帮您对比分析一下楼盘的优劣势：</view>
+     <block wx:for="{{recommend_project}}" wx:key="{{index}}">
+       <view class="exposure{{index}} exposureline"> 
+         <template is="dipper-project-cell-new" data="{{project:item,index:index}}" />
+        </view>
+     </block>
+  </view>
+  <!-- 居理带看  -->
+  <template is="dipper-introduce" data="{{serviceIntroduceList:serviceIntroduceList,currentServiceIntroduceIndex:currentServiceIntroduceIndex,isIpx:isIpx}}" />
+  <!-- 居理带看 end -->
+  <!-- 购房宝典 -->
+  <template is="dipper-record" data="{{hide_good_box:hide_good_box,bus_x:bus_x,bus_y:bus_y,dipperLoginFlag:dipperLoginFlag,videoFullScreen:videoFullScreen}}" />
+  <!-- 购房宝典 end -->
+  <template is="dipper-login" data="{{dipperLoginFlag:dipperLoginFlag}}" />
+  <award dipperLoginFlag="{{dipperLoginFlag  && videoFullScreen}}" order_id="{{o_id}}" employee_id="{{employee.id}}" page="0" business_id="{{share_id}}" bindhostPayAward="hostPayAward" />
+  <contact bindtouchOnGoods="touchOnGoods" bindhostPhoneCall="hostPhoneCall" bindhostDownApp="hostDownApp" open_id="{{open_id}}" share_id="{{share_id}}" show_type="{{type}}" order_id="{{o_id}}" isCollect="{{isCollect}}" dipperLoginFlag="{{dipperLoginFlag && videoFullScreen}}"
+  />
+</view>

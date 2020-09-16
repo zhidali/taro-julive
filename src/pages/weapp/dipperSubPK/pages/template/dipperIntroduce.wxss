@@ -1,0 +1,63 @@
+.commonality {
+  padding: 56rpx 40rpx;
+  background-color: #fff;
+  margin-bottom: 20rpx;
+}
+
+.container .julive_look_margin_bot {
+  /* margin-bottom: 180rpx; */
+}
+
+.container .isIpxMar {
+  margin-bottom: 210rpx;
+}
+
+.commonality_head {
+  display: flex;
+  justify-content: space-between;
+  height: 60rpx;
+  align-items: center;
+  margin-bottom: 40rpx;
+}
+
+.commonality_head_lf {
+  font-size: 44rpx;
+  color: #3e4a59;
+  font-weight: 600;
+  font-family: PingFangSC-Bold;
+  display: flex;
+  align-items: center;
+}
+
+.lf_stand {
+  opacity: 0.45;
+  font-family: PingFangSC-Medium;
+  font-size: 28rpx;
+  color: #3e4a59;
+  display:inline-block;
+  padding-left: 16rpx;
+}
+
+.commonality_head_ri {
+  opacity: 0.45;
+  font-family: PingFangSC-Medium;
+  font-size: 28rpx;
+  color: #3e4a59;
+  display: flex;
+  align-items: center;
+}
+
+.icon_ft {
+  width: 26rpx;
+  height: 44rpx;
+  display: inline-block;
+  margin-left: 8rpx;
+}
+
+.diperIntroduce_img {
+  width: 100%;
+  height: 264rpx;
+  display: block;
+   background-size: cover;
+  background-image: url('http://imgs.julive.com/l?p=eyJpbWdfcGF0aCI6IlwvbWluaW1ncy9pY29uX2RpcGVySW50cm9kdWNlLnBuZyJ9ICAg');
+}

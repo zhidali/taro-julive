@@ -1,0 +1,228 @@
+@import '../../component/loading/loading.wxss';
+
+.mine-info-view {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 268rpx;
+  background-color: white;
+  position: relative;
+}
+.btn-wxlogin {
+  position: absolute;
+  top: 0rpx;
+  left: 0rpx;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+.container {
+  background-color: #f6f6f6;
+}
+.mine-name-view {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex: 1;
+  margin-left: 40rpx;
+  margin-right: 40rpx;
+}
+
+.mine-name-text {
+  font-family: PingFangSC-Semibold;
+  font-size: 48rpx;
+  color: #3e4a59;
+  display: -webkit-box;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+
+.mine-name-mobile {
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #77808a;
+  line-height: 28rpx;
+  margin-top: 8rpx;
+}
+
+.mine-avatar-image {
+  margin-right: 60rpx;
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 70rpx;
+}
+
+.mine-report-view {
+  width: 100%;
+  height: 160rpx;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding-bottom: 24rpx;
+}
+
+.mine-report-bg {
+  width: 100%;
+  margin: 0rpx 40rpx;
+  height: 160rpx;
+}
+.mine-report-bg-2{
+   background-size: cover;
+  background-image: url('http://imgs.julive.com/l?p=eyJpbWdfcGF0aCI6IlwvbWluaW1ncy9iZ19yZXBvcnQyLnBuZyJ9ICAg');
+
+}
+
+.mine-report-text-view {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  left: 84rpx;
+  top: 60rpx;
+}
+
+.mine-report-title {
+  font-family: PingFangSC-Semibold;
+  font-size: 36rpx;
+  color: #ffffff;
+}
+
+.mine-report-tag {
+  border: 1px solid #ffffff;
+  border-radius: 8rpx;
+  font-size: 24rpx;
+  line-height: 24rpx;
+  color: #fff;
+  padding: 8rpx;
+  margin-top: 4rpx;
+}
+
+.mine-see-project {
+  border: none;
+  background: linear-gradient(#ff6a30, #ff8e1f);
+}
+.mine-report-subtitle {
+  font-size: 24rpx;
+  color: #fff;
+}
+
+.mine-function-view {
+  width: 100%;
+  background-color: white;
+}
+
+.mine-cell {
+  width: 100%;
+  height: 124rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.mine-hover-cell {
+  background-color: #e2e2e2;
+}
+
+.mine-cell-view {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 40rpx;
+  margin-right: 40rpx;
+  flex: 1;
+  height: 100%;
+  position: relative;
+}
+
+.not-last-cell {
+  border-bottom: 2rpx solid #f3f6f9;
+}
+
+.mine-cell-left-view {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.mine-cell-item-icon {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.mine-cell-item-title {
+  font-family: PingFangSC-Regular;
+  font-size: 32rpx;
+  color: #3e4a59;
+  margin-left: 16rpx;
+}
+
+.mine-cell-right-view {
+  margin-right: 0rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.mine-cell-right-image {
+  width: 24rpx;
+  height: 48rpx;
+  margin-left: 24rpx;
+}
+
+.mine-cell-right-value {
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #c0c0c0;
+}
+
+.mine-about-view {
+  margin-top: 20rpx;
+  margin-bottom: 40rpx;
+  width: 100%;
+  background-color: white;
+}
+
+.quit_login_btn {
+  display: block;
+  color: #fff;
+  width: 100%;
+  line-height: 88rpx;
+  text-align: center;
+  border-radius: 96rpx;
+  background-image: linear-gradient(-131deg, #47b3e3 0%, #5dd7ff 100%);
+  margin: 160rpx auto 50rpx auto;
+}
+
+.quit_login_btn_box {
+  margin: 0 40rpx;
+}
+.cell-customer {
+  font-family: PingFangSC-Regular;
+  font-size: 32rpx;
+  color: #3e4a59;
+  margin-left: 16rpx;
+  background-color: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 650rpx;
+  height: 124rpx;
+}
+.mine-hover-cell .cell-customer {
+  background-color: transparent;
+}

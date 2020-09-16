@@ -1,0 +1,36 @@
+.loading_box {
+  width: 100vw;
+  height: 100%;
+  background-color: #fff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 1000;
+  transform: translate(-50%, -50%);
+}
+.loading_all .loading {
+  width: 200rpx;
+  height: 200rpx;
+  background-size:cover ;
+  background-image: url('http://imgs.julive.com/l?p=eyJpbWdfcGF0aCI6IlwvbWluaW1ncy9sb2FkaW5nX2FsbC5naWYifSAgIA==');
+}
+.loading_all .logo {
+  width: 50rpx;
+  height: 64rpx;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 1000;
+  transform: translate(-50%, -125%);
+}
+.loading_all .tip {
+  text-align: center;
+  margin-top: 52rpx;
+  color: #00c0eb;
+  font-size: 32rpx;
+  font-family: PingFangSC-Regular;
+}

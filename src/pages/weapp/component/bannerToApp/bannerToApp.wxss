@@ -1,0 +1,45 @@
+.banner-to-app {
+  margin: 0 auto;
+  height: 132rpx;
+  position: relative;
+}
+.banner-img {
+  width: 670rpx;
+  height: 132rpx;
+}
+.banner-btn {
+  position: absolute;
+  top: 36rpx;
+  right: 20rpx;
+  width: 170rpx;
+  height: 60rpx;
+  background-color: #fff;
+  font-size: 28rpx;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+  color: rgba(0, 192, 235, 1);
+  line-height: 60rpx;
+  text-align: center;
+  border-radius: 8rpx;
+}
+.banner-btn-item {
+  background-color: #00c0eb;
+  color: #fff;
+  right: 40rpx;
+}
+
+.cell-customer {
+  position: absolute;
+  width: 180rpx;
+  height: 40rpx;
+  top: 80rpx;
+  left: 320rpx;
+  opacity: 0;
+}
+.banner-to-app-fixed {
+  position: fixed;
+  bottom: 2rpx;
+  left: 40rpx;
+  z-index: 999;
+  height: 132rpx;
+}

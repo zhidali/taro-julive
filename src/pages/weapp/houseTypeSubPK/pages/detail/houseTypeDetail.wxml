@@ -1,0 +1,95 @@
+<import src="../../../pages/template/slideImage/slideImage.wxml" />
+<import src="../template/houseOtherType.wxml" />
+<wxs src="../../../utils/util.wxs" module="tools" />
+<wxs src="../../../pages/project/utils/util.wxs" module="statusTools" />
+<import src="../../../component/loading/loading.wxml" />
+<view class="loading-view" wx:if="{{!loadingHidden}}">
+  <template is="loading-view" data="{{hidden:loadingHidden}}" />
+</view>
+<view class="container" hidden="{{!loadingHidden}}">
+  <template is="slide-image-view" data="{{imageList:data.pic_list, autoPlay:false, indicatorDots:false, pageIndex:curImageIndex, screenWidth:screenWidth, opType:'900163'}}" />
+  <view class="house-type-detail-info">
+    <view class="house-type-detail-status">{{data.house_info.summary}}</view>
+    <view class="house-type-detail-tag">
+      <text class="detail-status-text" style="{{statusTools.statusColor(data.house_info.status.value)}}">{{data.house_info.status.name}}</text>
+      <block wx:for="{{data.tag}}" wx:key="index">
+        <text class="detail-status-text house-type-detail-tag-text">{{item}}</text>
+      </block>
+    </view>
+    <view class="house-type-detail-info-block">
+      <view class="house-type-detail-info-line" style='margin-top:48rpx;'>
+        <view class='block-left'>
+          <text class='house-type-detail-info-left'>单价:</text>
+          <text class='house-type-detail-info-money'>{{houseInfo.offer_price==0?'待定':(houseInfo.offer_price)+'元'}}</text>
+        </view>
+        <view class='block-right'>
+          <text class='house-type-detail-info-left'>总价:</text>
+          <text class='house-type-detail-info-money'>{{houseInfo.price==0?'待定':(houseInfo.price/10000)+'万'}}</text>
+        </view>
+      </view>
+      <block wx:for="{{areaInfoList}}" wx:key="index">
+        <view class="house-type-detail-info-line">
+          <view class='block-left'>
+            <text class='house-type-detail-info-left'>{{item[0].title}}:</text>
+            <text class='house-type-detail-info-right'>{{item[0].value}}</text>
+          </view>
+          <view class='block-right' wx:if="{{!!item[1]}}">
+            <text class='house-type-detail-info-left'>{{item[1].title}}:</text>
+            <text class='house-type-detail-info-right'>{{item[1].value}}</text>
+          </view>
+        </view>
+      </block>
+      <view class="house-type-detail-area-item">
+        <text class="detail-area-item-name">所属楼盘:</text>
+        <text class="detail-area-item-premises" decode="true" bindtap="didTapPremises">{{houseInfo.city_info.city_name}}-{{houseInfo.district_name}}&nbsp;&nbsp;{{houseInfo.project_info.project_name}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="house-type-detail-comment">
+    <view class="house-type-counselor-view">
+      <view class="house-type-counselor">
+        <jlImage className="house-type-counselor-img" url="{{data.avatar[0]}}" placeholder="../../image/placeholder_consult_avater_man.png"></jlImage>
+        <view class="house-type-counselor-info">
+          <view class="counselor-name-view">
+            <text class="counselor-name-text">{{houseInfo.employee_name}}</text>
+            <text class="counselor-reputation-title">好评</text>
+            <text class="counselor-reputation">{{houseInfo.high_rate}}</text>
+          </view>
+          <text class="counselor-graduate" hidden="{{houseInfo.academy.length == 0}}">毕业于{{houseInfo.academy}}</text>
+        </view>
+      </view>
+      <view class="house-type-counselor-contact" bindtap="didTapContactCounselor">
+        <text>向TA咨询</text>
+      </view>
+    </view>
+    <view class="house-type-counselor-line"></view>
+    <block wx:for="{{commentInfoList}}" wx:key="index">
+      <view class="house-type-comment-advantage" wx:if="{{item.value.length>0}}">
+        <text class="house-type-comment-title" wx:if="{{item.value.length > 0}}">{{item.title}}</text>
+        <text class="house-type-comment-value">{{item.value}}</text>
+      </view>
+    </block>
+  </view>
+  <view class="house-same-type-view" wx:if="{{data.other_house_type.length > 0}}">
+    <text class="house-other-type-text">本楼盘其他户型</text>
+    <!-- <view class="house-type-counselor-line"></view> -->
+    <scroll-view class='house-other-list-scroll' scroll-x="true" scroll-with-animation="true">
+      <block wx:for="{{data.other_house_type}}" wx:key="house_type_id">
+        <template is="house-other-type" data="{{list:item, isOther:true, index:index, opType:'900165'}}" />
+      </block>
+    </scroll-view>
+  </view>
+  <view class="house-same-type-view" wx:if="{{data.same_price_project.length > 0}}">
+    <text class="house-other-type-text">同价位其他户型</text>
+    <!-- <view class="house-type-counselor-line"></view> -->
+    <scroll-view class='house-other-list-scroll' scroll-x="true" scroll-with-animation="true">
+      <block wx:for="{{data.same_price_project}}" wx:key="house_type_id">
+        <template is="house-other-type" data="{{list:item, isOther:false, index:index, opType:'900166'}}" />
+      </block>
+    </scroll-view>
+  </view>
+  <view class="{{isIpx?'iphonex-page-bottom-margin':'page-bottom-margin'}}" />
+</view>
+<contact fromPage='p_house_type_details' projectId="{{projectId}}" opType="900080" source="154" consultOpType="900217" consultContent="户型是否居住舒适？具体优劣势有哪些？装修有无讲究......" consult="咨询户型分析" userInfo="{{userInfo}}" notShowAttention="{{true}}" />
+<login showModal="{{showLoginModal}}" bindloginSuccessCallback="loginSuccessCallback" userInfo="{{loginUserInfo}}" />
+<orderSuccessAlert fromPage='p_house_type_details' showModal="{{showOrderSuccessAlert}}" content="{{alertContent}}" />

@@ -1,0 +1,230 @@
+<import src="../../component/loading/loading.wxml" />
+
+<view class="loading-view" wx:if="{{!loadingHidden}}">
+  <template is="loading-view" />
+</view>
+
+<view class="container" wx:if="{{loadingHidden}}">
+  <view class="mine-info-view">
+    <view class="mine-name-view">
+      <text class="mine-name-text">{{isAvailable?user.name:'登录/注册'}}</text>
+      <!-- <text class="mine-name-mobile">{{isAvailable?user.mobile:'您的手机号不会透露给他人'}}</text> -->
+    </view>
+    <jlImage
+      classImage="mine-avatar-image"
+      url="{{user.avatar}}"
+      placeholder="/image/placeholder_user_avatar.png"
+    ></jlImage>
+    <view class="btn-wxlogin" wx:if="{{!userLoginStatus}}">
+      <wxLogin
+        markType="1"
+        markData="{{selectDistrict}}"
+        bindClickGetPhoneNumberBtn="passBackGetPhoneNumberBtn"
+        bindWechatUserCancel="passBackFastLoginCallBack"
+        bindFastLoginCallBack="passBackFastLoginCallBack"
+      ></wxLogin>
+    </view>
+  </view>
+  <view class="mine-report-view" bindtap="didClickReport">
+    <block wx:if="{{see_project_data}}">
+      <image
+        class="mine-report-bg"
+        mode="scaleToFill"
+        src="{{see_project_data?see_project_data.pic_url:'http://imgs.julive.com/l?p=eyJpbWdfcGF0aCI6IlwvbWluaW1ncy9iZ19yZXBvcnQucG5nIn0='}}"
+      />
+      <view class="mine-report-text-view">
+        <text class="mine-report-title">服务评价提醒</text>
+        <text class="mine-report-tag mine-see-project">马上评价</text>
+      </view>
+    </block>
+    <block wx:elif="{{report.status&&report.status==2}}">
+      <image
+        class="mine-report-bg"
+        mode="scaleToFill"
+        src="http://imgs.julive.com/l?p=eyJpbWdfcGF0aCI6IlwvbWluaW1ncy9iZ19yZXBvcnQucG5nIn0="
+      />
+    </block>
+    <block wx:else>
+      <image class="mine-report-bg mine-report-bg-2" mode="scaleToFill" />
+    </block>
+  </view>
+  <view class="mine-function-view">
+    <!-- 我的关注楼盘 -->
+    <view
+      wx:if="{{userLoginStatus &&abTest.p_project_list_optimization!=='A'}}"
+      class="mine-cell"
+      hover-class="mine-hover-cell"
+      bindtap="didClickMyFavorite"
+    >
+      <view class="mine-cell-view not-last-cell">
+        <view class="mine-cell-left-view">
+          <image class="mine-cell-item-icon" src="/image/icon_my_favorite.png" />
+          <text class="mine-cell-item-title">我的关注楼盘</text>
+        </view>
+        <image class="mine-cell-right-image" src="/image/icon_view_more.png" />
+      </view>
+    </view>
+    <!-- 分享助力，有资质且登陆显示 -->
+    <view
+      wx:if="{{userLoginStatus && activity_enter.name}}"
+      class="mine-cell"
+      hover-class="mine-hover-cell"
+      bindtap="didClickShareAct"
+    >
+      <view class="mine-cell-view not-last-cell">
+        <view class="mine-cell-left-view">
+          <image class="mine-cell-item-icon" src="/image/icon_fission_Activity.png" />
+          <text class="mine-cell-item-title">{{activity_enter.name}}</text>
+        </view>
+        <image class="mine-cell-right-image" src="/image/icon_view_more.png" />
+      </view>
+    </view>
+    <!-- 我的购房福利 -->
+    <view
+      wx:if="{{showTabHousePurchase}}"
+      class="mine-cell"
+      hover-class="mine-hover-cell"
+      bindtap="didClickHousePurchase"
+    >
+      <view class="mine-cell-view not-last-cell">
+        <view class="mine-cell-left-view">
+          <image class="mine-cell-item-icon" src="/image/mine_House_Purchase.png" />
+          <text class="mine-cell-item-title">{{house_welfare.name}}</text>
+        </view>
+        <image class="mine-cell-right-image" src="/image/icon_view_more.png" />
+      </view>
+    </view>
+
+    <view class="mine-cell">
+      <view
+        class="mine-cell-view not-last-cell"
+        hover-class="mine-hover-cell"
+        bindtap="didClickRecordBox"
+      >
+        <view class="mine-cell-left-view">
+          <image class="mine-cell-item-icon" src="/image/icon_my_record.png" />
+          <text class="mine-cell-item-title">我的购房宝典</text>
+        </view>
+        <image class="mine-cell-right-image" src="/image/icon_view_more.png" />
+      </view>
+      <view class="btn-wxlogin" wx:if="{{!userLoginStatus}}">
+        <wxLogin
+          markType="2"
+          markData="{{selectDistrict}}"
+          bindClickGetPhoneNumberBtn="passBackGetPhoneNumberBtn"
+          bindWechatUserCancel="passBackFastLoginCallBack"
+          bindFastLoginCallBack="passBackFastLoginCallBack"
+        ></wxLogin>
+      </view>
+    </view>
+    <!-- 添加about  帮我找房 -->
+    <view class="mine-cell">
+      <view
+        class="mine-cell-view not-last-cell"
+        hover-class="mine-hover-cell"
+        bindtap="didClickFindRoom"
+        data-url="{{help_me_find_house.url}}"
+        wx:if="{{help_me_find_house.url.length>1}}"
+      >
+        <view class="mine-cell-left-view">
+          <image class="mine-cell-item-icon" src="/image/icon_mine_findroom.png" />
+          <text class="mine-cell-item-title">{{help_me_find_house.name}}</text>
+        </view>
+        <image class="mine-cell-right-image" src="/image/icon_view_more.png" />
+      </view>
+      <view class="btn-wxlogin" wx:if="{{!userLoginStatus}}">
+        <wxLogin
+          markType="4"
+          markData="{{selectDistrict}}"
+          bindClickGetPhoneNumberBtn="passBackGetPhoneNumberBtn"
+          bindWechatUserCancel="passBackFastLoginCallBack"
+          bindFastLoginCallBack="passBackFastLoginCallBack"
+        ></wxLogin>
+      </view>
+    </view>
+    <view class="mine-cell">
+      <view
+        class="mine-cell-view not-last-cell"
+        hover-class="mine-hover-cell"
+        bindtap="didClickAsk"
+      >
+        <view class="mine-cell-left-view">
+          <image class="mine-cell-item-icon" src="/image/icon_mine_ask.png" />
+          <text class="mine-cell-item-title">我要提问</text>
+        </view>
+        <image class="mine-cell-right-image" src="/image/icon_view_more.png" />
+      </view>
+      <view class="btn-wxlogin" wx:if="{{!userLoginStatus}}">
+        <wxLogin
+          markType="5"
+          markData="{{selectDistrict}}"
+          bindClickGetPhoneNumberBtn="passBackGetPhoneNumberBtn"
+          bindWechatUserCancel="passBackFastLoginCallBack"
+          bindFastLoginCallBack="passBackFastLoginCallBack"
+        ></wxLogin>
+      </view>
+    </view>
+  </view>
+  <view class="mine-about-view">
+    <view class="mine-cell" hover-class="mine-hover-cell" bindtap="didClickPhone">
+      <view class="mine-cell-view not-last-cell">
+        <view class="mine-cell-left-view">
+          <image class="mine-cell-item-icon" src="/image/icon_mine_contact.png" />
+          <text class="mine-cell-item-title">客服热线</text>
+        </view>
+        <view class="mine-cell-right-view">
+          <text class="mine-cell-right-value">{{contact}}</text>
+          <image class="mine-cell-right-image" src="/image/icon_view_more.png" />
+        </view>
+      </view>
+    </view>
+    <view
+      class="mine-cell"
+      hover-class="mine-hover-cell"
+      bindtap="didClickAbout"
+      wx:if="{{about.url.length>1}}"
+    >
+      <view class="mine-cell-view">
+        <view class="mine-cell-left-view">
+          <image class="mine-cell-item-icon" src="/image/icon_mine_about.png" />
+          <text class="mine-cell-item-title">{{about.name}}</text>
+        </view>
+        <image class="mine-cell-right-image" src="/image/icon_view_more.png" />
+      </view>
+    </view>
+
+    <view class="mine-cell" hover-class="mine-hover-cell">
+      <view class="mine-cell-view not-last-cell">
+        <view class="mine-cell-left-view">
+          <image class="mine-cell-item-icon" src="/image/icon-download.png" />
+          <button
+            class="cell-customer"
+            open-type="contact"
+            bindtap="didClickContact"
+            show-message-card="{{true}}"
+            send-message-path="/pages/home/home"
+            send-message-title="居理新房"
+            send-message-img="https://imgs.julive.com/l?p=eyJpbWdfcGF0aCI6IlwvbWluaW1ncy9jdXN0b21lci1sb2dvLnBuZz93YXRlcm1hcmssdF8wIn0="
+          ></button>
+          <text class="mine-cell-item-title">下载APP</text>
+        </view>
+        <view class="mine-cell-right-view">
+          <text class="mine-cell-right-value">找房更快更流畅</text>
+          <image class="mine-cell-right-image" src="/image/icon_view_more.png" />
+        </view>
+      </view>
+    </view>
+    <view class="mine-cell" hover-class="mine-hover-cell" bindtap="didClickPrivacy">
+      <view class="mine-cell-view not-last-cell">
+        <view class="mine-cell-left-view">
+          <image class="mine-cell-item-icon" src="/image/icon_privacy_agreement.png" />
+          <text class="mine-cell-item-title">隐私协议</text>
+        </view>
+        <image class="mine-cell-right-image" src="/image/icon_view_more.png" />
+      </view>
+    </view>
+  </view>
+  <view class="quit_login_btn_box">
+    <button wx:if="{{isAvailable}}" class="quit_login_btn" bindtap="quitLogin">退出登录</button>
+  </view>
+</view>

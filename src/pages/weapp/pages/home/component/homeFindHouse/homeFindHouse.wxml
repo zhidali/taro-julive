@@ -1,0 +1,214 @@
+<view class="immediate-search-house">
+  <view class="immediate-search-house-view">
+    <view class="immediate-search-house-type-price-view" catchtap="showRegionMark">
+      <!-- 区域部分 -->
+      <view
+        class="immediate-search-house-type-price-value"
+        style="color:{{ regionText == '' ? '#566366' : '#031A1F'}}"
+      >
+        {{regionText == '' ? '区域不限' : regionText}}
+      </view>
+      <image class="immediate-search-house-type-right-icon" src="/image/icon-sright.png" />
+    </view>
+    <view class="immediate-search-house-line"></view>
+    <!-- 户型和预算开始 -->
+    <view class="immediate-search-house-attention-view">
+      <view
+        class="immediate-search-house-attention-view-left"
+        catchtap="showHouseTypeMark"
+        data-type="houseType"
+      >
+        <view class="tit">
+          关注户型
+        </view>
+        <!-- 户型 -->
+        <view
+          class="immediate-search-house-attention-name"
+          data-key="unit"
+          style="color:{{ houseTypeText == '' ? '#566366' : '#031A1F'}}"
+        >
+          {{houseTypeText == '' ? '户型不限' : houseTypeText}}
+        </view>
+      </view>
+      <view class="house-attention-view-line"></view>
+      <view
+        class="immediate-search-house-attention-view-right"
+        catchtap="showHouseTypeMark"
+        data-type="totalPrice"
+      >
+        <view class="tit">
+          总价预算
+        </view>
+        <!-- 总价 -->
+        <view
+          class="immediate-search-house-attention-name"
+          data-key="price"
+          style="color:{{ totalPriceText == '' ? '#566366' : '#031A1F'}}"
+        >
+          {{totalPriceText == '' ? '总价不限' : totalPriceText}}
+        </view>
+      </view>
+    </view>
+    <view class="immediate-search-house-line"></view>
+
+    <view class="subscribe-consult" catchtap="changeService" wx:if="{{!userHasOrder}}">
+      <!-- isCheckedService -->
+      <image
+        class="img"
+        src="{{isCheckedService?'https://imgs.julive.com/l?p=eyJpbWdfcGF0aCI6IlwvbWluaW1ncy9pY29uLXN1Yi1jb25zdWx0LXNlbGVjdC5wbmc/d2F0ZXJtYXJrLHRfMCJ9':'/image/icon-sub-consult-no.png'}}"
+      />
+      <view class="text">
+        预约找房服务，专属咨询师推荐合适房源
+      </view>
+    </view>
+
+    <authorize-login
+      bind:allow="allowLogin"
+      bind:click="findHouse"
+      bind:cancel="findHouseCancelLogin"
+      hasLogin="{{isCheckedService}}"
+    >
+      <view class="btn-search-all-house-wrap" slot="btn">
+        <view class="btn-search-all-house">
+          查找房源
+        </view>
+      </view>
+    </authorize-login>
+
+    <view class="project-banner-view-declare">
+      <view class="item">
+        <image src="/image/icon-search-zckf.png" class="img"></image>
+        <text class="text">免费专车看房</text>
+      </view>
+      <view class="item">
+        <image src="/image/icon-search-qcfy.png" class="img"></image>
+        <text class="text">全城房源</text>
+      </view>
+      <view class="item">
+        <image src="/image/icon-search-djbz.png" class="img"></image>
+        <text class="text">买房低价保障</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view
+  class="mark"
+  catchtouchmove="preventTouchMove"
+  wx:if="{{isShowRegionMark || isShowHouseTypeMark}}"
+  catchtap="closeMark"
+>
+</view>
+<view
+  class="housetype-model-wrap"
+  catchtouchmove="preventTouchMove"
+  wx:if="{{isShowHouseTypeMark}}"
+>
+  <!-- 关注户型 -->
+  <view class="house-type">
+    <view class="tit">您关注的户型</view>
+    <view class="house-type-list">
+      <view
+        class="item {{item.isChecked ? 'active' : ''}}"
+        wx:for="{{houseType}}"
+        wx:key="value"
+        data-index="{{index}}"
+        data-item="{{item}}"
+        catchtap="changeHouseType"
+      >
+        {{item.name}}
+      </view>
+    </view>
+  </view>
+  <!-- 购房预算 -->
+  <view class="total-price">
+    <view class="tit">您的购房预算</view>
+    <!-- 滑动块 -->
+    <view class="slider-wrap">
+      <view class="price-text">
+        <block wx:if="{{totalPrice[1] * 1 != totalPriceMax * 1}}"
+          >{{totalPrice[0]}}—{{totalPrice[1]}}万</block
+        >
+        <block wx:else
+          >{{totalPrice[0]}}<block wx:if="{{totalPrice[0] != '0'}}">万</block>—不限</block
+        >
+      </view>
+      <view class="slider-container">
+        <price-slider
+          id="price-slider"
+          minValue="{{totalPrice[0]}}"
+          maxValue="{{totalPrice[1]}}"
+          min="{{totalPriceMin}}"
+          max="{{totalPriceMax}}"
+          blockColor="blue"
+          backgroundColor="#F1F1F1"
+          selectedColor="#00C0EB"
+          bind:changeMin="minMove"
+          bind:changeMax="maxMove"
+        />
+      </view>
+      <!-- 最大最小价格 -->
+      <view class="price-min-wrap">
+        <view class="min-text">{{totalPriceMin}}</view>
+        <view class="min-text">不限</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="btn-wrap">
+    <view class="btn-clear" catchtap="clearHouseType">清空</view>
+    <view class="btn-submit" catchtap="submitFilter">确定</view>
+  </view>
+</view>
+<view class="region-model-wrap" wx:if="{{isShowRegionMark}}" catchtouchmove="preventTouchMove">
+  <view class="region-head">
+    <view class="text">关注区域</view>
+    <view class="text">关注板块</view>
+  </view>
+  <view class="region-body">
+    <scroll-view scroll-y class="scroll-left">
+      <view
+        class="item {{ currentRegionIdx == index ? 'active' : ''}}"
+        wx:for="{{region}}"
+        wx:key="value"
+        data-index="{{index}}"
+        data-item="{{item}}"
+        catchtap="changeRegion"
+      >
+        <view class="text {{item.isChecked ? 'text-active' : ''}}">
+          {{item.name}}
+        </view>
+        <image
+          wx:if="{{item.value != '0' }}"
+          src="{{item.isChecked ? '/image/icon-filteritem-checked.png' : '/image/icon-filteritem-no.png'}}"
+          class="img"
+          alt=""
+        />
+      </view>
+    </scroll-view>
+    <scroll-view scroll-y class="scroll-right">
+      <view
+        class="item {{item.isChecked ? 'active' : ''}}"
+        wx:for="{{plate}}"
+        wx:key="id"
+        data-index="{{index}}"
+        data-item="{{item}}"
+        catchtap="changePlate"
+      >
+        <view class="text">
+          {{item.trade_area}}
+        </view>
+        <image
+          wx:if="{{item.id != 0 }}"
+          src="{{item.isChecked ? '/image/icon-filteritem-checked.png' : '/image/icon-filteritem-no.png'}}"
+          class="img"
+          alt=""
+        />
+      </view>
+    </scroll-view>
+  </view>
+  <view class="btn-wrap">
+    <view class="btn-clear" catchtap="clearRegion">清空</view>
+    <view class="btn-submit" catchtap="submitFilter">确定</view>
+  </view>
+</view>

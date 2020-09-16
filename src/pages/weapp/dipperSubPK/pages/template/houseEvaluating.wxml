@@ -1,0 +1,64 @@
+<template name="house-evaluating">
+  <view class="house-info m_project_swot_analysis">
+    <view class="title-box" wx:if="{{project_info.length>0}}">
+      <image class="title-box-img" src="/image/icon-dipper-yellow.png"></image>
+      <view class="all-flex-between title-box-content">
+        <view>楼盘优劣势分析</view>
+      </view>
+    </view>
+    <view class="house-info-box">
+      <!-- 固定栏 -->
+      <view class='min-width150 z_index'>
+        <view class="table">
+          <view class="tr">
+            <view class="th all-white-space min-width150">{{is_virtual_city?'小区名称':'楼盘名称'}}</view>
+          </view>
+          <view class="tr" wx:for="{{houseEvaluatingListFix}}" wx:key="{{index}}" data-index="{{index}}" bindtap='didTapSelectHouse'>
+            <view class="td yellow min-width150" style="height:{{item.height}}px" data-module='5' bindtap='toProjectDetail' data-index="{{index}}" data-projectId="{{item.project_id}}" data-url="{{item.project_url}}">
+              {{item.name}}
+            </view>
+          </view>
+        </view>
+      </view>
+      <!-- 固定栏 -->
+      <!-- 移动栏 -->
+      <scroll-view class="house-info-box-scroll house-evaluating" bindscroll="scrollHouseEvaluating" scroll-x="{{true}}">
+        <view class="table">
+          <view class="tr">
+            <view class="th all-white-space min-width150 visibility">楼盘名称</view>
+            <view class="th all-white-space min-width148 del_der_left">户型面积</view>
+            <view class="th all-white-space min-width162">推荐星级</view>
+            <view class="th all-white-space min-width312 ">优势</view>
+            <view class="th all-white-space min-width312 td_bodr_rigth">劣势</view>
+            <view style="width:40rpx;heigth:1px;visibility:hidden;">无</view>
+          </view>
+          <block wx:for="{{project_info}}" wx:key="{{index}}">
+            <view class="tr">
+              <view class="td yellow min-width150 visibility house-evaluating-scroll-ri{{index}}">
+                {{item.name}}
+              </view>
+              <view style="flex:1;">
+                <block wx:for="{{item.house_list}}" wx:for-item="house" wx:key-index="idx" wx:key="{{idx}}">
+                  <view class="" style="display:flex; flex-wrap: nowrap;">
+                    <view class="td min-width148 del_der_left">
+                      <text>{{house.summary}}</text>
+                      <text>{{house.acreage}}</text>
+                    </view>
+                    <view class="td min-width162 half-box">
+                      <block wx:if="{{house.starList.length>0}}" wx:for="{{house.starList}}" wx:key="{{index}}">
+                        <image class="new_half" src="/image/{{item.url}}"></image>
+                      </block>
+                    </view>
+                    <view class="td min-width312 ">{{house.good_desc?house.good_desc:'暂无'}}</view>
+                    <view class="td min-width312 ">{{house.bad_desc?house.bad_desc:'暂无'}}</view>
+                  </view>
+                </block>
+              </view>
+            </view>
+          </block>
+        </view>
+      </scroll-view>
+      <!-- 移动栏 -->
+    </view>
+  </view>
+</template>

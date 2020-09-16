@@ -1,0 +1,27 @@
+<import src="../../../component/loading/loading.wxml" />
+<view class="loading-view" wx:if="{{!loadingHidden}}">
+  <template is="loading-view" data="{{hidden:loadingHidden}}" />
+</view>
+<view class="container" wx:elif="{{loadingHidden}}">
+  <view class="content">
+    <block wx:for="{{pages}}" wx:key="{{index}}">
+      <view class="msg-box">
+        <view class="msg-box-time">{{item.create_datetime}}</view>
+        <view class="msg-box-content">
+          <image class="msg-box-content-role" src="/dipperSubPK/images/icon-dipper-role.png"></image>
+          <view>
+            {{item.feedback_info}}
+            <image class="triangle" src="/image/icon-dipper-triangle.png"></image>
+            <image class="isfail" wx:if="{{item.isFail}}" src="/dipperSubPK/images/icon-dipper-fail.png" data-index="{{index}}" bindtap="againSavetUserRequiredFeedback"></image>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+  <view class="footer {{isIpx?'iphonex':''}} {{focusFlagIOS?'focusHig_ios':''}}{{focusFlagAND?'focusHig_an':''}}">
+    <view class="footer-item">
+      <textarea class="{{isIpx?'':'paddTop'}}" placeholder='请输入' bindfocus="didClickbindfocus" show-confirm-bar="{{false}}" fixed="{{true}}" value="{{textareaVal}}" bindblur="bindTextAreaBlur" auto-height></textarea>
+      <text bindtap="sendSavetUserRequiredFeedback">发送</text>
+    </view>
+  </view>
+</view>

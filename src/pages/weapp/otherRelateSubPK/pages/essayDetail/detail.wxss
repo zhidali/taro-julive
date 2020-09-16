@@ -1,0 +1,133 @@
+@import '../../../pages/home/hotTabModule/homeHotlineModule.wxss';
+
+page {
+  background-color: white;
+}
+
+.essay-title {
+  font-size: 40rpx;
+  line-height: 1.6;
+  font-weight: bold;
+  outline: none;
+  color: #3e4a59;
+  margin: 40rpx;
+  margin-bottom: 32rpx;
+}
+
+.essay-source-text {
+  font-size: 24rpx;
+  color: #a3aebb;
+}
+.essay-source-text-con {
+  width: 400rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.essay-source {
+  margin-left: 40rpx;
+  margin-bottom: 28rpx;
+  margin-right: 40rpx;
+  display: flex;
+  justify-content: space-between;
+  max-width: 750rpx;
+  overflow: hidden;
+}
+
+.essay {
+  font-size: 28rpx;
+  line-height: 48rpx;
+  letter-spacing: 1px;
+  padding: 40rpx 40rpx 70rpx 40rpx;
+  padding-top: 28rpx;
+  color: #3e4a59;
+  margin-bottom: 100rpx;
+}
+
+.essay image {
+  width: 100% !important;
+}
+
+.hover-class {
+  background-color: #eee;
+  opacity: 0.5;
+}
+
+.tool-bar {
+  line-height: 88rpx;
+  height: 88rpx;
+  width: 88rpx;
+  border-radius: 44rpx;
+  position: fixed;
+  bottom: 240rpx;
+  right: 72rpx;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+.tool-bar-hover {
+  background-color: #eee;
+}
+
+.icon-share {
+  width: 88rpx;
+  height: 88rpx;
+}
+
+.fake-button {
+  line-height: 88rpx;
+  height: 88rpx;
+  width: 88rpx;
+  border-radius: 44rpx;
+  position: fixed;
+  background-color: rgba(166, 231, 166, 0);
+  bottom: 240rpx;
+  right: 72rpx;
+}
+
+.bottom-view {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100vw;
+  height: 73px;
+  position: fixed;
+  bottom: 0;
+  z-index: 99;
+  background-color: white;
+  border-top: 0.5px solid rgba(0, 0, 0, 0.15);
+}
+
+.fix-iphonex-view {
+  height: 94px !important;
+  bottom: 0 !important;
+}
+
+.bottom-item {
+  width: 40vw;
+  height: 38px;
+  display: flex;
+  color:#00BFEB;
+  flex-direction: row;
+  margin-top: 16px;
+  align-items: center;
+  border: 1px solid #d3dfef;
+  border-radius: 4px;
+}
+
+.bottom-item-label {
+  font-family: PingFangSC-Semibold;
+  font-size: 32rpx;
+  color: #00BFEB;
+  text-align: center;
+  width: 100%;
+}
+
+.bottom-hover-view {
+  opacity: 0.8;
+}

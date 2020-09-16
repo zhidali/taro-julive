@@ -1,0 +1,35 @@
+<template name="employee-pop">
+  <view class="modal-mask" catchtouchmove="preventTouchMove" wx:if="{{showFullScreenPop}}"></view>
+  <view class="modal-dialog modal-dialog-optype4" catchtouchmove="preventTouchMove" wx:if="{{showFullScreenPop}}">
+    <image bindtap="didCloseFullPop" class="icon-cancel" src='/image/icon_get_close.png'></image>
+    <view class="modal-title">{{data.title}}</view>
+    <view class="modal-content">
+      <view class="modal-content-text" wx:if="{{data.sub_title.length > 0}}">
+        {{data.sub_title}}
+      </view>
+      <view class="discount-pop-employee">
+        <image class="img" mode='aspectFill' src="{{data.employee.avatar}}" />
+        <view class="pop-employee-detail">
+          <view class="top">
+            <view class="name">{{data.employee.employee_name}}</view>
+            <view class="flag">{{data.employee.tag}}</view>
+          </view>
+          <view class="num">
+            已累计帮助
+            <view style="color:#00C0EB">{{data.employee.service_count}}</view>
+            人购房
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="btn-confirm-box">
+      <view class="btn-confirm" hover-class='confirm-disable' bindtap="didConsultFullPop">
+        {{data.button}}
+      </view>
+      <view wx:if="{{!userLoginStatus}}" class="list-full-pop-wx-loging">
+        <wxLogin markOpType="900708" bindClickGetPhoneNumberBtn="passBackGetPhoneNumberBtn" bindFastLoginCallBack="passBackFastLoginCallBack" bindWechatUserCancel="passBackFastLoginCallBack"></wxLogin>
+      </view>
+    </view>
+    <view class="modal-content-footer">{{data.tips}}</view>
+  </view>
+</template>

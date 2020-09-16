@@ -1,0 +1,244 @@
+@import '../../../pages/project/template/projectCell.wxss';
+@import '../../../pages/template/qaCell/qaCell.wxss';
+@import '../template/questionCell.wxss';
+@import '../../../utils/wxParse/wxParse.wxss';
+
+.container {
+  background-color: #f2f2f2;
+}
+
+.qa-detail-question-view {
+  margin: 20rpx;
+  background-color: white;
+}
+
+.qa-detail-answer-view {
+  margin: 20rpx 20rpx 28rpx 20rpx;
+  margin-top: 0rpx;
+  padding-top: 20rpx;
+  padding-bottom: 10rpx;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.tag-icon {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+}
+
+.tag-avatar {
+  width: 25px;
+  height: 25px;
+  border-radius: 12.5px;
+  margin-left: 2.5px;
+  margin-top: 2px;
+  position: absolute;
+}
+
+.qa-detail-right-view {
+  margin-left: 35px;
+  margin-right: 0px;
+  min-width: 84vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.qa-detail-right-header-view {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.qa-detail-employee-view {
+  display: flex;
+  flex-direction: column;
+}
+
+.qa-detail-name-view,
+.qa-detail-kpi-view {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.qa-detail-name-label {
+  font-size: 12px;
+  color: #333;
+}
+
+.qa-detail-academy-label {
+  min-width: 40vw;
+  max-width: 40vw;
+  margin-left: 10px;
+  font-size: 10px;
+  color: #666;
+  white-space: nowrap;
+  display: -webkit-box;
+  word-break: break-all;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.qa-detail-kpi-item-view {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-right: 25rpx;
+}
+
+.qa-detail-kpi-title {
+  font-size: 10px;
+  color: #999;
+}
+
+.qa-detail-kpi-value {
+  font-size: 10px;
+  color: #ff6e72;
+  margin-left: 10rpx;
+}
+
+.qa-detail-answer-content-view {
+  padding-right: 10rpx;
+  margin-top: 10rpx;
+  background-color: white;
+  font-size: 14px;
+  color: #666;
+}
+
+.qa-detail-consult-button {
+  border-radius: 2px;
+  font-size: 10px;
+  color: white;
+  background-color: #48b3e2;
+  width: 64px;
+  min-width: 64px;
+  height: 24px;
+  line-height: 24px;
+  margin-right: 20rpx;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.qa-detail-consult-hover-button {
+  opacity: 0.7;
+}
+
+.wxParse-img {
+  width: 80vw;
+  margin-top: 10rpx;
+  margin-right: 5rpx;
+}
+
+.qa-detail-right-bottom-view {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 10rpx;
+}
+
+.qa-detail-time-label {
+  font-size: 12px;
+  color: #999;
+}
+
+.qa-detail-section-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.qa-detail-section-title {
+  font-size: 32rpx;
+  color: #333;
+  margin-left: 20rpx;
+}
+
+.qa-detail-section-value {
+  font-size: 13px;
+  color: #999;
+  margin-right: 20rpx;
+}
+
+.qa-detail-relate-view {
+  width: 100%;
+}
+
+.project-cell-view {
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  margin-top: 20rpx;
+  padding: 20rpx 10rpx;
+  flex: 1;
+  background-color: white;
+  border-radius: 4rpx;
+}
+
+.question-cell-view {
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  margin-top: 20rpx;
+  flex: 1;
+}
+
+.padding-top {
+  padding-top: 20rpx;
+}
+
+.qa-detail-ask-view {
+  margin: 20rpx;
+  margin-top: 0rpx;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+  border-radius: 2px;
+}
+
+.qa-detail-ask-title {
+  font-size: 12px;
+  color: #555;
+}
+
+.qa-detail-ask-button {
+  width: 100px;
+  height: 36px;
+  line-height: 36px;
+  border-radius: 18px;
+  background-color: #48b3e2;
+  color: white;
+  font-size: 15px;
+  margin-top: 20rpx;
+}
+
+.answer-employee-like-view {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  right: 10px;
+  bottom: 5rpx;
+}
+
+.answer-employee-like-icon {
+  width: 14px;
+  height: 14px;
+}
+
+.answer-employee-like-num {
+  font-size: 12px;
+  color: #999;
+  margin-left: 10rpx;
+}

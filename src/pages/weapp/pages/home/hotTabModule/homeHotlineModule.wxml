@@ -1,0 +1,126 @@
+<template name="home-hotline-module">
+  <block hidden="{{!showHotline}}">
+    <!-- 楼盘列表页 -->
+    <view
+      wx:if="{{page=='list'}}"
+      class="home-hotline-view {{showHotline?'slider-show':'slider-hide'}} {{showGuidePop?'bottom192':''}}"
+    >
+      <view bindtap="didClickService">
+        <image class="img" src="/image/home-bottom-service.png" />我要咨询
+      </view>
+      <view wx:if="{{!userLoginStatus}}" class="list-consult-wx-loging">
+        <wxLogin
+          markOpType="900508"
+          bindClickGetPhoneNumberBtn="passBackGetPhoneNumberBtn"
+          bindFastLoginCallBack="passBackFastLoginCallBack"
+        ></wxLogin>
+      </view>
+      <view class="line"></view>
+      <view bindtap="didClickHotline">
+        <image class="img" src="/image/home-bottom-phone.png" />电话热线
+      </view>
+    </view>
+
+    <!-- 首页 -->
+    <view wx:if="{{page=='home'&&showHotline}}">
+      <view wx:if="{{showTabModule}}" class="home-hotline-box {{changeBottom?'increase':''}}">
+        <view class="hotline-box-item">
+          <image class="img" src="/image/home-float-logo.png" />
+          <view class="text">去APP</view>
+          <button
+            class="customer-btn"
+            open-type="contact"
+            bindtap="didClickToApp"
+            send-message-path="/pages/home/home"
+            show-message-card="{{true}}"
+            send-message-title="居理新房"
+            send-message-img="https://imgs.julive.com/l?p=eyJpbWdfcGF0aCI6IlwvbWluaW1ncy9jdXN0b21lci1sb2dvLnBuZz93YXRlcm1hcmssdF8wIn0="
+          ></button>
+        </view>
+        <view class="hotline-box-item" bindtap="didClickHotline">
+          <image class="img" src="/image/home-float-phone.png" />
+          <view class="text">热线</view>
+        </view>
+        <view class="hotline-box-item" bindtap="didClickService">
+          <image class="img" src="/image/home-float-service.png" />
+          <view class="text">咨询</view>
+        </view>
+        <view wx:if="{{!userLoginStatus}}" class="home-consult-wx-loging">
+          <wxLogin
+            markOpType="900507"
+            bindClickGetPhoneNumberBtn="passBackGetPhoneNumberBtn"
+            bindFastLoginCallBack="passBackFastLoginCallBack"
+            bindWechatUserCancel="FastLoginCallBack"
+          ></wxLogin>
+        </view>
+        <image bindtap="didClickFold" class="hotline-box-flod" src="/image/icon_fold.png" />
+      </view>
+      <view
+        wx:if="{{showTabModule==false}}"
+        bindtap="didClickUnFold"
+        class="hotline-box-unfold {{changeBottom?'increaseBtn':''}}"
+      >
+        <view class="text">快捷</view>
+        <view class="text">导航</view>
+      </view>
+    </view>
+    <!-- 好文详情页 -->
+    <view wx:if="{{ page=='essay'&&showHotline}}">
+      <view wx:if="{{showTabModule}}" class="home-hotline-box" style="bottom:248rpx">
+        <view class="hotline-box-item">
+          <image class="img" src="/image/home-float-logo.png" />
+          <view class="text">去APP</view>
+          <button
+            class="customer-btn"
+            open-type="contact"
+            bindtap="didClickToApp"
+            send-message-path="/pages/home/home"
+            show-message-card="{{true}}"
+            send-message-title="居理新房"
+            send-message-img="https://imgs.julive.com/l?p=eyJpbWdfcGF0aCI6IlwvbWluaW1ncy9jdXN0b21lci1sb2dvLnBuZz93YXRlcm1hcmssdF8wIn0="
+          ></button>
+        </view>
+        <view class="hotline-box-item" bindtap="didClickToHome">
+          <image class="img" src="/image/icon-essay-back.png" />
+          <view class="text">回首页</view>
+        </view>
+        <view class="hotline-box-item" bindtap="didClickShare">
+          <image class="img" src="/image/icon-essay-share.png" />
+          <view class="text">分享</view>
+        </view>
+        <image bindtap="didClickFold" class="hotline-box-flod" src="/image/icon_fold.png" />
+      </view>
+      <view
+        wx:if="{{showTabModule==false}}"
+        bindtap="didClickUnFold"
+        class="hotline-box-unfold"
+        style="bottom:248rpx"
+      >
+        <view class="text">快捷</view>
+        <view class="text">导航</view>
+      </view>
+    </view>
+    <!-- 问答页 -->
+    <view wx:if="{{ page=='qaModule'}}">
+      <view class="home-hotline-box" style="bottom:248rpx">
+        <view class="hotline-box-item">
+          <image class="img" src="/image/home-float-logo.png" />
+          <view class="text">去APP</view>
+          <button
+            class="customer-btn"
+            open-type="contact"
+            bindtap="didClickToApp"
+            send-message-path="/pages/home/home"
+            show-message-card="{{true}}"
+            send-message-title="居理新房"
+            send-message-img="https://imgs.julive.com/l?p=eyJpbWdfcGF0aCI6IlwvbWluaW1ncy9jdXN0b21lci1sb2dvLnBuZz93YXRlcm1hcmssdF8wIn0="
+          ></button>
+        </view>
+        <view class="hotline-box-item" bindtap="didClickAsk" style="border:none;margin:0">
+          <image class="img" src="/image/icon-float-ask.png" />
+          <view class="text">提问</view>
+        </view>
+      </view>
+    </view>
+  </block>
+</template>

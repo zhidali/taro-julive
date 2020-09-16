@@ -1,0 +1,30 @@
+<import src="../../../utils/wxParse/wxParse.wxml" />
+<import src="../../../pages/home/hotTabModule/homeHotlineModule.wxml" />
+<view class='container' wx:if="{{!loading}}">
+  <view class="essay-title">{{essay.title}}</view>
+  <view class="essay-source">
+    <!-- <text class="essay-source-text">来源:{{essay.media_name}}</text> -->
+    <text class="essay-source-text  essay-source-text-con">作者:{{essay.author_name}}</text>
+    <text class="essay-source-text" style='font-weight:600'>{{essay.publish_time}}</text>
+  </view>
+  <view class="essay">
+    <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+  </view>
+</view>
+<!-- <view class="tool-bar" hover-class='tool-bar-hover'>
+  <image class="icon-share" src='../../../image/icon_share_white.png' />
+  <button class="fake-button" bindtap='didClickShare'></button>
+</view> -->
+<view class="bottom-view {{isIpx?'fix-iphonex-view':''}}">
+  <view class="bottom-item" style="margin-left:6.7vw;" hover-class='bottom-hover-view' bindtap='didClickMoreEssayItem'>
+    <label class="bottom-item-label">更多好文</label>
+  </view>
+  <view class="bottom-item" style="margin-right:6.7vw" hover-class='bottom-hover-view' bindtap='didClickDateItem'>
+    <label class="bottom-item-label">获取近期楼市解读</label>
+  </view>
+</view>
+<!-- 悬浮 -->
+<template is="home-hotline-module" data="{{showHotline:showHotline,page:'essay',showTabModule:showTabModule}}"></template>
+<painting showPainter="{{popEssayCard}}" template="{{template}}" paintInfo="{{paintInfo}}" binddismissCallback="dismissShare" bindshareImagePath="shareImagePath" />
+<login showModal="{{showLoginModal}}" bindloginSuccessCallback="loginSuccessCallback" userInfo="{{loginUserInfo}}" />
+<orderSuccessAlert fromPage='p_article_details' showModal="{{showOrderSuccessAlert}}" content="{{alertContent}}" />

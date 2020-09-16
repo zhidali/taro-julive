@@ -1,0 +1,98 @@
+<import src="../../../component/loading/loading.wxml" />
+<import src="../../../pages/template/employeeReviewItem/employeeReviewItem.wxml" />
+<import src="../../../pages/project/template/projectCell.wxml" />
+<view class="loading-view" wx:if="{{!loadingHidden}}">
+  <template is="loading-view" data="{{hidden:loadingHidden}}" />
+</view>
+<view class='container' hidden="{{!loadingHidden}}">
+  <view class='near-by-analytic-district-review'>
+    <template is="employee-review-item" data="{{review:review, backColor:'#ffffff', margin:10, showDistrict:true, notShowTime:true, notShowBottom:true}}" />
+  </view>
+  <view class='near-by-analytic-view'>
+    <view class='near-by-analytic-map-view'>
+      <map id="map" longitude="{{info.lng}}" latitude="{{info.lat}}" markers="{{markers}}" show-location style="width: 100%; height: 100%;" hidden="{{showLoginModal || showContact || showAlert}}" bindtap="didTapMap"></map>
+    </view>
+    <text class='near-by-analytic-address-base near-by-analytic-address-tag'>所在位置</text>
+    <text class='near-by-analytic-address-base near-by-analytic-address'>地址：{{info.address}}</text>
+    <view class="near-by-analytic-options-view">
+      <view class='options-line'></view>
+      <view class='select-option-view'>
+        <block wx:for="{{optionsList}}" wx:key="item">
+          <view bindtap='tabChange' data-index="{{index}}" data-item="{{item}}">
+            <text class="menu_item {{index==currentTabIndex?'active':''}}" hover-class='menu_hover_item'>
+              {{item.name}}({{item.count > 0 ? (item.count - 1) : 0}})
+            </text>
+            <view class='select-option-bottom-line' wx:if="{{index==currentTabIndex}}"></view>
+          </view>
+        </block>
+      </view>
+      <view class='options-line' style='margin-bottom:0;'></view>
+    </view>
+    <view class='near-by-facility-container'>
+      <view style='margin-top:32rpx;'>
+        <text class='near-by-facility-tag'>已建配套</text>
+        <view class='near-by-facility-top-view'>
+          <view class='near-by-facility-circle'></view>
+          <text class='near-by-facility-option-name'>{{optionsList[currentTabIndex].name}}</text>
+        </view>
+        <block wx:for="{{markers}}" wx:key="item" wx:if="{{markers.length > 1}}">
+          <view class='near-by-facility-row' wx:if="{{optionsList[currentTabIndex].isExpand ? (index>0) : (index>0 &&index <= 8)}}">
+            <view class="nearby-facility-address-view">
+              <text class='near-by-facility-address'>{{item.title}}</text>
+              <text class='near-by-facility-traffic' style='flex:1;'>
+                {{currentTabIndex==0 ? '('+item.address+')' :' '}}
+              </text>
+            </view>
+            <view class="near-by-facility-distance">
+              <image class='near-by-facility-location-tag' src='/image/icon_location_tag.png'></image>
+              <text class='near-by-facility-traffic' style='margin-right:0'>
+                {{item.distance}}m
+              </text>
+            </view>
+          </view>
+        </block>
+        <view class='near-by-facility-no-data' wx:if="{{markers.length <= 1}}">
+          当前标签下没有内容，看看其他标签吧~
+        </view>
+      </view>
+      <view class='look-more-facility-view' bindtap='didTapExpand' data-index="{{currentTabIndex}}" wx:if="{{(markers.length-1) > 8}}">
+        {{optionsList[currentTabIndex].isExpand ? '收起':'展开全部'}}
+      </view>
+      <view class='near-by-facility-traffic-bottom' wx:if="{{(markers.length-1) <= 8}}"></view>
+    </view>
+  </view>
+  <view class='near-by-analytic-view' wx:if="{{info.enstate.length > 0 || info.plan.length > 0 || info.unfavourable.length > 0 || info.en_plan_img.length > 0}}">
+    <text class='environment-analytic-title'>环境分析</text>
+    <view class='environment-analytic-base' wx:if="{{info.enstate.length > 0}}">
+      <text class='environment-analytic-base-title'>现状</text>
+      <text class='environment-analytic-base-content'>{{info.enstate}}</text>
+    </view>
+    <view class='environment-analytic-base' wx:if="{{info.en_plan_text.length > 0}}">
+      <text class='environment-analytic-base-title'>规划</text>
+      <text class='environment-analytic-base-content'>{{info.en_plan_text}}</text>
+    </view>
+    <view class='environment-analytic-base' wx:if="{{info.en_bad.length > 0}}">
+      <text class='environment-analytic-base-title'>不利</text>
+      <text class='environment-analytic-base-content'>{{info.en_bad}}</text>
+    </view>
+    <image class='environment-analytic-map-image' wx:if="{{info.en_plan_img.length > 0}}" src="{{info.en_plan_img}}"></image>
+  </view>
+  <view class='near-by-analytic-view' wx:if="{{nearProjectList.length > 0}}">
+    <text class='environment-analytic-title'>周边楼盘</text>
+    <view class='project-cell-top-view'></view>
+    <view class='project-cell-view' wx:for="{{nearProjectList}}" wx:key="item">
+      <template is="project-cell" data="{{project:item, index:index, module:'m_surrounding_project'}}" />
+    </view>
+  </view>
+  <view class='near-by-analytic-view' wx:if="{{realtiveProjectList.length > 0}}">
+    <text class='environment-analytic-title'>推荐楼盘</text>
+    <view class='project-cell-top-view'></view>
+    <view class='project-cell-view' wx:for="{{realtiveProjectList}}" wx:key="item">
+      <template is="project-cell" data="{{project:item, index:index, module:'m_also_see_project'}}" />
+    </view>
+  </view>
+  <view style='margin-bottom:{{isIpx?104:83}}px;' />
+  <contact fromPage="p_surrounding_analysis" projectId="{{projectId}}" opType="900129" source="154" consultOpType="900216" consultContent="楼盘周边有哪些生活配套？学校、地铁方不方便？未来有什么规划……" consult="咨询周边解读" userInfo="{{userInfo}}" notShowAttention="{{true}}" formOpType="900172" showCommonAlertType="{{true}}" canClick="{{!showLoginModal}}" bindshowAlertCallback="showAlertCallback" bindshowLoginCallback="showLoginCallback" bindcancelCallback="cancelCallback" />
+  <login showModal="{{showLoginModal}}" bindcancelCallback="cancelCallback" bindloginSuccessCallback="loginSuccessCallback" userInfo="{{loginUserInfo}}" />
+  <orderSuccessAlert fromPage="p_surrounding_analysis" showModal="{{showOrderSuccessAlert}}" content="{{alertContent}}" />
+</view>

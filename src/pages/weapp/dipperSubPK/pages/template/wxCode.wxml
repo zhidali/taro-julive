@@ -1,0 +1,20 @@
+<wxs src="../../../utils/util.wxs" module="tools" />
+
+<template name="wx-code">
+  <view class='wx-code m_two_dimensional_code' style="{{imglist.length==1?'justify-content:center':''}}">
+    <view class='wx-code-box' bindtap='didTapWxCode' data-index='0'>
+      <view class='wx-code-box-head'>居理新房App二维码</view>
+      <jlImage url="{{tools.resizeImageUrl(imglist[0], 200, 200)}}" placeholder="/image/placeholder_house_big.png">
+      </jlImage>
+      <view class='wx-code-box-footer'>海量新房任君挑选</view>
+    </view>
+    <view class='wx-code-box' bindtap='didTapWxCode' data-index='1' wx:if="{{imglist.length>=2}}">
+      <view class='wx-code-box-head'>咨询师二维码</view>
+      <jlImage url="{{tools.resizeImageUrl(imglist[1], 200, 200)}}" placeholder="/image/placeholder_house_big.png">
+      </jlImage>
+      <view class='wx-code-box-footer'>免费咨询师
+        <text>1V1服务</text>
+      </view>
+    </view>
+  </view>
+</template>

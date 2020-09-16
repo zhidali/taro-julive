@@ -1,0 +1,74 @@
+<view class="employee-wrap" wx:if="{{ employee.list.length}}">
+  <view class="employee-head">
+    <view class="head-left">
+      <view class="tit">
+        {{employee.title}}
+      </view>
+      <view class="tit-little">
+        {{employee.subtitle}}
+      </view>
+    </view>
+    <view class="head-right" catchtap="goEmployee">
+      <view class="more">查看更多</view>
+      <image src="/image/icon-right-row.png" class="img" />
+    </view>
+  </view>
+
+  <view class="employee-content">
+    <view
+      class="employee-item"
+      wx:for="{{employee.list}}"
+      wx:key="employee_id"
+      catchtap="goEmployee"
+      data-key="card"
+      data-item="{{item}}"
+      data-index="{{index}}"
+    >
+      <view class="img-wrap">
+        <jlImage
+          my-class="img"
+          url="{{item.flat_sit_img}}"
+          placeholder="{{item.sex == 1 ? 'https://imgs.julive.com/l?p=eyJpbWdfcGF0aCI6IlwvbWluaW1ncy9pbWdfQm95X0VtcGxveWVlLnBuZz93YXRlcm1hcmssdF8wIn0=' : 'https://imgs.julive.com/l?p=eyJpbWdfcGF0aCI6IlwvbWluaW1ncy9pbWdfR2lybF9FbXBsb3llZS5wbmc/d2F0ZXJtYXJrLHRfMCJ9'}}"
+        />
+        <view class="status">
+          <view class="spot"></view>
+          <view class="text">可咨询</view>
+        </view>
+      </view>
+      <view class="employee-info">
+        <view class="employee-name">
+          <view class="name">{{item.employee_name}}</view>
+          <view class="school">{{item.academy}}</view>
+        </view>
+        <view class="employee-virtue" wx:if="{{item.good_skill.length > 0}}">
+          <view class="virtue-item" wx:for="{{item.good_skill}}" wx:key="item">
+            {{item}}
+          </view>
+        </view>
+        <view class="people-number" wx:if="{{item.order_num && item.order_num != '0'}}">
+          {{item.order_num}}人已咨询
+        </view>
+        <authorize-login
+          data-item="{{item}}"
+          data-index="{{index}}"
+          bind:allow="allowLogin"
+          bind:cancel="cancelLogin"
+          bind:click="clickLogin"
+        >
+          <view class="subscribe" slot="btn">
+            <view class="employee-btn">免费咨询</view>
+          </view>
+        </authorize-login>
+      </view>
+    </view>
+  </view>
+  <!-- 留电话成功弹窗 -->
+  <dialog-shell class="leave-phon" bind:close="closeLeavePhone" wx:if="{{isShowLeavePhone}}">
+    <view class="leave-wrap">
+      <image class="img-success" src="/image/icon_get_success.png" />
+      <view class="tit">预约成功</view>
+      <view class="tips">{{alertContent}}</view>
+      <view class="btn-ok" catchtap="closeLeavePhone">好的</view>
+    </view>
+  </dialog-shell>
+</view>

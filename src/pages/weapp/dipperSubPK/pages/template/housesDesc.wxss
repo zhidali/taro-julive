@@ -1,0 +1,38 @@
+.wenwen-img {
+  width: 32rpx;
+  height: 32rpx;
+  margin-left: 20rpx;
+}
+
+.td-inline-block {
+  display: inline-block;
+}
+
+.houses-desc .td {
+  width: 100%;
+}
+
+.min-width149 {
+  min-width: 149rpx;
+  max-width: 149rpx;
+}
+
+.min-width93 {
+  min-width: 93rpx;
+  max-width: 93rpx;
+}
+
+.min-width107 {
+  max-width: 107rpx;
+  min-width: 107rpx;
+}
+
+.min-width77 {
+  min-width: 82rpx;
+  max-width: 82rpx;
+}
+
+.min-width84 {
+  min-width: 84rpx;
+  max-width: 84rpx;
+}

@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "jlImage": "../../../component/jlImage/jlImage",
+    "contact": "../../../component/bottomBar/bottomBar",
+    "employeCard": "../component/employeCard/employeCard",
+    "award": "../component/award/award"
+  }
+}

@@ -1,0 +1,8 @@
+<button class="icon-title-button" open-type="share" wx:if="{{isShare}}">
+  <image class='icon-title-icon' src='{{src}}' wx:if="{{src.length > 0}}"></image>
+  <text class='icon-title-title' wx:if="{{title.length > 0}}">{{title}}</text>
+</button>
+<button class="icon-title-button" bindtap='didTapButton' wx:else>
+  <image class='icon-title-icon' src='{{src}}' wx:if="{{src.length > 0}}"></image>
+  <text class='icon-title-title' wx:if="{{title.length > 0}}">{{title}}</text>
+</button>

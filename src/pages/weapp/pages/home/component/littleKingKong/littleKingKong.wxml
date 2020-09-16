@@ -1,0 +1,14 @@
+<view class="little-king-kone">
+    <!-- name -->
+    <view
+      wx:for="{{littleKingKong}}"
+      class="king-item"
+      wx:key="index"
+      catchtap="clickLittleKing"
+      data-item="{{item}}"
+      data-index="{{index}}"
+    >
+      <jlImage url="{{item.img}}" placeholder="/image/icon-err-jing.png" my-class="img" />
+      <view class="king-name">{{item.name}}</view>
+    </view>
+  </view>

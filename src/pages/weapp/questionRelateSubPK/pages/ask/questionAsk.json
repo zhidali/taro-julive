@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "我要提问",
+  "usingComponents": {
+    "login": "../../../user/login",
+    "orderSuccessAlert": "../../../order/commonOrderSuccessAlert/commonOrderSuccessAlert",
+    "jlImage": "../../../component/jlImage/jlImage",
+    "wxLogin": "../../../component/wxLogin/wxLogin"
+  }
+}

@@ -1,0 +1,44 @@
+.slide-swiper-box {
+  height: 58.67vw;
+  width: 100vw;
+}
+
+.page-number-box {
+  position: absolute;
+  min-width: 100rpx;
+  height: 48rpx;
+  top: 350rpx;
+  right: 28rpx;
+  color: #fff;
+  line-height: 48rpx;
+  border-radius: 24rpx;
+  background: #131313;
+  opacity: 0.6;
+  font-size: 24rpx;
+  text-align: center;
+}
+
+.slider-swiper-item {
+  position: relative;
+}
+
+.image-banner-fake-form-button {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+}
+.slide-swiper-box-tags {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: linear-gradient(-225deg, #fd7d7b 0%, #f94745 100%);
+  border-radius: 0 0 8rpx 0;
+  color: #fff;
+  font-size: 44rpx;
+  width: 158rpx;
+  line-height: 60rpx;
+  text-align: center;
+}

@@ -1,0 +1,29 @@
+<view class="container">
+  <!-- <view class="slider-item min" style="left:{{leftValue}}rpx;" catchtouchmove="_minMove"></view> -->
+  <image
+    src="/image/icon_slider_item.png"
+    class="slider-item min"
+    style="left:{{leftValue}}rpx;"
+    catchtouchmove="_minMove"
+  />
+  <!-- <view class="slider-item max" style="left:{{rightValue}}rpx;" catchtouchmove="_maxMove"></view> -->
+  <image
+    src="/image/icon_slider_item.png"
+    class="slider-item max"
+    style="left:{{rightValue - 28}}rpx;"
+    catchtouchmove="_maxMove"
+  />
+  <view
+    class="slider-body left"
+    style="left:{{sliderLength}}rpx; width:{{leftValue}}rpx;background-color:{{backgroundColor}};"
+  ></view>
+  <view
+    class="slider-body body"
+    style="left:{{leftValue}}rpx; width:{{rightValue-leftValue}}rpx;background-color:{{selectedColor}};"
+  ></view>
+  <view
+    class="slider-body right"
+    style="left:{{rightValue}}rpx; width:{{totalLength - rightValue}}rpx;background-color:{{backgroundColor}};"
+  ></view>
+  <slot></slot>
+</view>

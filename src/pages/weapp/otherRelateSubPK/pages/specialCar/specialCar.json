@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "预约免费专车看房",
+  "backgroundTextStyle": "light",
+  "usingComponents": {
+    "login": "../../../user/login",
+    "orderSuccessAlert": "../../../order/orderSuccessAlert"
+  }
+}

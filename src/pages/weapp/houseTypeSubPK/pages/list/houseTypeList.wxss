@@ -1,0 +1,125 @@
+@import "../../../pages/template/houseTypeCell/houseTypeCell.wxss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.houseTypeHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 80rpx;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.header-room-type {
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  height: 80rpx;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-left: 10rpx;
+}
+
+.header-room-text {
+  font-size: 13px;
+   margin-left: 20rpx; 
+   margin-right: 10rpx; 
+  color: #575757;
+  flex-wrap:wrap;
+}
+
+.header-room-text-selected {
+  color:#48B3E2;
+  font-size: 13px;
+  margin-left: 20rpx;
+  margin-right: 10rpx;
+}
+
+.header-sell-status {
+  width: 30%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 15rpx;
+}
+
+.header-sell-status-text {
+  font-size: 13px;
+  margin-right: 10rpx;
+  color: #575757;
+}
+
+.header-sell-status-image {
+  height: 15rpx;
+  width: 20rpx;
+}
+
+.housetype-list-view {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 20rpx;
+  padding-left: 10rpx;
+  margin: 20rpx;
+  margin-top: 0;
+}
+
+.header-status-menu {
+  width: 100px;
+  overflow: hidden;
+  position: fixed;
+  top: 65rpx;
+  right: 20rpx;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-status-menu-box {
+  background-color: #474747;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 25rpx;
+  padding-bottom: 10rpx;
+}
+
+.header-status-menu-up {
+  width: 0;
+  height: 0;
+  margin: 0 auto;
+  margin-right: 30px;
+  border-width: 5px;
+  border-color: transparent transparent #474747 transparent;
+  border-style: dashed dashed solid dashed;
+}
+
+.header-status-menu-item {
+  color: white;
+  font-size: 12px;
+  width: 70px;
+  text-align: center;
+  margin-bottom: 25rpx;
+}
+
+.header-status-menu-item-selected {
+  color: white;
+  font-size: 12px;
+  width: 70px;
+  text-align: center;
+  margin-bottom: 25rpx;
+  background-color:#656565;
+}
+
+.house-type-hover-cell {
+  background-color: #efefef;
+}

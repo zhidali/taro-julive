@@ -1,0 +1,25 @@
+<wxs src="../../../../utils/util.wxs" module="tools" />
+<cover-view class="EC_all" wx:if="{{dipperLoginFlag&&employeId}}">
+  <cover-view style="background:#F3F6F9;height:1rpx;"></cover-view>
+  <cover-view class='EC_box'>
+    <cover-view class='EC_box_lf' bindtap='didTapNavigateTo'>
+      <cover-view class='EC_box_lf_img'>
+        <cover-image class='sbu_employe_img' src="{{tools.resizeImageUrl(employeImg,80,80)}}" binderror='coverImgError'></cover-image>
+        <cover-image class='bigV' src='/dipperSubPK/images/icon_big_v.png'></cover-image>
+      </cover-view>
+      <cover-view class='EC_box_lf_title'>
+        <cover-view class="all-ellipsis">{{employeName}}</cover-view>
+        <cover-view style="white-space:pre-wrap">{{employePhoneNumber}}</cover-view>
+      </cover-view>
+    </cover-view>
+    <cover-view class='EC_box_ri'>
+      <cover-image bindtap='didTapPhoneCall' src='/dipperSubPK/images/icon_beidou_phone.png'></cover-image>
+      <cover-image bindtap='didTapEmployeCode' src='/dipperSubPK/images/icon_code.png'></cover-image>
+      <cover-image wx:if="{{awardImgFlag}}" bindtap='didTapPayAward' src='/dipperSubPK/images/icon-dipper-award.png'></cover-image>
+      <button class="EC_box_btn" bindtap='didTapShare' open-type="share">
+        <cover-image src='/image/icon_share_dipper.png'></cover-image>
+      </button>
+    </cover-view>
+  </cover-view>
+  <cover-view style="background:#F3F6F9;height:2rpx;"></cover-view>
+</cover-view>

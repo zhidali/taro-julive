@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "户型分析",
+  "usingComponents": {
+    "contact": "../../../pages/project/contact/contact",
+    "nocontent": "../../../component/nocontent/nocontent",
+    "jlImage": "../../../component/jlImage/jlImage"
+  }
+}

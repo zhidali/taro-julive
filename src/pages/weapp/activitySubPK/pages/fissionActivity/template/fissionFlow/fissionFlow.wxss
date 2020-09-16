@@ -1,0 +1,40 @@
+.fission-flow .fission-flow-title {
+  height: 56rpx;
+  font-size: 40rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #583422;
+  line-height: 56rpx;
+  margin-top: 40rpx;
+  margin-bottom: 32rpx;
+}
+.fission-flow .fission-flow-content {
+  background: #ffffff;
+  border-radius: 8px;
+  display: flex;
+  padding: 32rpx 24rpx;
+}
+.fission-flow .fission-flow-content .fission-flow-content-item {
+  text-align: center;
+}
+.fission-flow .fission-flow-content .fission-flow-content-item .fission-flow-content-item-img {
+  width: 151rpx;
+  height: 120rpx;
+  display: block;
+  margin-bottom: 15rpx;
+}
+.fission-flow .fission-flow-content .fission-flow-content-item text {
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #8d9799;
+  line-height: 33rpx;
+}
+.fission-flow .fission-flow-content .fission-flow-content-arrows {
+  width: 18rpx;
+  height: 26rpx;
+  display: block;
+  overflow: hidden;
+  position: relative;
+  top: 46rpx;
+}

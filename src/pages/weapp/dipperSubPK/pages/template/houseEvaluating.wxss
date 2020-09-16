@@ -1,0 +1,28 @@
+.house-evaluating  .min-width148 {
+  min-width: 148rpx;
+  max-width: 148rpx;
+}
+
+.house-evaluating  .min-width162 {
+  min-width: 162rpx;
+  max-width: 162rpx;
+}
+
+.house-evaluating  .min-width312 {
+  min-width: 312rpx;
+  max-width: 312rpx;
+}
+
+.house-evaluating .text-align{
+ text-align: center 
+}
+
+.new_half{
+  width: 24rpx;
+  height: 24rpx;
+  margin-right: 2rpx;
+}
+
+.half-box image:nth-child(5){
+  margin-right: 0rpx;
+}

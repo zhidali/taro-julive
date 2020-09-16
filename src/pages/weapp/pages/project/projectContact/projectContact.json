@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "login": "../../../user/login",
+    "orderSuccessAlert": "../../../order/orderSuccessAlert",
+    "commonOrderSuccessAlert": "../../../order/commonOrderSuccessAlert/commonOrderSuccessAlert"
+  }
+}

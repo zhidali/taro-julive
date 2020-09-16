@@ -1,0 +1,21 @@
+<wxs src="../../../utils/util.wxs" module="tools" />
+<template name="image-banner">
+  <view style="{{'position:relative'}}">
+    <swiper class="slide-swiper-box" indicator-dots="{{indicatorDots}}" autoplay="{{autoPlay}}" bindchange="didSwiperSlideImage" data-index="{{pageIndex}}">
+      <block wx:for-items="{{imageList}}" wx:key="item">
+        <swiper-item class='slider-swiper-item'>
+          <view bindtap="didTapSlideImage" data-op-type="{{900162}}" data-index="{{index}}">
+            <jlImage url="{{index < loadImageNum ? tools.resizeImageUrl(item, screenWidth, 220*screenWidth/375) : ''}}" placeholder='../../image/placeholder_house_big.png' className="project-slide-image" index="{{index}}" />
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+    <label class="page-number-box" wx:if="{{imageList.length > 0}}">
+      {{pageIndex}}/{{imageList.length}}
+    </label>
+    <view class="slide-swiper-box-tags" wx:if="{{is_special_price_house==1}}">特价房</view>
+    <view class="slide-swiper-box-tags" wx:if="{{is_special_price_house==2&&is_discount==1}}">
+      优惠中
+    </view>
+  </view>
+</template>

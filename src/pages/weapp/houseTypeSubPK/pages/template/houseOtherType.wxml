@@ -1,0 +1,32 @@
+<wxs src="../../../utils/util.wxs" module="tools" />
+<template name="house-other-type">
+  <view class="house-other-type-box" hover-class="hover-view" bindtap="didTapOtherType" data-op-type="{{opType}}" data-house-type="{{list}}" data-is-other="{{isOther}}" data-index="{{index}}">
+    <button class="fake-house-type-form-button" form-type='submit'></button>
+    <jlImage className="house-other-type-image" url="{{tools.resizeImageUrl(list.apart_img[0], 100, 70)}}" placeholder="../../image/placeholder_house_small.png"></jlImage>
+    <view class="house-other-type-info" wx:if="{{isOther}}">
+      <view class="house-other-type-acreage">
+        {{list.summary}}  {{list.acreage == '0' ? '': list.acreage+'㎡'}}
+      </view>
+      <view class="house-other-info-item">
+        <view class="house-other-info-item-name">首付：</view>
+        <view class="house-other-info-item-value">
+          {{list.down_pay /10000 == 0?'待定':list.down_pay /10000+'万'}}
+        </view>
+      </view>
+      <view class="house-other-info-item">
+        <view class="house-other-info-item-name">总价：</view>
+        <view class="house-other-info-item-value">
+          {{list.price /10000 == 0?'待定':list.price/10000+'万'}}
+        </view>
+      </view>
+    </view>
+    <view class="house-same-type-info" wx:else>
+      <view class="house-same-type-info-name">{{list.project_info.project_name}}</view>
+      <view class="house-other-type-acreage">{{list.summary}}  {{  list.acreage}}㎡</view>
+      <view class="house-other-info-item">
+        <view class="house-other-info-item-name">总价：</view>
+        <view class="house-other-info-item-value">{{list.price / 10000}}万</view>
+      </view>
+    </view>
+  </view>
+</template>

@@ -1,0 +1,8 @@
+{
+  "backgroundTextStyle": "dark",
+  "navigationBarTitleText": "购房报告",
+  "usingComponents": {
+    "jlImage": "../../../component/jlImage/jlImage",
+    "firstReportDetail": "../firstReportDetail/firstReportDetail"
+  }
+}

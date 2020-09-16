@@ -1,0 +1,3 @@
+<cover-view class="award" hidden="{{!dipperLoginFlag}}" bindtap='payMoney'>
+  <cover-image src='/dipperSubPK/images/icon_award.png'></cover-image>
+</cover-view>

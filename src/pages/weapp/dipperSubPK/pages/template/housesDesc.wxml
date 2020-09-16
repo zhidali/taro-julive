@@ -1,0 +1,69 @@
+<wxs src="../../../pages/home/projectNewsModule/template/util.wxs" module="statusColor" />
+<template name="houses-desc">
+  <view class='houses-desc m_project_price'>
+    <view class="title-box">
+      <image class="title-box-img" src="/image/icon-dipper-yellow.png"></image>
+      <view class="all-flex-between title-box-content">
+        <view>
+          价格对比
+          <image src='/image/icon_wenwen.png' class="wenwen-img" bindtap='didTapAlertWiw' data-type="{{1}}"></image>
+        </view>
+      </view>
+    </view>
+    <view class='house_loan padding-le-ri-40'>
+      <text>首付{{down_payments}}%</text>
+      <text hidden="{{down_payments == 100}}">贷款{{loan_term}}年</text>
+      <text hidden="{{down_payments == 100}}">年贷款利率{{lending_rate}}%</text>
+      ：
+    </view>
+    <view class='table-box padding-le-ri-40'>
+      <view class="table">
+        <view class="tr">
+          <view class="th all-white-space min-width150">{{is_virtual_city?'小区名称':'楼盘名称'}}</view>
+          <view class="th all-white-space min-width149">{{is_virtual_city?'房源名称':'户型面积'}}</view>
+          <view class="th min-width93">
+            <text>单价</text>
+            <text>(万)</text>
+          </view>
+          <view class="th min-width107">
+            <text>总价</text>
+            <text>(万)</text>
+          </view>
+          <view class="th min-width77">
+            <text>首付</text>
+            <text>(万)</text>
+          </view>
+          <view class="th min-width84">
+            <text>月供</text>
+            <text>(万)</text>
+          </view>
+        </view>
+        <view class="tr" style="flex-wrap: wrap;" wx:for="{{project_info}}" wx:key="{{index}}" data-index="{{index}}" bindtap='didTapSelectHouse'>
+          <view class="td yellow min-width150" data-module='1' bindtap='toProjectDetail' data-index="{{index}}" data-projectId="{{item.project_id}}" data-url="{{item.project_url}}">
+            {{item.name}}
+          </view>
+          <view style="flex:1;">
+            <block wx:for="{{item.house_list}}" wx:for-item="house" wx:key-index="idx" wx:key="{{idx}}">
+              <view class="" style="display:flex; flex-wrap: nowrap; {{item.house_list.length == 1? 'height:100%':''}}">
+                <view class="td min-width149">
+                  <text>{{house.summary}}</text>
+                  <text>{{house.acreage}}</text>
+                </view>
+                <view class="td min-width93">{{house.offer_price?house.offer_price:'暂无'}}</view>
+                <view class="td min-width107">
+                  {{house.total_payment?house.total_payment:'暂无'}}
+                </view>
+                <view class="td min-width77" hidden="{{down_payments == 100}}">
+                  {{house.first_payment?house.first_payment:'暂无'}}
+                </view>
+                <view class="td min-width84">
+                  {{house.monthly_payment?house.monthly_payment:'暂无'}}
+                </view>
+              </view>
+            </block>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>

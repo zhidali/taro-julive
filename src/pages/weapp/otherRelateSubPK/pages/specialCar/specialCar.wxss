@@ -1,0 +1,196 @@
+.container {
+  width: 100%;
+  background-color: white;
+  position: relative;
+}
+
+.special-car-banner {
+  width: 100vw;
+  min-height: 566rpx;
+  max-height: 566rpx;
+  overflow: hidden;
+  background-size: cover;
+  background-image:url('http://csrvideo.csrbobo.com/download%20%281%29.png');
+}
+
+.special-car-introduce {
+  position: absolute;
+  top: 406rpx;
+  left: 8rpx;
+  right: 0;
+  height: 300rpx;
+  background-size: cover;
+  background-image:url('http://csrvideo.csrbobo.com/download%20%282%29.png');
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.special-car-form {
+  background-color: white;
+  margin-top:120rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.special-car-form-number-view {
+  margin-left: 64rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  max-width: 260rpx;
+}
+
+.special-car-form-number {
+  font-family: PingFangSC-Semibold;
+  font-size: 60rpx;
+  color: #FA5F35;
+  text-align: center;
+  max-width: 220rpx;
+  display: -webkit-box;
+  word-break: break-all;
+  overflow: hidden; 
+  text-overflow: ellipsis;            
+  -webkit-box-orient: vertical;    
+  -webkit-line-clamp: 1;
+}
+
+.special-car-form-title {
+  font-family: PingFangSC-Semibold;
+  font-size:36rpx;
+  color: #3E4A59;
+  text-align: center;
+}
+
+.special-car-form-content-view {
+  margin-left: 64rpx;
+  margin-top: 8rpx;
+  max-width: 260rpx;
+}
+
+.special-car-form-content {
+  margin-top: 28rpx;
+  margin-left: 72rpx;
+  font-family: PingFang-SC-Bold;
+  font-size: 24rpx;
+  color: #3E4A59;
+}
+
+.pick-title {
+  margin-left: 60rpx;
+  margin-top: 48rpx;
+  font-family: PingFangSC-Semibold;
+  font-size: 32rpx;
+  color: #3E4A59;
+}
+
+.pick-sex-select-view-container {
+  margin-left: 60rpx;
+  width: 84%;
+  margin-top: 40rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pick-sex-view {
+  width: 280rpx;
+  height: 96rpx;
+  border-radius: 8rpx;
+  font-family: PingFangSC-Semibold;
+  font-size: 32rpx;
+  color: #3E4A59;
+  line-height: 96rpx;
+  text-align: center;
+  background-color:  #F6F6F6;
+}
+
+.pick-sex-select-view {
+  background-color: #DCF4FF;
+}
+
+.pick-sex-unselect-view {
+  background-color:  #F6F6F6;
+}
+
+.special-car-time-pick-view {
+  background-color: #F6F6F6;
+  border-radius: 8rpx;
+  margin-left: 60rpx;
+  margin-right: 60rpx;
+  margin-top: 20rpx;
+  width: 84vw;
+  height: 96rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.special-car-select-time-text {
+  margin-left: 28rpx;
+  font-family: PingFang-SC-Medium;
+  font-size: 32rpx;
+  color: #77808A;
+}
+
+.special-car-select-time-icon {
+  margin-right: 28rpx;
+  width: 44rpx;
+  height: 44rpx;
+}
+
+picker {
+  width: 100%;
+  height: 40px;
+}
+
+.pick-project-name-view {
+  margin-top: 40rpx;
+  margin-left: 60rpx;
+  width: 84%;
+  height: 96rpx;
+  border: 2rpx solid #F3F6F9;
+  border-radius: 8rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.pick-project-name-input {
+  margin-left: 28rpx;
+  margin-right: 28rpx;
+  font-family: PingFang-SC-Medium;
+  font-size: 32rpx;
+  color: #77808A;
+  flex:1;
+}
+
+.pick-project-name-input-ph {
+  font-family: PingFang-SC-Medium;
+  font-size: 32rpx;
+  color: #77808A;
+  flex:1;
+}
+
+.special-car-bottom-view {
+  margin-top: 48rpx;
+  margin-bottom: 40rpx;
+  width: 100%;
+}
+
+.special-car-time-confirm-button {
+  margin-left: 60rpx;
+  margin-right: 60rpx;
+  height: 96rpx;
+  line-height: 96rpx;
+  border-radius: 8rpx;
+  font-size: 32rpx;
+  background-image: linear-gradient(-131deg, #47B3E3 0%, #5DD7FF 100%);
+  color: white;
+}

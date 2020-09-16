@@ -1,0 +1,23 @@
+<view class="project-date-item-view">
+  <image class="project-date-item-icon" src="{{icon}}" />
+  <view class="project-date-content-view">
+    <text class="project-date-title">{{title}}</text>
+    <view class="project-date-content">
+      <text class="project-date-content-text">{{content}}</text>
+    </view>
+  </view>
+  <button class="project-date-button" hover-class="project-date-hover-button" bindtap='didTapButton' wx:if="{{buttontitle.length > 0}}">{{buttontitle}}</button>
+</view>
+
+<login showModal="{{showLoginModal}}" 
+title="{{loginTitle}}"
+content="{{loginContent}}"
+buttonTitle="{{loginButtonTitle}}"
+popType="{{popType}}"
+bindloginSuccessCallback="loginSuccessCallback"
+userInfo="{{loginUserInfo}}"/>
+<orderSuccessAlert
+  popType="{{popType}}"
+  showModal="{{showOrderSuccessAlert}}"
+  title="优惠到手"
+  content="{{alertContent}}"/>

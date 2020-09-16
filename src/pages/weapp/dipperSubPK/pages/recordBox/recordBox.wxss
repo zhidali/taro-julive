@@ -1,0 +1,238 @@
+@import "../template/projectCell";
+@import "../template/dipperRecordRemind";
+@import "../template/dipperRecordMulti";
+
+.container {
+  background: #fff;
+  padding-bottom: 160rpx;
+}
+
+.all_box {
+  width: 100%;
+  margin-top: 60rpx;
+}
+
+.enshrine_box {
+  margin-top: 60rpx;
+}
+
+.all_box_body {
+  margin-left: 40rpx;
+  margin-right: 40rpx;
+}
+
+enshrine_box {
+  width: 100%;
+}
+
+.enshrine_box_body {
+  padding-left: 40rpx;
+  padding-right: 40rpx;
+  overflow: hidden;
+  position: relative;
+}
+
+.record-head {
+  background: #00C0EB;
+  font-family: PingFangSC-Medium;
+  color: rgb(233, 246, 251);
+  line-height: 44rpx;
+  height: 44rpx;
+  width: 100%;
+  position: fixed;
+  padding-bottom: 10rpx;
+  z-index: 9999;
+}
+
+.record-head view {
+  position: absolute;
+  font-size: 32rpx;
+  height: 100%;
+}
+
+.record-head-lf {
+  left: 148rpx;
+}
+
+.record-head-ri {
+  right: 122rpx;
+}
+
+.record-head .active {
+  font-weight: 600;
+  font-family: PingFangSC-Bold;
+  font-size: 40rpx;
+  color: #fff;
+}
+
+.border_bom_line {
+  height: 4rpx;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 4rpx;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+}
+
+/* 左滑取消 */
+
+.fixed {
+  position: fixed;
+}
+
+scroll-view {
+  padding-right: 40rpx;
+  box-sizing: border-box;
+}
+
+.order-item {
+  padding: 28rpx 0;
+  display: flex;
+  position: relative;
+  border-bottom: 2rpx solid #f3f6f9;
+}
+
+/* .container .order-item {
+   padding-top: 56rpx;
+} */
+
+.remove {
+  width: 136rpx;
+  height: -moz-calc(100% - 56rpx);
+  height: -webkit-calc(100% - 56rpx);
+  height: calc(100% - 56rpx);
+  background-color: #ff5c47;
+  font-weight: 600;
+  font-family: PingFangSC-Bold;
+  font-size: 14px;
+  color: #fff;
+  line-height: 18px;
+  top: 28rpx;
+  right: -176rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  border-top-right-radius: 8rpx;
+  border-bottom-right-radius: 8rpx;
+}
+
+.remove text {
+  display: block;
+}
+
+/* 左滑取消 end */
+
+/* 多个楼盘 */
+
+/* 多个楼盘  end */
+
+/* footer */
+
+.footer {
+  text-align: center;
+}
+
+.footer-title {
+  font-family: PingFangSC-Medium;
+  font-size: 32rpx;
+  color: #3e4a59;
+  text-align: center;
+  line-height: 32rpx;
+  margin-top: 40rpx;
+  margin-bottom: 20rpx;
+}
+
+.footer-content {
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #77808a;
+  text-align: center;
+  line-height: 28rpx;
+}
+
+/* footer end */
+
+/* 联系我的咨询师 */
+
+.record-footer {
+  background: #fff;
+  box-shadow: 0 -8rpx 14rpx 0 rgba(0, 0, 0, 0.06);
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+.record-footer-btn {
+  width: 100;
+  margin: 40rpx 46rpx 40rpx 46rpx;
+  background-image: linear-gradient(-137deg, #ff8e56 0%, #fa5f35 100%);
+  border-radius: 8rpx;
+  font-weight: 600;
+  font-family: PingFangSC-Semibold;
+  font-size: 32rpx;
+  color: #fff;
+  text-align: center;
+  height: 96rpx;
+  line-height: 96rpx;
+}
+
+/* 联系我的咨询师 end */
+
+/* end */
+
+.scroll_pull_down_refresh {
+  text-align: center;
+}
+
+/* end */
+
+.isphoneX {
+  margin-bottom: 70rpx;
+}
+
+.move-to-start {
+  transform: translateX(0px);
+  transition: all 0.2s linear;
+}
+
+/*  */
+
+.all_box_body .last_child_bom:last-child {
+  border-bottom: none;
+}
+
+.none_border_bot {
+  border-bottom: none;
+}
+
+.img_end {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 100rpx;
+}
+
+.img_end_line_ft {
+  width: 60rpx;
+  height: 1px;
+  margin-right: 12rpx;
+  background-color: #f3f6f9;
+}
+
+.img_end_line_ri {
+  width: 60rpx;
+  height: 1px;
+  margin-left: 12rpx;
+  background-color: #f3f6f9;
+}
+
+.img_end_line_mi {
+  font-family: PingFangSC-Medium;
+  font-size: 24rpx;
+  color: #d0d0d0;
+  letter-spacing: 0;
+}

@@ -1,0 +1,64 @@
+<template name="employee-info">
+  <view class="employee-info" wx:if="{{employee.length >= 1}}" style="{{type=='home'?'background-color:#fff;':'background-color:#F4F6F9;padding-bottom:20rpx;'}}">
+    <block>
+      <view class="project-header-title-view" wx:if="{{type=='home'}}" bindtap="didClickViewEmployeeListymore" style="margin-bottom:12rpx;">
+        <text class="project-header-title">居理咨询师</text>
+        <view class="project-header-more-view">
+          <text class="project-header-more-text">了解更多咨询师</text>
+          <image class="project-header-more-icon" src="/image/icon_view_more.png"></image>
+        </view>
+      </view>
+      <view wx:if="{{type=='list'}}" class="project-header-title-view-list">高学历咨询师，帮你买好房</view>
+    </block>
+    <view class="employee-info-box">
+      <block wx:if="{{employee.length <= 2}}">
+        <view class="employee-info-box-card" wx:for="{{employee}}" data-index="{{index}}" wx:key="employee_id">
+          <view data-index="{{index}}" bindtap="didClickEmployeeInfoUrl">
+            <jlImage className="employee-info-image" url='{{item.avatar}}' screenWidth="122" screenHeight="122" placeholder="/image/base_house_story_boy.png"></jlImage>
+          </view>
+          <view class="employee-info-name">{{item.employee_name}}</view>
+          <view class="employee-info-school">{{item.academy}}</view>
+          <view class="employee-info-client">
+            <text>{{item.order_num}}个</text>
+            用户服务进行中
+          </view>
+          <view class="employee-info-btn-box">
+            <view class="employee-info-btn" bindtap="didTapAskEmployee" data-index="{{index}}">
+              <view class="common-button-content">免费咨询</view>
+            </view>
+            <!-- 实验B登陆按钮 -->
+            <view wx:if="{{!userLoginStatus}}" data-index="{{index}}" class="list-employee-wx-loging">
+              <wxLogin markOpType="{{opType}}" markOpType="{{opType}}" markIndex="{{index}}" bindClickGetPhoneNumberBtn="passBackGetPhoneNumberBtn" bindFastLoginCallBack="passBackFastLoginCallBack"></wxLogin>
+            </view>
+          </view>
+        </view>
+      </block>
+      <block wx:else="{{employee.length <=6}}">
+        <scroll-view class="house-story-scroll" scroll-x>
+          <block wx:for="{{employee}}" wx:key="employee_id">
+            <view class="employee-info-box-card" data-index="{{index}}">
+              <view data-index="{{index}}" bindtap="didClickEmployeeInfoUrl">
+                <jlImage className="employee-info-image" url='{{item.avatar}}' screenWidth="122" screenHeight="122" placeholder="/image/{{item.sex==1?'placeholder_consult_avater_man.png':'placeholder_consult_avater_woman.png'}}"></jlImage>
+              </view>
+              <view class="employee-info-name limit_wid">{{item.employee_name}}</view>
+              <view class="employee-info-school">{{item.academy}}</view>
+              <view class="employee-info-client">
+                <text>{{item.order_num}}个</text>
+                用户服务进行中
+              </view>
+              <view class="employee-info-btn-box">
+                <view class="employee-info-btn" bindtap="didTapAskEmployee" data-index="{{index}}">
+                  <view class="common-button-content">免费咨询</view>
+                </view>
+                <!-- 实验B登陆按钮 -->
+                <view wx:if="{{!userLoginStatus}}" class="list-employee-wx-loging">
+                  <wxLogin markOpType="{{opType}}" markOpType="{{opType}}" markIndex="{{index}}" bindClickGetPhoneNumberBtn="passBackGetPhoneNumberBtn" bindFastLoginCallBack="passBackFastLoginCallBack"></wxLogin>
+                </view>
+              </view>
+            </view>
+          </block>
+        </scroll-view>
+      </block>
+    </view>
+  </view>
+</template>

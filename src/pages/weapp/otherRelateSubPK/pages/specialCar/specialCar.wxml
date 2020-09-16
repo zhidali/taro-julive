@@ -1,0 +1,43 @@
+<view class="container">
+  <image class='special-car-banner' src='{{imageName}}'></image>
+  <view class='special-car-introduce'>
+    <view class='special-car-form-number-view' style='margin-top:44rpx;'>
+      <view class="special-car-form-number">{{serviceNum}}</view>
+      <view class='special-car-form-title' style='margin-top: 8rpx; margin-left:8rpx;'>人</view>
+    </view>
+    <view class="special-car-form-content-view special-car-form-title">已使用专车看房</view>
+    <view class="special-car-form-content" style='margin-top:24rpx;'>
+      全程0元私人专车看房，人均节省{{num2}}元路费
+    </view>
+  </view>
+  <view class="special-car-form">
+    <text class="pick-title">您的称呼：</text>
+    <view class="pick-sex-select-view-container">
+      <view class='pick-sex-view {{sexSelected==1 ? "pick-sex-select-view":"pick-sex-unselect-view"}}' bindtap='didClickSelectSex' data-index="{{1}}">
+        先生
+      </view>
+      <view class='pick-sex-view {{sexSelected==2 ? "pick-sex-select-view":"pick-sex-unselect-view"}}' bindtap='didClickSelectSex' data-index="{{2}}">
+        女士
+      </view>
+    </view>
+    <text class="pick-title">预约看房时间（非必填）：</text>
+    <picker mode="date" value="{{timeSelected}}" start="{{startDate}}" end="{{endDate}}" bindchange="onDateChange" bindcancel="onDateCancel">
+      <view class="special-car-time-pick-view">
+        <text class="special-car-select-time-text">{{timeSelected.length==0?'与我确认联系时间':timeSelected}}
+</text>
+        <image class="special-car-select-time-icon" src="../../../image/icon_down_black.png" />
+      </view>
+    </picker>
+    <text class="pick-title" style='margin-top:96rpx;'>关注楼盘（非必填）：</text>
+    <view class="pick-project-name-view">
+      <input type='text' class="pick-project-name-input" bindinput="inputProjectNameChange" placeholder="楼盘名称" placeholder-class="pick-project-name-input-ph" />
+    </view>
+    <view class='special-car-bottom-view'>
+      <button class="special-car-time-confirm-button" bindtap="didClickSubmitButton">
+        确定预约免费专车
+      </button>
+    </view>
+  </view>
+</view>
+<login title="预约免费专车" content='' showModal="{{showLoginModal}}" userInfo='{{userInfo}}' bindloginSuccessCallback="loginSuccessCallback" />
+<orderSuccessAlert fromPage='p_reservation_car_see_house' showModal="{{showOrderSuccessAlert}}" content="稍后会有居理新房咨询师联系您，专车带您看房。" bindconfirmCallback="confirmCallback" bindhideModalCallback="hideModalCallback" />

@@ -1,0 +1,83 @@
+.house-other-type-box {
+  display: inline-block;
+  margin-left: 20rpx;
+  width: 130px;
+  position: relative;
+  overflow: hidden;
+}
+
+.fake-house-type-form-button {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+}
+
+.house-other-type-image {
+  width: 260rpx;
+  height: 200rpx;
+  background-color: #efefef;
+  border-radius: 8rpx;
+  /* border:1px solid #efefef;  */
+}
+
+.house-other-type-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.house-same-type-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.house-other-type-acreage {
+  font-family: PingFangSC-Bold;
+  font-size: 28rpx;
+  line-height: 40rpx;
+  color: #3E4A59;
+  margin-top:8rpx;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.house-other-info-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-top: 8rpx;
+  line-height: 34rpx;
+  flex-wrap: wrap;
+}
+
+.house-other-info-item-name {
+  font-family: PingFangSC-Medium;
+  font-size: 24rpx;
+  color: #77808A;
+}
+
+.house-other-info-item-value {
+  font-family: PingFangSC-Medium;
+  font-size: 24rpx;
+  color: #3E4A59;
+  /* margin-left: 10rpx */
+}
+
+.house-same-type-info-name {
+  font-family: PingFang-SC-Bold;
+  font-size: 28rpx;
+  color: #3E4A59;
+  line-height: 40rpx;
+  margin-top: 8rpx;
+  width: 100%;         
+  display:inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

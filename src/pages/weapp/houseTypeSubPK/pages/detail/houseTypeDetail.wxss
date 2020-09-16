@@ -1,0 +1,332 @@
+@import "../../../pages/template/slideImage/slideImage.wxss";
+@import "../template/houseOtherType.wxss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: rgb(244, 244, 244) !important;
+}
+
+.house-type-detail-status {
+  font-family: PingFangSC-Medium;
+  font-size: 44rpx;
+  line-height: 60rpx;
+  margin-top: 48rpx;
+  margin-bottom: 20rpx;
+  color: #3e4a59;
+}
+
+.detail-status-type-text {
+  font-size: 18px;
+  padding-left: 20rpx;
+}
+
+.detail-status-text {
+  margin-right: 0;
+  font-size: 24rpx;
+  height: 36rpx;
+  line-height: 36rpx;
+  border-radius: 4rpx;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+  display: -webkit-box;
+  word-break: break-all;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.status-sale-out {
+  background-color: #0ad487;
+  color: #fff;
+}
+.status-sale-in {
+  background-color: #a1b1c6;
+  color: #fff;
+}
+.house-type-detail-tag {
+  display: flex;
+}
+
+.house-type-detail-tag-text {
+  margin-left: 26rpx;
+  background-color: #f3f6f9;
+  color: #77808a;
+}
+
+.house-type-counselor-line {
+  background-color: #f4f4f4;
+  height: 1px;
+  margin: 28rpx 15rpx;
+}
+
+.house-type-detail-price {
+  display: flex;
+  flex-direction: column;
+  width: 95vw;
+}
+
+.house-type-detail-price-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 95vw;
+}
+
+.house-type-detail-price-info {
+  width: 45%;
+}
+
+.house-type-detail-price-name {
+  font-size: 13px;
+  color: #9d9d9d;
+  text-align: center;
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
+}
+
+.house-type-detail-price-value {
+  font-size: 16px;
+  color: #ef7c7c;
+  text-align: center;
+  margin-top: 20rpx;
+}
+
+.house-type-detail-price-line {
+  width: 1px;
+  margin: 20rpx;
+  margin-bottom: 40rpx;
+  margin-top: 40rpx;
+  background-color: #f4f4f4;
+}
+
+.house-type-detail-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: white;
+  padding: 0 40rpx 56rpx 40rpx;
+  margin-bottom: 20rpx;
+}
+
+.house-type-detail-area {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.house-type-detail-area-item {
+  height: 44rpx;
+  line-height: 44rpx;
+  /* display: flex; */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  /* display: -webkit-box; */
+}
+
+.house-type-detail-area-info {
+  display: flex;
+  flex-direction: row;
+}
+
+.detail-area-item-name {
+  font-size: 28rpx;
+  color: #77808a;
+  margin-right: 10rpx;
+  display: inline-block;
+}
+
+.detail-area-item-value {
+  font-size: 15px;
+  color: #666666;
+}
+
+.detail-area-item-premises {
+  font-size: 32rpx;
+  color: #47b3e3;
+  line-height: 44rpx;
+  font-family: PingFangSC-Bold;
+}
+
+.house-type-detail-comment {
+  background-color: white;
+  padding: 0 20rpx 28rpx 20rpx;
+  margin-bottom: 20rpx;
+  /* width: 95vw; */
+}
+
+.house-type-counselor-view {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.house-type-counselor {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.house-type-counselor-img {
+  height: 84rpx;
+  width: 84rpx;
+  background-color: #efefef;
+  margin: 20rpx;
+  margin-bottom: 0;
+  border-radius: 50%;
+  margin-top: 56rpx;
+}
+
+.house-type-counselor-info {
+  display: flex;
+  flex-direction: column;
+  margin-top: 58rpx;
+}
+
+.counselor-name-text {
+  font-weight: 600;
+  font-size: 28rpx;
+  color: #3e4a59;
+}
+
+.counselor-reputation-title {
+  font-size: 24rpx;
+  color: #3e4a59;
+  margin-left: 24rpx;
+  font-weight: 500;
+}
+
+.counselor-reputation {
+  font-size: 26rpx;
+  color: #fa5f35;
+  margin-left: 10rpx;
+  font-weight: 600;
+}
+
+.counselor-name-view {
+  display: flex;
+  flex-direction: row;
+  height: 40rpx;
+  line-height: 40rpx;
+}
+
+.counselor-graduate {
+  margin-top: 8rpx;
+  font-size: 24rpx;
+  line-height: 34rpx;
+  color: #77808a;
+  margin-right: 20rpx;
+}
+
+.house-type-counselor-contact {
+  color: #47b3e3;
+  background-color: #e3f6fe;
+  border-radius: 4rpx;
+  margin-right: 20rpx;
+  margin-top: 68rpx;
+  font-size: 28rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  min-width: 160rpx;
+  /* padding: 0 20rpx; */
+  text-align: center;
+  flex-wrap: nowrap;
+  position: relative;
+  font-family: PingFangSC-Medium;
+}
+
+.fake-form-button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+}
+
+.house-type-comment-advantage {
+  padding-bottom: 28rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.house-type-comment-title {
+  font-weight: 600;
+  font-size: 32rpx;
+  line-height: 44rpx;
+  color: #3e4a59;
+  margin: 0 20rpx 8rpx 20rpx;
+}
+
+.house-type-comment-value {
+  font-family: PingFangSC-Medium;
+  font-size: 28rpx;
+  color: #77808a;
+  line-height: 48rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+}
+
+.house-other-list-scroll {
+  display: inline-block;
+  white-space: nowrap;
+  /* margin-top: 20rpx;  */
+  min-height: 142px;
+  width: 95vw;
+  /* margin-bottom: 20rpx; */
+}
+
+.house-other-type-text {
+  font-family: PingFangSC-Bold;
+  font-size: 44rpx;
+  color: #3e4a59;
+  margin: 56rpx 20rpx 40rpx 20rpx;
+}
+
+.house-same-type-view {
+  display: flex;
+  flex-direction: column;
+  padding: 0 20rpx;
+  margin-bottom: 20rpx;
+  background-color: white;
+  /* width: 95vw; */
+  border-radius: 2px;
+  padding-bottom: 56rpx;
+}
+.house-type-detail-info-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+.house-type-detail-info-line {
+  height: 44rpx;
+  line-height: 44rpx;
+  margin-bottom: 16rpx;
+  width: 100%;
+  position: relative;
+}
+.house-type-detail-info-left {
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #77808a;
+}
+.house-type-detail-info-right {
+  font-family: PingFangSC-Bold;
+  font-size: 32rpx;
+  color: #3e4a59;
+}
+.house-type-detail-info-money {
+  font-family: PingFangSC-Semibold;
+  font-size: 40rpx;
+  color: #fa5f35;
+}
+.block-right {
+  position: absolute;
+  left: 422rpx;
+  top: 0;
+}

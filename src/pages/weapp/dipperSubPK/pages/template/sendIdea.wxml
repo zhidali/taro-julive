@@ -1,0 +1,22 @@
+<template name="send-idea">
+  <view class="send-idea m_feedback">
+    <view class="title-box">
+      <image class="title-box-img" src="/image/icon-dipper-yellow.png"></image>
+      <view class="all-flex-between title-box-content">
+        <view>反馈区</view>
+      </view>
+    </view>
+    <view class="send-idea-content">以上是我帮您准备的资料，如果您还有其他想要了解的内容，请随时留言给我，我会精心帮您准备对应的资料~</view>
+    <view class="send-idea-box">
+      <view class="send-idea-content-lf" bindtap='didClickToClientMessage'>
+        <image src="/dipperSubPK/images/icon-dipper-keyword.png"></image>
+        <text>请输入想要了解的...</text>
+        <text>查看我的反馈</text>
+        <image src="/dipperSubPK/images/icon-dipper-arrows-yellow.png"></image>
+      </view>
+      <view class="send-idea-content-ri" bindtap="pullFor">
+        <image class="{{forMeCall?'imageRotate':''}}" src="{{forMeCall?'/image/icon_likes_highlighted.png':'/image/for_me_call.png'}}"></image>
+      </view>
+    </view>
+  </view>
+</template>

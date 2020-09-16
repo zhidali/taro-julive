@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "户型详情",
+  "usingComponents": {
+    "contact": "../../../pages/project/contact/contact",
+    "login": "../../../user/login",
+    "orderSuccessAlert": "../../../order/orderSuccessAlert",
+    "jlImage": "../../../component/jlImage/jlImage"
+  }
+}

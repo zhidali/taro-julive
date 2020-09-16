@@ -1,3 +1,4 @@
+const changeAppJsonPlugin = require('./plugin/changeAppJsonPlugin');
 const config = {
   projectName: 'taro-julive',
   date: '2020-9-16',
@@ -8,18 +9,24 @@ const config = {
     828: 1.81 / 2
   },
   sourceRoot: 'src',
-  outputRoot: 'dist',
+  outputRoot: `dist/${process.env.TARO_ENV}`,
   plugins: [],
   defineConstants: {
   },
   copy: {
     patterns: [
+      // 将原生copy小程序
+      { from: `src/pages/${process.env.TARO_ENV}/`, to: `dist/${process.env.TARO_ENV}` },
     ],
     options: {
     }
   },
   framework: 'react',
   mini: {
+    webpackChain(chain, webpack) {
+      chain.plugin('changeAppJsonPlugin')
+        .use(changeAppJsonPlugin)
+    },
     postcss: {
       pxtransform: {
         enable: true,

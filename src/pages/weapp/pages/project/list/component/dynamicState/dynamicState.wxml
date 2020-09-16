@@ -1,0 +1,28 @@
+<view class="my-class dynamic-container">
+  <!-- <image src="/image/bg-dyna-remind.png"  class="bg-img"/> -->
+  <authorize-login bind:allow="allowLogin" bind:cancel="cancelLogin" bind:click="clickLogin">
+    <view slot="btn">
+      <view class="title">{{dynamicData.title}}</view>
+      <view class="desc">
+        {{dynamicData.sub_title}}
+      </view>
+      <view class="need-list">
+        您的需求：{{currentNeed}}
+        <!-- 您的需求：朝阳、通州… 丨 500-700万 丨 二居三居四居二居三居四居… … -->
+      </view>
+      <view class="btn">{{dynamicData.button}}
+          <image class="icon" src="/image/icon-white-trange.png" />
+      </view>
+    </view>
+  </authorize-login>
+  <!-- 留电成功弹窗 -->
+  <orderSuccessAlert
+    bindconfirmCallback="confirmCallback"
+    bindhideModalCallback="hideModalCallback"
+    popType="{{1}}"
+    fromPage="p_project_list"
+    showModal="{{showOrderSuccessAlert}}"
+    title="{{alertTitle}}"
+    content="{{alertContent}}"
+  />
+</view>

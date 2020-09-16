@@ -1,0 +1,104 @@
+.pop-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.65;
+  z-index: 9000;
+}
+
+.pop-view {
+  position: fixed;
+  overflow: hidden;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+}
+
+.pop-view-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  border-radius: 16rpx;
+}
+
+.pop-bottom-view {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 32rpx;
+}
+
+.share-button {
+  margin-left: 0;
+  margin-top: 0;
+  width: 45%;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-radius: 8rpx;
+  font-size: 28rpx;
+  color: white;
+  border: 1rpx solid white;
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.painter-button {
+  margin-right: 0;
+  margin-top: 0;
+  width: 45%;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-radius: 8rpx;
+  font-size: 28rpx;
+  color: white;
+  border: 1rpx solid white;
+  background-color: rgba(255, 255, 255, 0);
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.paint-big-img {
+  position: fixed;
+  left: 10000rpx;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+.setting-image {
+  position: fixed;
+  top: 16rpx;
+  left: 50%;
+  z-index: 10002;
+  width: 470rpx;
+  height: 596rpx;
+  transform: translate(-50%, 0);
+}
+.setting-close {
+  width: 366rpx;
+  height: 80rpx;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8rpx;
+  border: 1rpx solid rgba(255, 255, 255, 1);
+  font-size: 28rpx;
+  font-family: "PingFangSC-Medium, PingFang SC";
+  color: #fff;
+  line-height: 80rpx;
+  margin-top: 100rpx;
+  text-align: center;
+  position: fixed;
+  top: 724rpx;
+  left: 50%;
+  z-index: 10002;
+  transform: translate(-50%, 0);
+}
+.share-image {
+  width: 622rpx;
+  height: 940rpx;
+}

@@ -1,0 +1,40 @@
+var statusColor = function (value) {
+  //1未售' ,2在售' ,3售罄， 4待售
+  if (value == 2) {
+    return 'background-color: #E1FBF3;color:#12C48E ;';
+  } else if (value == 3) {
+    return 'background-color: #F0F4F5;color:#7E8C8F;';
+  } else if (value == 4 || value == 1) {
+    return 'background-color: #EFFBFE;color:#00C0EB ;';
+  } else {
+    return 'background-color: #47B3E3;color:#666;';
+  }
+};
+
+var fontColor = function (value) {
+  if (value == 2) {
+    return 'color: #0AD487';
+  } else if (value == 3) {
+    return 'color: #A1B1C6';
+  } else {
+    return 'color: #47B3E3';
+  }
+};
+
+var statusName = function (value) {
+  if (value == 1) {
+    return '/image/icon_list_promotion_1.png';
+  } else if (value == 2) {
+    return '/image/icon_list_promotion_2.png';
+  } else if (value == 3) {
+    return '/image/icon_list_promotion_3.png';
+  } else {
+    return '/image/icon_list_promotion_4.png';
+  }
+};
+
+module.exports = {
+  statusColor: statusColor,
+  fontColor: fontColor,
+  statusName: statusName,
+};

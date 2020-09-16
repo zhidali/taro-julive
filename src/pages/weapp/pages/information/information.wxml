@@ -1,0 +1,17 @@
+<view class="information-wrap">
+  <view class="information-tab">
+    <block wx:for="{{tabList}}" wx:key="item">
+      <view
+        class="tab-item {{index==tabCurrentIndex?'item-cur':''}}"
+        bindtap="didClickTabChange"
+        data-index="{{index}}"
+      >
+        {{item}}
+        <text class="line"></text>
+      </view>
+    </block>
+  </view>
+  <essayModule id="essayModulePage" wx:if="{{tabCurrentIndex==0}}" />
+  <questionAnswer id="questionAnswerPage" wx:if="{{tabCurrentIndex==1}}" projectId="{{projectId}}" />
+  <houseDynamic id="houseDynamicPage" wx:if="{{tabCurrentIndex==2}}" />
+</view>

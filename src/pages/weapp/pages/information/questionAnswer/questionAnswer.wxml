@@ -1,0 +1,104 @@
+<import src="../../template/qaCell/qaCell.wxml" />
+<import src="../../../component/loading/loading.wxml" />
+<import src="../../home/hotTabModule/homeHotlineModule.wxml" />
+<import src="../../template/barTypeLogin/barTypeLogin.wxml" />
+
+<view class="loading-view" wx:if="{{!loadingHidden}}">
+  <template is="loading-view" data="{{type:1}}" />
+</view>
+<view class="container" wx:if="{{loadingHidden}}">
+  <view class="question-ask-header-view">
+    <image
+      class="question-ask-header-image"
+      style="background-image:url('http://csrvideo.csrbobo.com/download.png');"
+      mode="aspectFill"
+    />
+    <view class="question-ask-search-view" wx:if="{{searchMode}}">
+      <view class="question-ask-search">
+        <image class="question-search-icon" src="/image/icon_search_question.png" />
+        <input
+          class="question-search-input"
+          placeholder="搜你想知道的问题、答案"
+          placeholder-class="question-search-input-placeholder"
+          confirm-type="done"
+          confirm-hold="false"
+          bindconfirm="onSearchConfirm"
+          bindinput="inputSearchChange"
+          value="{{searchWord}}"
+        />
+      </view>
+      <button class="question-ask-cancel-button" bindtap="didCancelSearchButton">取消</button>
+    </view>
+    <view class="question-ask-header-action" wx:if="{{!searchMode}}">
+      <icontitle
+        src="/image/icon_search_question.png"
+        title="问题搜索"
+        bindButtonTap="didTapSearchButton"
+      />
+      <icontitle
+        src="/image/icon_ask_question.png"
+        title="我要问问"
+        bindButtonTap="didTapAskButton"
+        data-click-location="{{'m_title_bar'}}"
+      />
+      <icontitle src="/image/icon_share_question.png" title="分享问问" isShare="true" />
+    </view>
+  </view>
+  <view class="question-filter-view {{fixedFilterView?'fiexd-filter-view':''}}">
+    <scroll-view class="question-filter-scroll-view" scroll-x="true" scroll-left="{{scrollLeft}}">
+      <view
+        class="filter-menu_item {{index==activeIndex?'filter-menu-active':''}} {{index==0?'menu-item-first':(index==tagList.length-1?'menu-item-last':'')}}"
+        wx:for="{{tagList}}"
+        wx:key="item"
+        bindtap="didTapMenuItem"
+        data-item="{{item}}"
+        data-index="{{index}}"
+      >{{item.show_txt}}</view>
+    </scroll-view>
+  </view>
+  <!-- <view
+    class="question-filter-view fiexd-filter-view"
+    wx:if="{{fixedFilterView}}"
+    catchtouchmove="preventTouchMove"
+  >
+    <scroll-view class="question-filter-scroll-view" scroll-x="true" scroll-left="{{scrollLeft}}">
+      <view
+        class="filter-menu_item {{index==activeIndex?'filter-menu-active':''}} {{index==0?'menu-item-first':(index==tagList.length-1?'menu-item-last':'')}}"
+        wx:for="{{tagList}}"
+        wx:key="item"
+        bindtap="didTapMenuItem"
+        data-item="{{item}}"
+        data-index="{{index}}"
+      >{{item.show_txt}}</view>
+    </scroll-view>
+  </view>-->
+  <block wx:if="{{questionList.length > 0}}">
+    <block wx:for="{{questionList}}" wx:key="item">
+      <view class="qa-cell-view">
+        <template
+          is="qa-cell"
+          data="{{qa:item, index:index, showPurpose:false, showDistrict: false, showQATag:false, showAnswer:true, limitline:true}}"
+        />
+      </view>
+    </block>
+    <block wx:if="{{hasMore}}">
+      <view class="loading-tip">加载中…</view>
+    </block>
+    <block wx:else>
+      <view class="loading-tip">没有更多了</view>
+    </block>
+  </block>
+  <block wx:else>
+    <nocontent
+      src="https://imgs.julive.com/l?p=eyJpbWdfcGF0aCI6IlwvbWluaW1ncy9wbGFjZWhvbGRlcl9ub2RhdGFfcXVlc3Rpb24ucG5nP3dhdGVybWFyayx0XzAifQ=="
+      tip="没有找到您想要的问答"
+      buttontitle="我要问问"
+      bindButtonTap="didTapAskButton"
+      data-click-location="{{'m_search_no_result'}}"
+    />
+  </block>
+  <!-- 悬浮 导航 -->
+  <template is="home-hotline-module" data="{{page:'qaModule',showHotline:true}}"></template>
+  <!-- 登录条形弹窗 -->
+  <template is="bar-type" data="{{barTypeData:barTypeData,versionFlag:true}}" />
+</view>

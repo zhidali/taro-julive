@@ -1,0 +1,201 @@
+.sale-house{
+  // padding-left: 30rpx;
+}
+.hot-head{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 50rpx 30rpx 32rpx;
+  .tit{
+    height: 50rpx;
+    line-height: 50rpx;
+    font-weight: bold;
+    font-size: 36rpx;
+    color: #031A1F;
+    display: flex;
+    align-items: center;
+    .saleHouse--l-down{
+      color: #031A1F;
+      font-size: 22rpx;
+      line-height: 32rpx;
+      font-weight: normal;
+      margin-left: 14rpx;
+      .bg{
+        color: #fff;
+        font-weight: bold;
+        background-color: #FF704A;
+        font-size: 22rpx;
+        margin: 0 8rpx;
+        padding: 0 8rpx;
+        border-radius: 4rpx;
+      }
+      .bg-d{
+        color: #031A1F;
+        background-color: #fff;
+        font-weight: normal;
+        padding: 0;
+        margin: 0;
+      }
+    }
+  }
+  .look-more{
+    display: flex;
+    align-items: center;
+    .text{
+      height: 40rpx;
+      line-height: 40rpx;
+      color: #8D9799;
+      font-size: 28rpx;
+      display: inline-block;
+      margin-right: 8rpx;
+    }
+    .img{
+      width: 12rpx;
+      height: 24rpx;
+    }
+    // image{
+    //   width: 12rpx;
+    //   height: 24rpx;
+    // }
+  }
+}
+
+.hot-swiper{
+  height: 280rpx;
+  .swiper-wrap{
+    display: flex;
+    align-items: center;
+  }
+  .swiper-item{
+    height: 280rpx;
+    box-sizing: border-box;
+    max-width: 264rpx;
+    min-width: 264rpx;
+    &:first-child{
+      margin-left: 30rpx;
+    }
+    +.swiper-item {
+      margin-left: 16rpx;
+    }
+    .img-wrap{
+      width:264rpx;
+      height:148rpx;
+      position: relative;
+      border-radius:8rpx 8rpx 0 0;
+      overflow: hidden;
+      .img{
+        width:264rpx;
+        height:148rpx;
+      }
+      // TODO
+      // image{
+      //   width:264rpx;
+      //   height:148rpx;
+      // }
+      .discount{
+        position: absolute;
+        top: 0;
+        left: 0;
+        box-sizing: border-box;
+        padding: 2rpx 8rpx;
+        height: 34rpx;
+        line-height: 34rpx;
+        font-size: 24rpx;
+        color: #fff;
+        background-color: #FA5F35;
+        border-radius:8rpx 0 8rpx 0;
+        max-width: 150rpx;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+      .opentime-discount{
+        background-color: #FAA935;
+      }
+      .location{
+        position: absolute;
+        bottom: 8rpx;
+        right: 8rpx;
+        box-sizing: border-box;
+        padding: 0 8rpx 2rpx;
+        height: 36rpx;
+        line-height: 36rpx;
+        font-size: 24rpx;
+        color: #fff;
+        background-color: rgba(0, 0, 0, 0.6);
+        border-radius:8rpx;
+        max-width: 248rpx;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+    }
+    .house-info{
+      padding: 8rpx 16rpx 0;
+      border: 1rpx solid #D5DADB;
+      border-top: none;
+      border-radius: 0 0 8rpx 8rpx;
+      width: 264rpx;
+      height: 132rpx;
+      box-sizing: border-box;
+      .house-name{
+        height: 40rpx;
+        line-height: 40rpx;
+        color: #031A1F;
+        font-size: 28rpx;
+        font-weight: bold;
+        color: #031A1F;
+        max-width: 242rpx;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+      .house-area{
+        height: 34rpx;
+        line-height: 34rpx;
+        color: #8D9799;
+        font-size: 24rpx;
+        max-width: 242rpx;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+      .house-price{
+        height: 34rpx;
+        line-height: 34rpx;
+        color: #FA5F35;
+        font-weight: bold;
+        font-size: 24rpx;
+        max-width: 242rpx;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+    }
+  }
+  .swiper-last{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .img{
+      width: 28rpx;
+      height: 28rpx;
+      margin-left: 40rpx;
+    }
+    // image{
+    //   width: 28rpx;
+    //   height: 28rpx;
+    //   margin-left: 40rpx;
+    // }
+    .text{
+      display: inline-block;
+      // writing-mode: vertical-rl;
+      margin-right: 52rpx;
+      margin-left: 16rpx;
+      color: #031A1F;
+      width: 24rpx;
+      font-size: 24rpx;
+      line-height:34rpx
+    }
+  }
+}

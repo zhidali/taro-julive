@@ -1,0 +1,122 @@
+/* 多个楼盘 */
+
+/* .multiHouseData-box{
+  padding-right: 40rpx;
+}
+.multiHouseData-box-body{
+  padding-right: 40rpx;
+} */
+
+.scroll-multi-box {
+  /* margin-left: 40rpx;
+  margin-right: 40rpx; */
+  position: relative;
+}
+.multi_house {
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  padding: 28rpx 0;
+  border-bottom: 2rpx solid #f3f6f9;
+  position: relative;
+}
+
+.multi_house_item {
+  max-width: 188rpx;
+  position: relative;
+}
+
+.multi_house_item_two{
+ max-width: 310rpx;
+   position: relative;
+}
+
+.multi_house_item_head {
+  display: flex;
+  align-items: center;
+}
+
+.multi_house_item_head  text{
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  color: #77808a;
+  line-height: 24rpx;
+  display: inline-block;
+  padding-left: 10rpx;
+}
+
+.multi_house .multi_house_item:last-child .multi_house_item_head text {
+  display: none;
+}
+
+.scroll-multi-box .multi_house .multi_house_item:nth-last-child(2) .multi_house_item_head text{
+  background-color: pink;
+    display: none;
+}
+.multi_house_item_name {
+  display: -webkit-box;
+  word-break: break-all;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  font-weight: 600;
+  font-family: PingFang-SC-Bold;
+  font-size: 28rpx;
+  line-height: 40rpx;
+  color: #3e4a59;
+  margin-top: 6rpx;
+  max-width: 95%
+}
+
+.multi_house_item_footer {
+  background:  #F3F6F9;
+  border-radius: 20rpx;
+  padding: 0rpx 16rpx;
+  margin-top: 8rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  height: 36rpx;
+  line-height: 36rpx;
+  color: #77808a;
+  display: inline-block;
+}
+
+.multi_house_item_footer text{
+  display: inline-block;
+  padding-left: 8rpx;
+}
+.multi_house-img {
+  width: 20rpx;
+  height: 20rpx;
+  position: relative;
+  top: 2rpx;
+}
+
+
+.multi_house .multiDel_three {
+  /* top: 0px; */
+  /* height: 240rpx; */
+  
+}
+
+.multi_house .multiDel_two {
+  /* top: 0px; */
+  /* height: 472rpx; */
+}
+
+.multi_house_item .max_width {
+  max-width: 300rpx;
+}
+
+.remove-body {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* 多个楼盘  end */

@@ -1,0 +1,9 @@
+<template name="loading-view">
+  <view class="loading_box" style="{{type==1?'height:auto':'height:100%'}}">
+    <view class="loading_all">
+      <image class="loading" />
+      <image class="logo" src="https://imgs.julive.com/l?p=eyJpbWdfcGF0aCI6IlwvbWluaW1ncy9sb2FkaW5nX2xvZ28ucG5nP3dhdGVybWFyayx0XzAifQ==" />
+      <view class="tip">正在加载</view>
+    </view>
+  </view>
+</template>

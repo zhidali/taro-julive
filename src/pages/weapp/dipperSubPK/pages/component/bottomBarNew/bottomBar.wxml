@@ -1,0 +1,25 @@
+<cover-view class="contact-view {{isIpx?'fix-iphonex-view':''}} {{dipperLoginFlag?'':'hide'}}">
+  <cover-view class='body'>
+
+    <cover-view class='contact-phone-view'>
+      <cover-view class='contact-phone-item' >
+        <button bindtap='didTapShare' open-type="share">
+          <cover-image class='attention-icon' src="/image/icon_share_dipper.png"></cover-image>
+          <cover-view class='attention-label'>转发</cover-view>
+        </button>
+      </cover-view>
+    </cover-view>
+
+    <cover-view class='contact-phone-view'>
+      <cover-view class='contact-phone-item' bindtap='didClickCollect'>
+        <cover-image class='attention-icon' src="{{isCollect?'/image/icon_attention_new.png':'/image/icon_no_attention_dipper_black.png'}}"></cover-image>
+        <cover-view class='attention-label'>收藏</cover-view>
+      </cover-view>
+    </cover-view>
+
+    <cover-view class='contact-item-box'>
+      <cover-view class="contact-item" hover-class='contact-hover-view' bindtap='didClickPhone'>联系咨询师</cover-view>
+    </cover-view>
+
+  </cover-view>
+</cover-view>

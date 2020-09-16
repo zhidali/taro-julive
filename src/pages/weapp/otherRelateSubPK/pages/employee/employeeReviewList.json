@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "咨询师点评",
+  "usingComponents": {
+    "contact": "../../../pages/project/contact/contact",
+    "login": "../../../user/login",
+    "orderSuccessAlert": "../../../order/orderSuccessAlert",
+    "jlImage": "../../../component/jlImage/jlImage"
+  }
+}

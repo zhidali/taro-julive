@@ -1,0 +1,25 @@
+.icon-title-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.icon-title-button::after {
+  border:none;
+  border-radius:0
+}
+
+.icon-title-icon {
+  width: 25px;
+  height: 25px;
+}
+
+.icon-title-title {
+  font-size: 14px;
+  color: #666;
+  margin-left: 15rpx;
+}

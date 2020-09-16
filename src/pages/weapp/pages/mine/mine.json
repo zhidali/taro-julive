@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "个人中心",
+  "backgroundTextStyle": "light",
+  "usingComponents": {
+    "jlImage": "../../../component/jlImage/jlImage",
+    "wxLogin": "../../../component/wxLogin/wxLogin"
+  }
+}

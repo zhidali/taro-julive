@@ -1,0 +1,47 @@
+<import src="../../../component/loading/loading.wxml" />
+<import src="../../../pages/template/imageContainer/imageContainer.wxml" />
+<wxs src="../../../utils/util.wxs" module="tools" />
+
+<view class="loading-view" wx:if="{{!loadingHidden}}">
+  <template is="loading-view" data="{{hidden:loadingHidden}}" />
+</view>
+<view class="container" hidden="{{!loadingHidden}}">
+  <block wx:for="{{dynamicList}}" wx:key="item">
+    <view class="dynamic-container-view" hover-class="dynamic-container-hover-view">
+      <view
+        class="dynamic-title-header"
+        bindtap="didTapDynamicItem"
+        data-op-type="{{900170}}"
+        data-dynamic="{{item}}"
+        data-index="{{index}}"
+      >
+        <label class="dynamic-title-label">{{item.title}}</label>
+        <view class="dynamic-info">
+          <label class="dynamic-time-label">{{item.create_datetime}}</label>
+          <label class="dynamic-sorce-label">来源: {{item.from}}</label>
+        </view>
+      </view>
+      <view class="dynamic-seperator-line"></view>
+      <label class="dynamic-content-label">{{item.content}}</label>
+      <template
+        is="image-container-view"
+        data="{{imageList: tools.subArray(item.image_list, 3), itemIndex:index, screenWidth:screenWidth, dynamicId:item.id}}"
+      />
+    </view>
+  </block>
+  <!-- 加载下一页 -->
+  <view class="loading-tip">{{hasMore?'加载中…':'没有更多了'}}</view>
+
+  <view class="{{isIpx?'iphonex-page-bottom-margin':'page-bottom-margin'}}" />
+  <contact
+    fromPage="p_project_dynamic"
+    projectId="{{projectId}}"
+    opType="900073"
+    source="154"
+    consultOpType="900214"
+    consultContent="当前有哪些楼栋在售？楼层、户型还有哪些可选？未来什么时候加推……"
+    consult="咨询更多动态"
+    userInfo="{{userInfo}}"
+    notShowAttention="{{true}}"
+  />
+</view>

@@ -1,0 +1,9 @@
+{
+  "name": "changeAppJsonPlugin",
+  "version": "1.0.0",
+  "description": "为 Taro 和原生小程序代码混合开发设计的插件，可以修改最后 appjson 的输出",
+  "main": "index.js",
+  "repository": "https://github.com/Kujiale-Mobile/changeAppJsonPlugin",
+  "author": "rottenpen",
+  "license": "MIT"
+}

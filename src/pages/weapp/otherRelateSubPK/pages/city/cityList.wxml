@@ -1,0 +1,71 @@
+<import src="../../../component/loading/loading.wxml" />
+<view class="loading-view" wx:if="{{!loadingHidden}}">
+  <template is="loading-view" data="{{hidden:loadingHidden}}" />
+</view>
+<view class="container-city-list" hidden="{{!loadingHidden}}">
+  <view class="city-list-search">
+    <view class="city-list-search-box">
+      <view class='city-list-search-content'>
+        <image src="/image/icon_home_search_gray.png" class="city-list-search-content-image" />
+        <input type='text' class="city-list-search-content-input" style="{{getInputFocus?'width:582rpx':''}}" bindconfirm="didConfirmSearch" bindfocus="didFocusSearch" bindinput="didInputSearchVal" focus="{{needFocus}}" placeholder="请输入城市名称" placeholder-class="city-list-search-content-input-ph" value="{{keyword}}" />
+      </view>
+      <view wx:if="{{getInputFocus}}" bindtap="didCancelSearch" class="city-list-search-cancel">
+        取消
+      </view>
+    </view>
+  </view>
+  <!-- 搜索 -->
+  <view wx:if="{{confirmSearch}}">
+    <view class="city-search-result" wx:if="{{searchCityList.length>0}}">
+      <block wx:for="{{searchCityList}}" wx:key="{{item.id}}">
+        <view class="city-view-selection-city" bindtap="didSelectCity" data-cityid="{{item.id}}" data-position="{{3}}" data-cityname="{{item.name}}" data-index="{{index}}">
+          {{item.name}}
+        </view>
+      </block>
+    </view>
+    <view class="city-search-none" wx:if="{{searchCityList.length==0}}">
+      <image src="/otherRelateSubPK/images/city_list_none.png" />
+      <view class="city-search-none-tip">该城市暂未开通服务</view>
+    </view>
+  </view>
+  <view class="city-list-view" wx:if="{{getInputFocus==false}}">
+    <view class="current-city-view" style="{{visitedCity.length==0?'border:none':''}}" bindtap="didSelectCity" data-cityid="{{city.city_id}}" data-cityname="{{city.city_name}}" data-index="0">
+      <text class="color-3e4 medium">{{city.city_name}}</text>
+      <text class="city-section-title">{{is_selectCity?'选择城市':'当前城市'}}</text>
+    </view>
+    <view class="city-list-visited" wx:if="{{visitedCity.length>0}}">
+      <view class="list-visited-title">最近访问</view>
+      <view class="visited-cityList">
+        <block wx:for="{{visitedCity}}" wx:key="city_id">
+          <view class="visited-cityList-item" bindtap="didSelectCity" data-cityid="{{item.city_id}}" data-cityname="{{item.city_name}}" data-position="{{1}}" data-index="{{index}}">
+            {{item.city_name}}
+          </view>
+        </block>
+      </view>
+    </view>
+    <view class="city-view-selection-box">
+      <!-- 城市列表 -->
+      <view class="city-view-selection-letter city-view-fix-letter" wx:if="{{firstLetterFix}}">
+        {{fixTopLetter}}
+      </view>
+      <block wx:for="{{cityList}}" wx:key="index">
+        <view class="city-view-selection-letter" id="{{item.letter}}">{{item.letter}}</view>
+        <block wx:for="{{item.cities}}" wx:for-item="city" wx:key="id">
+          <view class="city-view-selection-city" data-cityid="{{city.id}}" data-cityname="{{city.name}}" data-position="{{2}}" bindtap="didSelectCity" data-index="{{city.index-1}}" style="{{item.cities.length == index+1?'border:none':''}}">
+            {{city.name}}
+          </view>
+        </block>
+      </block>
+      <!-- 点击字母时显示点击的字母 -->
+      <view wx:if="{{isShowLetter}}" class="city-view-click-letter">{{ toastShowLetter }}</view>
+    </view>
+    <!-- 右侧字母 -->
+    <view class="city-search-letter touchClass">
+      <view class="searchLetter-con">#</view>
+      <view wx:for="{{cityList}}" class="searchLetter-con" wx:key="letter" data-letter="{{item.letter}}" bindtap="didClickLetter">
+        {{ item.letter }}
+      </view>
+    </view>
+    <view class="city-tip">更多城市敬请期待</view>
+  </view>
+</view>

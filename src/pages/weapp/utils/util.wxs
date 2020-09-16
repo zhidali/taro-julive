@@ -1,0 +1,111 @@
+var resizeImageUrl = function (url, width, height) {
+  if (url == undefined || url == null || url.length == 0) return "";
+  if (url.indexOf("?") !== -1) {
+    url = url + "&";
+  } else {
+    url = url + "?";
+  }
+  return (
+    url +
+    "img_oss_process=image/resize,m_fill,h_" +
+    parseInt(height * 2) +
+    ",w_" +
+    parseInt(width * 2) +
+    ",limit_0"
+  );
+};
+
+var formatPrice = function (priceMap) {
+  if (priceMap == undefined) {
+    return "待定";
+  }
+
+  if (priceMap.price.length > 0) {
+    if (priceMap.price[0] == "待定") {
+      return "待定";
+    }
+
+    if (priceMap.price.length == 1) {
+      return priceMap.price[0] + priceMap.unit;
+    }
+
+    if (priceMap.price.length == 2) {
+      return (
+        priceMap.price[0] +
+        priceMap.unit +
+        "-" +
+        priceMap.price[1] +
+        priceMap.unit
+      );
+    }
+  }
+  return priceMap.unit || "待定";
+};
+
+var subText = function (text, start, end) {
+  if (text.length > end) {
+    return text.substring(start, end) + "...";
+  } else {
+    return text.substring(start, end);
+  }
+};
+
+var subArray = function (array, count) {
+  if (array == undefined) return [];
+  if (array.length < count) {
+    return array;
+  } else {
+    return array.slice(0, count);
+  }
+};
+
+var isEmptyObject = function (obj) {
+  return JSON.stringify(obj) === "{}";
+};
+var filterBannerHide = function (index, arrLength) {
+  if (arrLength <= 5) {
+    if (arrLength == index + 1) return true;
+  } else if (index == 4) {
+    return true;
+  }
+};
+
+var filterPeopleNum = function (peopleNum) {
+  if (parseInt(peopleNum) >= 50) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+var filterReputationNum = function (reputationNum) {
+  if (parseInt(reputationNum) >= 95) {
+    return true;
+  } else {
+    return false;
+  }
+};
+var statusColor = function (value) {
+  //1未售' ,2在售' ,3售罄， 4待售
+  if (value == 2) {
+    return "background-color: #E1FBF3;color:#12C48E ;";
+  } else if (value == 3) {
+    return "background-color: #F0F4F5;color:#7E8C8F;";
+  } else if (value == 4 || value == 1) {
+    return "background-color: #EFFBFE;color:#00C0EB ;";
+  } else {
+    return "background-color: #47B3E3;color:#666;";
+  }
+};
+
+module.exports = {
+  resizeImageUrl: resizeImageUrl,
+  formatPrice: formatPrice,
+  subText: subText,
+  subArray: subArray,
+  isEmptyObject: isEmptyObject,
+  filterBannerHide: filterBannerHide,
+  filterPeopleNum: filterPeopleNum,
+  filterReputationNum: filterReputationNum,
+  statusColor: statusColor
+};

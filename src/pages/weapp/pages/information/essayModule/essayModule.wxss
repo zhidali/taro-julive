@@ -1,0 +1,202 @@
+@import 'essayCell.wxss';
+@import '../../../component/loading/loading.wxss';
+@import '../../template/barTypeLogin//barTypeLogin.wxss';
+
+.container {
+  background-color: #fff;
+  min-width: 100%;
+  max-width: 100%;
+  min-height: 100vh;
+  padding-top: 92rpx;
+}
+
+.essay-banenr-view {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-items: center;
+  align-items: center;
+}
+
+.essay-banenr-container-view {
+  margin: 32rpx 40rpx 40rpx 40rpx;
+  height: 240rpx;
+  flex: 1;
+  position: relative;
+  border-radius: 8rpx;
+  background-color: rgba(0, 0, 0, 0);
+  overflow: hidden;
+}
+
+swiper {
+  width: 100%;
+  height: 240rpx;
+}
+
+.image-container-swiper-item {
+  width: 100%;
+  height: 240rpx;
+}
+
+.essay-banner-image {
+  width: 100%;
+  height: 240rpx;
+  max-height: 240rpx;
+  border-radius: 8rpx;
+}
+
+.swiper-desc {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.45);
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8rpx;
+}
+
+.swiper-desc-text {
+  margin-left: 32rpx;
+  margin-right: 32rpx;
+  color: #fff;
+  font-weight: bold;
+  font-size: 40rpx;
+  text-shadow: 0px 0px 16px #646d75;
+  display: -webkit-box;
+  word-break: break-all;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.swiper-indicator {
+  position: absolute;
+  bottom: 16rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-indicator-item {
+  width: 16rpx;
+  height: 4rpx;
+  margin-left: 8rpx;
+  opacity: 0.5;
+  background: #ffffff;
+  border-radius: 2rpx;
+}
+
+.swiper-indicator-item-active {
+  background-color: #ffffff;
+  opacity: 1;
+}
+
+.header-view {
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-content: center;
+  min-height: 80rpx;
+  background-color: white;
+  border-top: 1rpx solid #f1f1f1;
+  border-bottom: 1rpx solid #f1f1f1;
+}
+
+.fix-header {
+  position: fixed;
+  z-index: 99;
+  top: 92rpx;
+}
+
+.xscroll_bar {
+  overflow-y: hidden;
+  height: 99%;
+  line-height: 99%;
+  margin-left: 0;
+  white-space: nowrap;
+}
+
+.menu_item {
+  font-size: 28rpx;
+  color: #3e4a59;
+  background-color: white;
+  display: inline-block;
+  height: 60rpx;
+  line-height: 60rpx;
+  padding-left: 0rpx;
+  padding-right: 0rpx;
+  margin-top: 12rpx;
+  margin-right: 80rpx;
+  border-radius: 6rpx;
+  text-align: left;
+  font-family: ingFangSC-Regular, PingFang SC;
+}
+
+.menu-item-first {
+  margin-left: 42rpx;
+}
+
+.menu-item-last {
+  margin-right: 42rpx;
+}
+
+.menu_hover_item {
+  background-color: rgba(166, 231, 166, 0.2);
+}
+
+.xscroll_bar .active {
+  font-size: 28rpx;
+  color: #00c0eb;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 600;
+}
+
+.content-view {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.essay-cell-view {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.loading-tip {
+  padding-top: 30rpx;
+  padding-bottom: 30rpx;
+  width: 100%;
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  color: #ccc;
+  font-size: 25rpx;
+}
+
+.loading-view {
+  position: absolute;
+  align-items: center;
+  width: 100vw;
+  z-index: 1000;
+  height: calc(100% - 92rpx);
+  top:92rpx;
+  background-color: #fff;
+
+}
+.list-none {
+  color: #3e4a59;
+  padding: 60rpx 40rpx;
+  font-size: 26rpx;
+}

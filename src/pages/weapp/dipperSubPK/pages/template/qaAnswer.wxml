@@ -1,0 +1,20 @@
+<template name="qa-answer">
+  <view class='qa-answer m_qa_list'>
+    <view class='qa-answer-title'>我的买房问答</view>
+    <view class='qa-answer-box' style="{{(data.length==2&&index==0?'margin-bottom:48rpx;':'')}}" wx:for="{{data}}" wx:key="{{index}}">
+      <view class='qa-answer-box-ask'>{{item.title}}</view>
+      <view class='qa-answer-box-info'>
+        <view>
+          <text>{{item.questioner_nickname?item.questioner_nickname:'test'}}</text>
+          <text>{{item.total_price_min}}-{{item.total_price_min}}万预算</text>
+          <text>{{item.purchase_purpose}}</text>
+        </view>
+        <view>{{item.create_datetime}}</view>
+      </view>
+      <view class='qa-answer-box-content'>
+        <image class='qa-answer-box-arrows' src="/dipperSubPK/images/icon_triangle.png"></image>
+        {{item.answer.content}}
+      </view>
+    </view>
+  </view>
+</template>

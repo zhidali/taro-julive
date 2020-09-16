@@ -1,0 +1,22 @@
+<wxs src="../../../utils/util.wxs" module="tools" />
+<template name="question-item">
+  <view class='question-item-container' style="{{color?'background-color:'+color+';':''}}{{background?'background-image:'+background+';':''}}" bindtap="didTapQaCell" data-op-type="{{opType}}" data-qa="{{qa}}" data-index="{{index}}">
+    <text class='question-title'>{{qa.question.title}}</text>
+    <view class='question-user-info-view'>
+      <view class='question-user-info'>{{qa.question.questioner_nickname}}</view>
+      <view class='question-user-info' style='margin-left: 20rpx;' wx:if='{{tools.formatPrice(qa.question.total_price).length>0}}'>
+        {{tools.formatPrice(qa.question.total_price)}}预算
+      </view>
+      <view class='question-user-info' style='margin-left: 20rpx;'>
+        {{qa.question.purchase_purpose}}
+      </view>
+      <view class='question-user-info' style='margin-left: 20rpx;'>
+        {{qa.answer_list[0].answer.update_datetime}}
+      </view>
+    </view>
+    <view class="question-like-view-con">
+      <view class='like-number'>{{qa.answer_list[0].answer.like_num}}人赞过该回答</view>
+      <view class="like-answer">查看回答</view>
+    </view>
+  </view>
+</template>

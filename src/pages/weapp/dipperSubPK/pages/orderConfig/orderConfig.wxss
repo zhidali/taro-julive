@@ -1,0 +1,145 @@
+@import "../template/loadAlt";
+
+page{
+background-color:#fff;
+}
+
+.container {
+  background-color: #fff;
+  width: 100vw;
+  padding: 0rpx 40rpx;
+  box-sizing: border-box;
+}
+
+.title {
+  font-family: PingFangSC-Medium;
+  font-size: 32rpx;
+  line-height: 45rpx;
+  color: #001a4a;
+  display: inline-block;
+}
+
+.input-box-ord {
+  font-family: PingFangSC-Regular;
+  font-size: 32rpx;
+  line-height: 45rpx;
+  height: 45rpx;
+  color: #707798;
+  align-items: center;
+}
+
+.container .all-flex-between:last-child .input-box-ord .input {
+  padding-right: 26rpx;
+}
+
+.input {
+  text-align: right;
+  padding-right: 56rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 32rpx;
+  height: 45rpx;
+  color: #39487f;
+  /* min-height: 45rpx; */
+}
+
+.input-placeholder {
+  color: #b5b5b5;
+}
+
+.container .mar-top-44:first-child {
+  margin-top: 40rpx;
+}
+
+.mar-top-44 {
+  margin-top: 44rpx;
+  overflow: hidden;
+}
+
+.heigth45 {
+  height: 45rpx;
+  line-height: 45rpx;
+}
+
+.padding-bom-40 {
+  padding-bottom: 40rpx;
+  border-bottom: 1rpx solid #ecf0f4;
+}
+
+.tags-box {
+  margin-top: 6rpx;
+}
+
+.tags-box text {
+  display: inline-block;
+  height: 72rpx;
+  line-height: 72rpx;
+  padding: 0rpx 40rpx;
+  background-color: #f4f8f9;
+  border-radius: 36rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #001a4a;
+  margin-right: 30rpx;
+  margin-top: 24rpx;
+  text-align: center;
+  min-width: 136rpx;
+  box-sizing: border-box;
+}
+
+.tags-box .active {
+  background-color: #001a4a;
+  color: #fff29c;
+}
+
+textarea {
+  margin-top: 30rpx;
+  padding: 8rpx 16rpx 16rpx 20rpx;
+  background: #f4f8f9;
+  border-radius: 4rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 32rpx;
+  line-height: 45rpx;
+  color: #39487f;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.textarea-placeholder {
+  color: #B5B5B5;
+}
+
+.textarea-num {
+  text-align: right;
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  line-height: 33rpx;
+  color: #b5b5b5;
+  margin-top: 8rpx;
+}
+
+.footer-title {
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  line-height: 40rpx;
+  color: #001a4a;
+  margin-top: 24rpx;
+}
+
+.footer-btn {
+  margin: 44rpx 0px;
+  background: #001a4a;
+  border-radius: 4rpx;
+  color: #fff29c;
+  text-align: center;
+  height: 88rpx;
+  line-height: 88rpx;
+  font-family: PingFangSC-Medium;
+}
+
+.padding24{
+  padding-right: 24rpx;
+}
+
+.padding-bom{
+  padding-bottom: 100px;
+}

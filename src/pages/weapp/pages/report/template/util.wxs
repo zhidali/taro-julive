@@ -1,0 +1,15 @@
+var downloadImageLocation = function (text) {
+  if (text == 'doc' || text == 'docx') {
+    return '../../../image/icon_download_doc.png'
+  } else if (text == 'xls' || text == 'xlsx') {
+    return '../../../image/icon_download_xlsx.png'
+  } else if (text == 'ppt') {
+    return '../../../image/icon_download_ppt.png'
+  } else {
+    return '../../../image/icon_download_pdf.png'
+  }
+}
+
+module.exports = {
+  downloadImageLocation: downloadImageLocation
+}

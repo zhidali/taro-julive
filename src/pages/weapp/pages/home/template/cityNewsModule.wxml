@@ -1,0 +1,60 @@
+<template name="city-news-module">
+  <view class="city-news-box" wx:if="{{house_sign.deal.deal_total > 0 }}">
+    <view class="home-title-box" bindtap="didClicCityCondition">
+      <view class="home-title-box-lf">本月{{house_sign.city_name}}房价</view>
+      <view class="home-title-box-ri">
+        <view class="home-title-box-ri-text">城市行情</view>
+        <image class="home-title-box-ri-img" src="/image/icon-right-row.png"></image>
+      </view>
+    </view>
+    <view class="city-news-content"> 
+        <view class="city-news-content-top" bindtap="didClicCityCard">
+        <image class="city-news-content-bg"  src='https://imgs.julive.com/l?p=eyJpbWdfcGF0aCI6IlwvbWluaW1ncy9pbWdfaG9tZV9uZXdzX2JnLnBuZz93YXRlcm1hcmssdF8wIn0=' />
+          <view class="city-news-content-top-lf">
+             <view class="city-news-content-top-lf-title">
+               <view>{{house_sign.price_info.price}}</view>
+               <view>{{house_sign.price_info.unit}}</view>
+             </view>
+             <view  class="city-news-content-top-lf-explain">均价<image class="city-news-content-top-lf-img" wx:if="{{house_sign.price_info.flag != 0}}" src="{{house_sign.price_info.flag == -1?'/image/icon-city-down.png' :'/image/icon-city-top.png'}}"></image>{{house_sign.price_info.avg_price_scale}}</view>
+          </view>
+          <view class="city-news-content-top-mid"></view>
+          <view class="city-news-content-top-lf">
+             <view class="city-news-content-top-lf-title">
+               <view>{{house_sign.deal.deal_total}}</view>
+               <view>{{house_sign.deal.unit}}</view>
+             </view>
+             <view  class="city-news-content-top-lf-explain">成交量<image class="city-news-content-top-lf-img" wx:if="{{house_sign.price_info.flag != 0}}" src="{{house_sign.deal.flag == -1?'/image/icon-city-down.png' :'/image/icon-city-top.png'}}"></image>{{house_sign.deal.deal_total_scale}}</view>
+          </view>
+        </view>
+        <view class="city-news-content-tips">
+          <swiper class="city-news-content-tips-swiper" autoplay="{{true}}" interval="3000" vertical="{{true}}" circular="true">
+              <swiper-item wx:for="{{latest_news}}" wx:key="item" wx:for-index="father_index" catchtouchmove="stopTouchMove">
+                 <view class="city-news-content-tips-box">
+                     <view class="city-news-content-tips-item"  wx:for="{{item}}" wx:for-item="im"  wx:for-index="son_idx" wx:key="im"  data-type="{{im.type}}"  data-father-index="{{father_index}}" data-son-index="{{son_idx}}"  bindtap="didClicCityInfo">
+                       <block wx:if="{{im.tag.value == '1'}}">
+                         <image class="city-news-content-tips-item-title" src='/image/icon-city-news-1.png' />
+                       </block>
+                      <block wx:elif="{{im.tag.value == '2'}}">
+                        <image class="city-news-content-tips-item-title" src='https://imgs.julive.com/l?p=eyJpbWdfcGF0aCI6IlwvbWluaW1ncy9pY29uLWNpdHktbmV3cy0yLnBuZz93YXRlcm1hcmssdF8wIn0=' />
+                      </block>
+                      <block wx:elif="{{im.tag.value == '3'}}">
+                        <image class="city-news-content-tips-item-title" src='https://imgs.julive.com/l?p=eyJpbWdfcGF0aCI6IlwvbWluaW1ncy9pY29uLWNpdHktbmV3cy0zLnBuZz93YXRlcm1hcmssdF8wIn0=' />
+                      </block>
+                      <block wx:elif="{{im.tag.value == '4'}}">
+                        <image class="city-news-content-tips-item-title" src='https://imgs.julive.com/l?p=eyJpbWdfcGF0aCI6IlwvbWluaW1ncy9pY29uLWNpdHktbmV3cy00LnBuZz93YXRlcm1hcmssdF8wIn0=' />
+                      </block>
+                      <view class="city-news-content-tips-item-content all-ellipsis">{{im.content}}</view>
+                     </view>
+                 </view>
+              </swiper-item>
+          </swiper>
+        </view>
+        <view class="city-news-content-btn">
+        <view class="wxlogin-box" wx:if="{{!userLoginStatus}}">
+           <wxLogin markOpType="{{900739}}" bindClickGetPhoneNumberBtn="passBackGetPhoneNumberBtn" bindWechatUserCancel="passBackFastLoginCallBack" bindFastLoginCallBack="passBackFastLoginCallBack"></wxLogin>
+        </view>
+          <view class="city-news-content-btn-text" bindtap="didClickCityNewsLeavePhone">咨询房价走势</view>
+        </view>
+    </view>
+  </view>
+</template>

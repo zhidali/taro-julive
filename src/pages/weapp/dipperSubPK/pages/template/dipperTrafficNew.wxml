@@ -1,0 +1,57 @@
+<template name="dipper-traffic-new">
+  <view class="dipper-traffic-new m_commuting_route" wx:if="{{commute && commute.length>0}}">
+    <view class="title-box">
+      <image class="title-box-img" src="/image/icon-dipper-yellow.png"></image>
+      <view class="all-flex-between title-box-content">
+        <view>通勤路线</view>
+        <view bindtap="didClickMapMore">
+          在地图中查看
+          <image src="/image/icon-dipper-more.png"></image>
+        </view>
+      </view>
+    </view>
+    <view class="map-box-traffic">
+      <map id="map" bindtap="didClickMap" polyline="{{polyline}}" markers="{{marker}}" style='width:100%;height:180px;' longitude="{{lng}}" latitude="{{lat}}"></map>
+      <cover-view class='cover-select-traffic'>
+        <cover-view class='cover-select-traffic-driving' bindtap='selectTraffic' data-index='0'>
+          <cover-image src="/dipperSubPK/images/{{selectTrafficFlag?'select_traffic_driving_b.png':'select_traffic_driving_a.png'}}"></cover-image>
+          <cover-view class="{{selectTrafficFlag?'traffic-black':''}}">自驾</cover-view>
+        </cover-view>
+        <cover-view class='cover-select-traffic_line'></cover-view>
+        <cover-view class='cover-select-traffic-transit' bindtap='selectTraffic' data-index='1'>
+          <cover-image src="/dipperSubPK/images/{{selectTrafficFlag?'select_traffic_transit_a.png':'select_traffic_transit_b.png'}}"></cover-image>
+          <cover-view class="{{selectTrafficFlag?'':'traffic-black'}}">公交</cover-view>
+        </cover-view>
+      </cover-view>
+    </view>
+    <block wx:for="{{commute}}" wx:key="{{key}}">
+      <view class="traffic-box-line" hidden="{{index!=1}}"></view>
+      <view class="traffic-box">
+        <view class="traffic-box-title traffic-box-title-{{index}}">
+          <text class="traffic-box-title-left">目的地{{index?"二":"一"}}:</text>
+          <view class="{{currentDestnation == index?'Destination-traffic':''}}" data-index="{{index}}" bindtap='selectDestination'>
+            <view>
+              <image class="traffic-box-destination" src="/dipperSubPK/images/{{index?'icon-dipper-destination-b.png':'icon-dipper-destination-a.png'}}"></image>
+              <text class="all-ellipsis">{{item[0].commute_address}}</text>
+            </view>
+            <image class="traffic-box-arrows" src="/dipperSubPK/images/{{currentDestnation == index?'icon-dipper-arrows-yellow':'icon-dipper-arrows-black'}}.png"></image>
+          </view>
+        </view>
+        <view class="table">
+          <view class="tr">
+            <view class="th min-width224">{{is_virtual_city?'小区名称':'楼盘名称'}}</view>
+            <view class="th min-width223">驾车</view>
+            <view class="th">公交</view>
+          </view>
+          <view class="tr" wx:for="{{item}}" wx:key="{{index}}" data-index="{{index}}">
+            <view class="td yellow min-width224" data-module='3' bindtap='toProjectDetail' data-index="{{index}}" data-projectId="{{item.project_id}}" data-url="{{item.project_url}}">
+              {{item.project_name}}
+            </view>
+            <view class="td min-width223">{{item.drive_time}}分钟</view>
+            <view class='td'>{{item.by_bus_time}}分钟</view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+</template>

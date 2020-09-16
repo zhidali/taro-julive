@@ -1,0 +1,64 @@
+<import src="template/projectNewsCell.wxml" />
+<import src="../../../component/loading/loading.wxml" />
+<import src="../../template/barTypeLogin/barTypeLogin.wxml" />
+
+<view>
+  <!-- 楼盘动态页面 -->
+  <view class="loading-view" wx:if="{{!loadingHidden}}">
+    <template is="loading-view" data="{{type:1}}" />
+  </view>
+  <view class="container" wx:if="{{loadingHidden}}">
+    <view class="project-news-container">
+      <image class="project-news-banner" mode="aspectFill" />
+      <block wx:if="{{projectNewsList.length > 0}}">
+        <view class="placeholder-white"></view>
+        <block wx:for="{{projectNewsList}}" wx:key="item">
+          <view class="project-news-list-view-cell">
+            <template
+              is="project-news-cell"
+              data="{{projectNews:item, index:index,userLoginStatus:userLoginStatus}}"
+            />
+          </view>
+        </block>
+        <block wx:if="{{hasMore}}">
+          <view class="loading-tip">加载中…</view>
+        </block>
+        <block wx:else>
+          <view class="loading-tip">没有更多了</view>
+        </block>
+      </block>
+      <block wx:else>
+        <nocontent src="/image/placeholder_nodata.png" tip="暂无数据" />
+      </block>
+    </view>
+  </view>
+  <!-- 登录条形弹窗 -->
+  <template is="bar-type" data="{{barTypeData:barTypeData,versionFlag:true}}" />
+  <!-- 回到顶部按钮 -->
+  <view class="tool-bar" hover-class="tool-bar-hover" bindtap="didClickBackTop">
+    <image class="back-top-image" src="/image/icon_back_top.png" />
+  </view>
+</view>
+<login
+  showModal="{{showLoginModal}}"
+  bindloginSuccessCallback="loginSuccessCallback"
+  bindcancelCallback="cancelCallback"
+  title="{{loginTitle}}"
+  content="{{loginContent}}"
+  contentFooter="{{contentFooter}}"
+/>
+<orderSuccessAlert
+  fromPage="p_julive_info_agency"
+  showModal="{{showOrderSuccessAlert}}"
+  title="{{alertTitle}}"
+  content="{{alertContent}}"
+/>
+<painting
+  showPainter="{{showPainter}}"
+  template="{{template}}"
+  palette="{{palette}}"
+  paintBigImg="{{true}}"
+  paintInfo="{{paintInfo}}"
+  binddismissCallback="dismissShare"
+  bindshareImagePath="shareImagePath"
+/>

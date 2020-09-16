@@ -1,0 +1,11 @@
+<template name="top-guide-pop">
+  <view class="top-guide-pop-view">
+    <view class="pop-view-top">
+      <image class="img" src="/image/icon-top-triangle.png" />
+    </view>
+    <view class="collect-pop-view">
+      <image bindtap="didCloseCollectPop" class="img" src="/image/icon_close_pop.png" />
+      <view class="text">添加我的小程序，快速访问居理新房</view>
+    </view>
+  </view>
+</template>

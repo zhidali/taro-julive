@@ -1,0 +1,298 @@
+<view
+  class="filter-wrap"
+  catchtouchmove="preventTouchMove"
+  style="height: {{top == 0 ? '164rpx' : '0' }}; position:relative; top:{{filterWrapTop}}rpx "
+  catchtap="preventTouchMove"
+>
+  <view
+    class="filter-relative"
+    style="position: {{position}}; top:{{top}}rpx; z-index: {{currentClickKey == '' ? 9 : 200}}"
+    catchtouchmove="preventTouchMove"
+    catchtap="preventTouchMove"
+  >
+    <view class="filter-tabs">
+      <view
+        class="tab-items"
+        wx:for-item="item"
+        wx:for="{{filterTab}}"
+        wx:key="index"
+        catchtap="tabItems"
+        data-item="{{item}}"
+        data-key="{{index}}"
+      >
+        <view
+          class="text {{currentClickKey == index ? 'active' : ''}} {{currentClickKey == '' && item.num != 0 ? 'active' : ''}}"
+        >
+          {{item.name}}
+        </view>
+
+        <image
+          src="/image/icon-filter-tab.png"
+          class="img {{currentClickKey == index ? 'active' : ''}}"
+          alt=""
+        />
+      </view>
+    </view>
+    <view
+      class="filter-tab-content {{currentClickKey != '' ? 'transition-height' : ''}}"
+      catchtap="preventTouchMove"
+    >
+      <view class="layout-a" wx:if="{{currentClickItem.layout == 'A'}}">
+        <view class="layout-a-scroll">
+          <scroll-view scroll-y class="scroll-left">
+            <view>
+              <view
+                wx:for="{{scrollLeft}}"
+                wx:key="key"
+                class="left-item {{item.isChecked ? 'active' : ''}}"
+                catchtap="tabTwoItem"
+                data-index="{{index}}"
+                data-item="{{item}}"
+              >
+                <view class="text">{{item.name}}</view>
+              </view>
+            </view>
+          </scroll-view>
+          <scroll-view scroll-y class="scroll-right">
+            <view>
+              <view
+                wx:for="{{scrollRight}}"
+                wx:key="value"
+                class="right-item {{item.isChecked ? 'active' : ''}}"
+                catchtap="checkedSmall"
+                data-index="{{index}}"
+                data-item="{{item}}"
+              >
+                <view class="text {{ (item.value == '0' && item.isChecked) ? 'text-active' : ''}}"
+                  >{{item.name}}</view
+                >
+                <image
+                  wx:if="{{item.value != '0'}}"
+                  src="{{item.isChecked ? '/image/icon-filteritem-checked.png' : '/image/icon-filteritem-no.png'}}"
+                  class="img"
+                  alt=""
+                />
+              </view>
+            </view>
+          </scroll-view>
+        </view>
+
+        <!-- 单价input -->
+        <view class="btn-wrap ipt-wrap" wx:if="{{currentClickItem.clickChild == 'f' && apiAllFilter.f}}">
+          <view class="ipt-content">
+            <input
+              class="ipt ipt-min"
+              placeholder="最小"
+              placeholder-style="color: #C4CBCC"
+              maxlength="6"
+              type="number"
+              cursor-spacing="{{50}}"
+              bindinput="unitPriceIpt"
+              data-type="min"
+              value="{{filterTab.price.values[1].min}}"
+            />
+            <view class="text"></view>
+            <input
+              class="ipt ipt-max"
+              placeholder="最大"
+              placeholder-style="color: #C4CBCC"
+              maxlength="6"
+              type="number"
+              cursor-spacing="{{50}}"
+              bindinput="unitPriceIpt"
+              data-type="max"
+              value="{{filterTab.price.values[1].max}}"
+            />
+            <view class="unit">元</view>
+          </view>
+          <view class="btn-submit" catchtap="submitFilter">确定</view>
+        </view>
+
+        <!-- 总价input -->
+        <view class="btn-wrap ipt-wrap" wx:elif="{{currentClickItem.clickChild == 'c' && apiAllFilter.c}}">
+          <view class="ipt-content">
+            <input
+              class="ipt ipt-min"
+              placeholder="最小"
+              placeholder-style="color: #C4CBCC"
+              maxlength="4"
+              type="number"
+              cursor-spacing="{{50}}"
+              bindinput="totalPriceIpt"
+              value="{{filterTab.price.values[0].min}}"
+              data-type="min"
+            />
+            <!-- totalPriceIpt -->
+            <view class="text"></view>
+            <input
+              class="ipt ipt-max"
+              placeholder="最大"
+              placeholder-style="color: #C4CBCC"
+              maxlength="4"
+              type="number"
+              cursor-spacing="{{50}}"
+              bindinput="totalPriceIpt"
+              value="{{filterTab.price.values[0].max}}"
+              data-type="max"
+            />
+            <view class="unit">万元</view>
+          </view>
+          <view class="btn-submit" catchtap="submitFilter">确定</view>
+        </view>
+
+        <!-- 面积input -->
+        <view class="btn-wrap ipt-wrap" wx:elif="{{currentClickItem.clickChild == 'g' && apiAllFilter.g}}">
+          <view class="ipt-content">
+            <input
+              class="ipt ipt-min"
+              placeholder="最小"
+              placeholder-style="color: #C4CBCC"
+              maxlength="4"
+              type="number"
+              cursor-spacing="{{50}}"
+              bindinput="areaIpt"
+              value="{{filterTab.housetype.values[0].min}}"
+              data-type="min"
+            />
+            <view class="text"></view>
+            <input
+              class="ipt ipt-max"
+              placeholder="最大"
+              placeholder-style="color: #C4CBCC"
+              maxlength="4"
+              type="number"
+              cursor-spacing="{{50}}"
+              bindinput="areaIpt"
+              value="{{filterTab.housetype.values[0].max}}"
+              data-type="max"
+            />
+            <view class="unit">㎡</view>
+          </view>
+          <view class="btn-submit" catchtap="submitFilter">确定</view>
+        </view>
+
+        <view class="btn-wrap" wx:else>
+          <view class="btn-clear" catchtap="clearCurrentFilter">清空</view>
+          <view class="btn-submit" catchtap="submitFilter">确定</view>
+        </view>
+      </view>
+
+      <!-- 样式B 更多 -->
+
+      <view class="layout-b" wx:if="{{currentClickItem.layout == 'B'}}">
+        <scroll-view scroll-y class="layout-b-scroll">
+          <block wx:for="{{moreData}}" wx:key="key">
+            <view class="more-item" catchtap="preventTouchMove" wx:if="{{item.values.length > 0}}">
+              <view class="tit-wrap">
+                <view class="tit-text">{{item.name}}</view>
+                <view class="tit-desc">{{item.isMore ? '（多选）' : '（单选）'}}</view>
+              </view>
+
+              <view class="tags">
+                <view
+                  wx:for="{{item.values}}"
+                  wx:for-item="item_v"
+                  wx:for-index="idx"
+                  wx:key="value"
+                  class="item-tag {{item_v.isChecked ? 'active' : ''}} {{item_v.style == '1' ? 'style1': ''}} {{item_v.style == '2' ? 'style2': ''}} {{item_v.style == '3' ? 'style3': ''}}"
+                  data-index="{{index}}"
+                  data-items="{{item}}"
+                  data-item="{{item_v}}"
+                  data-idx="{{idx}}"
+                  catchtap="checkedMoreItem"
+                >
+                  {{item_v.name}}
+                </view>
+              </view>
+            </view>
+          </block>
+        </scroll-view>
+        <view class="btn-wrap">
+          <view class="btn-clear" catchtap="clearCurrentFilter">清空</view>
+          <view class="btn-submit" catchtap="submitFilter">确定</view>
+        </view>
+      </view>
+
+      <!-- 样式C 排序 -->
+      <view class="layout-c" wx:if="{{currentClickItem.layout == 'C'}}">
+        <scroll-view scroll-y class="layout-c-scroll">
+          <view
+            wx:for="{{sortData}}"
+            wx:key="value"
+            class="sort-item {{item.isChecked ? 'active' : ''}}"
+            catchtap="checkedSort"
+            data-index="{{index}}"
+            data-item="{{item}}"
+          >
+            {{item.name}}
+          </view>
+        </scroll-view>
+      </view>
+    </view>
+    <view
+      class="mark"
+      wx:if="{{ currentClickKey != '' }}"
+      catchtap="closeMark"
+      catchtouchmove="preventTouchMove"
+    ></view>
+    <!-- 快捷筛选 -->
+
+    <view class="quick-filter">
+      <scroll-view scroll-x class="scroll">
+        <block wx:if="{{abTest.p_project_list_optimization != 'A'}}">
+          <view
+            class="item-wrap {{item.value != 'sale_rank' && item.value != 'h21' && item.value != 'h20' && item.value != 'n1' ? 'relatop' : '' }}"
+            wx:for="{{allFilter.quick_filter.value}}"
+            wx:key="value"
+          >
+            <view
+              class="tag-item {{item.isChecked ? 'active' : ''}} {{item.style == '1' ? 'style1': ''}} {{item.style == '2' ? 'style2': ''}} {{item.style == '3' ? 'style3': ''}} {{item.value != 'sale_rank' && item.value != 'h21' && item.value != 'h20' && item.value != 'n1' ? 'relatop' : '' }}"
+              wx:if="{{item.value != '0'}}"
+              data-index="{{index}}"
+              data-item="{{item}}"
+              catchtap="checkedQuick"
+            >
+              <image
+                src="/image/icon-filter-hot.png"
+                class="icon"
+                wx:if="{{item.value == 'sale_rank'}}"
+              />
+              <image
+                src="/image/icon-filter-yhlp.png"
+                class="icon"
+                wx:if="{{item.value == 'h21'}}"
+              />
+              <image
+                src="/image/icon-filter-jqkp.png"
+                class="icon"
+                wx:if="{{item.value == 'h20' || item.value == 'n1'}}"
+              />
+              <view class="text">
+                {{item.name}}
+              </view>
+            </view>
+          </view>
+        </block>
+        <block wx:else>
+          <view
+            class="item-wrap"
+            wx:for="{{allFilter.h.value}}"
+            wx:key="value"
+            wx:if="{{item.value != '0'}}"
+          >
+            <view
+              class="tag-item {{item.isChecked ? 'active' : ''}}"
+              data-index="{{index}}"
+              data-item="{{item}}"
+              catchtap="checkedQuick"
+            >
+              <view class="text">
+                {{item.name}}
+              </view>
+            </view>
+          </view>
+        </block>
+      </scroll-view>
+    </view>
+  </view>
+</view>

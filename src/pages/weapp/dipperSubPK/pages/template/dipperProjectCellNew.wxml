@@ -1,0 +1,37 @@
+<wxs src="../../../pages/project/list/projectList.wxs" module="format" />
+<wxs src="../../../utils/util.wxs" module="tools" />
+<wxs src="../../../pages/home/projectNewsModule/template/util.wxs" module="statusTools" />
+
+<template name="dipper-project-cell-new">
+  <view class="project-list-cell">
+    <view class="project-list-top-view" hover-class='project-list-hover-cell' data-index="{{index}}" data-id="{{project.project_id}}" bindtap="didClickSkipProject">
+      <!-- <image class="project-sale-activity" wx:if="{{project.app_acitivity_pic.length>0}}" src="{{project.app_acitivity_pic}}" /> -->
+      <jlImage className="dipper-project-image" url="{{tools.resizeImageUrl(project.index_img, 240, 90)}}" placeholder="/image/placeholder_house_small.png">
+      </jlImage>
+      <view class="project-cell-info-view">
+        <view class="project-info-name-view">
+          <text class="project-info-name">{{project.name}}</text>
+          <text class="project-sale-status" style="{{statusTools.statusColor(project.status.value)}}">{{project.status.name}}</text>
+        </view>
+        <view class="project-list-price">
+          <!-- <text class="project-list-price-label" wx:if="{{project.card_price.label.length>0}}">{{project.card_price.label}}</text> -->
+          <text class="project-list-info-unit">{{project.card_price.value}}{{project.card_price.unit}}</text>
+          <text class='project-list-info-unit-rigth'>{{format.formatInfoAcreage(project.acreage, project.ac_acreage)}}</text>
+        </view>
+        <view class='project-list-info-deatil'>{{project.trade_area_desc}}</view>
+        <view class='project-list-tags' wx:if="{{project.tags.length>0}}">
+          <block wx:for="{{project.tags}}" wx:key="{{index}}">
+            <text class="{{item.value==1?'project-list-tag-blue':'project-list-tag-gray'}}">{{item.name}}</text>
+          </block>
+        </view>
+      </view>
+    </view>
+    <view class="project-list-dsc" hidden="{{!project.project_desc.length>0}}">
+      <image class="project-triangle" src="/image/icon_triangle_dipper.png"></image>
+      <view class="project-list-dsc-title">推荐理由：</view>
+      <view class="project-list-dsc-content">
+        <text >{{project.project_desc}}</text>  
+      </view>
+    </view>
+  </view>
+</template>

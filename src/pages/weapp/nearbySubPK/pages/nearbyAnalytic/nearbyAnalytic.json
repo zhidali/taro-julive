@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "周边分析",
+  "usingComponents": {
+    "login": "../../../../user/login",
+    "orderSuccessAlert": "../../../../order/orderSuccessAlert",
+    "jlImage": "../../../../component/jlImage/jlImage",
+    "contact": "../../../../pages/project/projectContact/projectContact"
+  }
+}

@@ -1,0 +1,90 @@
+.user-evaluate {
+  background-color: #fff;
+  margin-bottom: 20rpx;
+  padding: 48rpx 40rpx;
+  padding-right: 0rpx;
+}
+
+.user-evaluate-title {
+  font-family: PingFangSC-Medium;
+  font-size: 44rpx;
+  line-height: 60rpx;
+  color: #3e4a59;
+  margin-bottom: 40rpx;
+}
+
+.user-evaluate-info {
+  display: flex;
+  overflow: hidden;
+}
+
+.user-evaluate-info-ft {
+  overflow: hidden;
+  height: 190rpx;
+}
+
+.user-evaluate-info-card {
+  padding-right: 1rpx;
+  overflow: hidden;
+}
+
+.user-evaluate-info-card view:nth-of-type(2) {
+  margin-top: 12rpx;
+}
+
+.info-card-name {
+  font-family: PingFangSC-Medium;
+  font-size: 32rpx;
+  line-height: 44rpx;
+  color: #3e4a59;
+}
+
+.info-card-time {
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  line-height: 34rpx;
+  color: #77808a;
+  display: flex;
+  align-items: center;
+}
+
+.user-evaluate-info-card view:last-of-type {
+}
+
+.user-evaluate-content {
+  margin-top: 24rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #3e4a59;
+  line-height: 48rpx;
+  padding-right: 40rpx;
+  word-wrap: break-word;
+  word-break: normal;
+}
+
+.info-card-time image {
+  width: 28rpx;
+  height: 28rpx;
+  display: inline-block;
+  margin-right: 8rpx;
+}
+
+.info-card-scroll {
+ margin-top: 16rpx;
+  white-space: nowrap;
+  overflow: hidden;
+
+}
+
+.info-card-scroll text {
+  display: inline-block;
+  line-height: 36rpx;
+  height: 36rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 22rpx;
+  color: #fa5f35;
+  background: #FFF4F1;
+  border-radius: 4px;
+  padding: 0rpx 10rpx;
+  margin-right: 20rpx;
+}

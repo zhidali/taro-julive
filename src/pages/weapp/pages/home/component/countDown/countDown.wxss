@@ -1,0 +1,4 @@
+.count-down{
+  display: flex;
+  align-items: center;
+}

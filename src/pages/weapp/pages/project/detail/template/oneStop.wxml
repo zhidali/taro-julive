@@ -1,0 +1,45 @@
+<template name="one-stop">
+		<view class="one-stop" wx:if="{{security&&security.detail.length>0}}">
+				<!-- <view class="project-base-header-view" bindtap="didTapOneStopMore">
+			<view class="project-base-header-title">{{security.title}}</view>
+			<view class="project-base-header-desc">查看详情
+				<image class="project-header-more-icon" src="/image/icon_view_more.png"></image>
+			</view>
+		</view> -->
+				<view class="project-base-header-view" bindtap='didTapOneStopMore'>
+						<label class="project-base-header-title">
+								{{security.title}}
+								<text>{{security.sub_title}}</text>
+						</label>
+						<label class="project-base-header-desc">
+								查看详情
+								<image class="project-header-more-icon" src="/image/icon_view_more.png"></image>
+						</label>
+				</view>
+				<view class="one-stop-content">
+						<view class="one-stop-content-box" wx:for="{{security.detail}}" wx:key="index">
+								<view class="one-stop-content-img" bindtap="didTapOneStopImg" data-index="{{index}}">
+										<block wx:if="{{item.flag}}">
+												<jlImage screenWidth="{{60}}" screenHeight="{{60}}" className='one-stop-content-img-front' url="{{item.select_icon}}" placeholder="/image/placeholder_house_small.png"></jlImage>
+										</block>
+										<block wx:else>
+												<jlImage screenWidth="{{60}}" screenHeight="{{60}}" className='one-stop-content-img-front' url="{{item.icon}}" placeholder="/image/placeholder_house_small.png"></jlImage>
+										</block>
+								</view>
+								<view class="one-stop-content-box-title">{{item.title}}</view>
+								<image hidden="{{!item.flag}}" class="one-stop-content-box-triangle" src="/image/icon_one_stop_triangle.png"></image>
+						</view>
+				</view>
+				<view class="one-stop-box">
+						<view class="one-stop-box-lf">
+								<view>{{security.text_top}}</view>
+								<view>{{security.text_btm}}</view>
+						</view>
+						<!-- <view class="one-stop-box-ri" bindtap="didTapOneStopBtn">打开APP</view> -->
+						<button class='customer-btn' open-type="contact" bindtap="didClickToApp" send-message-path='/pages/home/home' show-message-card='{{true}}' send-message-title='居理新房' send-message-img='https://imgs.julive.com/l?p=eyJpbWdfcGF0aCI6IlwvbWluaW1ncy9jdXN0b21lci1sb2dvLnBuZz93YXRlcm1hcmssdF8wIn0='>
+								打开APP
+						</button>
+				</view>
+				<view class="one-stop-footer">注：以上服务最终解释权归居理所有</view>
+		</view>
+</template>

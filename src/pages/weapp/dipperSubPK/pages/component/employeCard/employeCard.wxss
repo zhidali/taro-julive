@@ -1,0 +1,97 @@
+.EC_all {
+  position: fixed;
+  top: 0;
+  height: 100rpx;
+  width: 100%;
+  z-index: 6;
+}
+
+.EC_box {
+  background: #fff;
+  box-sizing: border-box;
+  padding: 9rpx 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  z-index: 999;
+}
+
+.EC_box_lf {
+  display: flex;
+  height: 80rpx;
+  flex: 1;
+}
+
+.EC_box_lf_img {
+  position: relative;
+  min-width: 80rpx;
+}
+
+/* 分包样式 */
+
+.sbu_employe_img {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+}
+
+.bigV {
+  position: absolute;
+  width: 24rpx;
+  height: 24rpx;
+  border-radius: 50%;
+  right: 0rpx;
+  bottom: 4rpx;
+}
+
+.EC_box_lf .EC_box_lf_title {
+  flex-direction: column;
+  margin-left: 16rpx;
+  padding-right: 20rpx;
+  width: 100%;
+}
+
+.EC_box_lf .EC_box_lf_title cover-view:first-child {
+  font-family: PingFangSC-Regular;
+  font-size: 32rpx;
+  line-height: 44rpx;
+  color: #3e4a59;
+  white-space: nowrap;
+}
+
+.EC_box_lf .EC_box_lf_title cover-view:last-child {
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  line-height: 34rpx;
+  color: #77808a;
+  margin-top: 2rpx;
+  white-space: nowrap;
+  padding-right: 16rpx;
+}
+
+.EC_box_ri {
+  display: flex;
+}
+
+.EC_box_ri cover-image {
+  display: inline-block;
+  height: 40rpx;
+  width: 40rpx;
+  margin-right: 40rpx;
+}
+
+.EC_box_btn cover-image {
+  margin-right: 0rpx;
+}
+
+.EC_box_btn {
+  width: 40rpx;
+  padding: 0rpx;
+}
+
+.all-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

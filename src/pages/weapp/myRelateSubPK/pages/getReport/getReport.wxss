@@ -1,0 +1,40 @@
+.order-bottom {
+  background-color: #fff;
+  position: fixed;
+  z-index: 10;
+  bottom: 0;
+  width: 100%;
+  height: 146rpx;
+  box-shadow: -2rpx -6rpx 30rpx 0 rgba(0, 0, 0, 0.1);
+}
+
+.order-bottom-ipx {
+  height: 188rpx !important;
+  bottom: 0 !important;
+}
+.order-bottom-button {
+  width: 658rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  color: #fff;
+  margin: 46rpx 46rpx 0 46rpx;
+  border-radius: 8rpx;
+  text-align: center;
+  background-image: linear-gradient(-90deg, #00a5fc, #00d1fe);
+}
+.order-wx-loging {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  top: 0;
+  left: 0;
+}
+
+.report-desc-image {
+  width: 100%;
+  height: 4306rpx;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url('http://imgs.julive.com/l?p=eyJpbWdfcGF0aCI6IlwvbWluaW1ncy9yZXBvcnRfcGFnZS5wbmcifQ==');
+}

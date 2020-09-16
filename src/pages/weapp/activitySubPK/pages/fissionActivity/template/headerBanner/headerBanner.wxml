@@ -1,0 +1,50 @@
+<template name="header-banner">
+  <view class="activity-header">
+    <view class="act-bg"></view>
+    <view class="act-rule" bindtap="onClickActRule" data-type="1">
+      <image class="img" src="../../images/icon_rule.png" />
+      <text class="text">活动规则</text>
+    </view>
+    <view class="act-box">
+      <view class="act-title"></view>
+      <view class="act-time">
+        <block wx:if="{{activity_time.now<activity_time.start}}">
+          <view class="text">距离活动开始还有</view>
+          <count-down my-class="time-down" seconds="{{activity_time.start-activity_time.now}}" />
+        </block>
+        
+        <block wx:else>
+          <view class="text"
+            >{{activity_time.now>activity_time.end?'距活动结束时间仅剩':'距离活动结束仅剩'}}</view
+          >
+          <count-down my-class="time-down" seconds="{{activity_time.end-activity_time.now}}" />
+        </block>
+      </view>
+    </view>
+    <view class="act-reward-box" wx:if="{{latest_reward.list.length>1}}">
+      <swiper
+        class="reward-swiper"
+        autoplay="{{true}}"
+        interval="1000"
+        vertical="{{true}}"
+        circular="true"
+      >
+        <swiper-item
+          wx:for="{{latest_reward.list}}"
+          wx:key="user_id"
+          catchtouchmove="stopTouchMove"
+        >
+          <block wx:if="{{index<8}}">
+            <view class="swiper-item">
+              <image
+                class="img"
+                src="{{latest_reward.list.reward.money=='100'?'../../images/icon_card_1.png':'../../images/icon_card_2.png'}}"
+              />
+              <view class="text">{{item.text}}</view>
+            </view>
+          </block>
+        </swiper-item>
+      </swiper>
+    </view>
+  </view>
+</template>

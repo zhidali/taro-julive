@@ -1,0 +1,213 @@
+<view class="sale-house">
+  <!-- 热销楼盘 -->
+  <!-- hotHouse:hotHouse, saleHouse:saleHouse, openTimeHouse:openTimeHouse, weekend:weekend -->
+  <view class="hot-house-wrap" wx:if="{{hotHouse.length > 0}}">
+    <view class="hot-head">
+      <view class="tit">
+        本周热销楼盘
+      </view>
+      <view class="look-more" catchtap="lookMoreHouse" data-key="hot">
+        <view class="text">
+          查看更多
+        </view>
+        <image src="/image/icon-right-row.png" class="img" />
+      </view>
+    </view>
+    <swiper
+      class="hot-swiper"
+      skip-hidden-item-layout
+      bindtransition="lookMoreHouse"
+      data-key="hot"
+      data-direction="right"
+    >
+      <swiper-item>
+        <scroll-view scroll-x>
+          <view class="swiper-wrap">
+            <view
+              class="swiper-item"
+              wx:for="{{hotHouse}}"
+              wx:key="project_id"
+              data-item="{{item}}"
+              catchtap="goH5houseDetails"
+              data-index="{{index}}"
+              data-key="hot"
+            >
+              <view class="img-wrap">
+                <!-- <view class="discount" wx:if="{{item.pay_info}}">{{item.pay_info}}</view> -->
+                <jlImage
+                  url="{{item.index_img}}"
+                  placeholder="/image/placeholder_small_dipper.png"
+                  my-class="img"
+                />
+
+                <view class="location" wx:if="{{item.district_name}}">
+                  {{item.district_name}}
+                </view>
+              </view>
+              <view class="house-info">
+                <view class="house-name">{{item.name}}</view>
+
+                <view class="house-area">
+                  {{item.acreage.acreage[0]}}
+                  <block wx:if="{{item.acreage.acreage[1]}}">
+                    - {{item.acreage.acreage[1]}}
+                  </block>
+                  {{item.acreage.unit}}
+                </view>
+                <view class="house-price">
+                  {{item.current_rate.price[0]}}{{item.current_rate.unit}}
+                </view>
+              </view>
+            </view>
+
+            <view class="swiper-last" catchtap="lookMoreHouse">
+              <image src="/image/icon-left-hot.png" class="img" />
+              <view class="text">滑动查看更多</view>
+            </view>
+          </view>
+        </scroll-view>
+      </swiper-item>
+    </swiper>
+  </view>
+
+  <!-- 特价房源 -->
+  <view class="offer-house-wrap" wx:if="{{saleHouse.length > 0}}">
+    <view class="hot-head">
+      <view class="tit">
+        本周特价房源
+        <count-down my-class="l-down" seconds="{{weekend}}" />
+      </view>
+      <view class="look-more" catchtap="lookMoreHouse" data-key="sale">
+        <view class="text">
+          查看更多
+        </view>
+        <image src="/image/icon-right-row.png" class="img" />
+      </view>
+    </view>
+    <swiper
+      class="hot-swiper"
+      skip-hidden-item-layout
+      bindtransition="lookMoreHouse"
+      data-key="sale"
+      data-direction="right"
+    >
+      <swiper-item>
+        <scroll-view scroll-x>
+          <view class="swiper-wrap">
+            <view
+              class="swiper-item"
+              wx:for="{{saleHouse}}"
+              wx:key="project_id"
+              data-item="{{item}}"
+              catchtap="goH5houseDetails"
+              data-index="{{index}}"
+              data-key="sale"
+            >
+              <view class="img-wrap">
+                <view class="discount" wx:if="{{item.sale_tag || item.pay_info}}"
+                  >{{item.sale_tag ? item.sale_tag : item.pay_info}}</view
+                >
+                <jlImage
+                  url="{{item.index_img}}"
+                  placeholder="/image/placeholder_small_dipper.png"
+                  my-class="img"
+                />
+                <view class="location" wx:if="{{item.district_name}}">
+                  {{item.district_name}}
+                </view>
+              </view>
+              <view class="house-info">
+                <view class="house-name">{{item.name}}</view>
+
+                <view class="house-area">
+                  {{item.acreage.acreage[0]}}
+                  <block wx:if="{{item.acreage.acreage[1]}}">
+                    - {{item.acreage.acreage[1]}}
+                  </block>
+                  {{item.acreage.unit}}
+                </view>
+                <view class="house-price">
+                  {{item.current_rate.price[0]}}{{item.current_rate.unit}}
+                </view>
+              </view>
+            </view>
+            <view class="swiper-last" catchtap="lookMoreHouse">
+              <image src="/image/icon-left-hot.png" class="img" />
+              <view class="text">滑动查看更多</view>
+            </view>
+          </view>
+        </scroll-view>
+      </swiper-item>
+    </swiper>
+  </view>
+  <!-- 新开楼盘 -->
+  <view class="opentime-house-wrap" wx:if="{{openTimeHouse.length > 0}}">
+    <view class="hot-head">
+      <view class="tit">
+        本周新开楼盘
+      </view>
+      <view class="look-more" catchtap="lookMoreHouse" data-key="open-time">
+        <view class="text">
+          查看更多
+        </view>
+        <image src="/image/icon-right-row.png" class="img" />
+      </view>
+    </view>
+    <swiper
+      class="hot-swiper"
+      skip-hidden-item-layout
+      bindtransition="lookMoreHouse"
+      data-key="open-time"
+      data-direction="right"
+    >
+      <swiper-item>
+        <scroll-view scroll-x>
+          <view class="swiper-wrap">
+            <view
+              class="swiper-item"
+              wx:for="{{openTimeHouse}}"
+              wx:key="project_id"
+              data-item="{{item}}"
+              catchtap="goH5houseDetails"
+              data-index="{{index}}"
+              data-key="open-time"
+            >
+              <view class="img-wrap">
+                <view class="discount opentime-discount" wx:if="{{item.open_tag}}"
+                  >{{item.open_tag}}</view
+                >
+                <jlImage
+                  url="{{item.index_img}}"
+                  placeholder="/image/placeholder_small_dipper.png"
+                  my-class="img"
+                />
+                <view class="location" wx:if="{{item.district_name}}">
+                  {{item.district_name}}
+                </view>
+              </view>
+              <view class="house-info">
+                <view class="house-name">{{item.name}}</view>
+
+                <view class="house-area">
+                  {{item.acreage.acreage[0]}}
+                  <block wx:if="{{item.acreage.acreage[1]}}">
+                    - {{item.acreage.acreage[1]}}
+                  </block>
+                  {{item.acreage.unit}}
+                </view>
+                <view class="house-price">
+                  {{item.current_rate.price[0]}}{{item.current_rate.unit}}
+                </view>
+              </view>
+            </view>
+
+            <view class="swiper-last" catchtap="lookMoreHouse">
+              <image src="/image/icon-left-hot.png" class="img" />
+              <view class="text">滑动查看更多</view>
+            </view>
+          </view>
+        </scroll-view>
+      </swiper-item>
+    </swiper>
+  </view>
+</view>

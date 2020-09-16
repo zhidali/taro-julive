@@ -1,0 +1,68 @@
+.project-date-item-view {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin:20rpx;
+  margin-bottom: 0px;
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 89vw;
+  height: 75px;
+  border-radius: 2px;
+  background-image: url('http://imgs.julive.com/l?p=eyJpbWdfcGF0aCI6IlwvbWluaW1ncy9kYXRlaXRlbS5wbmcifQ==');
+}
+
+.project-date-item-icon {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.project-date-content-view {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.project-date-title {
+  font-size: 15px;
+  color: #333;
+}
+
+.project-date-button {
+  background-color: #48B3E2;
+  color: white;
+  font-size: 14px;
+  width: 90px;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 2px;
+  position: absolute;
+  right: 20px;
+}
+
+.project-date-hover-button {
+  opacity: 0.8;
+}
+
+.project-date-button::after {
+  border: none;
+}
+
+.project-date-content {
+  min-width: 44vw;
+  max-width: 44vw;
+  position: relative;
+}
+
+.project-date-content-text {
+  font-size: 13px;
+  color: #666;
+  display: -webkit-box;
+  word-break: break-all;
+  overflow: hidden; 
+  text-overflow: ellipsis;            
+  -webkit-box-orient: vertical;    
+  -webkit-line-clamp: 2; 
+}

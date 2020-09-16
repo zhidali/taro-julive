@@ -1,0 +1,162 @@
+<import src="../../../component/loading/loading.wxml" />
+<!-- 顶部banner -->
+<import src="./template/headerBanner/headerBanner.wxml" />
+<!-- 个人信息 -->
+<import src="./template/personalInfor/personalInfor.wxml" />
+<!-- 参与流程 -->
+<import src="./template/fissionFlow/fissionFlow.wxml" />
+<import src="./template/fissionClause/fissionClause.wxml" />
+
+<wxs src="../../../utils/util.wxs" module="tools" />
+
+<view class="loading-view" wx:if="{{!loadingHidden}}">
+  <template is="loading-view" />
+</view>
+<view class="activity-wrap" wx:if="{{loadingHidden}}">
+  <!-- 活动头部 -->
+  <template
+    is="header-banner"
+    data="{{activity_time:activity_time,latest_reward:latest_reward}}"
+  ></template>
+
+  <view class="activity-containter">
+    <!-- 个人信息模块 -->
+    <template
+      is="personal-infor"
+      data="{{userLoginStatus:userLoginStatus,user_info:user_info}}"
+    ></template>
+    <!-- 京东卡 100元活动区 -->
+    <block wx:if="{{help_card_100 && help_card_100.title}}">
+      <hundredActivity
+        helpCardHundred="{{help_card_100}}"
+        isCanHelp="{{is_can_help}}"
+        binddidClickShareBtn="didClickShareBtn"
+      />
+    </block>
+    <block wx:if="{{help_card_2000 && help_card_2000.title}}">
+      <thousandActivity
+        helpCardThousand="{{help_card_2000}}"
+        isCanHelp="{{is_can_help}}"
+        binddidClickShareBtn="didClickShareBtn"
+      />
+    </block>
+    <!-- 参与流程 -->
+    <block wx:if="{{how_to_participant && how_to_participant.title}}">
+      <template is="fission-flow" data="{{how_to_participant:how_to_participant}}"></template>
+    </block>
+
+    <!-- 奖励排行榜 -->
+    <block wx:if="{{ranking_list.length>6}}">
+      <view class="reward-rank">
+        <view class="rank-title">
+          奖励排行榜
+          <text class="sub">{{ranking_list.sub_title}}</text>
+        </view>
+        <view class="rank-box">
+          <view class="rank-list">
+            <block wx:for="{{ranking_list.list}}" wx:key="{{item.id}}">
+              <view class="list-item">
+                <image wx:if="{{index==0}}" class="rank" src="../../images/icon_rank_1.png" />
+                <image wx:elif="{{index==1}}" class="rank" src="../../images/icon_rank_2.png" />
+                <image wx:elif="{{index==2}}" class="rank" src="../../images/icon_rank_3.png" />
+                <view wx:else class="rank-num">{{index+1}}</view>
+                <image
+                  class="avatar"
+                  src="{{item.inviter.avatar?item.inviter.avatar:'../../images/user_avatar.png'}}"
+                />
+                <view class="name">{{item.inviter.nickname}}</view>
+                <view class="money">{{item.invit_money}}元</view>
+              </view>
+            </block>
+          </view>
+        </view>
+      </view>
+    </block>
+    <!-- 免责声明 -->
+    <block wx:if="{{activity_rule && activity_rule.title}}">
+      <template is="fission-clause" data="{{activity_rule:activity_rule}}"></template>
+    </block>
+  </view>
+  <!-- 活动规则弹窗 -->
+  <dialog-shell
+    wx:if="{{showActRulePop}}"
+    class="act-rule-pop-view"
+    hasImg="{{false}}"
+    bind:close="didCloseActRulePop"
+  >
+    <view class="pop-view-box">
+      <image src="../../images/icon_close_pop.png" class="img-close" bindtap="didCloseActRulePop" />
+      <view class="pop-title">
+        <image class="icon" src="../../images/icon_rule_title.png" />{{activity_rule_popup.title}}
+      </view>
+      <scroll-view class="pop-content" scroll-y="{{true}}">
+        <block wx:for="{{activity_rule_popup.qa}}" wx:key="{{item.question}}">
+          <view class="content">
+            <view class="text">{{item.question}}</view>
+            <block wx:for="{{item.answer}}" wx:for-item="list" wx:key="item">
+              <view class="text">{{list}}</view>
+            </block>
+          </view>
+        </block>
+      </scroll-view>
+      <view class="common-pop-btn" bindtap="didCloseActRulePop"
+        >{{activity_rule_popup.button_label}}</view
+      >
+    </view>
+  </dialog-shell>
+
+  <!-- 100，2000元京东卡弹窗 -->
+  <dialog-shell wx:if="{{showJDCardPop}}" class="jd-card-pop-view" hasImg="{{false}}">
+    <view class="pop-view-box">
+      <jlImage
+        my-class="jd-img-card"
+        url="{{tools.resizeImageUrl(jDCardPopData.bg, 278, 122)}}"
+        placeholder="{{rewardIdx==0?'https://comjia-img.oss-cn-beijing.aliyuncs.com/minimgs/fissionActivity-jd-card1.png':'https://comjia-img.oss-cn-beijing.aliyuncs.com/minimgs/fissionActivity-jd-card-2.png'}}"
+      ></jlImage>
+      <image
+        class="jd-card-close"
+        src="../../images/icon_jd_close.png"
+        bindtap="didCloseJDCardPop"
+      />
+      <view class="card-containter">
+        <view class="text-content">
+          <view class="text"
+            >{{jDCardPopData.content[0].text||''}}<text class="color"
+              >{{jDCardPopData.content[1].text||''}}</text
+            ></view
+          >
+          <view class="text">{{jDCardPopData.content[2].text||''}}</view>
+          <view class="common-pop-btn" bindtap="didCloseJDCardPop">{{jDCardPopData.button}}</view>
+        </view>
+      </view>
+    </view>
+  </dialog-shell>
+
+  <!-- 无资质弹窗 -->
+  <dialog-shell
+    wx:if="{{showQualificationsPop}}"
+    class="qualifications-pop-view"
+    hasImg="{{false}}"
+    bind:close="didCloseQualificationsPop"
+  >
+    <view class="pop-view-box">
+      <image
+        class="card-close"
+        src="../../images/icon_jd_close.png"
+        bindtap="didCloseQualificationsPop"
+      />
+      <view class="card-containter">
+        <view class="content">
+          <view class="top-img"></view>
+          <view class="text">
+            <image class="icon" src="../../images/icon_close_flag.png" />很遗憾
+          </view>
+          <view class="info">{{no_priority_popup.desc}}</view>
+          <view class="common-pop-btn" bindtap="didCloseQualificationsPopHome"
+            >{{no_priority_popup.button}}</view
+          >
+        </view>
+      </view>
+    </view>
+  </dialog-shell>
+</view>

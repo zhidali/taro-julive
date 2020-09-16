@@ -1,0 +1,10 @@
+<cover-view class="contact-view {{isIpx?'fix-iphonex-view':''}} {{dipperLoginFlag?'':'hide'}}">
+  <cover-view class='body'>
+    <cover-view class='contact-item-box'>
+    <button open-type="share" style="background-color:#fff;"> 
+      <cover-view class="contact-item" bindtap='didClickDownApp'>分享名片</cover-view>
+      </button>
+      <cover-view class="contact-item" bindtap='didClickPhone'>联系咨询师</cover-view>
+    </cover-view>
+  </cover-view>
+</cover-view>

@@ -1,0 +1,38 @@
+<wxs src="../../../utils/util.wxs" module="tools" />
+
+<template name="house-banner">
+  <view class='house-banner m_project_picture' wx:if="{{project_imglist_current.img_arr.length>0}}">
+    <view class="title-box">
+      <image class="title-box-img" src="/image/icon-dipper-yellow.png"></image>
+      <view class="all-flex-between title-box-content">
+        <view>楼盘图片</view>
+      </view>
+    </view>
+    <!-- -->
+    <view class="swi-box">
+      <swiper class='swi' duration="100" bindchange="didTapSlideSwiper" current="{{swiCurrent}}" >
+        <block wx:for="{{project_imglist_current.img_arr}}" wx:key="{{index}}">
+          <swiper-item>
+            <view class="swi-item-box" bindtap='didClickHouseTypeImg' data-index="{{index}}">
+              <jlImage className="swi-item-img" url="{{tools.resizeImageUrl(item.url, 520, 340)}}" placeholder="/image/placeholder_house_big.png">
+              </jlImage>
+            </view>
+          </swiper-item>
+        </block>
+      </swiper>
+      <view class="swi-title">
+        <text>{{img_type}}</text>
+        <text>{{img_current_index}}/{{project_imglist_current.img_arr.length}}</text>
+      </view>
+    </view>
+
+    <view class="house-banner-peoject {{project_img.length==2?'two_project':''}}">
+      <block wx:for="{{project_img}}" wx:key="{{index}}">
+        <view class="all-ellipsis {{sweiperImgCurrent == index? 'house-banner-peoject-select':''}} {{project_img.length==1?'one_project':''}}" data-index="{{index}}" bindtap='didClickChangeSweiperImg'>
+          {{item.project_name}}
+        </view>
+      </block>
+    </view>
+
+  </view>
+</template>

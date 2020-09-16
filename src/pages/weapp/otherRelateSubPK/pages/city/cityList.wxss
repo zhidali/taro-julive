@@ -1,0 +1,219 @@
+page,
+.container-city-list {
+  background-color: #fff;
+}
+
+.container-city-list view {
+  box-sizing: border-box;
+  font-family: PingFangSC-Regular;
+}
+
+.city-list-search {
+  width: 100%;
+  background-color: #fff;
+  padding: 6rpx 0 10rpx 0;
+  border-bottom: 2rpx solid #f3f6f9;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+.city-list-search-box {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 40rpx;
+}
+
+.city-list-search-content {
+  position: relative;
+}
+
+.city-list-search-content-image {
+  width: 32rpx;
+  height: 32rpx;
+  position: absolute;
+  top: 20rpx;
+  left: 32rpx;
+}
+
+.city-list-clear-content-image {
+  width: 58rpx;
+  height: 58rpx;
+  position: absolute;
+  top: 21rpx;
+  right: 10rpx;
+  z-index: 100;
+  background: red;
+}
+
+.city-list-search-content-input {
+  width: 670rpx;
+  height: 72rpx;
+  line-height: 72rpx;
+  padding-left: 72rpx;
+  background-color: #f3f6f9;
+  border-radius: 36rpx;
+  box-sizing: border-box;
+  color: #3e4a59;
+  caret-color: #00c0eb;
+  font-size: 28rpx;
+}
+
+.city-list-search-content-input-ph {
+  color: #a9bacf;
+}
+
+.city-list-search-cancel {
+  color: #3e4a59;
+  height: 72rpx;
+  line-height: 72rpx;
+}
+
+.city-list-view {
+  margin-top: 90rpx;
+}
+
+.current-city-view {
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 32rpx;
+  color: #3e4a59;
+  margin: 0 40rpx;
+  border-bottom: 1rpx solid #f3f6f9;
+}
+
+.city-section-title {
+  color: #c4cbcc;
+  padding-left: 20rpx;
+  font-size: 28rpx;
+}
+
+.city-list-visited {
+  margin: 0 40rpx;
+  border: none;
+  padding-bottom: 32rpx;
+}
+
+.list-visited-title {
+  font-size: 32rpx;
+  color: #3e4a59;
+  height: 100rpx;
+  line-height: 100rpx;
+}
+
+.visited-cityList {
+  display: flex;
+}
+
+.visited-cityList-item {
+  font-size: 28rpx;
+  color: #3e4a59;
+  height: 64rpx;
+  line-height: 64rpx;
+  padding: 0 16rpx;
+  box-shadow: 0 1px 10px 0 #ebebeb;
+  border: 1rpx solid #cdd7e1;
+  margin-right: 20rpx;
+  border-radius: 6rpx;
+}
+
+.city-view-selection-letter,
+.city-view-selection-letter {
+  background-color: #f3f6f9;
+  height: 52rpx;
+  line-height: 52rpx;
+  padding-left: 40rpx;
+  font-size: 32rpx;
+  color: #77808a;
+}
+.city-view-fix-letter {
+  position: fixed;
+  top: 87rpx;
+  left: 0;
+  width: 100%;
+}
+
+.city-view-selection-city {
+  background-color: #fff;
+  font-size: 32rpx;
+  color: #3e4a59;
+  line-height: 96rpx;
+  margin: 0 40rpx;
+  border-bottom: 2rpx solid #f3f6f9;
+}
+
+.city-search-letter {
+  position: fixed;
+  top: 232rpx;
+  right: 20rpx;
+}
+.city-search-letter view {
+  font-family: "PingFangSC-Semibold";
+}
+
+.city-search-letter .searchLetter-con {
+  color: #566366;
+  font-size: 24rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  width: 22rpx;
+  text-align: center;
+}
+
+.city-view-click-letter {
+  position: fixed;
+  top: 584rpx;
+  left: 332rpx;
+  z-index: 99;
+  font-size: 32rpx;
+  background-color: #c4cbcc;
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: 10rpx;
+  line-height: 88rpx;
+  text-align: center;
+  font-family: PingFangSC-Semibold;
+  color: #fff;
+}
+
+.city-tip {
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  background-color: white;
+  font-size: 30rpx;
+  color: #999;
+  text-align: center;
+}
+
+.city-search-result {
+  margin-top: 90rpx;
+}
+
+.city-search-none {
+  width: 396rpx;
+  margin: 0 auto;
+  padding-top: 200rpx;
+}
+
+.city-search-none image {
+  width: 396rpx;
+  height: 124rpx;
+}
+
+.city-search-none-tip {
+  font-size: 28rx;
+  color: #c4cbcc;
+  margin-top: 40rpx;
+  text-align: center;
+}
+
+.color-3e4 {
+  color: #3e4a59;
+  font-size: 32rpx;
+}
+
+.medium {
+  font-family: "PingFangSC-Medium";
+}

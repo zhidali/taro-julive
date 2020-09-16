@@ -1,0 +1,41 @@
+<template name="employee-review-item">
+  <view class="employee-review-cell" style="{{backColor?'background-color:'+backColor+';':''}}{{margin?'margin-left:'+margin+'rpx;'+'margin-right:'+margin+'rpx;':''}}{{'padding-bottom:' + (notShowTime?32:0) + 'rpx;'}}{{'margin-bottom:' + (notShowBottom?0:52) + 'rpx;'}}">
+    <view class="employee-view">
+      <jlImage className="project-employee-avatar" url="{{review.avatar || review.employee_info.avatar}}" placeholder="{{(review.employee_info.sex==1||review.sex==1)?'../../image/placeholder_consult_avater_man.png':'../../image/placeholder_consult_avater_woman.png'}}" />
+      <view class='employee-info-view'>
+        <label class="employee-name">
+          {{review.employee_info.employee_name || review.employee_name}}
+        </label>
+        <view class="employee-review-base-label employee-review-best-label" wx:if="{{showBest}}">
+          卓越点评
+        </view>
+        <view class="employee-review-base-label employee-review-district-label" wx:if="{{showDistrict}}">
+          区域点评
+        </view>
+      </view>
+      <view class="employee-consult-button" hover-class='button-hover' bindtap='didTapConsultButton' data-index="{{itemIndex}}" data-employee-id="{{review.employee_info.employee_id}}" data-adviser-id="{{review.employee_id}}" data-review="{{review}}">
+        向TA咨询
+      </view>
+    </view>
+    <view class="employee-review-view">
+      <label class="employee-review-content {{review.isExpand?'':'employee-review-content-expand'}}" data-index="{{index}}">
+        {{review.review}}
+      </label>
+      <label class="employee-review-expand-button subjectColor" hove-class='employee-review-expand-hover-button' bindtap='didTapEmployeeReviewExpand' data-index="{{itemIndex}}" data-review="{{review}}" wx:if="{{review.review.length > 60}}">
+        {{review.isExpand ? '收起':'展开全文'}}
+      </label>
+      <view class="employee-review-image-view" wx:if="{{review.review_img.length>0}}">
+        <block wx:for="{{review.review_img}}" wx:key="item">
+          <image class="employee-review-image" src="{{item}}" data-image-index="{{index}}" data-images="{{review.review_img}}" bindtap='didTapPreviewImage' />
+        </block>
+      </view>
+      <view class="employee-review-time-view" hidden='{{notShowTime}}'>
+        <label class='employee-review-time'>{{review.update_datetime}}</label>
+        <view class="employee-review-like-view">
+          <image class='employee-review-like-icon' src="/image/icon_likes_gray.png" />
+          <text class='employee-review-like-num'>{{review.like_show}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>

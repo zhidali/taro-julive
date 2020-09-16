@@ -1,0 +1,29 @@
+<view class="brand-public-wrap my-class ">
+  <view class="brand-title">
+    {{brandData.title}}
+  </view>
+  <view class="desc-wrap">
+    <view class="item" wx:for="{{brandData.content}}" wx:key="item">
+      <image class="icon" src="{{item.icon}}"></image>
+      {{item.desc}}
+    </view>
+  </view>
+  <authorize-login
+    bind:allow="allowLogin"
+    bind:cancel="cancelLogin"
+    bind:click="clickLogin"
+  >
+    <view class="brand-btn" slot="btn">
+      {{brandData.button}}
+    </view>
+  </authorize-login>
+  <!-- 留电成功弹窗 -->
+  <orderSuccessAlert
+    popType="{{1}}"
+    fromPage="p_project_list"
+    showModal="{{showOrderSuccessAlert}}"
+    title="{{alertTitle}}"
+    content="{{alertContent}}"
+  />
+</view>
+

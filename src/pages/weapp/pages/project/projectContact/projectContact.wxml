@@ -1,0 +1,26 @@
+<cover-view class="contact-view {{isIpx?'fix-iphonex-view':''}}" hidden='{{hide}}'>
+  <cover-view class='contact-attention-view' bindtap='didClickLikeItem' wx:if='{{!notShowAttention}}'>
+    <cover-image class='attention-icon' src="{{isFavorite?'/image/icon_attention.png':'/image/icon_no_attention.png'}}"></cover-image>
+    <cover-view class='attention-label'>关注</cover-view>
+  </cover-view>
+  <cover-view class='contact-phone-view contact-phone-max-width'>
+    <cover-view class='contact-phone-item' bindtap='didClickLike'>
+      <cover-image class='attention-icon' src="/image/{{isLike?'detail_like_is':'detail_like'}}.png"></cover-image>
+      <cover-view class='attention-label'>{{isLike?'已关注':'关注'}}</cover-view>
+    </cover-view>
+    <cover-view class='contact-line-view'></cover-view>
+    <cover-view class='contact-phone-item' bindtap='didClickShare'>
+      <cover-image class='attention-icon' src='/image/detail_share.png'></cover-image>
+      <cover-view class='attention-label'>分享</cover-view>
+    </cover-view>
+  </cover-view>
+  <cover-view class="contact-item contact-consult-view" hover-class='contact-hover-view' bindtap='didClickDateItem'>
+    {{isDiscount==true?'悦享优惠':'我要咨询'}}
+  </cover-view>
+  <cover-view class="contact-item contact-date-view" hover-class='contact-hover-view' bindtap='didClickCallPhone'>
+    电话咨询
+  </cover-view>
+</cover-view>
+<login showModal="{{showLoginModal}}" title="{{loginTitle}}" content="{{loginContent}}" contentDown="{{contentDown}}" contentFooter="{{contentFooter}}" buttonTitle="{{loginButtonTitle}}" popType="{{popType}}" bindcancelCallback="cancelCallback" bindloginSuccessCallback="loginSuccessCallback" userInfo="{{loginUserInfo}}" formOpType="{{formOpType}}" formType="{{true}}" />
+<commonOrderSuccessAlert fromPage='{{fromPage}}' popType="{{popType}}" showModal="{{showOrderSuccessAlert && showCommonAlertType}}" title="{{alertTitle}}" content="{{alertContent}}" opType="{{opType}}" bindconfirmCallback="confirmCallback" bindhideModalCallback="hideModalCallback" />
+<orderSuccessAlert fromPage='{{fromPage}}' popType="{{popType}}" showModal="{{showOrderSuccessAlert && !showCommonAlertType}}" title="{{alertTitle}}" content="{{alertContent}}" />

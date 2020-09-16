@@ -1,0 +1,114 @@
+<wxs src="../list/projectList.wxs" module="format" />
+<wxs src="../../../utils/util.wxs" module="tools" />
+<wxs src="../utils/util.wxs" module="statusTools" />
+<template name="project-cell">
+  <view class="project-list-cell" hover-class="project-list-hover-cell">
+    <view
+      class="project-list-top-view"
+      bindtap="didTapProjectCellView"
+      data-op-type="{{opType}}"
+      data-id="{{project.project_id}}"
+      data-url="{{project.project_url}}"
+      data-index="{{index}}"
+      data-module="{{module||'project-card'}}"
+    >
+      <jlImage
+        classImage="project-image"
+        url="{{tools.resizeImageUrl(project.index_img, 240, 90)}}"
+        placeholder="/image/placeholder_house_small.png"
+      ></jlImage>
+      <view>
+        <image
+          wx:if="{{project.is_special_price_house==1}}"
+          class="project-sale-activity"
+          src="/image/lable_special_house.png"
+        />
+        <image
+          wx:if="{{project.is_special_price_house==2&&project.is_discount==1}}"
+          class="project-sale-activity"
+          src="/image/lable_discount.png"
+        />
+      </view>
+      <view class="project-cell-info-view">
+        <view class="project-info-name-view">
+          <text class="project-info-name">{{project.name}}</text>
+          <view
+            class="project-sale-status"
+            style="{{statusTools.statusColor(project.status.value)}}"
+          >{{project.status.name}}</view>
+        </view>
+        <!-- 价格 -->
+        <view class="project-list-price">
+          <view wx:if="{{project.current_rate.price.length>0}}">
+            <view class="project-list-price-label project-list-info-unit">
+              {{project.current_rate.price[0]}}
+              <block
+                wx:if="{{project.current_rate.price.length==2}}"
+              >-{{project.current_rate.price[1]}}</block>
+              {{project.current_rate.unit}}
+            </view>
+          </view>
+          <view wx:elif="{{project.card_price.value.length>0}}">
+            <view
+              class="project-list-info-unit"
+            >{{project.card_price.value}}{{project.card_price.unit}}</view>
+          </view>
+          <view wx:else class="project-list-info-unit">待定</view>
+          <view
+            class="project-list-info-area"
+          >{{format.formatInfoAcreage(project.acreage, project.ac_acreage)}}</view>
+        </view>
+        <view class="project-list-info-deatil">
+          <text wx:if="{{project.project_type.name.length>0}}">{{project.project_type.name}}/</text>
+          {{project.trade_area_desc}}
+        </view>
+        <!-- 需要改变的一行，标签 -->
+        <view class="project-list-info-tags">
+          <view class="project-list-info-tags-item">
+            <block wx:if="{{project.back_active_tag}}">
+              <view class="left">
+                <image src="{{project.back_active_tag}}" class="project-list-info-tags-item-img" />
+              </view>
+            </block>
+
+            <block>
+              <view
+                class="left"
+                wx:if="{{ (project.tags.first != '买贵包赔' && project.tags.first.length) || (project.tags.first == '买贵包赔' && !project.back_active_tag) }}"
+              >
+                <view style="background-color:#E1FAFF;color:#00C0EB">{{project.tags.first}}</view>
+              </view>
+            </block>
+
+            <block wx:if="{{project.tags.first.length==0 && project.tags.third.length>0}}">
+              <view class="left">
+                <view>{{project.tags.third[0]}}</view>
+                <view wx:if="{{project.tags.third.length==2}}">{{project.tags.third[1]}}</view>
+              </view>
+            </block>
+            <block wx:if="{{project.tags.first.length==0 && project.tags.third.length==0}}">
+              <view class="left">
+                <view>高性价比</view>
+              </view>
+            </block>
+            <block wx:if="{{project.tags.dynamic.length>0}}">
+              <view class="right">
+                <view style="color:#A9BACF;">{{project.tags.dynamic}}</view>
+              </view>
+            </block>
+          </view>
+        </view>
+        <view class="project-list-info-discount">
+          <view
+            class="project-list-info-discount-item"
+            wx:for="{{project.promotion}}"
+            wx:key="value"
+          >
+            <image class="tag" src="/image/icon_list_promotion_{{item.value}}.png"></image>
+            <view class="content">{{item.lable}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>

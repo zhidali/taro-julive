@@ -1,0 +1,22 @@
+<import src="../../../component/loading/loading.wxml" />
+<import src="./template/employeeReviewCell.wxml" />
+<view class="loading-view" wx:if="{{!loadingHidden}}">
+  <template is="loading-view" data="{{hidden:loadingHidden}}" />
+</view>
+<view class="container" hidden="{{!loadingHidden}}">
+  <block wx:for="{{reviewList}}" wx:key="index">
+    <view class="employee-review-list">
+      <template is="employee-review-cell" data="{{review:item, itemIndex:index, showBest:index==0}}" />
+    </view>
+  </block>
+  <block wx:if="{{hasMore}}">
+    <view class="loading-tip">加载中…</view>
+  </block>
+  <block wx:else>
+    <view class="loading-tip">没有更多了</view>
+  </block>
+  <view class="{{isIpx?'iphonex-page-bottom-margin':'page-bottom-margin'}}" />
+  <contact fromPage='p_project_adviser_comment' projectId="{{projectId}}" opType="900082" source="154" userInfo="{{userInfo}}" notShowAttention="{{true}}" />
+  <login showModal="{{showLoginModal}}" bindloginSuccessCallback="loginSuccessCallback" userInfo="{{loginUserInfo}}" />
+  <orderSuccessAlert fromPage='p_project_adviser_comment' showModal="{{showOrderSuccessAlert}}" content="{{alertContent}}" />
+</view>

@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "周边分析",
+  "usingComponents": {
+    "contact": "/pages/project/projectContact/projectContact",
+    "login": "/user/login",
+    "orderSuccessAlert": "/order/orderSuccessAlert"
+  }
+}

@@ -1,0 +1,55 @@
+<view class="modal-mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+<view catchtouchmove="preventTouchMove" class="modal-dialog" wx:if="{{showModal && popType == 1}}">
+  <image bindtap="hideModal" class="modal-icon-close" src="../../image/icon_get_close.png"></image>
+  <image class="modal-icon" src="/image/icon_get_success.png"></image>
+  <view class="modal-title">{{title}}</view>
+  <view class="modal-content">
+    <view class="modal-content-text" wx:if="{{content.length > 0}}">{{content}}</view>
+  </view>
+  <view class="modal-footer">
+    <!-- <view class="btn-confirm" bindtap="onConfirm" hover-class='confirm-disable'>打开APP 找房更流畅</view> -->
+    <button class="btn-confirm" open-type="contact" bindtap="onConfirm" hover-class='confirm-disable' show-message-card='{{true}}' send-message-path='/pages/home/home' send-message-title='居理新房' send-message-img='https://imgs.julive.com/l?p=eyJpbWdfcGF0aCI6IlwvbWluaW1ncy9jdXN0b21lci1sb2dvLnBuZz93YXRlcm1hcmssdF8wIn0='>
+      打开APP 找房更流畅
+    </button>
+  </view>
+</view>
+<view catchtouchmove="preventTouchMove" class="modal-dialog-red" wx:if="{{showModal && popType == 2}}">
+  <view class="modal-title-yellow">{{title}}</view>
+  <view class="modal-content">
+    <view class="modal-content-text poptype2" wx:if="{{content.length > 0}}">{{content}}</view>
+  </view>
+  <view class="btn-confirm-yellow" hover-class='confirm-disable' bindtap="onConfirm" data-op-type="{{opType}}">
+    完成
+  </view>
+  <!-- <form report-submit="true" bindsubmit="onConfirm" data-op-type="{{opType}}">
+    <button class="alert-fake-form-button-yellow" form-type='submit'></button>
+  </form> -->
+</view>
+<!-- 获取楼盘优惠 -->
+<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal && (popType == 3) }}"></view>
+<view catchtouchmove="preventTouchMove" class='modal-dialog-getDiscounts' wx:if="{{showModal && popType == 3}}">
+  <view class='modal-dialog-getDiscounts-title'>恭喜您</view>
+  <view class='modal-dialog-getDiscounts-font'>获得楼盘限时优惠信息通知</view>
+  <view class='modal-dialog-getDiscounts-content'>填写详细购房需求，将有咨询师为您推荐更多符合</view>
+  <view class='modal-dialog-getDiscounts-content'>需求的楼盘～</view>
+  <picker class='picker-view' bindchange="bindPickerChangeMoney" value="{{allPrice[index].value}}" range="{{allPrice}}" range-key="{{'name'}}">
+    <view class="picker">
+      <text class="{{index>= 0?'black':''}}">{{index>= 0?allPrice[index].name:'您购房总价预算'}}</text>
+      <image class="picker-img" src='/image/iocn_triangle.png'></image>
+    </view>
+  </picker>
+  <picker bindchange="bindPickerChangeCity" value="{{region[cityIndex].value}}" range="{{region}}" range-key="{{'name'}}">
+    <view class="picker">
+      <text class="{{cityIndex>= 0?'black':''}}">
+        {{cityIndex>= 0?region[cityIndex].name:'您购房的目标区域'}}
+      </text>
+      <image class="picker-img" src='/image/iocn_triangle.png'></image>
+    </view>
+  </picker>
+  <view class="getDiscounts-btn-confirm-yellow" hover-class='confirm-disable' bindtap="onConfirm" data-op-type="{{opType}}">
+    完成
+  </view>
+  <!-- <form report-submit="true" bindsubmit="onConfirm" data-op-type="{{opType}}">
+    <button class="alert-fake-form-button-yellow getDiscounts-alert-fake-form-button-yellow" form-type='submit'></button>
+  </form> -->
+</view>

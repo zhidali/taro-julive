@@ -1,0 +1,15 @@
+<wxs src="../../../../../utils/util.wxs" module="tools" />
+<template name="fission-flow">
+  <view class="fission-flow">
+    <view class="fission-flow-title">{{how_to_participant.title}}</view>
+    <view class="fission-flow-content">
+      <block wx:for="{{how_to_participant.content}}" wx:key="icon">
+        <view class="fission-flow-content-item">
+          <jlImage my-class="fission-flow-content-item-img" url="{{tools.resizeImageUrl(item.icon, 75, 60)}}" placeholder="/image/placeholder_small_dipper.png"></jlImage>
+          <text>{{item.desc[0]}}\n{{item.desc[1]}}</text>
+        </view>
+        <image wx:if="{{index < 3}}" class="fission-flow-content-arrows" src="https://imgs.julive.com/l?p=eyJpbWdfcGF0aCI6IlwvbWluaW1ncy9maXNzaW9uLWZsb3ctNS5wbmc/d2F0ZXJtYXJrLHRfMCJ9"></image>
+      </block>
+    </view>
+  </view>
+</template>

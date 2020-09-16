@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "",
+  "usingComponents": {
+    "jlImage": "../../../component/jlImage/jlImage",
+    "bannerToApp": "../../../component/bannerToApp/bannerToApp"
+  }
+}

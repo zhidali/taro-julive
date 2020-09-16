@@ -1,0 +1,183 @@
+@import '../project/template/projectCell.wxss';
+/* <!-- 顶部banner 模块 --> */
+@import './hotTabModule/homeBannerModule.wxss';
+/* <!-- 帮我找房-模块 列表中显示--> */
+@import "../project/template/findHouseModule.wxss";
+@import './hotTabModule/homeHotlineModule.wxss';
+/* @import './hotTabModule/homePopModule.wxss'; */
+@import '../template/barTypeLogin//barTypeLogin.wxss';
+@import '../template/topGuidePop/topGuidePop.wxss';
+@import './template/homeLoadingScreen.wxss';
+/* 260 新增模块 */
+@import './template/homeLoadingScreen.wxss';
+@import './template/searchFrame.wxss';
+@import './template/bannerModuleTwo.wxss';
+@import './template/cityNewsModule.wxss';
+@import './homeNew.wxss';
+
+
+.qa-tool {
+  position: fixed;
+  top: 10rpx;
+  right: 10rpx;
+  width: 150rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  background-color: seagreen;
+  z-index: 9;
+  text-align: center;
+  color: #fff;
+
+}
+
+.container {
+  background-color: #fff;
+}
+
+.container_new_page {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+/* 260 标题统一字段 */
+.home-title-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50rpx;
+  line-height: 50rpx;
+  margin: 52rpx 0rpx;
+  margin-bottom: 32rpx;
+}
+
+.home-title-box-lf {
+  font-size: 36rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: bold;
+  color: 031A1F;
+
+}
+
+.home-title-box-ri {
+  display: flex;
+  align-items: center;
+}
+
+.home-title-box-ri-text {
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: rgba(141, 151, 153, 1);
+}
+
+.home-title-box-ri-img {
+  height: 24rpx;
+  width: 12rpx;
+  margin-left: 8rpx;
+  margin-top: -2rpx;
+}
+
+
+.project-list-view-item {
+  margin-left: 40rpx;
+  margin-right: 40rpx;
+  flex: 1;
+  margin-top: 32rpx;
+}
+
+.none-tips {
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  line-height: 40rpx;
+  color: #77808a;
+  text-align: center;
+  margin-top: 80rpx;
+}
+
+.isTakeParam-title-view {
+  /* margin-bottom: 140rpx; */
+}
+
+.isTakeParam-title {
+  font-family: PingFangSC-Medium;
+  font-size: 40rpx;
+  color: #3e4a59;
+  line-height: 56rpx;
+  padding-left: 40rpx;
+  padding-top: 16rpx;
+  /* border-top: 1px solid #f4f6f9; */
+}
+
+.exposure-open-app {
+  margin: 52rpx 44rpx;
+}
+
+/* saleHouse组件倒计时样式 */
+.saleHouse--l-down {
+  color: #031A1F;
+  font-size: 22rpx;
+  line-height: 32rpx;
+  font-weight: normal;
+  margin-left: 14rpx
+}
+
+.saleHouse--l-down .bg {
+  color: #fff;
+  font-weight: bold;
+  background-color: #FF704A;
+  font-size: 22rpx;
+  margin: 0 8rpx;
+  padding: 0 8rpx;
+  border-radius: 4rpx
+}
+
+.saleHouse--l-down .bg-d {
+  color: #031A1F;
+  background-color: #fff;
+  font-weight: normal;
+  padding: 0;
+  margin: 0
+}
+
+.card-list-item {
+  padding: 48rpx 30rpx 0 30rpx;
+}
+
+.project-list-content-view .card-list-item:nth-of-type(1) {
+  padding-top: 30rpx;
+}
+
+.project-list-content-view .card-list-item:last-child {
+  padding-bottom: 48rpx;
+}
+
+.find-house-component-box {
+  margin: 48rpx 30rpx 0rpx 30rpx;
+}
+
+
+.little-res-module-component {
+  margin: 12rpx 30rpx 48rpx 30rpx;
+  border-top: 2rpx solid #ECF0F4;
+  border-bottom: 2rpx solid #ECF0F4;
+
+}
+
+.little-res-module-component .little-res-list {
+  background-color: #fff !important;
+}
+
+.brand-public-component {
+  padding: 64rpx 30rpx !important;
+}
+
+.isTakeParam-title-B {
+  color: #031A1F;
+  font-size: 36rpx;
+  padding-top: 0;
+  font-weight: bold;
+}

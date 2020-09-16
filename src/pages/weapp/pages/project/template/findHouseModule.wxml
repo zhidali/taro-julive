@@ -1,0 +1,17 @@
+<template name="find-house-module">
+  <view class="find-house-module-box">
+    <view class="find-house-module-view" bindtap="didClickFindHouse">
+      <image class="find-house-view-bg" />
+      <view class="find-house-view-title">还没找到心仪的房子？</view>
+      <view class="find-house-view-text">大数据帮您精准找房</view>
+      <view class="common-button-whole">帮我找房</view>
+    </view>
+    <view wx:if="{{!userLoginStatus}}" class="list-find-house-wx-loging">
+      <wxLogin
+        markOpType="900510"
+        bindClickGetPhoneNumberBtn="passBackGetPhoneNumberBtn"
+        bindFastLoginCallBack="passBackFastLoginCallBack"
+      ></wxLogin>
+    </view>
+  </view>
+</template>

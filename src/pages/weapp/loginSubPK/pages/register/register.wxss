@@ -1,0 +1,127 @@
+.container {
+  width: 100%;
+  height: 100vh;
+  background-color: white;
+}
+
+.register-view {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  flex: 1;
+}
+
+.register-logo-image {
+  margin-top: 244rpx;
+  width: 220rpx;
+  height: 212rpx;
+}
+
+.register-title {
+  margin-top: 20rpx;
+  font-family: PingFang-SC-Medium;
+  font-size: 28rpx;
+  color: #A9BACF;
+  text-align: center;
+}
+
+.login-view {
+  position: absolute;  
+}
+
+.bottom-360{
+  bottom: 360rpx;
+}
+
+.bottom-496{
+  bottom: 496rpx;
+}
+
+
+.openTypeBox{
+  position: relative;
+}
+
+.mask-btn{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  /* background-color: chartreuse; */
+  opacity: 100%;
+}
+
+.login-button {
+  background: rgba(0, 192, 235, 1);
+  border-radius: 8rpx;
+  width: 480rpx;
+  min-height: 96rpx;
+  max-height: 96rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border:1px solid rgba(0,192,235,1);
+}
+
+.login-button-phone{
+  background-color: #fff;
+}
+
+.phone-icon {
+  margin-right: 16rpx;
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.weixin-icon {
+  margin-right: 16rpx;
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.login-button-title {
+  font-family: PingFang-SC-Medium;
+  font-size: 32rpx;
+  color: #FFFFFF;
+  text-align: center;
+}
+
+.login-button-phone .login-button-title{
+  color: #00C0EB;
+}
+
+.footer {
+  color: rgba(172, 183, 186, 1);
+  position: absolute;
+  bottom: 48rpx;
+  display: flex;
+  align-items: center;
+}
+
+.footer image {
+  width: 28rpx;
+  height: 28rpx;
+  margin-right: 4rpx;
+}
+
+.footer-img-mask{
+  position: absolute;
+  width: 80rpx;
+  height: 80rpx;
+  top: -25rpx;
+  left: -40rpx;
+  z-index: 2;
+}
+
+.footer text{
+  font-size: 24rpx;
+  font-weight: 400;
+}
+.register-tip {
+  color: #00C0EB;
+}

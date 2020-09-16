@@ -1,0 +1,12 @@
+<map id="map" longitude="{{lng}}" latitude="{{lat}}" scale="16" bindcallouttap="didTapCallout" markers="{{markers}}" show-location style="width: 100%; height: {{mapHeight}}px;"></map>
+<cover-view class="map-category-view">
+  <cover-view class="category-container-view">
+    <cover-view class="item-category-view" wx:for="{{tabList}}" wx:key="item" bindtap="didTapCategoryItem" data-index="{{index}}">
+      <cover-image class="item-category-icon" src="{{index==currentTabIndex?item.iconTabPath:item.iconPath}}" />
+      <cover-view class="item-category-title {{index==currentTabIndex?'item-category-title-selected':''}}">
+        {{item.name}}
+      </cover-view>
+    </cover-view>
+  </cover-view>
+</cover-view>
+<contact projectId="{{projectId}}" fromPage="p_surrounding_analysis_map" opType="900136" source="154" consultOpType="900215" consultContent="楼盘周边有哪些生活配套？学校、地铁方不方便？未来有什么规划……" consult="咨询周边解读" userInfo="{{userInfo}}" hide="{{dipperSingeFlag}}" notShowAttention="{{true}}" />

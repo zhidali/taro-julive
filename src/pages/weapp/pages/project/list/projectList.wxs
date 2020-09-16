@@ -1,0 +1,48 @@
+var formatInfoAcreage = function(acreage, ac_acreage) {
+  if ((!acreage || !acreage.acreage) && (!ac_acreage || !ac_acreage.acreage))
+    return;
+  if (acreage.acreage.length == 1) {
+    return acreage.acreage[0] + "㎡";
+  } else if (acreage.acreage.length == 2) {
+    return acreage.acreage[0] + "-" + acreage.acreage[1] + "㎡";
+  } else if (ac_acreage.acreage.length == 1) {
+    return "套内" + ac_acreage.acreage[0] + "㎡";
+  } else if (ac_acreage.acreage.length == 2) {
+    return (
+      "套内" + ac_acreage.acreage[0] + "㎡" + "~" + ac_acreage.acreage[1] + "㎡"
+    );
+  }
+  return "";
+};
+
+var formatInfoTags = function(tags) {
+  if (tags == undefined || tags == null) return "";
+  return tags.join(" ");
+};
+
+// 优惠楼盘判断是否是显示的最后一个
+var isSpecialProjectItemLastOne = function(index, specialProjectList) {
+  if (!specialProjectList) return true;
+  if (specialProjectList.length > 6) {
+    return index === 5;
+  } else {
+    return index === specialProjectList.length - 1;
+  }
+};
+
+var formatTotalPrice = function(item) {
+  if (item.price.length === 2) {
+    return item.price[0] + "-" + item.price[1] + item.unit;
+  } else if (item.price.length === 1) {
+    return item.price[0] + item.unit;
+  } else {
+    return "待定";
+  }
+};
+
+module.exports = {
+  formatInfoAcreage: formatInfoAcreage,
+  formatInfoTags: formatInfoTags,
+  isSpecialProjectItemLastOne: isSpecialProjectItemLastOne,
+  formatTotalPrice: formatTotalPrice
+};

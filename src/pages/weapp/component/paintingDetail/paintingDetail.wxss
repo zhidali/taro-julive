@@ -1,0 +1,102 @@
+.pop-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.8;
+  z-index: 900;
+}
+
+.pop-view {
+  position: fixed;
+  overflow: hidden;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 901;
+}
+
+.pop-view-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  border-radius: 16rpx;
+}
+.pop-mask-bottom {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 180rpx;
+  background-color: black;
+  opacity: 0.8;
+  z-index: 900;
+}
+.fix-iphonex-view {
+  height: 200rpx;
+}
+.pop-bottom-view {
+  position: fixed;
+  left: 0;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin: 0 64rpx;
+  height: 90rpx;
+  z-index: 902;
+}
+
+.share-button,
+.painter-button {
+  margin: 0;
+  width: 295rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-radius: 8rpx;
+  font-size: 28rpx;
+  color: white;
+  border: 1rpx solid white;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.painter-button {
+  margin-left: 32rpx;
+}
+
+.setting-image {
+  position: fixed;
+  top: 16rpx;
+  left: 50%;
+  z-index: 10002;
+  width: 470rpx;
+  height: 596rpx;
+  transform: translate(-50%, 0);
+}
+.setting-close {
+  width: 366rpx;
+  height: 80rpx;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8rpx;
+  border: 1rpx solid rgba(255, 255, 255, 1);
+  font-size: 28rpx;
+  font-family: "PingFangSC-Medium, PingFang SC";
+  color: #fff;
+  line-height: 80rpx;
+  margin-top: 100rpx;
+  text-align: center;
+  position: fixed;
+  top: 724rpx;
+  left: 50%;
+  z-index: 10002;
+  transform: translate(-50%, 0);
+}
+.share-image {
+  width: 622rpx;
+  height: 940rpx;
+}

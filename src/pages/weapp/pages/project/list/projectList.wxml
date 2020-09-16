@@ -1,0 +1,660 @@
+<import src="../template/projectCell.wxml" />
+<import src="../template/findHouseModule.wxml" />
+<import src="../../template/questionItem/questionItem.wxml" />
+<import src="../dropdown/dropdown.wxml" />
+<!-- 实验A的搜索时候 咨询师模块 和售罄模块 -->
+<import src="../template/searchResult.wxml" />
+<!-- 实验A的，弹窗B -->
+<import src="./template/employeePop.wxml" />
+<!-- 实验A，底部我要咨询弹窗 浮窗 -->
+<import src="../../home/hotTabModule/homeHotlineModule.wxml" />
+
+<import src="../../template/barTypeLogin/barTypeLogin.wxml" />
+<import src="./template/selectGuidePop.wxml" />
+<import src="../../template/topGuidePop/topGuidePop.wxml" />
+<import src="./template/listLoadingScreen.wxml" />
+<!-- 咨询师模块 -->
+<import src="../../home/hotTabModule/employeeInfo.wxml" />
+
+<wxs src="projectList.wxs" module="format" />
+<wxs src="../../../utils/util.wxs" module="tools" />
+<!-- 页面开始 -->
+
+<block wx:if="{{abTest.p_project_list_optimization == 'A'}}">
+  <template is="list-loading-screen" wx:if="{{!loadingHidden}}" />
+  <view
+    class="container"
+    hidden="{{!loadingHidden}}"
+    style="{{showFindHousePop?'position:fixed':''}}"
+  >
+    <view
+      class="project-list-search {{searchCeiling?'ceiling-city':''}} {{showCollectPop&&searchCeiling?'ceiling-city-collecct':''}}"
+    >
+      <!-- 收藏引导弹窗 +搜索框区域 -->
+      <block wx:if="{{showCollectPop}}">
+        <template is="top-guide-pop"></template>
+      </block>
+      <view class="project-list-search-box">
+        <view class="project-list-search-city-content" bindtap="didClickSwitchCity">
+          <text class="project-list-search-city">{{city.city_name}}</text>
+          <image
+            class="project-list-search-city-image"
+            src="/image/icon_search_triangle_gray.png"
+          />
+        </view>
+        <view class="project-list-search-content-box">
+          <view class="project-list-search-content">
+            <image
+              src="../../../image/icon_home_search_gray.png"
+              class="project-list-search-content-image"
+            />
+            <input
+              type="text"
+              class="project-list-search-content-input"
+              bindconfirm="didConfirmSearch"
+              bindfocus="didTapSearch"
+              bindinput="didInputSearchVal"
+              focus="{{needFocus}}"
+              placeholder="请输入楼盘名或区域"
+              placeholder-class="project-list-search-content-input-ph"
+              value="{{query}}"
+            />
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 筛选栏 -->
+    <template
+      is="drop-down"
+      data="{{dropdown:dropdown,searchCeiling:searchCeiling,showCollectPop:showCollectPop}}"
+    />
+    <view class="project-list-content-view {{showCollectPop?'content-view-collect':''}}">
+      <!-- 筛选栏选择的筛选项 -->
+      <scroll-view
+        class="filter-screen-item-view"
+        scroll-x="true"
+        scroll-left="true"
+        wx:if="{{featureList.length>0}}"
+      >
+        <view
+          wx:if="{{item.value!=0}}"
+          class="filter-screen-item {{item.checked?'filter-screen-item-true':'filter-screen-item-false'}}"
+          wx:for="{{featureList}}"
+          wx:key="name"
+          bindtap="didClickDeleteScreenItem"
+          data-index="{{index}}"
+          data-op-type="900569"
+          >{{item.name}}</view
+        >
+      </scroll-view>
+      <view class="brand-image-view" wx:if="{{brandDeveloperList.length>0}}">
+        <jlImage
+          class="brand-image"
+          classImage="brand-image"
+          url="{{brandDeveloperList[0].img_path}}"
+        />
+      </view>
+      <!-- 列表 -->
+      <block wx:if="{{houseList.length>0}}">
+        <block wx:for="{{houseList}}" wx:key="project_id">
+          <view class="project-list-view-item exposure{{index}}" data-id="{{item.project_id}}">
+            <template is="project-cell" data="{{project:item, index:index}}" />
+          </view>
+          <block wx:if="{{!isTakeParam}}">
+            <!-- 帮我找房，第5个列表之后 -->
+            <template
+              is="find-house-module"
+              wx:if="{{index==4}}"
+              data="{{userLoginStatus:userLoginStatus}}"
+            ></template>
+            <!-- 咨询师模块，第15个之后 -->
+            <template
+              is="employee-info"
+              wx:if="{{index==14}}"
+              data="{{ employee:employee.list,type:'list',userLoginStatus:userLoginStatus,opType:'900509'}}"
+            />
+            <!-- banner 第20个列表后面 -->
+            <view style="margin:52rpx 40rpx" wx:if="{{index==19}}">
+              <bannerToApp
+                showBanner="{{true}}"
+                url="http://imgs.julive.com/l?p=eyJpbWdfcGF0aCI6IlwvbWluaW1ncy9iYW5uZXItdG8tYXBwLnBuZyJ9ICAg"
+                bindOpenApp="OpenApp"
+              />
+            </view>
+          </block>
+          <block wx:else>
+            <view wx:if="{{tools.filterBannerHide(index, houseList.length)}}">
+              <template
+                is="search-result"
+                data="{{is_all_sell_out:is_all_sell_out,leg:houseList.length,userLoginStatus:userLoginStatus}}"
+              />
+            </view>
+            <template
+              is="employee-info"
+              wx:if="{{index==14}}"
+              data="{{ employee:employee.list,type:'list' }}"
+            />
+          </block>
+          <!-- 快捷筛选，第10个之后 -->
+          <template
+            is="fast-filter"
+            wx:if="{{index==9 &&houseList.length>10 &&hot_tag.length>0}}"
+            data="{{hot_tag:hot_tag}}"
+          ></template>
+        </block>
+        <block wx:if="{{!isTakeParam || hasMore}}">
+          <block wx:if="{{hasMore}}">
+            <view class="loading-tip">加载中…</view>
+          </block>
+          <block wx:else>
+            <view class="loading-tip">没有更多了</view>
+          </block>
+        </block>
+      </block>
+      <block wx:if="{{isTakeParam && (is_all_sell_out == 2 || houseList.length < 15)}}">
+        <view wx:if="{{houseList.length == 0}}">
+          <view class="none-tips">抱歉，暂未找到相关楼盘，问问咨询师吧~</view>
+          <template is="search-result" data="{{userLoginStatus:userLoginStatus}}" />
+        </view>
+        <block wx:if="{{guess_you_like.length > 0}}">
+          <view class="isTakeParam-title-view">
+            <view class="isTakeParam-title">猜你喜欢</view>
+            <block wx:for="{{guess_you_like}}" wx:key="item">
+              <view class="project-list-view-item exposure_like{{index}}">
+                <template is="project-cell" data="{{project:item, index:index, opType:'900570'}}" />
+              </view>
+            </block>
+          </view>
+        </block>
+      </block>
+    </view>
+    <block>
+      <template is="bar-type" data="{{barTypeData:barTypeData}}"></template>
+    </block>
+    <!-- 留电引导弹窗B showEmployeePop -->
+    <template
+      is="employee-pop"
+      data="{{showFullScreenPop:showFullScreenPop,data:employeeFullData,userLoginStatus:userLoginStatus}}"
+    ></template>
+    <!-- 悬浮留电口 A实验都有 -->
+    <template
+      is="home-hotline-module"
+      data="{{showHotline:true,page:'list',showGuidePop:barTypeData.isShow,userLoginStatus:userLoginStatus}}"
+    ></template>
+
+    <!-- 顶部-筛选条件引导浮层 -->
+    <block wx:if="{{showSelectPop}}">
+      <template is="select-guide-pop" data="{{searchCeiling:searchCeiling}}"></template>
+    </block>
+  </view>
+  <!-- 留电成功 目前没用 -->
+  <orderSuccessAlert
+    popType="{{popType}}"
+    fromPage="p_project_list"
+    showModal="{{showOrderSuccessAlert}}"
+    title="{{alertTitle}}"
+    content="{{alertContent}}"
+  />
+  <login
+    showModal="{{showLoginModal}}"
+    title="{{loginTitle}}"
+    content="{{loginContent}}"
+    buttonTitle="{{loginButtonTitle}}"
+    popType="{{popType}}"
+    bindloginSuccessCallback="loginSuccessCallback"
+    bindcancelCallback="cancelCallback"
+    userInfo="{{loginUserInfo}}"
+    contentFooter="{{loginContentFooter}}"
+  />
+</block>
+
+<block wx:else>
+  <template is="list-loading-screen" wx:if="{{!isLoading}}" />
+
+  <view class="house-list-wrap" id="house-list-container" hidden="{{!isLoading}}">
+    <view class="filter-box" style="top:{{searchFixed ? '-110rpx' : '-2rpx'}}">
+      <!-- 搜索部分 -->
+      <view class="top-fixed ">
+        <view class="search-top-wrap">
+          <view class="seatch-left">
+            <view class="city-con" bindtap="didClickSwitchCity">
+              <text class="search-city">{{city.city_name}}</text>
+              <image class="search-city-image" src="/image/icon_search_triangle_gray.png" />
+            </view>
+            <view class="ipt-container" catchtap="skipSearch">
+              <image src="/image/icon_home_search_gray.png" class="search-image" />
+              <view class="search-txt {{keywordTxt != '' ? 'have-txt' : ''}}"
+                >{{keywordTxt != '' ? keywordTxt : '请输入搜索内容'}}</view
+              >
+              <image
+                src="/image/icon_input_clear.png"
+                class="delete-icon"
+                catchtap="emptyKeyword"
+                wx:if="{{keywordTxt != ''}}"
+              />
+            </view>
+          </view>
+          <image
+            class="icon-tag"
+            src="{{cardTypeA ? '/image/icon-switch-carda.png': '/image/icon-switch-cardb.png'}}"
+            bindtap="swithCard"
+          ></image>
+        </view>
+        <view class="card-tips {{!swithTips ? 'fade-out': 'fade-in'}}">切换卡片样式</view>
+      </view>
+      <!-- filterTop: 0 筛选部分-->
+      <filter
+        id="list-filter"
+        apiAllFilter="{{allFilter}}"
+        defaultFilter="{{ defaultFilter }}"
+        bind:submit="submitFilter"
+        bind:clickKey="clickFilterKey"
+        bind:clearFiltertop="clearFiltertop"
+        bind:quickFilter="quickFilter"
+        position="{{filterPosition}}"
+        top="{{filterTop}}"
+        abTest="{{abTest}}"
+      />
+    </view>
+    <!-- 列表展示 -->
+    <!-- filterTop == 0 -->
+    <!-- style="padding-top:{{searchFixed ? '182rpx' : '292rpx' }}" -->
+
+    <view
+      class="list-container {{cardTypeA ? '' : 'wrap-b'}}"
+      style="padding-top:{{scrollTop > 300 ? '182rpx' : '292rpx' }}"
+    >
+      <!-- 领福利 -->
+      <authorize-login
+        wx:if="{{!loginStatus}}"
+        data-type="2"
+        class="welfare-observe-box"
+        bind:allow="allowSeeLogin"
+        bind:cancel="cancelSeeLogin"
+        bind:click="clickSeeLogin"
+      >
+        <view class="welfare-box" slot="btn" wx:if="{{!app.commonData.login_status}}">
+          <view class="txt">
+            <image
+              class="red-packet"
+              src="http://imgs.julive.com/l?p=eyJpbWdfcGF0aCI6IlwvbWluaW1ncy9pY29uLXJlZC1wYWNrZXQucG5nP3dhdGVybWFyayx0XzAifQ=="
+            />
+            购房福利，新人买房指南</view
+          >
+          <view class="welfare-draw">
+            去领取
+            <image class="triangle" src="/image/icon-right-trange.png" />
+          </view>
+        </view>
+      </authorize-login>
+
+      <!-- 楼盘列表 -->
+      <view
+        wx:for="{{projectDataList}}"
+        wx:for-index="index"
+        wx:for-item="item"
+        wx:key="index"
+        data-id="{{item.project_id}}"
+      >
+        <!-- // 1 快捷筛选1 ； 2快捷筛选2  总价筛选； 3预约找房 ；4动态提醒  -->
+        <!-- 想住在哪儿模块 快捷筛选1-->
+        <view hidden="{{item !== '1'}}">
+          <region-module
+            regionData="{{regionData}}"
+            bind:filterRegion="filterRegion"
+            class="region-module"
+            my-class="banner-box"
+          />
+        </view>
+        <view hidden="{{item !== '2'}}">
+          <!-- 购房预算模块 快捷筛选2-->
+          <price-module
+            priceModuleData="{{priceModuleData}}"
+            bind:filterPrice="filterPrice"
+            class="price-module"
+            my-class="banner-box"
+          />
+        </view>
+        <!-- 预约找房模块 -->
+        <view hidden="{{item !== '3'}}">
+          <findRoom
+            findRoomData="{{findRoomData}}"
+            opType="900762"
+            class="find-room-box"
+            my-class="banner-box"
+            bind:leavePhone="leavePhoneHandle"
+            bindhideModalCallbackVb="hideModalCallbackVb"
+            bindconfirmCallbackVb="confirmCallbackVb"
+          />
+        </view>
+        <!-- 动态提醒 -->
+        <view hidden="{{item !== '4'}}">
+          <dynamicState
+            dynamicData="{{dynamicData}}"
+            currentNeed="{{currentNeed}}"
+            opType="900763"
+            class="dynamic-state-box"
+            my-class="banner-box"
+            bindhideModalCallbackVb="hideModalCallbackVb"
+            bindconfirmCallbackVb="confirmCallbackVb"
+            bindleavePhone="leavePhoneHandle"
+          />
+        </view>
+
+        <view hidden="{{!cardTypeA || item == '1' || item =='2' || item=='3' ||item=='4'}}">
+          <houseCardA
+            class="card-modulea{{index}}"
+            my-class="card-box "
+            projectData="{{item}}"
+            data-id="{{item.project_id}}"
+            data-index="{{index}}"
+            index="{{index}}"
+            fromModule="m_recommend_project"
+            data-type="m_recommend_project"
+            bindclickCollect="clickCollect"
+            bindchangeCollect="changeCollect"
+            catchtap="skipDetail"
+          />
+        </view>
+        <view hidden="{{cardTypeA || item == '1' || item =='2' || item=='3' ||item=='4'}}">
+          <houseCardB
+            class="card-moduleb{{index}}"
+            my-class="card-box-b "
+            projectData="{{item}}"
+            index="{{index}}"
+            fromModule="m_recommend_project"
+            data-type="m_recommend_project"
+            data-index="{{index}}"
+            data-id="{{item.project_id}}"
+            bindclickCollect="clickCollect"
+            bindchangeCollect="changeCollect"
+            data-id="{{item.project_id}}"
+            catchtap="skipDetail"
+          />
+        </view>
+      </view>
+      <!-- 少筛选引导模块 -->
+      <little-res-module
+        wx:if="{{ isShowGuessList && isGetList}}"
+        projectListLength="{{originalList.length}}"
+        littleResData="{{ littleResData }}"
+        bind:filterLittleRes="filterLittleRes"
+        class="little-res-module"
+        my-class="banner-box little-box"
+      />
+      <!-- 猜你喜欢模块 -->
+      <view class="guess-like-project" wx:if="{{isShowGuessList && guessLikeProject.length > 0}}">
+        <view class="title">
+          以下楼盘满足您的部分需求
+        </view>
+        <view class="guess-list-wrap">
+          <view wx:for="{{guessLikeProject}}" wx:for-item="item" wx:for-index="index" wx:key="item" 
+             data-id="{{item.project_id}}">
+            <view hidden="{{!cardTypeA}}">
+              <houseCardA
+                class="like-modulea{{index}}"
+                fromModule="m_guess_like_list"
+                data-type="m_guess_like_list"
+                my-class="card-box"
+                projectData="{{item}}"
+                data-id="{{item.project_id}}"
+                data-index="{{index}}"
+                catchtap="skipDetail"
+                bindclickCollect="clickCollect"
+                bindchangeCollect="changeCollect"
+              />
+            </view>
+            <view hidden="{{cardTypeA}}">
+              <houseCardB
+                class="like-moduleb{{index}}"
+                fromModule="m_guess_like_list"
+                data-type="m_guess_like_list"
+                my-class="card-box-b "
+                projectData="{{item}}"
+                bindclickCollect="clickCollect"
+                bindchangeCollect="changeCollect"
+                data-id="{{item.project_id}}"
+                data-index="{{index}}"
+                catchtap="skipDetail"
+              />
+            </view>
+          </view>
+        </view>
+      </view>
+      <!-- 条数输入框 -->
+      <!-- <input class="fixed-input" value="{{listTotal}}" bindconfirm="getList" maxlength="-1" disabled="{{addInfo.disabled}}"></input> -->
+      <!-- 足迹和返回顶部悬浮 -->
+      <view class="right-suspend-box">
+        <view class="btn-tag">
+          <authorize-login
+            data-type="1"
+            bind:allow="allowSeeLogin"
+            bind:cancel="cancelSeeLogin"
+            bind:click="clickSeeLogin"
+          >
+            <view slot="btn">
+              <image class="back-top-image" src="/image/icon-browse.png" />
+            </view>
+          </authorize-login>
+        </view>
+
+        <view class="btn-tag back-top" bindtap="backTop" wx:if="{{searchFixed || isShowBackTop}}">
+          <image class="back-top-image" src="/image/icon-back-top-new.png" />
+        </view>
+      </view>
+    </view>
+    <!-- 留电成功弹窗 -->
+    <orderSuccessAlert
+      popType="{{1}}"
+      fromPage="p_project_list"
+      showModal="{{showOrderSuccessAlert}}"
+      title="{{alertTitle}}"
+      content="{{alertContent}}"
+    />
+    <!-- 品宣 -->
+    <!--  wx:if="{{!newHasMore}}" -->
+    <brandPublic
+      wx:if="{{!newHasMore}}"
+      opType="900764"
+      bind:leavePhone="leavePhoneHandle"
+      brandData="{{brandData}}"
+      class="brand-box"
+      my-class="banner-box"
+    />
+    <!-- 原品宣模块 -->
+    <!-- <view class="brand-public-wrap banner-box" wx:if="{{!newHasMore}}">
+      <view class="brand-title">
+        {{brandData.title}}
+      </view>
+      <view class="desc-wrap">
+        <view class="item" wx:for="{{brandData.content}}" wx:key="item">
+          <image class="icon" src="{{item.icon}}"></image>
+          {{item.desc}}
+        </view>
+      </view>
+      <authorize-login
+        data-type="3"
+        bind:allow="allowSeeLogin"
+        bind:cancel="cancelSeeLogin"
+        bind:click="clickSeeLogin"
+      >
+        <view class="brand-btn" slot="btn">
+          {{brandData.button}}
+        </view>
+      </authorize-login>
+    </view> -->
+    <view>
+      <block wx:if="{{newHasMore}}">
+        <view class="loading-tip">加载中…</view>
+      </block>
+      <block wx:else>
+        <view class="loading-tip">没有更多了</view>
+      </block>
+    </view>
+  </view>
+</block>
+
+<block wx:if="{{isLoading || loadingHidden}}">
+  <!-- 新找房弹窗 -->
+  <dialog-shell
+    class="find-house"
+    hasImg="{{false}}"
+    bind:close="closeLeavePhone"
+    wx:if="{{isShowFindHouse}}"
+  >
+    <image
+      bindtap="hideFindHouse"
+      class="find-house-close"
+      src="../../../image/icon_find_house_close.png"
+    ></image>
+    <view class="title-box">
+      <view class="title">{{project_match_popup.title}}</view>
+      <view class="info">{{project_match_popup.sub_title}}</view>
+      <view class="info">{{project_match_popup.sub_title_ext}}</view>
+    </view>
+    <view class="find-form-box">
+      <!-- 意向区域 -->
+      <view class="form-item" bindtap="clickSelect" data-type="region">
+        <view class="form-item-title">
+          {{project_match_popup.filter.a.name}}
+        </view>
+        <view class="form-item-value">
+          <view class="content">{{wantRegion.name}}</view>
+          <image
+            class="{{wantRegion.isShowOption ? 'rotate-img img' : 'img'}}"
+            src="../../../image/icon-select.png"
+          ></image>
+        </view>
+        <scroll-view class="drop-down" wx:if="{{wantRegion.isShowOption}}" scroll-y="{{true}}">
+          <view
+            class="{{item.value === wantRegion.value ? 'option current-option' : 'option'}}"
+            wx:for="{{project_match_popup.filter.a.value}}"
+            wx:key="index"
+            catchtap="clickOption"
+            data-option="{{item}}"
+            data-type="region"
+          >
+            {{item.name}}
+          </view>
+        </scroll-view>
+      </view>
+      <!-- 计划总价 -->
+      <view class="form-item" bindtap="clickSelect" data-type="price">
+        <view class="form-item-title">
+          {{project_match_popup.filter.c.name}}
+        </view>
+        <view class="form-item-value">
+          <view class="content">{{wantPrice.name}}</view>
+          <image
+            class="{{wantPrice.isShowOption ? 'rotate-img img' : 'img'}}"
+            src="../../../image/icon-select.png"
+            animation="{{animationData}}"
+          ></image>
+        </view>
+        <scroll-view class="drop-down" wx:if="{{wantPrice.isShowOption}}" scroll-y="{{true}}">
+          <view
+            class="{{item.value === wantPrice.value ? 'option current-option' : 'option'}}"
+            wx:for="{{project_match_popup.filter.c.value}}"
+            wx:key="index"
+            catchtap="clickOption"
+            data-option="{{item}}"
+            data-type="price"
+          >
+            {{item.name}}
+          </view>
+        </scroll-view>
+      </view>
+    </view>
+    <authorize-login
+      data-type="4"
+      bind:allow="allowSeeLogin"
+      bind:cancel="cancelSeeLogin"
+      bind:click="clickSeeLogin"
+    >
+      <view class="free-order-box" slot="btn">
+        免费预约
+      </view>
+    </authorize-login>
+    <view wx:if="{{abTest.help_find_home_optimization == 'A'}}" class="common-tips">
+      Tips：居理保障无骚扰电话，为保障您的服务质量，您的通话可能会被安全保留
+    </view>
+    <view wx:else class="common-tips"
+      ><image class="tips-img" src="../../../image/icon_find_house_click.png"></image
+      >点击预约，专属咨询师为您匹配房源
+    </view>
+  </dialog-shell>
+
+  <!-- 留电话成功弹窗 -->
+  <dialog-shell class="leave-phone" bind:close="closeLeavePhone" wx:if="{{isShowLeavePhone}}">
+    <image class="img-success" src="/image/icon_get_success.png" />
+    <view class="tit">预约成功</view>
+    <view class="tips">{{leavePhoneDialogText}}</view>
+    <!-- 打开APP按钮 -->
+    <button
+      wx:if="{{leavePhoneDialogBtnType === '1'}}"
+      class="btn-ok"
+      hover-class="confirm-disable"
+      open-type="contact"
+      bindtap="closeLeavePhone"
+      show-message-card="{{true}}"
+      send-message-path="/pages/home/home"
+      send-message-title="居理新房"
+      send-message-img="https://imgs.julive.com/l?p=eyJpbWdfcGF0aCI6IlwvbWluaW1ncy9jdXN0b21lci1sb2dvLnBuZz93YXRlcm1hcmssdF8wIn0="
+      data-type="1"
+    >
+      {{leavePhoneDialogBtnText}}
+    </button>
+    <!-- 好的按钮 -->
+    <view class="btn-ok" catchtap="closeLeavePhone" wx:else>{{leavePhoneDialogBtnText}}</view>
+  </dialog-shell>
+
+  <!-- 居理升级服务弹窗 -->
+  <dialog-shell
+    class="service-dialog"
+    bind:close="closeServiceDialog"
+    wx:if="{{isShowJuliveService}}"
+  >
+    <view class="tit">升级居理专属服务</view>
+    <view class="tips">{{julive_server_intro_popup.sub_title}}</view>
+    <image
+      src="http://imgs.julive.com/l?p=eyJpbWdfcGF0aCI6IlwvbWluaW1ncy9pbWctc2VydmljZS1kaWFsb2cxLnBuZz93YXRlcm1hcmssdF8wIn0="
+      class="img"
+    />
+    <view class="btn-helpFind-wrap">
+      <authorize-login
+        bind:allow="allowService"
+        bind:cancel="cancelService"
+        bind:click="clicksjService"
+      >
+        <view class="btn-helpFind" slot="btn">立即升级</view>
+      </authorize-login>
+      <!-- 是否需要调用授权登录 -->
+      <!-- <view wx:if="{{userLoginStatus}}" class="list-employee-wx-loging">
+            <wxLogin
+              bindFastLoginCallBack="allowLogin260"
+              bindWechatUserCancel="cancelLogin260"
+              bindClickGetPhoneNumberBtn="noLogin260"
+            ></wxLogin>
+          </view> -->
+    </view>
+  </dialog-shell>
+  <!-- cms配置弹窗 -->
+  <dialog-shell
+    class="cms-dialog"
+    hasImg="{{false}}"
+    bind:close="closeCmsDialog"
+    wx:if="{{cmsDialog}}"
+  >
+    <div class="cms-dialog-wrap">
+      <image src="{{cmsDialogInfo.img}}" alt="" class="cms-img" catchtap="cmsJump" />
+      <image src="/image/home_pop_close.png" alt="" class="close-pop" catchtap="closeCmsDialog" />
+    </div>
+  </dialog-shell>
+
+  <!-- 底部的小弹窗 -->
+  <bottomBar
+    bottomBarData="{{bottomBarData}}"
+    bind:didCloseBottomBarPop="didCloseBottomBarPop"
+    opType="900707"
+  ></bottomBar>
+</block>

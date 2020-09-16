@@ -1,0 +1,143 @@
+@import '../template/qaAnswer.wxss';
+@import '../template/userEvaluate.wxss';
+@import '../template/wxCode.wxss';
+@import "../template/dipperLogin";
+
+.container {
+  background-color: #f6f6f6;
+}
+
+.eD-head {
+  height: 422rpx;
+  position: relative;
+  overflow: hidden;
+}
+
+.masking {
+  height: 100%;
+  width: 100%;
+  background-image: linear-gradient(-180deg, rgba(0, 0, 0, 0.00) 18%, rgba(0, 0, 0, 0.50) 100%);
+  opacity: 0.5;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.eD-head-info {
+  position: absolute;
+  width: 100%;
+  bottom: 24rpx;
+  padding: 0rpx 40rpx;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  color: #fff;
+}
+
+.eD-head-lf view:first-child {
+  font-family: PingFangSC-Semibold;
+  font-size: 44rpx;
+  line-height: 60rpx;
+}
+
+.eD-head-lf view:last-child {
+  font-family: PingFangSC-Medium;
+  font-size: 28rpx;
+  line-height: 40rpx;
+}
+
+.eD-head-ri {
+  text-align: center;
+  width: 248rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-family: PingFangSC-Regular;
+  border-radius: 40rpx;
+  margin-top: 6rpx;
+  background-image: linear-gradient(-93deg, #45c0f6 6%, #30b0e9 97%);
+}
+
+.eD-title {
+  display: flex;
+  box-sizing: border-box;
+  padding: 20rpx 40rpx;
+  align-items: center;
+  background: #fff;
+  box-shadow: -4rpx 0 8rpx 0 rgba(0,0,0,0.10);
+  margin-bottom: 4rpx;
+  height: 150rpx;
+}
+
+.eD-title-item {
+  flex: 1;
+  text-align: center;
+  position: relative;
+}
+
+.upright-line {
+  position: absolute;
+  background-color: #f4f6f9;
+  width: 1px;
+  height: 40rpx;
+  top: 50%;
+  margin-top: -20rpx;
+  right: 0rpx;
+}
+
+.eD-title-item view {
+  font-family: DINCondensed-Bold;
+  font-size: 52rpx;
+  color: #3e4a59;
+  line-height: 52rpx;
+  margin-bottom: 6rpx;
+}
+
+.eD-title-item view text {
+  font-family: PingFangSC-Medium;
+  font-size: 32rpx;
+  line-height: 32rpx;
+}
+
+.eD-title-item .orange {
+  color: #fa5f35;
+}
+
+.orange text {
+  color: #fa5f35;
+}
+
+.eD-title-item text {
+  font-family: PingFangSC-Regular;
+  font-size: 32rpx;
+  line-height: 42rpx;
+  color: #77808a;
+  display: inline-block;
+}
+
+.eD-content {
+  background-color: #fff;
+  /* box-shadow: 0 -4rpx 4rpx rgba(0, 0, 0, 0.10); */
+  padding: 14rpx 40rpx 48rpx 40rpx;
+  margin-bottom: 20rpx;
+}
+
+.eD-content-tag text {
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 3rpx 10rpx;
+  border: 2rpx solid #47b3e3;
+  border-radius: 4rpx;
+  color: #47b3e3;
+  font-family: PingFangSC-Regular;
+  font-size: 22rpx;
+  margin-right: 16rpx;
+  margin-top: 14rpx;
+}
+
+.eD-content-introduce {
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #3e4a59;
+  line-height: 48rpx;
+  margin-top: 24rpx;
+}

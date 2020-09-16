@@ -1,0 +1,68 @@
+.singleProject_foryou_h2 {
+  font-family: PingFangSC-Medium;
+  font-size: 32rpx;
+  line-height: 44rpx;
+  color: #3e4a59;
+  margin-bottom: 40rpx;
+  margin-top: 48rpx;
+}
+
+.singleProject_foryou_h2 view {
+  position: relative;
+  z-index: 3;
+  display: inline-block;
+}
+
+.bottom_line {
+  position: absolute;
+  width: 100%;
+  height: 6rpx;
+  bottom: 6rpx;
+  background-color: rgb(253, 200, 186);
+  z-index: -1;
+  opacity: 0.7;
+  left: 0rpx;
+}
+
+.singleProject_foryou_audio {
+  width: 100%;
+  height: 148rpx;
+  background: #f3f6f9;
+  border-radius: 2px;
+  padding: 28rpx 20rpx;
+  box-sizing: border-box;
+  display: flex;
+}
+
+.audio_image {
+  height: 100%;
+  width: 92rpx;
+  display: block;
+}
+
+.singleProject_foryou_audio_box {
+  margin: 0rpx 20rpx;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-content: space-between;
+}
+
+.singleProject_foryou_audio_box_title {
+  font-family: PingFangSC-Medium;
+  font-size: 24rpx;
+  color: #3e4a59;
+  line-height: 24rpx;
+}
+
+.singleProject_slider {
+  margin: 0;
+  margin-left: 10rpx;
+}
+
+.singleProject_foryou_audio_box_details {
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  color: #77808a;
+  line-height: 24rpx;
+}

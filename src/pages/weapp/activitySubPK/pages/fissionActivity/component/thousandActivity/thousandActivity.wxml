@@ -1,0 +1,55 @@
+<wxs src="../../../../../utils/util.wxs" module="tools" />
+<view class="box">
+    <view class="header">
+        <view class="header-title">{{helpCardThousand.title}}</view>
+        <view class="header-conntet">{{helpCardThousand.desc}}</view>
+        <view class="header-conntet">{{helpCardThousand.sub_desc}}</view>
+        <view class="header-righrt">{{helpCardThousand.tag}}</view>
+        <image class="header-img" src="https://imgs.julive.com/l?p=eyJpbWdfcGF0aCI6IlwvbWluaW1ncy9maXNzaW9uLWpkLWJhY2syLnBuZz93YXRlcm1hcmssdF8wIn0="></image>
+    </view>
+    <view class="header-strip"></view>
+    <view class="tab">
+        <view class="tab-itenm {{selectNum === '0' ? 'back-e9':''}}" bindtap="selectActivityNum" data-num="0">
+            <view class="tab-itenm-up">{{helpCardThousand.tab.help.main_desc}}</view>
+            <view class="tab-itenm-down">{{helpCardThousand.tab.help.number}}人</view>
+            <image wx:if="{{selectNum === '0'}}" class="tab-itenm-img" src="../../../../images/fission-pink-triangle.png"></image>
+        </view>
+        <view class="tab-itenm {{selectNum === '1' ? 'back-e9':''}}" bindtap="selectActivityNum" data-num="1">
+            <view class="tab-itenm-up ">{{helpCardThousand.tab.see.main_desc}}</view>
+            <view class="tab-itenm-down">{{helpCardThousand.tab.see.number}}人</view>
+            <image wx:if="{{selectNum === '1'}}" class="tab-itenm-img" src="../../../../images/fission-pink-triangle.png"></image>
+        </view>
+        <view class="tab-itenm {{selectNum === '2' ? 'back-e9':''}}" bindtap="selectActivityNum" data-num="2">
+            <view class="tab-itenm-up">{{helpCardThousand.tab.sign.main_desc}}</view>
+            <view class="tab-itenm-down">{{helpCardThousand.tab.sign.number}}人</view>
+            <image wx:if="{{selectNum === '2'}}" class="tab-itenm-img" src="../../../../images/fission-pink-triangle.png"></image>
+        </view>
+    </view>
+    <block wx:if="{{list.length > 0}}">
+        <view class="scroll">
+            <scroll-view scroll-y="true" bindscrolltolower="fetchScrollList">
+                <block wx:for="{{list}}" wx:key="{{item.id}}">
+                    <view class="scroll-item {{index % 2 == 0?'gray':''}}">
+                        <view class="scroll-item-left">
+                            <jlImage my-class="scroll-item-img" url="{{tools.resizeImageUrl(item.be_inviter.avatar, 50, 50)}}" placeholder="/activitySubPK/images/user_avatar.png"></jlImage>
+                            <view class="scroll-item-left-name">{{item.be_inviter.nickname}}</view>
+                        </view>
+                        <view class="scroll-item-right">{{item.update_datetime}}</view>
+                    </view>
+                </block>
+            </scroll-view>
+            <view class="scroll-footer">* 仅仅展示已网签的好友，好友网签才可享有奖励</view>
+        </view>
+    </block>
+    <block wx:else>
+        <view class="void-value">
+            <image class="void-value-img" src="https://imgs.julive.com/l?p=eyJpbWdfcGF0aCI6IlwvbWluaW1ncy9maXNzaW9uLXNlYXJjaC1ub25lLnBuZz93YXRlcm1hcmssdF8wIn0="></image>
+            <text class="void-value-text">{{text}}</text>
+        </view>
+    </block>
+    <view class="btn {{(helpCardThousand.btn.clickable == 1 && isCanHelp != 3)?'btn-allow':'btn-repulse'}}  ">
+        <text class="btn-text" wx:if="{{!userLoginStatus}}" bindtap="clickDidNavLogin">{{helpCardThousand.btn.label?helpCardThousand.btn.label:'邀请更多好友'}}</text>
+        <button class="btn-btn" wx:if="{{!userHeaderStatus}}" disabled="{{helpCardThousand.btn.clickable == 2 || isCanHelp == 3}}" open-type="getUserInfo" bindgetuserinfo="fetchUserInfo">{{helpCardThousand.btn.label?helpCardThousand.btn.label:'邀请更多好友'}}</button>
+        <button class="btn-btn" wx:if="{{userLoginStatus && userHeaderStatus}}" disabled="{{helpCardThousand.btn.clickable == 2 || isCanHelp == 3}}" open-type="share" bindtap="didClickShareBtn">{{helpCardThousand.btn.label?helpCardThousand.btn.label:'邀请更多好友'}}</button>
+    </view>
+</view>

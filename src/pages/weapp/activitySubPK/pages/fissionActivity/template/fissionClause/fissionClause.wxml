@@ -1,0 +1,9 @@
+<template name="fission-clause">
+    <view class="fission-clause">
+        <view class="fission-clause-title">{{activity_rule.title}}</view>
+        <block wx:for="{{activity_rule.content}}" wx:key="item">
+            <view class="fission-clause-info">{{item}}</view>
+        </block>
+        <view bindtap="onClickActRule" data-type='2' class="fission-clause-btn">{{activity_rule.btn}}<image class="fission-clause-btn-img" src="../../images/fission-right-arrows.png"></image></view>
+    </view>
+</template>

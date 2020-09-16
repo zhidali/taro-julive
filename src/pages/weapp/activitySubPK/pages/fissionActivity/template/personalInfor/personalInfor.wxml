@@ -1,0 +1,45 @@
+<template name="personal-infor">
+  <view class="personal-infor-box">
+    <view class="personal-avatar">
+      <!-- 未登录 -->
+      <view wx:if="{{!userLoginStatus}}" class="un-login" bindtap="didPersonalInfoLogin">
+        登录<image class="img" src="../../images/icon_login.png"
+      /></view>
+      <!-- 已登录 -->
+      <view wx:if="{{userLoginStatus}}" class="login"
+        ><image
+          class="img"
+          src="{{user_info.avatar?user_info.avatar:'../../images/user_avatar.png'}}"
+      /></view>
+    </view>
+    <view class="personal-detail">
+      <view class="detail-reward">
+        <view class="line"></view>
+        <view class="title">
+          <image
+            class="icon"
+            src="../../images/icon_reward.png"
+          />{{user_info.help_reward.title.text}}
+        </view>
+        <view class="money">
+          <text class="num">{{userLoginStatus?user_info.help_reward.reward.num:'--'}}</text>
+          <text class="unit">{{user_info.help_reward.reward.unit}}</text>
+        </view>
+      </view>
+
+      <view class="detail-reward detail-friend">
+        <view class="line"></view>
+        <view class="title">
+          <image
+            class="icon"
+            src="../../images/icon_people.png"
+          />{{user_info.help_person.title.text}}
+        </view>
+        <view class="money money-friend">
+          <text class="num">{{userLoginStatus?user_info.help_person.person.num:'--'}}</text>
+          <text class="unit">{{user_info.help_person.person.unit}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>

@@ -1,0 +1,583 @@
+@import "../template/dipperIntroduce";
+@import "../template/dipprAudio";
+@import "../template/dipperTraffic";
+@import "../template/dipperRecord";
+@import "../template/dipperLogin";
+@import "../template/loadAlt";
+
+.container {
+  background-color: #f6f6f6;
+}
+
+.commonality {
+  padding: 56rpx 40rpx;
+  background-color: #fff;
+  margin-bottom: 20rpx;
+}
+
+.icon_ft {
+  width: 26rpx;
+  height: 44rpx;
+  display: inline-block;
+  margin-left: 8rpx;
+}
+
+.commonality_head {
+  display: flex;
+  justify-content: space-between;
+  height: 60rpx;
+  align-items: center;
+  margin-bottom: 40rpx;
+}
+
+.commonality_head_lf {
+  font-weight: 600;
+  font-family: PingFangSC-Bold;
+  font-size: 44rpx;
+  color: #3e4a59;
+}
+
+.commonality_head_ri {
+  opacity: 0.45;
+  font-family: PingFangSC-Medium;
+  font-size: 28rpx;
+  color: #3e4a59;
+  display: flex;
+  align-items: center;
+}
+
+/* head */
+
+.singleProject_head {
+  padding-bottom: 48rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  line-height: 40rpx;
+  color: #0d0d0d;
+}
+
+/* head end*/
+
+/* 推荐理由  */
+
+.singleProject_foryou {
+  padding: 56rpx 40rpx;
+  background-color: #fff;
+  margin-bottom: 40rpx;
+}
+
+.singleProject_foryou_head {
+  font-family: PingFangSC-Medium;
+  font-size: 32rpx;
+  line-height: 44rpx;
+  color: #3e4a59;
+  margin-bottom: 40rpx;
+}
+
+.singleProject_foryou_head view {
+  position: relative;
+  z-index: 3;
+  display: inline-block;
+}
+
+.bottom_line {
+  position: absolute;
+  width: 100%;
+  height: 6rpx;
+  bottom: 6rpx;
+  background-color: rgb(253, 200, 186);
+  z-index: -1;
+  opacity: 0.7;
+  left: 0rpx;
+}
+
+.singleProject_foryou_scroll {
+  height: 36rpx;
+  margin-bottom: 32rpx;
+}
+
+.singleProject_foryou_scroll_box {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.singleProject_foryou_scroll_box_item {
+  background-color: #e3f6fe;
+  border-radius: 4rpx;
+  height: 36rpx;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-right: 16rpx;
+  white-space: nowrap;
+  color: #47b3e3;
+  font-size: 24rpx;
+}
+
+.gray {
+  background: #f3f6f9;
+  color: #77808a;
+}
+
+.gray_back {
+  background: rgba(230, 230, 230, 0.20);
+}
+
+.singleProject_foryou_audio_box_details_time {
+  display: inline-block;
+  /* margin-left: 20rpx; */
+}
+
+.singleProject_foryou_title {
+  /* font-family: PingFangSC-Medium; */
+  font-size: 28rpx;
+  color: #3e4a59;
+  line-height: 48rpx;
+  /* margin-bottom: 40rpx; */
+}
+
+/* 推荐理由 end */
+
+/* 楼盘详情 */
+
+.singleProject_houseInfo {
+  padding: 56rpx 40rpx;
+  background-color: #fff;
+  padding-bottom: 0rpx;
+}
+
+.singleProject_houseInfo_head_item {
+  line-height: 40rpx;
+  margin-bottom: 20rpx;
+  display: flex;
+}
+
+.singleProject_houseInfo .singleProject_houseInfo_head_item:last-child {
+  margin-bottom: 0rpx;
+}
+
+.houseInfo_flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  position: relative;
+}
+
+.singleProject_houseInfo_head_item_lf {
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #77808a;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+
+.singleProject_houseInfo_head_item_ri {
+  /* font-family: PingFangSC-Medium; */
+  font-size: 28rpx;
+  color: #3e4a59;
+  padding-right: 40rpx;
+}
+
+.singleProject_houseInfo_head_item_block {
+  margin-left: 140rpx;
+}
+
+.houseInfo_image {
+  width: 36rpx;
+  min-width: 36rpx;
+  height: 44rpx;
+  position: absolute;
+  right: 0;
+}
+
+.red {
+  font-family: PingFangSC-Semibold;
+  font-size: 40rpx;
+  color: #fa5f35;
+}
+
+.blue {
+  color: #47b3e3;
+}
+
+.black {
+  font-family: PingFangSC-Bold;
+  font-size: 32rpx;
+  color: #3e4a59;
+  font-weight: 600;
+}
+
+/* 楼盘详情 end */
+
+/* 推荐户型 */
+
+.singleProject_houseType {
+  padding: 56rpx 0;
+  background-color: #fff;
+  margin-bottom: 20rpx;
+}
+
+.singleProject_houseType_head {
+  margin-left: 40rpx;
+  font-family: PingFangSC-Medium;
+  font-size: 16px;
+  color: #3e4a59;
+  line-height: 44rpx;
+  margin-bottom: 40rpx;
+  display: flex;
+  align-items: center;
+}
+
+.singleProject_houseType_head view {
+  position: relative;
+  display: inline-block;
+  z-index: 3;
+}
+
+.singleProject_houseType_head image {
+  width: 32rpx;
+  height: 32rpx;
+  margin-left: 24rpx;
+}
+
+.houseType_box_shadow {
+  background: #fff;
+  border-radius: 8rpx;
+  margin: 0 40rpx;
+}
+
+.singleProject_houseType_swiperBox {
+  /* margin: 0 40rpx; */
+}
+
+.houseType_box_shadow .singleProject_houseType_swiperBox {
+  margin: 0rpx;
+}
+
+.singleProject_houseType_swiper {
+  height: 342rpx;
+  width: 100%;
+  margin-bottom: 40rpx;
+}
+
+.singleProject_houseType_swiper_item {
+  height: 342rpx;
+  width: 100%;
+  background: #fff;
+  overflow: hidden;
+  border-radius: 8rpx;
+  padding-left: 40rpx;
+}
+
+/* .swiper-item:first-of-type .singleProject_houseType_swiper_item{
+  padding-left: 40rpx;
+} */
+
+.singleProject_houseType_swiper_item_only {
+  width: 100%;
+  height: 440rpx;
+  margin-right: 0px;
+  border-top-left-radius: 20rpx;
+  border-top-right-radius: 20rpx;
+  margin-bottom: 0rpx;
+  padding-left: 0rpx;
+}
+
+.houseType_image {
+  display: block;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 100%;
+  width: 100%;
+}
+
+.singleProject_houseType_loans {
+  margin: 0rpx 40rpx 40rpx 40rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 32rpx;
+  color: #3e4a59;
+  line-height: 32rpx;
+}
+
+.loans_margin_left {
+  padding-top: 28rpx;
+  font-family: PingFangSC-Medium;
+  font-size: 32rpx;
+  color: #3e4a59;
+}
+
+.loans_margin_left text:last-child {
+  display: inline-block;
+  margin-left: 20rpx;
+}
+
+.singleProject_houseType_title {
+  margin-left: 40rpx;
+  /* height: 520rpx; *//* margin-bottom: 56rpx; */
+  position: relative;
+  display: flex;
+}
+
+.singleProject_houseType_olnyTitle {
+  padding: 0rpx 40rpx 28rpx 40rpx;
+}
+
+.singleProject_houseType_olnyTitle_head {
+  font-family: PingFangSC-Regular;
+  font-size: 32rpx;
+  color: #3e4a59;
+  line-height: 32rpx;
+  margin-left: 40rpx;
+  margin-bottom: 40rpx;
+}
+
+.singleProject_houseType_olnyTitle_content {
+  margin-top: 20rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  line-height: 40rpx;
+  color: #77808a;
+  display: flex;
+  justify-content: space-between;
+}
+
+.houseType_olnyTitle_content {
+  color: #fa5f35;
+  font-family: PingFangSC-Semibold;
+}
+
+.singleProject_houseType_title_lf {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #f3f6f9;
+  z-index: 9;
+  width: 126rpx;
+  border-radius: 12rpx;
+  box-shadow: 0 1rpx 4rpx 0 rgba(187, 187, 187, 0.50);
+}
+
+.singleProject_houseType_title_lf view {
+  height: 104rpx;
+  line-height: 104rpx;
+  text-align: center;
+  font-family: PingFangSC-Medium;
+  font-size: 28rpx;
+  color: #3e4a59;
+}
+
+.singleProject_houseType_title_ri {
+  height: 100%;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  width: 100%;
+  box-sizing: border-box;
+  padding-left: 146rpx;
+}
+
+.singleProject_houseType_title_ri_item {
+  display: inline-block;
+  font-family: PingFangSC-Medium;
+  width: 222rpx;
+  font-size: 14px;
+  color: #3e4a59;
+  margin-left: 20rpx;
+  vertical-align: top;
+  box-shadow: 0 1rpx 4rpx 0 rgba(187, 187, 187, 0.50);
+}
+
+.singleProject_houseType_title_ri .singleProject_houseType_title_ri_item:last-child {
+  margin-right: 222rpx;
+}
+
+.first_scroll_item {
+  background: #e3f6fe;
+  /* margin-left: 116rpx; */
+}
+
+.singleProject_houseType_title_ri_item view {
+  height: 104rpx;
+  line-height: 104rpx;
+  text-align: center;
+}
+
+/* 推荐户型 end */
+
+/* 交通情况 */
+
+.singleProject_traffic {
+  padding: 56rpx 40rpx;
+  background-color: #fff;
+  margin-bottom: 40rpx;
+}
+
+.singleProject_traffic_head {
+  font-weight: 600;
+  font-family: PingFangSC-Bold;
+  font-size: 44rpx;
+  line-height: 60rpx;
+  color: #3e4a59;
+  margin-bottom: 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.singleProject_traffic_head .upTime {
+  opacity: 0.45;
+  font-family: PingFangSC-Medium;
+  font-size: 28rpx;
+  line-height: 40rpx;
+  color: #3e4a59;
+}
+
+.singleProject_traffic_distance {
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  line-height: 40rpx;
+  color: #77808a;
+}
+
+.singleProject_traffic_distance view {
+  margin-bottom: 26rpx;
+  height: 40rpx;
+  display: flex;
+}
+
+.singleProject_traffic_distance view:last-child {
+  margin-bottom: 0rpx;
+}
+
+.singleProject_traffic_distance_img {
+  min-width: 36rpx;
+  max-width: 36rpx;
+  height: 36rpx;
+  display: inline-block;
+  margin-right: 20rpx;
+  margin-top: 4rpx;
+  opacity: 0.5;
+}
+
+/* 交通情况 end */
+
+/* 周边房价 */
+
+.nearby_price {
+  display: flex;
+  /* margin-top: 40rpx; *//* margin-bottom: 44rpx; */
+}
+
+.nearby_price_lf {
+  background: #f3f6f9;
+  font-family: PingFangSC-Medium;
+  font-size: 28rpx;
+  color: #3e4a59;
+  width: 240rpx;
+}
+
+.nearby_price_lf view {
+  height: 104rpx;
+  line-height: 104rpx;
+  text-align: center;
+}
+
+.nearby_price_ri {
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #3e4a59;
+  flex: 1;
+  border: 1rpx solid #f3f6f9;
+}
+
+.nearby_price_ri_bot {
+  border-top: none;
+}
+
+.nearby_price_ri_top {
+  border-bottom: none;
+}
+
+.nearby_price_ri view {
+  padding-left: 40rpx;
+  height: 104rpx;
+  line-height: 104rpx;
+  border-bottom: 1rpx solid #f3f6f9;
+}
+
+.nearby_price_ri view:nth-child(3) {
+  border-bottom: none;
+}
+
+.nearby_price_btn {
+  margin-top: 44rpx;
+  border-radius: 8rpx;
+  background-color: #f3f6f9;
+  height: 92rpx;
+  line-height: 92rpx;
+  font-size: 28rpx;
+  color: #47b3e3;
+  font-family: PingFangSC-Medium;
+  text-align: center;
+}
+
+.nearby_price_btn_img {
+  width: 36rpx;
+  height: 36rpx;
+  display: inline-block;
+  /* margin-right: 14rpx; */
+  vertical-align: middle;
+  margin-bottom: 4rpx;
+}
+
+/* 周边房价 end */
+
+.head_tags text {
+  display: inline-block;
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  color: #47b3e3;
+  padding: 8rpx 16rpx;
+  background: #e3f6fe;
+  border-radius: 8rpx;
+  margin-right: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.mar_top {
+  margin-top: 100rpx;
+}
+
+.singleProject_houseInfo_head_flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+.singleProject_houseInfo_head_flex view:last-of-type {
+  padding: 0rpx 10rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  color: #fff;
+  height: 36rpx;
+  line-height: 36rpx;
+  display: inline-block;
+  border-radius: 4rpx;
+}
+
+.h2 {
+  font-family: PingFangSC-Medium;
+  font-size: 44rpx;
+  line-height: 60rpx;
+  color: #3e4a59;
+  margin-bottom: 40rpx;
+}
+
+.houseType_olnyTitle_bord {
+  border: 1px solid #f4f6f9;
+  border-radius: 8rpx;
+  border-top: none;
+}

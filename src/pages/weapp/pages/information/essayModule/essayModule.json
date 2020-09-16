@@ -1,0 +1,9 @@
+{
+  "component": true,
+  "usingComponents": {
+    "painting": "../../../component/painting/painting",
+    "nocontent": "../../../component/nocontent/nocontent",
+    "bannerToApp": "../../../component/bannerToApp/bannerToApp",
+    "wxLogin": "../../../component/wxLogin/wxLogin"
+  }
+}

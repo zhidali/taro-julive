@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "我的关注",
+  "usingComponents": {
+    "houseCardA": "../../../component/houseCard/houseCard",
+    "dialog-shell": "../../../component/dialogShell/dialogShell",
+    "orderSuccessAlert": "../../../order/orderSuccessAlert"
+  },
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark"
+
+}

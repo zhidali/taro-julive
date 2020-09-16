@@ -1,0 +1,32 @@
+<wxs src="../../../utils/util.wxs" module="tools" />
+
+<template name="user-evaluate">
+  <view class='user-evaluate m_user_comment' wx:if="{{data&&data.comment}}">
+    <view class='user-evaluate-title'>用户点评</view>
+    <view class='user-evaluate-info'>
+      <view class='user-evaluate-info-ft' wx:if="{{data.img.length>=1}}">
+        <jlImage className="user-evaluate-info-img" url="{{tools.resizeImageUrl(data.img, 152, 190)}}" placeholder="/image/placeholder_house_big.png">
+        </jlImage>
+      </view>
+      <view class='user-evaluate-info-card'>
+        <view class='info-card-name'>{{data.user_name}}</view>
+        <view class='info-card-time'>{{data.type==1?'成交时间':'带看时间'}}：{{data.datetime}}</view>
+        <view class='info-card-time' wx:if="{{data.type==2&&data.starList.length>=1}}" style="margin-top:16rpx;" >推荐星级：
+          <block wx:for="{{data.starList}}">
+          <image src="{{item.url}}"></image>
+          </block>
+        </view>
+        <view class='info-card-scroll'  wx:if="{{data.type==2&&data.tags.length>=1}}">
+          <scroll-view scroll-x='true' >
+            <block wx:for="{{data.tags}}">
+              <text>{{item}}</text>
+              </block>
+          </scroll-view>
+        </view>
+      </view>
+    </view>
+    <view class='user-evaluate-content'>
+      {{data.comment}}
+    </view>
+  </view>
+</template>

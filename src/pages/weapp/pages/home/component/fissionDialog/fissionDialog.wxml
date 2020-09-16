@@ -1,0 +1,63 @@
+<view class="fission-dialog">
+  <!-- 裂变活动助力弹窗 -->
+  <dialog-shell
+    wx:if="{{fissionDialogShow}}"
+    class="pop-fission-activity"
+    hasImg="{{false}}"
+  >
+    <view class="fission-activity-dialog" style="background: url({{fissionDialogData.bg_img}}) no-repeat; background-size: contain">
+      <view class="close-box" bindtap="closeDialog" data-type="1">
+        <image class="img" src="../../../../image/icon-close-white.png" alt="关闭按钮" />
+      </view>
+      <view class="invite-avatar">
+        <image class="img" src="{{fissionDialogData.head_img || '../../../../image/user_avatar.png'}}" alt="邀请人头像" />
+      </view>
+      <view class="invite-name">
+        {{fissionDialogData.user_name}}
+      </view>
+      <rich-text class="{{fissionDialogData.type == 1 ? 'invite-content center' : 'invite-content'}}" nodes="{{fissionDialogData.title}}"> </rich-text>
+      <view class="invite-btn-box">
+        <button class="invite-btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo" wx:if="{{loginStatus}}">
+          {{fissionDialogData.btn}}
+        </button>
+        <view class="invite-btn" bindtap="clickFissionBtn" wx:else>
+          {{fissionDialogData.btn}}
+        </view>
+      </view>
+    </view>
+  </dialog-shell>
+
+  <!-- 裂变活动助力结果弹窗 -->
+  <dialog-shell
+    class="pop-fission-result"
+    hasImg="{{false}}"
+    wx:if="{{resFissionShow}}"
+  >
+    <view class="fission-result-dialog">
+      <view class="close-box" bindtap="closeDialog" data-type="2">
+        <image class="img" src="../../../../image/icon-close-white.png" alt="关闭按钮" />
+      </view>
+      <view class="banner">
+        <image class="img" src="{{resFissionPopData.bg_img}}" alt="banner"/>
+      </view>
+      <view class="result-title-box">
+        <view class="title-icon">
+          <image class="img" src="../../../../image/icon-success.png" alt="结果图标" wx:if="{{resFissionType == 1}}"/>
+          <image class="img" src="../../../../image/icon-fail.png" alt="结果图标" wx:else/>
+        </view>
+
+        <view class="title-txt">
+          {{resFissionPopData.main_title}}
+        </view>
+      </view>
+      <view class="result-content">
+        {{resFissionPopData.title}}
+      </view>
+      <view class="see-more-box">
+        <view class="see-more-btn" bindtap="seeMoreDiscount">
+          {{resFissionPopData.btn}}（{{timeInterval}}）
+        </view>
+      </view>
+    </view>
+  </dialog-shell>
+</view>

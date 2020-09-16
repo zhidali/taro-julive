@@ -1,0 +1,89 @@
+<template name="load-alt">
+  <cover-view class="load-alt" hidden='{{!flag}}'>
+    <cover-view class="alert-wiw-mark" bindtap="didClickCloseShowModal" catchtouchmove="preventTouchMove"></cover-view>
+    <!-- 查看价格 type:1 -->
+    <cover-view class="alert-wiw-box" wx:if="{{type==1&&flag}}">
+      <cover-view class="alert-wiw-box-conten-box">
+        <cover-view class="alert-wiw-box-conten">注：楼盘价格仅供参考，具体价格以售楼处为准</cover-view>
+      </cover-view>
+      <cover-view class="alert-wiw-box-clk" bindtap="didClickCloseShowModal">我知道了</cover-view>
+    </cover-view>
+    <!-- 带打电话  type:2 -->
+    <cover-view class="show-modal" wx:if="{{type==2&&flag}}">
+      <cover-view class="show-modal-close-box">
+        <cover-image class="show-modal-close" src="/dipperSubPK/images/icon-dipper-close.png" bindtap="didClickCloseShowModal"></cover-image>
+      </cover-view>
+      <cover-view class="show-modal-box">
+        <cover-view class="show-modal-box-title">提示</cover-view>
+        <cover-view class="show-modal-box-content">
+          您的需求已经通知咨询师，咨询师稍后会给您联系，如您需求比较紧迫，可以给咨询师电话联系~
+        </cover-view>
+        <cover-view class="show-modal-btn">
+          <cover-view bindtap="didClickEmployeeMobile">联系咨询师</cover-view>
+          <cover-view bindtap="didClickBackPage">好的</cover-view>
+        </cover-view>
+      </cover-view>
+    </cover-view>
+    <!-- 您的购房需求 type:3 -->
+    <cover-view class="buy-house" wx:if="{{type==3&&flag}}">
+      <cover-view class="show-modal-close-box">
+        <cover-image class="show-modal-close" src="/dipperSubPK/images/icon-dipper-close.png" data-type="2" bindtap="didClickCloseShowModal"></cover-image>
+      </cover-view>
+      <cover-view class="buy-house-box">
+        <cover-view class="buy-house-box-title">您的购房需求</cover-view>
+        <cover-view class="buy-house-box-content">
+          您好，咨询师{{employeName?employeName:''}}根据您的需求帮您制定了适合您的楼盘内容，为了确保这些信息符合您的预期，请您再次核对您的需求：
+        </cover-view>
+        <cover-view class="buy-house-box-input">
+          <cover-view class="label-title">总价预算</cover-view>
+          <cover-view class="input-box" bindtap="tapTotalPriceFocus">
+            <cover-view class="{{total_price.default_val?'':'input-placeholder'}}" wx:if="{{isIosInput||!totalPriceFocus}}">
+              {{total_price.default_val?total_price.default_val:'请输入'}}
+            </cover-view>
+            <input class="input" type="number" value="{{total_price.default_val}}" focus='{{totalPriceFocus}}' placeholder-class="input-placeholder" placeholder="请输入" bindblur="didClickChangeTotalPrice" bindinput="didClickInputTotalPrice"></input>
+          </cover-view>
+          <cover-view class="label-gray">{{total_price.unit}}</cover-view>
+        </cover-view>
+        <cover-view class="buy-house-box-input">
+          <cover-view class="label-title">首付预算</cover-view>
+          <cover-view class="input-box" bindtap="tapFirstPriceFocus">
+            <cover-view class="{{first_price.default_val?'':'input-placeholder'}}" wx:if="{{isIosInput||!firstPriceFocus}}">
+              {{first_price.default_val?first_price.default_val:'请输入'}}
+            </cover-view>
+            <input class="input" type="number" value="{{first_price.default_val}}" focus='{{firstPriceFocus}}' placeholder-class="input-placeholder" placeholder="请输入" bindblur="didClickChangeFirstPrice" bindinput="didClickInputFirstPrice"></input>
+          </cover-view>
+          <cover-view class="label-gray">{{first_price.unit}}</cover-view>
+        </cover-view>
+        <cover-view class="buy-house-box-input">
+          <cover-view class="label-title">面积</cover-view>
+          <cover-view class="input-box" bindtap="tapAcreageFocus">
+            <cover-view class="{{acreage.default_val?'':'input-placeholder'}}" wx:if="{{isIosInput||!acreageFocus}}">
+              {{acreage.default_val?acreage.default_val:'请输入'}}
+            </cover-view>
+            <input class="input" type="number" value="{{acreage.default_val}}" focus='{{acreageFocus}}' placeholder-class="input-placeholder" bindblur="didClickChangeAcreage" bindinput="didClickInputAcreage"></input>
+          </cover-view>
+          <cover-view class="label-gray">{{acreage.unit}}</cover-view>
+        </cover-view>
+        <cover-view class="buy-house-box-selct">
+          <cover-view class="buy-house-box-selct-name">业态</cover-view>
+          <cover-view class="buy-house-box-selct-content">
+            <block wx:for="{{project_type_list}}" wx:key="{{index}}">
+              <cover-view class="buy-house-box-selct-content-item" data-index="{{index}}" bindtap="didClickProjectType">
+                <cover-image src="/dipperSubPK/images/{{item.flag?'icon-diepper-select.png':'icon-diepper-noselect.png'}}"></cover-image>
+                <cover-view>{{item.name}}</cover-view>
+              </cover-view>
+            </block>
+          </cover-view>
+        </cover-view>
+        <cover-view bindtap="didClickToOrderConfig" data-index="2" class="buy-house-box-footer">
+          <cover-view>去修改其他需求</cover-view>
+          <cover-image src="/image/icon-dipper-more.png"></cover-image>
+        </cover-view>
+        <cover-view class="buy-house-btn">
+          <cover-view bindtap="didClickCloseShowModal" data-type="1">忽略</cover-view>
+          <cover-view bindtap="didClicksendSaveRequiredInfo">提交</cover-view>
+        </cover-view>
+      </cover-view>
+    </cover-view>
+  </cover-view>
+</template>

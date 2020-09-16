@@ -1,0 +1,296 @@
+/*
+避免 error 
+Some selectors are not allowed in component wxss,
+ncluding tag name selectors, ID selectors, and attribute selectors 
+@import '../../pages/home/home.wxss'; done  di
+@import '../../pages/project/list/projectList.wxss';
+@import '../../pages/project/template/projectCell.wxss';
+@import '../../pages/project/template/projectSwiperItem.wxss';
+@import '../../pages/template/slideImage/slideImage.wxss';
+@import '../../pages/template/houseTypeCell/houseTypeCell.wxss';
+@import '../../pages/report/firstReport/firstReport.wxss';
+@import '../../pages/project/template/houseTypeItem.wxss';
+@import '../../pages/project/detail/projectDetail.wxss';
+@import '../../pages/mine/mine.wxss'; */
+
+.background-color {
+  background-color: #efefef;
+}
+
+/* 首页 为你推荐 */
+.project-image {
+  width: 240rpx;
+  min-width: 240rpx;
+  max-width: 240rpx;
+  height: 180rpx;
+  background-color: #efefef;
+  border-radius: 8rpx;
+}
+/* 首页咨询师 */
+.employee-info-image {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  margin: 4rpx 70rpx 20rpx 70rpx;
+}
+/* 首页运营位 */
+.house-scroll-view-item-img {
+  width: 200rpx;
+  height: 200rpx;
+}
+.house-scroll-view-item-img3 {
+  width: 215rpx;
+  height: 215rpx;
+}
+/* 首页楼盘看点 */
+.focus-dynamic-project-image {
+  margin-right: 24rpx;
+  width: 206rpx;
+  height: 160rpx;
+  border-radius: 8rpx;
+  margin-top: 4rpx;
+}
+.banner-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+
+/* 楼盘详情页  banner */
+.project-slide-image {
+  width: 100vw;
+  height: 58.67vw;
+  overflow: hidden;
+}
+
+/* 楼盘详情页  咨询师 */
+.project-employee-avatar {
+  width: 80rpx;
+  height: 80rpx;
+  margin-left: 20rpx;
+  border-radius: 40rpx;
+}
+
+.project-house-image {
+  margin-left: 0;
+  margin-top: 0;
+  min-width: 144rpx;
+  min-height: 112rpx;
+  max-width: 144rpx;
+  max-height: 112rpx;
+  border-radius: 8rpx;
+  background-color: #f3f6f9;
+}
+/* 首页的运营位 =3 或者>3 */
+.house-scroll-view-item-img {
+  width: 200rpx;
+  height: 200rpx;
+}
+.house-scroll-view-item-img3 {
+  width: 215rpx;
+  height: 215rpx;
+}
+/* 首页的楼盘看点 */
+.focus-dynamic-project-image {
+  margin-right: 24rpx;
+  width: 206rpx;
+  height: 160rpx;
+  border-radius: 8rpx;
+  margin-top: 4rpx;
+}
+
+/* projectNewsModule.wxss and projectNews.wxss */
+
+.dynamic-image {
+  margin-top: 12rpx;
+  margin-left: 0;
+  margin-right: 0;
+  width: 100%;
+  height: 320rpx;
+  border-radius: 16rpx;
+}
+
+/* pages/question/template/qaCell.wxss */
+
+.answer-employee-avatar {
+  width: 20px;
+  min-width: 20px;
+  height: 20px;
+  border-radius: 10px;
+}
+
+/* pages/question/detail/questionDetail.wxss */
+
+.tag-avatar {
+  width: 25px;
+  height: 25px;
+  border-radius: 12.5px;
+  margin-left: 2.5px;
+  margin-top: 2px;
+  position: absolute;
+}
+
+/* questionRelateSubPK/pages/ask/questionAsk.wxss */
+
+.question-ask-employee-avatar {
+  min-width: 50px;
+  min-height: 50px;
+  max-height: 50px;
+  max-width: 50px;
+  border-radius: 25px;
+  margin: 25rpx;
+  background-color: #efefef;
+}
+
+/*  /dipperSubPK/pages/singleProject/singleProject.css */
+
+.singleProject_counselor_lf_image {
+  width: 122rpx;
+  height: 122rpx;
+  border-radius: 50%;
+}
+
+.houseType_image {
+  display: block;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 100%;
+  width: 100%;
+  border-radius: 8rpx;
+}
+
+/* /dipperSubPK/pages/recordBox/recordBox.css */
+
+.multi-house-item-image-three {
+  display: inline-block;
+  height: 140rpx;
+  width: 188rpx;
+  border-radius: 6rpx;
+}
+
+.multi-house-item-image-two {
+  display: inline-block;
+  height: 236rpx;
+  width: 310rpx;
+  border-radius: 6rpx;
+}
+
+.multi-project-image {
+  height: 180rpx;
+  width: 240rpx;
+  border-radius: 6rpx;
+}
+
+.record_box_footer_img {
+  display: inline-block;
+  width: 338rpx;
+  height: 266rpx;
+  margin-top: 240rpx;
+}
+
+.scroll_pull_down_refresh_img {
+  display: inline-block;
+  width: 308rpx;
+  height: 100rpx;
+  margin: 60rpx auto 20rpx auto;
+}
+
+.eD-head-img {
+  height: 422rpx;
+  width: 100%;
+}
+
+.user-evaluate-info-img {
+  width: 152rpx;
+  height: 190rpx;
+  border-radius: 8rpx;
+  margin-right: 28rpx;
+}
+
+.swi-item-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 8rpx;
+}
+
+.dipper-project-image {
+  width: 224rpx;
+  height: 168rpx;
+  background-color: #efefef;
+  border-radius: 4rpx;
+  display: block;
+}
+/* 户型详情页面 */
+.house-type-counselor-img {
+  height: 84rpx;
+  width: 84rpx;
+  background-color: #efefef;
+  margin: 20rpx;
+  margin-bottom: 0;
+  border-radius: 50%;
+  margin-top: 56rpx;
+}
+.house-other-type-image {
+  width: 260rpx;
+  height: 200rpx;
+  background-color: #efefef;
+  border-radius: 8rpx;
+  /* border:1px solid #efefef;  */
+}
+
+/*  咨询师点评列表页*/
+.employee-avatar {
+  width: 50px;
+  height: 50px;
+  margin-left: 15rpx;
+  border-radius: 25px;
+}
+/* 我的页面 */
+.mine-avatar-image {
+  margin-right: 60rpx;
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 70rpx;
+}
+/* 详情页面 */
+.detail-banner-slide-image {
+  width: 100vw;
+  height: 58.67vw;
+  overflow: hidden;
+}
+.house-type-item-image {
+  margin-top: 0;
+  margin-left: 0;
+  width: 320rpx;
+  height: 240rpx;
+  border-radius: 8rpx;
+  background-color: #efefef;
+  overflow: hidden;
+}
+/* 户型扽分析页面 */
+
+.house-type-image {
+  background-color: #efefef;
+  width: 125px;
+  height: 94px;
+  margin: 0 15rpx 15rpx 0;
+  margin-bottom: 0rpx;
+  border: 1px solid #efefef;
+}
+.house-type-slide-image {
+  width: 100vw;
+  height: 56vw;
+  overflow: hidden;
+}
+
+.brand-image {
+  width: 670rpx;
+  height: 244rpx;
+  border-radius: 8rpx;
+}
+/* 列表页 */
+.project-image-new {
+  width: 220rpx;
+  height: 172rpx;
+  border-radius: 8rpx;
+}

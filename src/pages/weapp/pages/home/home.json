@@ -1,0 +1,24 @@
+{
+  "navigationBarTitleText": "居理新房",
+  "backgroundTextStyle": "light",
+  "usingComponents": {
+    "nocontent": "../../component/nocontent/nocontent",
+    "jlImage": "../../component/jlImage/jlImage",
+    "login": "../../user/login",
+    "orderSuccessAlert": "../../order/orderSuccessAlert",
+    "wxLogin": "../../component/wxLogin/wxLogin",
+    "count-down": "./component/countDown/countDown",
+    "dialog-shell": "../../component/dialogShell/dialogShell",
+    "little-king-kong": "./component/littleKingKong/littleKingKong",
+    "employee": "./component/employee/employee",
+    "sale-house": "./component/saleHouse/saleHouse",
+    "home-find-house": "./component/homeFindHouse/homeFindHouse",
+    "filter": "./component/filter/filter",
+    "houseCardA": "../../../component/houseCard/houseCard",
+    "findRoom": "../project/list/component/findRoom/findRoom",
+    "little-res-module": "../project/list/component/littleResModule/littleResModule",
+    "authorize-login": "../../../component/authorizeLogin/authorizeLogin",
+    "brandPublic": "../../../component/brandPublic/brandPublic",
+    "fissionDialog": "./component/fissionDialog/fissionDialog"
+  }
+}

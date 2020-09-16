@@ -1,0 +1,48 @@
+.wx-code {
+  padding: 48rpx 40rpx;
+  padding-bottom: 80rpx;
+  margin-bottom: 170rpx;
+  background-color: #fff;
+  display: flex;
+  box-sizing: border-box;
+  background-image: url('/dipperSubPK/images/backGround.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-origin: content-box;
+  justify-content: space-between;
+}
+
+.wx-code-box {
+  width: 50%;
+  height: 396rpx;
+  text-align: center;
+}
+
+.wx-code-box image {
+  width: 200rpx;
+  height: 200rpx;
+  overflow: hidden;
+  display: block;
+  margin: 0 auto;
+}
+
+.wx-code-box-head {
+  font-family: PingFangSC-Medium;
+  font-size: 28rpx;
+  line-height: 40rpx;
+  color: #3e4a59;
+  margin-top: 48rpx;
+  margin-bottom: 20rpx;
+}
+
+.wx-code-box-footer {
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #3e4a59;
+  line-height: 48rpx;
+  margin-top: 14rpx;
+}
+
+.wx-code-box-footer text {
+  color: rgb(79, 178, 226);
+}

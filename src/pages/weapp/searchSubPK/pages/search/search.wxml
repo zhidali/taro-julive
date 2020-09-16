@@ -1,0 +1,346 @@
+<view class="container">
+  <!-- 搜索区 -->
+  <view class="search-area">
+    <view class="search-box">
+      <view class="search-icon">
+        <image src="../../../image/icon-search-img.png" alt="搜索图标" />
+      </view>
+      <input
+        type="text"
+        value="{{searchValue}}"
+        focus="{{focus}}"
+        confirm-type="done"
+        bindinput="didInputSearchVal"
+        bindconfirm="toResPage"
+        data-analytic="9184"
+        data-name="{{searchValue}}"
+        data-type="1"
+      />
+      <view class="search-close" bindtap="removeSearchValue" wx:if="{{searchValue}}">
+        <image src="../../../image/icon-search-close.png" alt="搜索删除" />
+      </view>
+    </view>
+    <view class="cancel-btn" bindtap="cancelSearch">取消</view>
+  </view>
+  <!-- 搜索页 -->
+  <view class="search-page" wx:if="{{searchValue.length <= 0}}">
+    <!-- 最近搜索 -->
+    <view class="nearly-search item-search" wx:if="{{nearlySearchList.length > 0}}">
+      <view class="title-box">
+        <view class="title">
+          最近搜索
+        </view>
+        <view class="opearation-box" bindtap="removeSearchHistory">
+          <image
+            src="../../../image/icon-search-remove-all.png"
+            alt="搜索图标"
+            class="search-icon"
+          />
+          <text>清空</text>
+        </view>
+      </view>
+      <view
+        class="item-search-main nearly-search-main"
+        style="max-height: {{moreHistory ? rowHeight * 2 + 'px' : rowHeight * 4 + 'px'}}"
+      >
+        <view
+          class="item-nearly-search"
+          wx:for="{{nearlySearchList}}"
+          wx:key="index"
+          bindtap="toResPage"
+          data-name="{{item}}"
+          data-analytic="9179"
+          data-type="1"
+          data-analyticindex="{{index}}"
+        >
+          {{item}}
+        </view>
+      </view>
+      <view class="nearly-search-more" wx:if="{{moreHistory}}" bindtap="moreHistoryShow">
+        全部搜索记录
+      </view>
+    </view>
+    <!-- 热门搜索 -->
+    <view class="hot-search item-search" wx:if="{{hotSearchList.length > 0}}">
+      <view class="title-box">
+        <view class="title">
+          热门搜索
+        </view>
+        <view
+          class="opearation-box"
+          wx:if="{{hotSearchList.length > 6}}"
+          bindtap="refreshHotSearch"
+        >
+          <image src="../../../image/icon-search-refresh.png" alt="搜索图标" class="search-icon" />
+          <text>换一换</text>
+        </view>
+      </view>
+      <view class="hot-search-main">
+        <view
+          class="item-hot-search"
+          wx:for="{{hotSearchList}}"
+          wx:key="index"
+          wx:if="{{index >= 6 * page && index < 6 * (page + 1) }}"
+        >
+          <!-- 楼盘类 -->
+          <view
+            class="item-hot-search-project"
+            bindtap="toResPage"
+            data-name="{{item.name}}"
+            data-id="{{item.detail.project_id}}"
+            data-type="2"
+            data-analyticindex="{{index}}"
+            data-typename="{{item.type}}"
+            data-analytic="9182"
+            wx:if="{{item.type === 10}}"
+          >
+            <view class="item-hot-search-top">
+              <view class="item-hot-search-top-title">
+                {{item.name}}
+              </view>
+              <view class="item-hot-search-tag" wx:if="{{item.labels.length > 0}}">
+                <image
+                  src="../../../image/icon-search-tag-new.png"
+                  alt="搜索图标"
+                  class="search-tag"
+                  wx:if="{{item.labels[0] == 1}}"
+                />
+                <image
+                  src="../../../image/icon-search-tag-hot.png"
+                  alt="搜索图标"
+                  class="search-tag"
+                  wx:if="{{item.labels[0] == 2}}"
+                />
+                <image
+                  src="../../../image/icon-search-tag-jian.png"
+                  alt="搜索图标"
+                  class="search-tag"
+                  wx:if="{{item.labels[0] == 3}}"
+                />
+              </view>
+            </view>
+            <view class="project-dec-box" wx:if="{{item.detail.discount}}">
+              <image src="../../../image/icon-project-tag.png" alt="特价优惠" />
+              <view class="project-dec-txt">
+                {{item.detail.discount}}
+              </view>
+            </view>
+            <view class="project-tag-box" wx:else>
+              <view
+                class="item-project-tag item-project-tag-type"
+                wx:if="{{item.detail.project_type.name}}"
+              >
+                {{item.detail.project_type.name}}
+              </view>
+              <view
+                class="item-project-tag item-project-district"
+                wx:if="{{item.detail.district_name}}"
+              >
+                {{item.detail.district_name}}
+              </view>
+              <view class="item-project-tag item-project-ju" wx:if="{{item.detail.room_type.length > 0}}">
+                <view
+                  wx:for="{{item.detail.room_type}}"
+                  wx:key="typeIndex"
+                  wx:for-item="itemType"
+                  wx:for-index="typeIndex"
+                >
+                  {{itemType}}{{typeIndex === item.detail.room_type.length - 1 ? '' : '/'}}
+                </view>
+                <view>居</view>
+              </view>
+            </view>
+            <view class="item-hot-search-deal-avarage">
+              <view class="item-hot-search-deal-num" wx:if="{{item.detail.down_pay.price}}">
+                首付{{item.detail.down_pay.price}}万
+              </view>
+              <view class="item-hot-search-deal-unit" wx:if="{{item.detail.down_pay.price}}">
+                元起
+              </view>
+              <view class="item-hot-search-deal-unit" wx:else>
+                售价待定
+              </view>
+            </view>
+            <image
+              src="../../../image/search-hot-project.png"
+              alt="楼盘图标"
+              class="search-hot-icon"
+            />
+          </view>
+          <!-- 区域类 -->
+          <view
+            class="item-hot-search-area"
+            bindtap="toResPage"
+            data-name="{{item.name}}"
+            data-type="1"
+            data-analyticindex="{{index}}"
+            data-typename="{{item.type}}"
+            data-analytic="9182"
+            wx:else
+          >
+            <view class="item-hot-search-top">
+              <view class="item-hot-search-top-title">
+                {{item.name}}
+              </view>
+              <view class="item-hot-search-top-tag">
+                {{item.type_name}}
+              </view>
+            </view>
+            <view class="item-hot-search-deal-title">
+              {{item.detail.text}}
+            </view>
+            <view class="item-hot-search-deal-avarage">
+              <view class="item-hot-search-deal-num">
+                {{item.detail.price_info.price}}
+              </view>
+              <view class="item-hot-search-deal-unit">
+                {{item.detail.price_info.unit}}
+              </view>
+            </view>
+            <image
+              src="../../../image/search-hot-area.png"
+              alt="搜索图标"
+              class="search-hot-icon"
+            />
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 搜索联想页 -->
+  <view class="search-association" wx:else>
+    <!-- 联想词 -->
+    <view
+      class="association-box association-text-box"
+      wx:if="{{wordSuggestList.length > 0}}"
+      bindtap="toResPage"
+      data-name="{{searchValue}}"
+      data-type="1"
+      data-analyticindex="{{0}}"
+      data-typename="{{wordSuggestList[0].type}}"
+      data-analytic="9185"
+    >
+      <view class="association-box-left">
+        <view class="association-text">
+          <view class="association-title">
+            搜索“<text class="search-text">{{searchValue}}</text>”
+          </view>
+        </view>
+      </view>
+      <view class="association-box-right">
+        {{wordSuggestList[0].right_text}}
+        <image src="../../../image/icon-right-row.png" alt="楼盘图标" />
+      </view>
+    </view>
+    <!-- 联想城市 -->
+    <view
+      class="association-box association-city-box"
+      bindtap="searchCity"
+      data-cityid="{{citySuggestList[0].value}}"
+      data-name="{{citySuggestList[0].name}}"
+      data-type="1"
+      data-analyticindex="{{1}}"
+      data-analytic="9185"
+      data-typename="{{citySuggestList[0].type}}"
+      wx:if="{{citySuggestList.length > 0}}"
+    >
+      <view class="association-box-left">
+        <view class="association-text">
+          <rich-text
+            class="association-title"
+            nodes="{{citySuggestList[0].nameKeyLight}}"
+          ></rich-text>
+          <view>
+            -全部楼盘
+          </view>
+        </view>
+        <view class="association-tag association-tag-city">
+          {{citySuggestList[0].type_name}}
+        </view>
+      </view>
+      <view class="association-box-right">
+        {{citySuggestList[0].right_text}}
+        <image src="../../../image/icon-right-row.png" alt="楼盘图标" />
+      </view>
+    </view>
+    <!-- 联想特征 -->
+    <view
+      class="association-box association-type-box"
+      wx:if="{{typeSuggestList.length > 0}}"
+      wx:for="{{typeSuggestList}}"
+      wx:key="index"
+      bindtap="toResPage"
+      data-name="{{item.name}}"
+      data-filter="{{item.filter}}"
+      data-type="1"
+      data-typename="{{item.type}}"
+      data-analyticindex="{{1 + citySuggestList.length + index}}"
+      data-analytic="9185"
+    >
+      <view class="association-box-left">
+        <view class="association-text">
+          <rich-text class="project-title" nodes="{{item.nameKeyLight}}"> </rich-text>
+          <view>
+            -全部楼盘
+          </view>
+        </view>
+        <view class="association-tag association-tag-characteristic">
+          {{item.type_name}}
+        </view>
+      </view>
+      <view class="association-box-right">
+        {{item.right_text}}
+        <image src="../../../image/icon-right-row.png" alt="楼盘图标" />
+      </view>
+    </view>
+    <!-- 联想楼盘列表 -->
+    <view class="project-list">
+      <view
+        class="item-project"
+        wx:for="{{projectSuggestList}}"
+        wx:key="index"
+        bindtap="toResPage"
+        data-name="{{item.name}}"
+        data-id="{{item.detail.project_id}}"
+        data-type="2"
+        data-typename="{{item.type}}"
+        data-analyticindex="{{1 + citySuggestList.length + typeSuggestList.length + index}}"
+        data-analytic="9185"
+        wx:if="{{index < 10 - wordSuggestList.length - citySuggestList.length - typeSuggestList.length}}"
+      >
+        <rich-text class="association-title" nodes="{{item.nameKeyLight}}"> </rich-text>
+        <view class="project-bottom">
+          <view class="project-content">
+            <view class="project-type">
+              {{item.detail.project_type.name}}｜
+            </view>
+            <view class="project-address">
+              {{item.detail.district_name}}｜
+            </view>
+            <view class="project-measure">
+              <view
+                >{{item.detail.acreage.type === 1 ? "建面" :
+                "套内"}}{{item.detail.acreage.acreage_min}}</view
+              >
+              <view wx:if="{{item.detail.acreage.acreage_max && item.detail.acreage.acreage_min !== item.detail.acreage.acreage_max}}">
+                -{{item.detail.acreage.acreage_max}}
+              </view>
+              <view>{{item.detail.acreage.unit}}</view>
+            </view>
+          </view>
+          <view class="project-price">
+            <view class="price-num">
+              {{item.detail.price.price}}
+            </view>
+            <view class="price-wait" wx:if="{{item.detail.price.unit == '售价待定'}}">
+              {{item.detail.price.unit}}
+            </view>
+            <view class="price-unit" wx:else>
+              {{item.detail.price.unit}}
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,12 @@
+<template name="load-alt">
+	<cover-view class="load-alt" wx:if="{{alertWiwShow}}">
+		<cover-view class="alert-wiw-mark" catchtouchmove="preventTouchMove"></cover-view>
+		<cover-view class="alert-wiw-box">
+			<cover-view class="alert-wiw-box-conten-box">
+				<cover-view class="alert-wiw-box-conten">{{contentTxt}}</cover-view>
+			</cover-view>
+      <cover-view class="alert-wiw-box-line"></cover-view>
+			<cover-view class="alert-wiw-box-clk" bindtap="didTapAlertWiw">我已了解</cover-view>
+		</cover-view>
+	</cover-view>
+</template>

@@ -1,0 +1,6 @@
+<template name="select-guide-pop">
+  <view class="select-guide-pop-view {{searchCeiling?'':'pop-view-fixedTop'}}">
+    <image class="img" src="/image/icon_select_pop.png" />
+    <view class="content">筛选购房条件，找房更高效</view>
+  </view>
+</template>

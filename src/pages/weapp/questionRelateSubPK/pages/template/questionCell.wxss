@@ -1,0 +1,13 @@
+.question-cell {
+  background-color: white;
+  border-radius: 2px;
+  min-height: 42px;
+}
+
+.question-hover-view {
+  background-color: #efefef;
+}
+
+.question-info {
+  padding-bottom: 20rpx;
+}

@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "count-down": "/pages/home/component/countDown/countDown",
+    "hundredActivity": "./component/hundredActivity/hundredActivity",
+    "thousandActivity": "./component/thousandActivity/thousandActivity",
+    "jlImage": "/component/jlImage/jlImage",
+    "dialog-shell": "/component/dialogShell/dialogShell"
+  }
+}

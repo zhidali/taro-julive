@@ -1,0 +1,18 @@
+<wxs src="../../../utils/util.wxs" module="tools" />
+<template name="slide-image-view">
+  <view class='slide-image-container'>
+    <swiper class="slide-swiper-box" indicator-dots="{{indicatorDots}}" autoplay="{{autoPlay}}" bindchange="didSwiperSlideImage" data-index="{{pageIndex}}">
+      <block wx:for-items="{{imageList}}" wx:key="item">
+        <swiper-item class='slider-swiper-item'>
+          <view bindtap="reportSlideImageForm" data-op-type="{{opType}}" wx:if="{{opType.length>0}}" data-index="{{index}}">
+            <jlImage url="{{tools.resizeImageUrl(item, screenWidth, 210*screenWidth/375)}}" placeholder='../../image/placeholder_house_big.png' className="house-type-slide-image" bindImageTap="didTapSlideImage" index="{{index}}"></jlImage>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class="page-number-box" wx:if="{{imageList.length > 0}}">
+      <image class="page-image" src="../../../image/icon_details_gallery.png" mode="aspectFill"></image>
+      <label>{{pageIndex}}/{{imageList.length}}</label>
+    </view>
+  </view>
+</template>

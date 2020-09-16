@@ -1,0 +1,69 @@
+.qa-answer {
+  background-color: #fff;
+  padding: 48rpx 40rpx;
+  margin-bottom: 20rpx;
+}
+
+.qa-answer-title {
+  font-family: PingFangSC-Medium;
+  font-size: 44rpx;
+  line-height: 60rpx;
+  color: #3e4a59;
+  margin-bottom: 40rpx;
+}
+
+.qa-answer-box-ask {
+  font-family: PingFangSC-Medium;
+  font-size: 32rpx;
+  color: #3e4a59;
+  line-height: 52rpx;
+  margin-bottom: 20rpx;
+  word-wrap: break-word;
+  word-break: normal;
+}
+
+.qa-answer-box-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 38rpx;
+}
+
+.qa-answer-box-info view {
+  display: flex;
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  line-height: 34rpx;
+  color: #77808a;
+}
+
+.qa-answer-box-info view text {
+  display: inline-block;
+}
+
+.qa-answer-box-info view text:nth-child(2) {
+  margin-left: 20rpx;
+}
+
+.qa-answer-box-info view text:nth-child(3) {
+  margin-left: 20rpx;
+}
+
+.qa-answer-box-content {
+  background: #f3f6f9;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.qa-answer-box-arrows {
+  width: 36rpx;
+  height: 16rpx;
+  position: absolute;
+  top: -14rpx;
+  left: 44rpx;
+}
+
+.qa-answer-box:first-child {
+  margin-bottom: 48rpx;
+}

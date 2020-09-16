@@ -1,0 +1,26 @@
+<view class="little-res-module my-class">
+  <view class="tit">
+    {{projectListLength === 0 ? '抱歉，暂无满足当前条件的楼盘…' : '当前条件下，楼盘数量较少'}}
+  </view>
+  <view class="little-res-list-wrap" wx:if="{{littleResData.length > 0}}">
+    <view class="little-res-list">
+      <view
+        class="little-res-item"
+        wx:for="{{littleResData}}"
+        wx:key="index"
+        catchtap="filterLittleRes"
+        data-value="{{item.value}}"
+        data-key="{{item.key}}"
+        data-name="{{item.name}}"
+        data-remove="single"
+      >
+        <view class="item">{{item.name}}</view>
+        <image class="icon-close" src="../../../../../image/icon-remove-img.png"></image>
+      </view>
+    </view>
+    <view class="remove-all" bindtap="filterLittleRes" data-remove="all"  wx:if="{{littleResData.length > 3}}">
+      <image class="icon-remove" src="../../../../../image/icon-search-remove-all.png"></image>
+      <view class="remove-txt">清空</view>
+    </view>
+  </view>
+</view>

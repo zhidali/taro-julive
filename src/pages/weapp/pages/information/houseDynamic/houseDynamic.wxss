@@ -1,0 +1,81 @@
+@import 'template/projectNewsCell.wxss';
+@import '../../../component/loading/loading.wxss';
+@import '../../template/barTypeLogin//barTypeLogin.wxss';
+
+.tool-bar {
+  line-height: 44px;
+  height: 104rpx;
+  width: 104rpx;
+  border-radius: 22px;
+  position: fixed;
+  bottom: 20px;
+  right: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+.tool-bar-hover {
+  opacity: 0.5;
+}
+
+.back-top-image {
+  width: 104rpx;
+  height: 104rpx;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 100vh;
+  background-color: white;
+  padding-top: 92rpx;
+}
+
+.project-news-container {
+  width: 100%;
+  background-color: white;
+}
+
+.project-news-list-view-cell {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+}
+.project-news-banner {
+  margin-left: 0;
+  width: 100vw;
+  height: 26.7vw;
+  background-size: cover;
+  background-image: url('http://imgs.julive.com/l?p=eyJpbWdfcGF0aCI6IlwvbWluaW1ncy9keW5hbWljLWJhbm5lci5qcGcifSAgIA==');
+}
+
+.placeholder-white {
+  width: 100%;
+  height: 20px;
+  background-color: white;
+}
+
+.loading-tip {
+  padding-top: 30rpx;
+  padding-bottom: 30rpx;
+  width: 100%;
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  color: #ccc;
+  font-size: 25rpx;
+}
+
+.loading-view {
+  position: absolute;
+  padding-top: 30vh;
+  align-items: center;
+  width: 100vw;
+  z-index: 1000;
+  height: 100%;
+}

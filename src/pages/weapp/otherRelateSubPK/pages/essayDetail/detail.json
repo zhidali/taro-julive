@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "楼市好文",
+  "usingComponents": {
+    "painting": "../../../component/painting/painting",
+    "login": "../../../user/login",
+    "orderSuccessAlert": "../../../order/orderSuccessAlert"
+  }
+}

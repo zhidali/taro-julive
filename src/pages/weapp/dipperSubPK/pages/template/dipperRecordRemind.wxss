@@ -1,0 +1,65 @@
+/* 简介 */
+.remind-box{
+  /* padding-right: 40rpx; */
+}
+.remind-content {
+  display: flex;
+}
+
+.remind-content-ft {
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  font-size: 28rpx;
+  line-height: 40rpx;
+  color: #3e4a59;
+}
+
+.remind-content-ft view {
+  flex: 1;
+  line-height: 50rpx;
+}
+
+.remind-content-ft-title {
+  font-family: PingFangSC-Medium;
+  font-size: 32rpx;
+  line-height: 44rpx;
+  color: #3e4a59;
+}
+
+.remind-content-ft-footer {
+  display: -webkit-box;
+  word-break: break-all;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+.remind-content-ft  .line-clamp_two{
+  -webkit-line-clamp: 2;
+  line-height: 40rpx;
+  width: 100%;
+}
+
+.remind .remindDel{
+  /* height: 150rpx; */
+    /* height: -moz-calc(100% - 64rpx);
+    height: -webkit-calc(100% - 64rpx);
+    height: calc(100% - 64rpx); */
+}
+.remind-content-ft .delline{
+  flex: none;
+  margin-bottom: 8rpx;
+}
+.delflex{
+  display: block !important;
+}
+
+.remind-content-ft-image {
+  display: inline-block;
+  height: 150rpx;
+  width: 200rpx;
+  margin-right: 20rpx;
+  border-radius: 6rpx;
+}
+/* 简介 end */

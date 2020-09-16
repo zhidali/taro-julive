@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "icontitle": "../../../component/icontitle/icontitle",
+    "nocontent": "../../../component/nocontent/nocontent",
+    "jlImage": "../../../component/jlImage/jlImage",
+    "wxLogin": "../../../component/wxLogin/wxLogin"
+  }
+}

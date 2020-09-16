@@ -1,0 +1,92 @@
+.banner-module-two {
+  margin-top: 48rpx;
+  width: cale(100%-60rpx);
+  margin: 48rpx 30rpx 0rpx 30rpx;
+  box-sizing: border-box;
+  height: 144rpx;
+}
+
+.banner-two {
+  height: 100%;
+  margin-top: 0rpx;
+}
+
+.banner-module-two-container {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.banner-module-two-container-two {
+  border-radius: 8rpx;
+}
+
+.banner-module-two-container-one {
+  border-radius: 20rpx;
+}
+
+.banner-module-two-swiper {
+  height: 144rpx;
+}
+
+.banner-module-two-swiper-two {
+  height: 180rpx;
+  border-radius: 8rpx;
+}
+
+.banner-module-two-swiper-one{
+  border-radius: 20rpx;
+}
+
+.swiper-item-type-two {
+  border-radius: 8rpx;
+}
+
+.swiper-item-type-one {
+  border-radius: 20rpx;
+}
+
+.banner-module-two-image {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: block;
+}
+
+.banner-module-two-indicator {
+  position: absolute;
+  bottom: 4px;
+  height: 8rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.banner-module-two-indicator-item {
+  background: rgba(255, 255, 255, 1);
+  width: 8rpx;
+  height: 8rpx;
+  margin-left: 8rpx;
+  border-radius: 8rpx;
+  opacity: 0.6;
+}
+
+.banner-module-two-item-active {
+  background-color: #fff;
+  width: 12px;
+  height: 100%;
+  border-radius: 1.5px;
+  opacity: 1;
+}
+
+.wxlogin-box {
+  position: absolute;
+  top: 0rpx;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  /* opacity: 0; */
+}

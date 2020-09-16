@@ -1,0 +1,23 @@
+.recommend-map-box {
+  position: relative;
+}
+
+.map-scale {
+  width: 68rpx;
+  height: 140rpx;
+  background: #fff;
+  border: 1rpx solid #c4cbcc;
+  border-radius: 8rpx;
+  position: absolute;
+  bottom: 20rpx;
+  right: 24rpx;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.map-scale cover-image {
+  width: 40rpx;
+  height: 40rpx;
+  padding-top: 20rpx;
+  padding-left: 14rpx;
+}

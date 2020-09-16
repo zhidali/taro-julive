@@ -1,0 +1,5 @@
+<view class="nocontent-view">
+    <image class="nocontent-icon" src="{{src}}" wx:if="{{src.length>0}}"/> 
+    <text class="nocontent-text" wx:if="{{tip.length > 0}}">{{tip}}</text>
+    <button class="nocontent-button" hover-class='nocontent-hover-button' bindtap="didTapButton" wx:if="{{buttontitle.length > 0}}">{{buttontitle}}</button>
+</view>

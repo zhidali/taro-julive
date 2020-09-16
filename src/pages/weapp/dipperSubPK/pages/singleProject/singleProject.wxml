@@ -1,0 +1,226 @@
+<import src="../template/diperIntroduce.wxml" />
+<import src="../template/dipperAudio.wxml" />
+<import src="../template/dipperTraffic.wxml" />
+<import src="../template/dipperRecord.wxml" />
+<import src="../template/dipperLogin.wxml" />
+<import src="../../../component/loading/loading.wxml" />
+<import src="../template/loadAlt.wxml" />
+<wxs src="../../../pages/home/projectNewsModule/template/util.wxs" module="statusColor" />
+
+<view class="loading-view" wx:if="{{!loadingHidden}}">
+  <template is="loading-view" data="{{hidden:loadingHidden}}" />
+</view>
+<view class="container {{(dipperLoginFlag&&employee.id)?'mar_top':''}}" hidden="{{!loadingHidden}}">
+  <employeCard employePhoneNumber="{{employee.mobile}}" employeName="{{employee.employee_name}}" employeImg="{{employee.avatar}}" employeId="{{employee.id}}" employeCode="{{employee.wx_qrcode}}" employeSex="{{employee.sex}}" dipperLoginFlag="{{dipperLoginFlag}}"
+    bindemployeNavigateTo="employeNavigateTo" bindemployeCardShare="employeCardShare" bindemployeCardEmployeCod="employeCardEmployeCod" bindemployeCardPhoneCall="employeCardPhoneCall" />
+  <template is="load-alt" data="{{flag:loadAltFlag,type:1}}" />
+  <!-- 推荐理由  -->
+  <view class='commonality'>
+    <view class='h2'>您的购房需求</view>
+    <view class='head_tags' wx:if="{{tags.length>= 1}}">
+      <text wx:for="{{tags}}" wx:key="{{key}}" wx:if="{{item}}">{{item}}</text> </view>
+    <view class='singleProject_head' wx:if="{{first}}">{{first}}</view>
+    <view class='singleProject_foryou_head'>
+      <view>推荐理由:<text class="bottom_line"></text></view> </view>
+    <scroll-view class='singleProject_foryou_scroll' scroll-x>
+      <view class='singleProject_foryou_scroll_box'>
+        <view class="singleProject_foryou_scroll_box_item {{index > 0?'gray':''}} " wx:for="{{project_tag}}" wx:key="{{index}}">{{item}}</view>
+      </view>
+    </scroll-view>
+    <view class='singleProject_foryou_title'>
+      {{recommon_reson}}
+    </view>
+    <template is="dipper-audio" data="{{audioImg:audioImg,voice:voice,sliderValue:sliderValue,currentDuration:farmatCurrentDuration,totalDuration:formatTotalDuration}}" />
+  </view>
+  <!-- 推荐理由  end-->
+
+  <!-- 楼盘详情 -->
+  <view class='singleProject_houseInfo m_project_info'>
+    <view class='commonality_head'>
+      <view class='commonality_head_lf'>楼盘信息</view>
+      <view bindtap='didClickProjectdetails' data-index='1' class='commonality_head_ri'>查看更多信息
+        <image class='icon_ft' src='/image/icon_view_more.png'></image>
+      </view>
+    </view>
+    <view class='singleProject_houseInfo_head_item singleProject_houseInfo_head_flex'>
+      <view>
+        <text class='singleProject_houseInfo_head_item_lf'>参考单价：</text>
+        <text class='red'>{{project_info.price_info[0].value}}{{project_info.price_info[0].unit}}</text>
+      </view>
+      <view style="{{statusColor.statusColor(project_status)}};">{{project_status_des}}</view>
+    </view>
+    <view class='singleProject_houseInfo_head_item'>
+      <text class='singleProject_houseInfo_head_item_lf'>参考总价：</text>
+      <text class='black'>{{project_info.price_info[1].value}}{{project_info.price_info[1].unit}}</text>
+    </view>
+    <view class='singleProject_houseInfo_head_item houseInfo_flex' wx:if="{{project_info.decorate || project_info.project_type.name}}">
+      <view wx:if="{{project_info.decorate}}">
+        <text class='singleProject_houseInfo_head_item_lf'>装修状况：</text>
+        <text class='singleProject_houseInfo_head_item_ri'>{{project_info.decorate}}</text>
+      </view>
+      <view class='singleProject_houseInfo_head_item_block' wx:if="{{project_info.project_type.name}}">
+        <text class='singleProject_houseInfo_head_item_lf'>物业类型：</text>
+        <text class='singleProject_houseInfo_head_item_ri'>{{project_info.project_type.name}}</text>
+      </view>
+    </view>
+    <view class='singleProject_houseInfo_head_item' wx:if="{{project_info.manage_fee}}">
+      <text class='singleProject_houseInfo_head_item_lf'>物业费用：</text>
+      <text class='singleProject_houseInfo_head_item_ri'>{{project_info.manage_fee}}元/m²*月</text>
+    </view>
+    <view class='singleProject_houseInfo_head_item  houseInfo_flex' bindtap='didClickNearbyMap'>
+      <view class='singleProject_houseInfo_head_item_lf'>楼盘地址：</view>
+      <view class='singleProject_houseInfo_head_item_ri blue'>{{project_info.address}}</view>
+      <image class='houseInfo_image' src='../../../image/icon_address.png'></image>
+    </view>
+    <view class='singleProject_houseInfo_head_item' wx:if="{{project_info.developer}}">
+      <view class='singleProject_houseInfo_head_item_lf' style="white-space:pre;">开 放 商 ：</view>
+      <view class='singleProject_houseInfo_head_item_ri'>{{project_info.developer}}</view>
+    </view>
+    <view class='singleProject_houseInfo_head_item' wx:if="{{project_info.property_services}}">
+      <view class='singleProject_houseInfo_head_item_lf'>物业公司：</view>
+      <view class='singleProject_houseInfo_head_item_ri'>{{project_info.property_services}}</view>
+    </view>
+  </view>
+  <!-- 楼旁详情 end -->
+
+  <!-- 推荐户型 -->
+  <view class='singleProject_houseType m_recommend_house_type' wx:if="{{houseList.length}}">
+    <view class='singleProject_houseType_head'>
+      <view>推荐户型：({{houseList.length}}个)<text class="bottom_line"></text> </view>
+      <image src='/image/icon_wenwen.png' bindtap='didTapAlertWiw'></image>
+    </view>
+    <!-- 更换位置 -->
+    <view  wx:if="{{houseList.length==1}}" class="singleProject_houseType_olnyTitle_head">
+      <text>首付{{down_payments}}% </text>
+      <text hidden="{{down_payments == 100}}">贷款{{loan_term}}年 </text>
+      <text hidden="{{down_payments == 100}}">年贷款利率{{lending_rate}}%</text>：
+    </view>
+    <!-- 更换位置end -->
+    <view class="{{houseList.length==1?'houseType_box_shadow':''}}">
+      <view class="singleProject_houseType_swiperBox {{houseList.length==1?'singleProject_houseType_swiperBox':''}} ">
+        <swiper bindchange='onHouseTypeSwiper' class="singleProject_houseType_swiper {{houseList.length==1?'singleProject_houseType_swiper_item_only':''}}" next-margin="{{houseList.length>1?'162rpx':'0px'}}" ircular="{{true}}" current="{{intoViewIndexNum}}">
+          <swiper-item wx:for="{{houseList}}" wx:key="{{index}}">
+            <view bindtap='didClickProjectCardItem' data-item="{{item}}" data-index="{{index}}" class="singleProject_houseType_swiper_item {{houseList.length==1?'singleProject_houseType_swiper_item_only':''}}">
+              <jlImage className='houseType_image' url='{{item.apart_img[0]}}' placeholder="/image/placeholder_house_big.png"></jlImage>
+            </view>
+          </swiper-item>
+        </swiper>
+      </view>
+      <block wx:if="{{houseList.length>1}}">
+        <view class="singleProject_houseType_loans">
+          <text>首付{{down_payments}}% </text>
+          <text hidden="{{down_payments == 100}}">贷款{{loan_term}}年 </text>
+          <text hidden="{{down_payments == 100}}">年贷款利率{{lending_rate}}%</text>：
+        </view>
+        <view class="singleProject_houseType_title">
+          <view class="singleProject_houseType_title_lf">
+            <view>户型</view>
+            <view>面积</view>
+            <view>首付</view>
+            <view hidden="{{down_payments == 100}}">月供</view>
+            <view>总价</view>
+            <view>销售状态</view>
+          </view>
+          <scroll-view class="singleProject_houseType_title_ri" bindscroll="scrollView" scroll-into-view="{{intoViewIndex}}" scroll-x>
+            <view wx:for="{{houseList}}" wx:key="{{index}}" id="a{{index}}" data-index="{{index}}" bindtap='didScrollItem' class="singleProject_houseType_title_ri_item {{index == intoViewIndexNum? 'first_scroll_item':''}}">
+              <view class="{{index ==ntoViewIndexNum? '':'gray_back'}}"> {{item.summary}}</view>
+              <view>{{item.acreage}}</view>
+              <view class="{{index ==ntoViewIndexNum? '':'gray_back'}}">{{item.first_payment}}</view>
+              <view hidden="{{down_payments == 100}}">{{item.monthly_payment}}</view>
+              <view class="{{index ==ntoViewIndexNum? '':'gray_back'}}">{{item.total_payment}}</view>
+              <view style="{{statusColor.fontColor(item.house_type)}};"> {{item.house_status}}</view>
+            </view>
+            <view style='height:2px;width:1px;visibility:hidden;'></view>
+          </scroll-view>
+        </view>
+      </block>
+      <block wx:else>
+      <view class="houseType_olnyTitle_bord">
+        <view class="singleProject_houseType_loans loans_margin_left}}">
+          <text>{{houseList[0].summary}}</text>
+          <text>{{houseList[0].acreage}}</text>
+        </view>
+        <view class="singleProject_houseType_olnyTitle">
+          <view class="singleProject_houseType_olnyTitle_content">
+            <view> 首付：
+              <text class='houseType_olnyTitle_content'>{{houseList[0].first_payment}}</text> </view>
+            <view hidden="{{down_payments == 100}}">
+              月供：
+              <text class='houseType_olnyTitle_content'>{{houseList[0].monthly_payment}}</text> </view>
+            <view>
+              总价：
+              <text class='houseType_olnyTitle_content'>{{houseList[0].total_payment}}</text> </view>
+          </view>
+        </view>
+        </view>
+      </block>
+      <view class='nearby_price_btn' bindtap='didClickProjectdetails' data-index='2' wx:if="{{!aroundPrice && !!lat&& subway.length == 0 &&bus_station.length == 0}}">
+        <image class='nearby_price_btn_img' src='../../../image/icon_get_notice.png'></image>
+        点击了解更多配套/教育信息
+      </view>
+    </view>
+  </view>
+  <!-- 推荐户型 end-->
+  <!-- 交通情况  -->
+  <view class='commonality m_surrounding_transport' wx:if="{{around_traffic.length> 1}}">
+    <view class='singleProject_traffic_head'>交通情况</view>
+    <view class='singleProject_traffic_distance'>
+      <view wx:for="{{around_traffic}}" wx:key="{{index}}">
+        <image class='singleProject_traffic_distance_img' src='/image/icon_location_tag.png'></image>
+        <text>{{item.type==1?'公交：':'地铁：'}}距{{item.line}}{{item.station}}直线{{item.distance}}{{item.unit}}</text>
+      </view>
+    </view>
+    <view class='nearby_price_btn' bindtap='didClickProjectdetails' data-index='2' wx:if="{{!aroundPrice&& !!lat}}">
+      <image class='nearby_price_btn_img' src='../../../image/icon_get_notice.png'></image>
+      点击了解更多配套/教育信息
+    </view>
+  </view>
+  <!-- 交通情况  end-->
+
+  <!-- 通勤路线  -->
+  <!-- <template is="dipper-traffic" data="{{polyline:polyline,marker:marker,lng:lng,lat:lat,selectTrafficFlag:selectTrafficFlag,driveTime:driveTime,byBusTime:byBusTime,commute_address:commute_address,project_info:replace_project_info,aroundPrice:aroundPrice}}"
+  /> -->
+  <template is="dipper-traffic" data="{{marker:marker,lng:lng,lat:lat,polyline:polyline,commute:commute,selectTrafficFlag:selectTrafficFlag,selectDestinationFlag:selectDestinationFlag,selectDestinationIndex:selectDestinationIndex,commuteAction:commuteAction,houseTrafficIndex:houseTrafficIndex,aroundPrice:aroundPrice}}"
+  />
+  <!-- 通勤路线 end -->
+  <!-- 周边房价 -->
+  <view class='commonality m_surrounding_house_price' wx:if="{{aroundPrice.take_address_price||aroundPrice.second_project_price}}">
+    <view class='singleProject_traffic_head'>
+      <text>周边房价行情</text>
+      <text class='upTime' wx:if="{{around_price.price_update_datetime}}">更新时间：{{around_price.price_update_datetime}}</text>
+    </view>
+    <view class='nearby_price' wx:if="{{aroundPrice.take_address_price}}">
+      <view class='nearby_price_lf '>
+        <view>最新地价</view>
+      </view>
+      <view class='nearby_price_ri nearby_price_ri_top'>
+        <view>{{aroundPrice.take_address_price}}</view>
+      </view>
+    </view>
+    <view class='nearby_price' wx:if="{{aroundPrice.second_project_price}}">
+      <view class='nearby_price_lf'>
+        <view>二手房价格</view>
+      </view>
+      <view class='nearby_price_ri nearby_price_ri_bot'>
+        <view>{{aroundPrice.second_project_price}}</view>
+      </view>
+    </view>
+    <view class='nearby_price_btn' data-index='2' bindtap='didClickProjectdetails'>
+      <image class='nearby_price_btn_img' src='../../../image/icon_get_notice.png'></image>
+      点击了解更多配套/教育信息
+    </view>
+  </view>
+  <!-- 周边房价 end -->
+  <!-- 居理带看  -->
+  <template is="dipper-introduce" data="{{isIpx:isIpx}}" />
+  <!-- 居理带看 end -->
+  <!-- 宝典 -->
+  <template is="dipper-record" data="{{hide_good_box:hide_good_box,bus_x:bus_x,bus_y:bus_y,dipperLoginFlag:dipperLoginFlag,videoFullScreen: true}}" />
+  <!-- 宝典 end -->
+
+
+  <template is="dipper-login" data="{{dipperLoginFlag:dipperLoginFlag}}" />
+  <award dipperLoginFlag="{{dipperLoginFlag}}" order_id="{{o_id}}" employee_id="{{employee.id}}" page="1" business_id="{{share_id}}" bindhostPayAward="hostPayAward" />
+  <contact bindtouchOnGoods="touchOnGoods" bindhostPhoneCall="hostPhoneCall" bindhostDownApp="hostDownApp" open_id="{{open_id}}" share_id="{{share_id}}" show_type="{{type}}" order_id="{{o_id}}" isCollect="{{isCollect}}" dipperLoginFlag="{{dipperLoginFlag}}"
+  />
+</view>

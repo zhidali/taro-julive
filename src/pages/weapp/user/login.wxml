@@ -1,0 +1,103 @@
+<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+<!-- 普通登录样式  popType == 1 -->
+<view class="modal-dialog" catchtouchmove="preventTouchMove" wx:if="{{showModal && popType == 1}}">
+  <view class='icon-cancel-view-new' bindtap="onCancel" data-op-type="{{formOpType}}">
+    <image class="icon-cancel-new" src='../image/icon_get_close.png'></image>
+  </view>
+  <view class="modal-title" wx:if="{{title.length > 0}}">{{title}}</view>
+  <view class="modal-content">
+    <text class="modal-content-text" wx:if="{{content.length > 0 && step == 1}}">{{content}}</text>
+    <text class="modal-content-text" wx:if="{{checkcodeTip.length > 0 && step == 2}}">
+      {{checkcodeTip}}
+    </text>
+    <text class="modal-content-text" wx:if="{{content.length > 0 && step == 3}}">{{content}}</text>
+    <text class="modal-content-text mar-top" wx:if="{{contentDown.length > 0 && step == 1}}">
+      {{contentDown}}
+    </text>
+    <view class="modal-input-phone input-gray" wx:if="{{step == 1}}">
+      <input placeholder-class="input-holder" type="number" maxlength="11" bindinput="inputPhoneChange" class="input" placeholder="请输入手机号码" confirm-type='next' confirm-hold='true' bindconfirm='onInputMobileDone'></input>
+    </view>
+    <view class="modal-input-checkcode input-gray" wx:if="{{step == 2}}">
+      <input placeholder-class="input-holder" type="number" maxlength="6" bindinput="inputCheckCodeChange" class="input" placeholder="请输入验证码" confirm-type='done' confirm-hold='false' bindconfirm='onInputCheckcodeDone'></input>
+      <view class="button-checkcode" wx:if="{{leftSecond > 0}}">{{leftSecond}}s后重新获取</view>
+      <view class="button-checkcode" hover-class='hover-view' bindtap="onFetchCheckCode" wx:if="{{leftSecond == 0}}">
+        重新获取
+      </view>
+    </view>
+    <view class="modal-input-checkcode input-gray" wx:if="{{step == 3}}">
+      <input placeholder-class="input-holder" type="text" bindinput="inputImageCodeChange" class="input" placeholder="请填写图形验证码" confirm-type='next' confirm-hold='false' bindconfirm='onImagecodeDone'></input>
+      <image class="check-code-image" src="{{imageCodeUrl}}" bindtap="didTapImageCode"></image>
+    </view>
+  </view>
+  <view class="modal-footer  {{contentFooter?'modal-footer-bot':'modal-footer-bottom'}}">
+    <view class="btn-confirm {{loginEnable?'':'confirm-disable'}}" hover-class='confirm-disable' bindtap="onConfirm">
+      {{buttonTitle}}
+    </view>
+  </view>
+  <view class="modal-content-footer" wx:if="{{contentFooter}}">{{contentFooter}}</view>
+</view>
+<!-- 红包类型弹窗样式 -->
+<view class="modal-dialog-red" catchtouchmove="preventTouchMove" wx:if="{{showModal && popType == 2}}">
+  <view class='icon-cancel-view' bindtap="onCancel" data-op-type="{{formOpType}}">
+    <image class="icon-cancel-red" src='../image/icon_close_white_small.png'></image>
+  </view>
+  <view class="modal-title yellow" wx:if="{{title.length > 0}}">{{title}}</view>
+  <view class="modal-content">
+    <text class="modal-content-text white" wx:if="{{content.length > 0 && step == 1}}">
+      {{content}}
+    </text>
+    <text class="modal-content-text white" wx:if="{{checkcodeTip.length > 0 && step == 2}}">
+      {{checkcodeTip}}
+    </text>
+    <text class="modal-content-text white" wx:if="{{content.length > 0 && step == 3}}">
+      {{content}}
+    </text>
+    <view class="modal-input-phone input-red" wx:if="{{step == 1}}">
+      <input placeholder-class="input-holder-red" type="number" maxlength="11" bindinput="inputPhoneChange" class="input" placeholder="请输入手机号码" confirm-type='next' confirm-hold='true' bindconfirm='onInputMobileDone'></input>
+    </view>
+    <view class="modal-input-checkcode input-red" wx:if="{{step == 2}}">
+      <input placeholder-class="input-holder-red" type="number" maxlength="6" bindinput="inputCheckCodeChange" class="input" placeholder="请输入验证码" confirm-type='done' confirm-hold='false' bindconfirm='onInputCheckcodeDone'></input>
+      <view class="button-checkcode" wx:if="{{leftSecond > 0}}">{{leftSecond}}s后重新获取</view>
+      <view class="button-checkcode" bindtap="onFetchCheckCode" wx:if="{{leftSecond == 0}}">
+        重新获取
+      </view>
+    </view>
+    <view class="modal-input-checkcode input-red" wx:if="{{step == 3}}">
+      <input placeholder-class="input-holder-red" type="text" bindinput="inputImageCodeChange" class="input" placeholder="请填写图形验证码" confirm-type='next' confirm-hold='false' bindconfirm='onImagecodeDone'></input>
+      <image class="check-code-image" src="{{imageCodeUrl}}" bindtap="didTapImageCode"></image>
+    </view>
+  </view>
+  <view class="modal-footer">
+    <view class="btn-confirm-yellow {{loginEnable?'':'confirm-disable'}}" bindtap="onConfirm">
+      {{buttonTitle}}
+    </view>
+  </view>
+</view>
+<!-- 领取优惠首页登陆样式 -->
+<view catchtouchmove="preventTouchMove" class="modal-dialog-getDiscounts" wx:if="{{showModal && popType == 3}}">
+  <view class="modal-dialog-getDiscounts-title">
+    已有
+    <text class="text" wx:for="{{seeNum}}" wx:key="{{item}}">{{item}}</text>
+    人领取优惠
+  </view>
+  <view class="modal-dialog-getDiscounts-explain">{{title}}</view>
+  <view class="modal-getDiscounts-input-phone " wx:if="{{step == 1}}">
+    <input placeholder-class="input-getDiscounts" type="number" maxlength="11" bindinput="inputPhoneChange" class="input inputColor" placeholder="请输入手机号码" confirm-type='next' confirm-hold='true' bindconfirm='onInputMobileDone'></input>
+  </view>
+  <view class="modal-getDiscounts-input-checkcode " wx:if="{{step == 2}}">
+    <input placeholder-class="input-getDiscounts" type="number" maxlength="6" bindinput="inputCheckCodeChange" class="input inputColor" placeholder="请输入验证码" confirm-type='done' confirm-hold='false' bindconfirm='onInputCheckcodeDone'></input>
+    <view class="button-checkcode-getDiscounts" wx:if="{{leftSecond > 0}}">
+      {{leftSecond}}s后重新获取
+    </view>
+    <view class="button-checkcode-getDiscounts" hover-class='hover-view' bindtap="onFetchCheckCode" wx:if="{{leftSecond == 0}}">
+      重新获取
+    </view>
+  </view>
+  <view class="modal-getDiscounts-input-checkcode " wx:if="{{step == 3}}">
+    <input placeholder-class="input-getDiscounts" type="text" bindinput="inputImageCodeChange" class="input inputColor" placeholder="请填写图形验证码" confirm-type='next' confirm-hold='false' bindconfirm='onImagecodeDone'></input>
+    <image class="check-code-image" src="{{imageCodeUrl}}" bindtap="didTapImageCode"></image>
+  </view>
+  <view class="modal-dialog-getDiscounts-btn" hover-class='confirm-disable' bindtap="onConfirm">
+    {{buttonTitle}}
+  </view>
+</view>

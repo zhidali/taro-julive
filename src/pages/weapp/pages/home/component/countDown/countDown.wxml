@@ -1,0 +1,18 @@
+<view class="count-down my-class" wx:if="{{!hidden}}">
+  <view class="bg bg-d">
+    {{textObj.d}}
+  </view>
+  天
+  <view class="bg bg-h">
+    {{textObj.h}}
+  </view>
+  小时
+  <view class="bg bg-min">
+    {{textObj.min}}
+  </view>
+  分
+  <view class="bg bg-s">
+    {{textObj.s}}
+  </view>
+  秒
+</view>

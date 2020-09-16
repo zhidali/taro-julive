@@ -1,0 +1,11 @@
+<template name="tip-modal">
+  <cover-view class="tip-pop" wx:if="{{discountTip==true}}" catchtap="didClickCloseShowTip"></cover-view>
+  <cover-view class="tip-wiw-box" wx:if="{{discountTip==true}}">
+    <cover-view class="tip-wiw-box-conten-box">
+      <cover-view class="tip-wiw-box-conten">
+        Tips：此为楼盘提供的优惠政策（非本站提供），通过本站线上领取后可在购房时使用，但不可与楼盘现场优惠共享，优惠期限和使用方式以楼盘现场公示为准
+      </cover-view>
+    </cover-view>
+    <cover-view class="tip-wiw-box-clk" bindtap="didClickCloseShowTip">我已了解</cover-view>
+  </cover-view>
+</template>

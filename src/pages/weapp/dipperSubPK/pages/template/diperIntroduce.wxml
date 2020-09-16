@@ -1,0 +1,13 @@
+<!-- 居理带看  -->
+<template name="dipper-introduce">
+  <view class="commonality m_julive_service {{isIpx?'isIpxMar':'julive_look_margin_bot'}}">
+    <view class='commonality_head'>
+      <view class='commonality_head_lf'>居理新房 <text class="lf_stand">一站式购房</text></view>
+      <view bindtap='didClicklookMorkReferral' class='commonality_head_ri'>查看详细服务介绍
+        <image class='icon_ft' src='/image/icon_view_more.png'></image>
+      </view>
+    </view>
+    <image  class='diperIntroduce_img'></image>
+  </view>
+</template>
+<!-- 居理带看 end -->

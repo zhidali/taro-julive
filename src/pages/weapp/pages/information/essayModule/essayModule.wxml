@@ -1,0 +1,93 @@
+<import src="essayCell.wxml" />
+<import src="../../../component/loading/loading.wxml" />
+<import src="../../template/barTypeLogin/barTypeLogin.wxml" />
+
+<view class="loading-view" wx:if="{{!loadingHidden}}">
+  <template is="loading-view" data="{{type:1}}" />
+</view>
+<view class="container" hidden="{{!loadingHidden}}">
+  <block wx:if="{{categoryList.length > 0}}">
+    <view class="essay-banenr-view" wx:if="{{pickList.length>0}}">
+      <view class="essay-banenr-container-view" wx:if="{{pickList.length>0}}">
+        <swiper interval="3000" bindchange="onBannerSwiperChange" autoplay="{{true}}">
+          <swiper-item
+            class="image-container-swiper-item"
+            id="{{item.url}}"
+            index="{{index}}"
+            data-essay-id="{{item.id}}"
+            data-index="{{index}}"
+            bindtap="didClickPickEssay"
+            wx:for="{{pickList}}"
+            wx:key="item"
+          >
+            <image
+              class="essay-banner-image"
+              mode="aspectFill"
+              src="{{item.cover_img}}"
+              style="width:100%"
+            />
+            <view class="swiper-desc">
+              <text class="swiper-desc-text">{{item.title}}</text>
+            </view>
+          </swiper-item>
+        </swiper>
+        <view class="swiper-indicator" wx:if="{{pickList.length>1}}">
+          <view
+            class="swiper-indicator-item {{currentBannerIndex==index?'swiper-indicator-item-active':''}}"
+            wx:for="{{pickList}}"
+            wx:key="index"
+          ></view>
+        </view>
+      </view>
+    </view>
+    <view
+      class="header-view {{fixedCategoryView==true?'fix-header':''}}"
+      catchtouchmove="preventTouchMove"
+    >
+      <scroll-view class="xscroll_bar" scroll-x scroll-left="{{scrollLeft}}">
+        <button
+          bindtap="tabChange"
+          wx:for="{{categoryList}}"
+          data-index="{{index}}"
+          data-item="{{item}}"
+          wx:key="item"
+          class="menu_item {{index==activeIndex?'active':''}} {{index==0?'menu-item-first':(index==categoryList.length-1?'menu-item-last':'')}}"
+          hover-class="menu_hover_item"
+        >{{item.value}}</button>
+      </scroll-view>
+    </view>
+    <view class="list-none" wx:if="{{listNone==true}}">暂无楼市资讯发布，请您继续关注，小居理第一时间更新～</view>
+
+    <view class="content-view" style="{{pickList.length>0?'':'margin-top:80rpx'}}">
+      <block wx:for="{{essayList}}" wx:key="item">
+        <view class="essay-cell-view">
+          <template is="essay-cell" data="{{essay:item, index:index}}" />
+        </view>
+        <!-- banner -->
+        <bannerToApp
+          showBanner="{{showBanner}}"
+          page="essay"
+          url="http://imgs.julive.com/l?p=eyJpbWdfcGF0aCI6IlwvbWluaW1ncy9iYW5uZXItdG8tYXBwLnBuZyJ9ICAg"
+          bindOpenApp="OpenApp"
+        />
+      </block>
+      <view class="loading-tip" wx:if="{{essayList.length>0}}">
+        <block wx:if="{{essayHasMoreMap[currentCategory.key]&&hasMoreList}}">加载中...</block>
+        <block wx:else>没有更多了</block>
+      </view>
+    </view>
+  </block>
+  <block wx:else>
+    <nocontent src="/image/placeholder_nodata.png" tip="暂无数据" />
+  </block>
+  <!-- 登录条形弹窗 -->
+  <template is="bar-type" data="{{barTypeData:barTypeData,versionFlag:true}}" />
+</view>
+<painting
+  showPainter="{{popEssayCard}}"
+  module="m_viewpoint_tab"
+  template="{{template}}"
+  paintInfo="{{paintInfo}}"
+  binddismissCallback="dismissShare"
+  bindshareImagePath="shareImagePath"
+/>

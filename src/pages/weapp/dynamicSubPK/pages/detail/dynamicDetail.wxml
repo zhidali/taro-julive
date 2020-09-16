@@ -1,0 +1,55 @@
+<import src="../../../component/loading/loading.wxml" />
+<import src="../../../utils/wxParse/wxParse.wxml" />
+<import src="../../../pages/template/houseTypeCell/houseTypeCell.wxml" />
+
+<view class="loading-view" wx:if="{{!loadingHidden}}">
+  <template is="loading-view" data="{{hidden:loadingHidden}}" />
+</view>
+<view class="container" hidden="{{!loadingHidden}}">
+  <label class="dynamic-detail-title">{{dynamic.title}}</label>
+  <view class="dynamic-detail-info-view">
+    <label class="dynamic-detail-time-label">{{dynamic.create_datetime}}</label>
+    <label class="dynamic-detail-source-label">来源:{{dynamic.from ||'居理新房'}}</label>
+  </view>
+  <view class="dynamic-detail-line-view"></view>
+  <view class="dynamic-detail-content-view">
+    <template is="wxParse" data="{{wxParseData:dynamic.content.nodes}}" />
+    <block wx:for="{{dynamic.image_list}}" wx:key="item">
+      <image
+        class="wxParse-img"
+        src="{{item.img_url}}"
+        mode="aspectFit"
+        bindtap="didTapPreviewDynamicImage"
+        data-index="{{index}}"
+      />
+    </block>
+  </view>
+  <view class="dynamic-detail-section" wx:if="{{dynamicHouseTypeList.length > 0}}">
+    <label class="dynamic-detail-section-header">动态内提到的户型</label>
+    <block wx:for="{{dynamicHouseTypeList}}" wx:key="item">
+      <view class="house-type-cell-view">
+        <template is="house-type-cell" data="{{houseType:item}}" />
+      </view>
+    </block>
+  </view>
+  <view class="dynamic-detail-section" wx:if="{{hotHouseTypeList.length > 0}}">
+    <label class="dynamic-detail-section-header">本楼盘的热门户型</label>
+    <block wx:for="{{hotHouseTypeList}}" wx:key="item">
+      <view class="house-type-cell-view">
+        <template is="house-type-cell" data="{{houseType:item, index:index}}" />
+      </view>
+    </block>
+  </view>
+  <view class="{{isIpx?'iphonex-page-bottom-margin':'page-bottom-margin'}}" />
+  <contact
+    projectId="{{projectId}}"
+    fromPage="p_project_dynamic_details"
+    opType="900072"
+    source="154"
+    consultOpType="900213"
+    consultContent="当前有哪些楼栋在售？楼层、户型还有哪些可选？未来什么时候加推……"
+    consult="咨询更多动态"
+    userInfo="{{userInfo}}"
+    notShowAttention="{{true}}"
+  />
+</view>

@@ -1,0 +1,24 @@
+<template name="essay-cell">
+  <view class="essay-cell-content-view" hover-class='hover-class' bindtap='didTapCell' data-essay="{{essay}}" data-index="{{index}}">
+    <view class="essay-top-view">
+      <view class="essay-left-view">
+        <label class="essay-title">{{essay.title}}</label>
+        <label class="essay-desc" wx:if="{{essay.content.length > 0}}">{{essay.content}}</label>
+      </view>
+      <image class="essay-image" src="{{essay.cover_img}}" mode="aspectFill" />
+    </view>
+    <view class="essay-share-view">
+      <view class="essay-public-view">
+        <image class='essay-public-avatar' src="{{essay.author_avatar}}" />
+        <text class='essay-public-name'>{{essay.author_name}}</text>
+        <text class="essay-public-time">{{essay.publish_time}}</text>
+      </view>
+      <view class="essay-share-action-view">
+        <image class='icon-share' src="../../../image/icon_share.png" />
+        <text class='icon-share-text'>分享</text>
+        <button class='share-fake-button' data-essay="{{essay}}" id='share' bindtap='didTapShare' data-index="{{index}}" />
+      </view>
+    </view>
+    <view class='essay-line-view' />
+  </view>
+</template>

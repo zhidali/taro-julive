@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "动态详情",
+  "usingComponents": {
+    "contact": "../../../pages/project/contact/contact",
+    "jlImage": "../../../component/jlImage/jlImage"
+  }
+}

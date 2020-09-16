@@ -1,0 +1,34 @@
+<view class="find-room-wrap my-class">
+  <view class="title">{{findRoomData.title}}</view>
+  <view class="question">{{findRoomData.sub_title}}</view>
+  <view class="bg-line"></view>
+  <view class="label-list">
+    <label class="label-item" wx:for="{{findRoomData.content}}" wx:key="item" wx:for-item="item">
+      <image class="icon" src="{{item.icon}}" />
+      {{item.desc}}
+    </label>
+  </view>
+  <image
+    class="counselor"
+    src="https://imgs.julive.com/l?p=eyJpbWdfcGF0aCI6IlwvbWluaW1ncy9pbWctZmluZC1jb3Vuc2Vsb3IucG5nIn0"
+  />
+  <authorize-login
+    bind:allow="allowLogin"
+    bind:cancel="cancelLogin"
+    bind:click="clickLogin"
+  >
+    <view class="subscribe" slot="btn">
+      <text>{{findRoomData.button}}</text>
+    </view>
+  </authorize-login>
+  <!-- 留电成功弹窗 -->
+  <orderSuccessAlert
+    bindconfirmCallback="confirmCallback"
+    bindhideModalCallback="hideModalCallback"
+    popType="{{1}}"
+    fromPage="p_project_list"
+    showModal="{{showOrderSuccessAlert}}"
+    title="{{alertTitle}}"
+    content="{{alertContent}}"
+  />
+</view>

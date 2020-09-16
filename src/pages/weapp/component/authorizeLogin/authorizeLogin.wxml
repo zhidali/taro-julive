@@ -1,0 +1,12 @@
+<view class="login-wrap my-class" catchtap="clickWrap">
+  <button
+    class="login-btn"
+    open-type="getPhoneNumber"
+    bindgetphonenumber="getPhoneNumber"
+    wx:if="{{!loginStatus && hasLogin}}"
+  >
+    授权按钮
+  </button>
+  <slot name="btn"></slot>
+</view>
+
