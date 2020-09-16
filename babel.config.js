@@ -6,5 +6,10 @@ module.exports = {
       framework: 'react',
       ts: false
     }]
+  ],
+  plugins: [
+    ["@babel/plugin-transform-modules-commonjs", {
+      "allowTopLevelThis": true
+    }]
   ]
 }
