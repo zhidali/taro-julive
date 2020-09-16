@@ -2,16 +2,19 @@ const sensors = require("./sensorsSDK/sensorsdata.min.js");
 const page = require("./julivePage.js");
 const julive_local_config = require("../julive-local-config.js");
 
+// TODO func e 更改
 function e(t, n, o) {
   if (t[n]) {
-    var e = t[n];
-    t[n] = function(t) {
-      o.call(this, t, n);
-      e.call(this, t);
+    const tt = Object.assign({}, {...t});
+    var e = tt[n];
+    //debugger
+    tt[n] = function (tt) {
+      o.call(this, tt, n);
+      e.call(this, tt);
     };
   } else {
-    t[n] = function(t) {
-      o.call(this, t, n);
+    tt[n] = function (tt) {
+      o.call(this, tt, n);
     };
   }
 }
