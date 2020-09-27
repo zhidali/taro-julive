@@ -2,13 +2,12 @@
  * @author: zhidl
  * @Date: 2020-08-10 09:11:22
  * @description: 公共接口api
- * @LastEditTime: 2020-09-25 17:53:58
+ * @LastEditTime: 2020-09-27 13:01:46
  * @LastEditors: zhidl
  */
 import {
   request
 } from '../network/request';
-
 // const enviroment = require('../enviroment/enviroment.js');
 
 // 快速授权登录

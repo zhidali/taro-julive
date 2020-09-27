@@ -21,7 +21,6 @@ export default class Func {
    * @param {string} key abtest key值
    */
   async getAbtest(key = '') {
-    console.log(this, 'getAbtest getAbtest');
     let timer = null;
     try {
       return new Promise(async (resolve, reject) => {
@@ -178,7 +177,6 @@ export default class Func {
   }
   // 获取渠道id
   async setConf() {
-    console.log(this, 'setConf setConf');
     try {
       let params = {
         city_id: this.commonData.city.city_id,
