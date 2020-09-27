@@ -19,7 +19,7 @@
         bindtap="didClickBarTypeLogin"
       >
         <view class="wxlogin-box" wx:if="{{versionFlag}}">
-          <!-- 260版本持有登陆方式 -->
+          <!-- 260版本持有登录方式 -->
           <wxLogin
             markType="261"
             bindClickGetPhoneNumberBtn="passBackGetPhoneNumberBtn"

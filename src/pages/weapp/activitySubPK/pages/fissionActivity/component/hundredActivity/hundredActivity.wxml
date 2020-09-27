@@ -10,15 +10,15 @@
 		<view class="message">{{helpCardHundred.help.help_desc}}</view>
 	</view>
 	<view class="img-box">
-		<block wx:for="{{list}}" wx:key="{{item}}">
-			<image class="img-box-item" src="{{item ? '../../../../images/fission-join-person-a.png':'../../../../images/fission-join-person-b.png'}}"></image>
+		<block wx:for="{{list}}" wx:if="{{index<=8}}" wx:key="id">
+			<image class="img-box-item {{index == 0? 'img-box-item-lf':''}} {{index == 8? 'img-box-item-ri':''}}" src="{{item.flag ? '../../../../images/fission-join-person-a.png':'../../../../images/fission-join-person-b.png'}}"></image>
 		</block>
-		<image wx:if="{{helpCardHundred.help.help_num == 9}}" class="img-box-flower-left" src="../../../../images/fission-join-flower-left.png"></image>
-		<image wx:if="{{helpCardHundred.help.help_num == 9}}" class="img-box-flower-right" src="../../../../images/fission-join-flower-right.png"></image>
+		<image wx:if="{{helpCardHundred.help.help_num >= 9}}" class="img-box-flower-left" src="../../../../images/fission-join-flower-left.png"></image>
+		<image wx:if="{{helpCardHundred.help.help_num >= 9}}" class="img-box-flower-right" src="../../../../images/fission-join-flower-right.png"></image>
 	</view>
-	<view class="btn {{(helpCardHundred.btn.clickable == 1 && isCanHelp != 3)?'btn-allow':'btn-repulse'}}">
-		<text wx:if="{{!userLoginStatus}}" bindtap="clickDidNavLogin">{{helpCardHundred.btn.label?helpCardHundred.btn.label:'邀请更多好友'}}</text>
-		<button wx:if="{{!userHeaderStatus}}" open-type="getUserInfo" disabled="{{helpCardHundred.btn.clickable == 2 || isCanHelp == 3}}" bindgetuserinfo="fetchUserInfo">{{helpCardHundred.btn.label?helpCardHundred.btn.label:'邀请更多好友'}}</button>
-		<button wx:if="{{userLoginStatus && userHeaderStatus}}" open-type="share" disabled="{{helpCardHundred.btn.clickable == 2 || isCanHelp == 3}}" bindtap="didClickShareBtn">{{helpCardHundred.btn.label?helpCardHundred.btn.label:'邀请更多好友'}}</button>
+	<view class="btn {{helpCardHundred.btn.clickable == 1?'btn-allow btn-font-36':'btn-repulse btn-font-28'}}">
+		<text class="btn-text" wx:if="{{!userLoginStatus}}"  bindtap="clickDidNavLogin">{{helpCardHundred.btn.label?helpCardHundred.btn.label:'邀请更多好友'}}</text>
+		<button  class="btn-button {{helpCardHundred.btn.clickable == 1?'btn-font-36':'btn-font-28'}}" wx:if="{{!userHeaderStatus}}" open-type="getUserInfo" disabled="{{helpCardHundred.btn.clickable == 2 || isCanHelp != 2}}" bindgetuserinfo="fetchUserInfo" bindtap="didClickgGetUserInfo">{{helpCardHundred.btn.label?helpCardHundred.btn.label:'邀请更多好友'}}</button>
+		<button class="btn-button {{helpCardHundred.btn.clickable == 1?'btn-font-36':'btn-font-28'}}" wx:if="{{userLoginStatus && userHeaderStatus}}" open-type="share" disabled="{{helpCardHundred.btn.clickable == 2 || isCanHelp != 2}}" bindtap="didClickShareBtn">{{helpCardHundred.btn.label?helpCardHundred.btn.label:'邀请更多好友'}}</button>
 	</view>
 </view>

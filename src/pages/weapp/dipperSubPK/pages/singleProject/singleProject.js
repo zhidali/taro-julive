@@ -71,6 +71,7 @@ Page({
     goToMapFlag: true,
     ePageViewFlag: false,
     is_virtual_city: false, //是否是虚拟城市
+    employee: {}
   },
   acquireWxLogin(res) {
     this.setData({
@@ -217,7 +218,6 @@ Page({
         intoViewIndexNum: current,
       });
     }
-    // BUG
     let house_type_id = '';
     if(this.data.houseList && this.data.houseList[current]){
       house_type_id = this.data.houseList[current].house_type_id
@@ -335,7 +335,6 @@ Page({
         project_info: data.project_info, //楼盘信息相关
         projectId: String(data.project_info.project_id),
         around_traffic: data.around_traffic,
-        // BUG
         employee: data.employee || {id: '', mobile: ''},
         houseList: data.house_list,
         down_payments: data.down_payments,

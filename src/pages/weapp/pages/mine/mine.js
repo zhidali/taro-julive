@@ -1,6 +1,6 @@
 const user = require('../../user/user.js');
 const analytic = require('../../analytic/analytic.js');
-const enviroment = require('../../enviroment/enviroment.js');
+// const enviroment = require('../../enviroment/enviroment.js');
 const route = require('../../route/route.js');
 const wxUserInfo = require('../../user/wxUserInfo.js');
 const notification = require('../../utils/notification.js');
@@ -287,7 +287,8 @@ Page({
   async quitLogin() {
     if (!app.commonData.user.userId) return;
     const res = await app.request('/v1/user/logout', {
-      token: enviroment.getJuliveToken(),
+      // token: enviroment.getJuliveToken(),
+      token: app.enviroment.token || '',
       user_id: app.commonData.user.userId || '',
       nickname: wxUserInfo.getNickName(),
     });
@@ -397,12 +398,13 @@ Page({
     });
   },
 
-  //跳转，列表活动页面，9353
+  //跳转，列表活动页面
   didClickShareAct() {
     wx.navigateTo({
       url: "/activitySubPK/pages/fissionActivity/fissionActivity",
     });
     analytic.sensors.track('e_click_rengou_discount', {
+      id: 9353,
       fromPage: 'p_user_center',
       fromItem: 'i_rengou_discount',
       toPage: 'p_help_activity',

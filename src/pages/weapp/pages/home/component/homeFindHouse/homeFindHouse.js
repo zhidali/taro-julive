@@ -664,7 +664,7 @@ Component({
         this.renderFilter('close');
       })
     },
-    // 查找房源登陆成功
+    // 查找房源登录成功
     async allowLogin(e) {
       let {
         defaultFilter,

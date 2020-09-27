@@ -2,14 +2,14 @@
  * @author: zhidl
  * @Date: 2020-09-01 11:07:00
  * @description: 我的页面接口
- * @LastEditTime: 2020-09-01 13:57:28
- * @LastEditors: zhidl
+ * @LastEditTime: 2020-09-16 14:56:22
+ * @LastEditors: limengge
  */
 import {
   request
 } from '../network/request'
 
-// 搜索-热门搜索词
+// 用户信息
 async function getUser(data = {}) {
   return await request('/v1/user/user-info', data)
 }

@@ -75,7 +75,10 @@ Page({
 
     var _this = this;
     setTimeout(function () {
-      var arr = bmksearch.getMarkerData()['traffic']['wxMarkerData'];
+      let arr = [];
+      if(bmksearch.getMarkerData() && bmksearch.getMarkerData()['traffic']){
+        arr = bmksearch.getMarkerData()['traffic']['wxMarkerData']
+      }
       var list = [];
       list = list.concat(arr);
       list.splice(0, 1, _this.projectLocationMarkers());
@@ -198,12 +201,10 @@ Page({
       });
     } else {
       var keys = ['traffic', 'life', 'hospital', 'school'];
-      // BUG -----
       let arr = [];
       if(bmksearch.getMarkerData() && bmksearch.getMarkerData()[keys[index - 1]]){
         arr = bmksearch.getMarkerData()[keys[index - 1]]['wxMarkerData'] || [];
       }
-      // --------
       var list = [];
       list = list.concat(arr);
       list.splice(0, 1, this.projectLocationMarkers());

@@ -2,13 +2,14 @@
  * @author: zhidl
  * @Date: 2020-08-10 09:11:22
  * @description: 公共接口api
- * @LastEditTime: 2020-09-15 09:45:48
+ * @LastEditTime: 2020-09-25 17:53:58
  * @LastEditors: zhidl
  */
 import {
   request
-} from '../network/request'
-const enviroment = require('../enviroment/enviroment.js');
+} from '../network/request';
+
+// const enviroment = require('../enviroment/enviroment.js');
 
 // 快速授权登录
 async function fastLogin(data = {}) {
@@ -37,14 +38,15 @@ async function viewProject(params = {}) {
  */
 async function userDiscount(params = {}) {
   const app = getApp();
-  const gdtId = enviroment.getGDTId();
+  // const gdtId = enviroment.getGDTId();
+  const gdtId = app.enviroment.gdt_vid;
+
   let obj = Object.assign({
     city_id: app.commonData.city.city_id,
     channel_id: app.commonData.channel.channel_id,
     op_type: ''
   }, params);
   
-  // BUG
   let pages = getCurrentPages(); //获取加载的页面
   let currentPage = pages[pages.length - 1]; //获取当前页面的对象
   let _url = currentPage ? currentPage.route : '';
@@ -62,6 +64,12 @@ async function userDiscount(params = {}) {
 async function userHasOrder(params = {}) {
   return await request('/wxmini/v1/common/has-order', params)
 }
+
+
+// 拉取定位城市id，
+async function getLocationApi(params = {}){
+  return await request('/v1/common/location', params)
+}
 /**
  * 请求用户是否有订单
  * @param {object} params参数 微信返回用户头像相关信息
@@ -77,5 +85,6 @@ export {
   getConf,
   userDiscount,
   userHasOrder,
+  getLocationApi,
   updInfo
 }

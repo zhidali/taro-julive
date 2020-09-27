@@ -5,7 +5,10 @@ Page({
   data: {
     pushPullFlag: false,
     commuteActionShow: [],
-    ePageViewFlag: false
+    ePageViewFlag: false,
+    employee: {
+      id: ''
+    }
   },
   selectTraffic(e) {
     let flag = !!Number(e.currentTarget.dataset.index)
@@ -125,7 +128,7 @@ Page({
           selectTrafficFlag: data.selectTrafficFlag,
           houseTrafficIndex: data.houseTrafficIndex,
           share_id: data.share_id,
-          employee: data.employee,
+          employee: data.employee || {id: ''},
           o_id: data.o_id,
           commuteActionShow: data.commuteAction.length > 2 ? data.commuteAction.slice(0, 2) : data.commuteAction,
           project_ids: data.project_ids ? data.project_ids : [data.projectId]

@@ -2,8 +2,8 @@
  * @author: limengge
  * @Date: 2020-09-01 16:22:13
  * @description: 
- * @LastEditTime: 2020-09-15 13:47:20
- * @LastEditors: limengge
+ * @LastEditTime: 2020-09-16 14:50:00
+ * @LastEditors: zhidl
  */
 
 const analytic = require('../../../analytic/analytic.js');
@@ -33,7 +33,7 @@ Page({
     favoriteHasMore: false, //收藏是否有下一页
 
     isShowFavoritePK: false, //对比弹窗
-    userLoginStatus: false, //用户是否登陆
+    userLoginStatus: false, //用户是否登录
     showOrderSuccessAlert: false, //留电成功弹出弹窗
     viewPageOpreate: false, //在我的浏览页面是否有操作
     favoritePageOpreate: false, //在收藏页面是否有操作

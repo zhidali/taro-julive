@@ -1,5 +1,5 @@
 import { request } from '../network/request';
-const enviroment = require('../enviroment/enviroment.js');
+// const enviroment = require('../enviroment/enviroment.js');
 const analytic = require('../analytic/analytic.js');
 const util = require('../utils/util.js');
 const app = getApp();
@@ -374,7 +374,8 @@ function fastLogin(iv, encryptedData, callback) {
 
 function setUserInfo(d, callback) {
   if (d.code == 0) {
-    enviroment.setJuliveToken(d.data.token, true);
+    // enviroment.setJuliveToken(d.data.token, true);
+    app.enviroment.setJuliveToken(d.data.token, true);
     analytic.sensors.registerApp(d.data.user_id);
     var _user = {
       userId: String(d.data.user_id),

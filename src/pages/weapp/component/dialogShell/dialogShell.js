@@ -20,7 +20,7 @@ Component({
     // 启用插槽
     multipleSlots: true
   },
-  externalClasses: ['my-class'],
+  externalClasses: ['my-class', 'wrap-class'],
   /**
    * 组件的初始数据
    */

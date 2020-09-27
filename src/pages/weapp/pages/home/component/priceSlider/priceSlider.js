@@ -151,18 +151,19 @@ Component({
       .then(() => {
         var query = wx.createSelectorQuery().in(this)
         query.select(".container").boundingClientRect(function (res) {
-          that.setData({
-            totalLength: res.width / that.data.ratio - that.data.sliderLength,
-            bigLength: res.width / that.data.ratio - that.data.sliderLength * 2,
-            rightValue: res.width / that.data.ratio - that.data.sliderLength,
-            containerLeft: res.left / that.data.ratio
-          })
-
-        /**
-         * 设置初始滑块位置
-         */
-        that._propertyLeftValueChange()
-        that._propertyRightValueChange()
+          if(res){
+            that.setData({
+              totalLength: res.width / that.data.ratio - that.data.sliderLength,
+              bigLength: res.width / that.data.ratio - that.data.sliderLength * 2,
+              rightValue: res.width / that.data.ratio - that.data.sliderLength,
+              containerLeft: res.left / that.data.ratio
+            })
+            /**
+             * 设置初始滑块位置
+             */
+            that._propertyLeftValueChange()
+            that._propertyRightValueChange()
+          }
         }).exec()
       })
   },

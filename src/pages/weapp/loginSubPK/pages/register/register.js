@@ -11,12 +11,14 @@ Page({
     use_select_img: select_img_affirm,
     flag: true,
     // v2.7.5裂变活动  首页&裂变页进入页面 时候
-    isFission: false
+    isFission: false,
+    text: '已阅读并同意' // 默认文案
   },
   onLoad: function (options) {
     if (options && options.isFission == '1'){
        this.setData({
-         isFission:  true
+         isFission:  true,
+         text: '点击登录即表示同意'
        })
     }
     this.analyticPageView('e_page_view');
@@ -95,11 +97,6 @@ Page({
         analyticProperties
       );
     }
-    var analyticProperties = this.analyticProperties();
-    analyticProperties.fromItem = 'i_wechat_login';
-    analyticProperties.toPage = analyticProperties.fromPage;
-    analyticProperties.wechat_authorization = '1';
-    analytic.sensors.track('e_click_wechat_login', analyticProperties);
   },
 
   didTapPhoneNumberLogin: function () {
@@ -154,6 +151,7 @@ Page({
   },
 
   didClickSelectAgreement() {
+    if (this.data.isFission) return;
     this.setData({
       use_select_img:
         select_img === this.data.use_select_img
@@ -168,4 +166,11 @@ Page({
       url: '/pages/web/web?url=' + 'https://m.julive.com/app/statement',
     });
   },
+  // 点击前埋点
+  clickWechatLogin(){
+    var analyticProperties = this.analyticProperties();
+    analyticProperties.fromItem = 'i_wechat_login';
+    analyticProperties.toPage = analyticProperties.fromPage;
+    analytic.sensors.track('e_click_wechat_login', analyticProperties);
+  }
 });

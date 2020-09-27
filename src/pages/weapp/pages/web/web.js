@@ -1,5 +1,5 @@
 const juliveConfig = require('../../julive-local-config.js');
-const enviroment = require('../../enviroment/enviroment.js');
+// const enviroment = require('../../enviroment/enviroment.js');
 const analytic = require('../../analytic/analytic.js');
 const wxUserInfo = require('../../user/wxUserInfo.js');
 const app = getApp();
@@ -12,7 +12,8 @@ Page({
   browse(type, orderId, wxshare_id) {
     app
       .request('/v1/beidou/browse', {
-        open_id: enviroment.getOpenId(),
+        // open_id: enviroment.getOpenId(),
+        open_id: app.enviroment.openId,
         user_id: app.commonData.user.userId || '',
         share_id: wxshare_id,
         show_type: type,
@@ -35,13 +36,18 @@ Page({
         appid: juliveConfig.appid,
         version_code: juliveConfig.versionCode,
         version_name: juliveConfig.versionName,
-        agency: enviroment.getChannel(),
+        // agency: enviroment.getChannel(),
+        agency: wx.getStorageSync('julive_channel') || juliveConfig.channel,
         channel_id: app.commonData.channel.channel_id,
-        token: enviroment.getJuliveToken(),
+        // token: enviroment.getJuliveToken(),
+        token: app.enviroment.token || '',
         comjia_platform_id: juliveConfig.comjiaPlatformId,
-        comjia_unique_id: enviroment.getOpenId(),
-        channel_put: enviroment.getChannelPut(),
-        click_id: enviroment.getGDTId(),
+        // comjia_unique_id: enviroment.getOpenId(),
+        comjia_unique_id: app.enviroment.openId,
+        // channel_put: enviroment.getChannelPut(),
+        channel_put: app.enviroment.channel_put,
+        // click_id: enviroment.getGDTId(),
+        click_id: app.enviroment.gdt_vid
       };
       Object.keys(params).forEach(function (key) {
         if (url.indexOf(key) == -1) {

@@ -1,12 +1,12 @@
 /*
  * @Author: your name
  * @Date: 2020-06-08 18:05:05
- * @LastEditTime: 2020-09-01 14:30:42
+ * @LastEditTime: 2020-09-25 18:05:20
  * @LastEditors: zhidl
  * @Description: In User Settings Edit
  * @FilePath: /julive/order/order.js
  */
-const enviroment = require('../enviroment/enviroment.js');
+// const enviroment = require('../enviroment/enviroment.js');
 const analytic = require('../analytic/analytic.js');
 const util = require('../utils/util.js');
 const user = require('../user/user');
@@ -16,7 +16,8 @@ function makeOrder(parameters, analyticProperties, callback) {
   if (util.isEmptyObject(parameters)) parameters = {};
   parameters.city_id = app.commonData.city.city_id;
   parameters.channel_id = app.commonData.channel.channel_id;
-  const gdtId = enviroment.getGDTId();
+  // const gdtId = enviroment.getGDTId();
+  const gdtId = app.enviroment.gdt_vid;
   var pages = getCurrentPages(); //获取加载的页面
   var currentPage = pages[pages.length - 1]; //获取当前页面的对象
   var _url = currentPage.route;
@@ -59,7 +60,8 @@ function reportOrder() {
   var pages = getCurrentPages(); //获取加载的页面
   var currentPage = pages[pages.length - 1]; //获取当前页面的对象
   var _url = currentPage.route;
-  const gdtId = enviroment.getGDTId();
+  // const gdtId = enviroment.getGDTId();
+  const gdtId = app.enviroment.gdt_vid;
   if (gdtId.length > 0) {
     app
       .request('/v1/common/report', {

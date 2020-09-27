@@ -1,5 +1,5 @@
 var app = getApp();
-const location = require("../../../location/location.js");
+// const location = require("../../../location/location.js");
 var analytic = require("../../../analytic/analytic.js");
 
 Page({
@@ -22,7 +22,8 @@ Page({
     keyword: "",
     confirmSearch: false,
     fixTopLetter: "",
-    firstLetterFix: false
+    firstLetterFix: false,
+    letterTopAll: []
   },
 
   onLoad: function(options) {
@@ -97,8 +98,10 @@ Page({
     app.commonData.city = cityInfo;
     // 切换城市筛选项联动清空
     app.globalData.newFilter = {};
-
-    location.cityChanged(cityInfo)
+    
+    // location.cityChanged(cityInfo)
+    app.enviroment.setCityInfo(cityInfo);
+    
     this.setData({
       city: cityInfo
     });
@@ -252,19 +255,24 @@ Page({
   onPageScroll: function(event) {
     let _this = this;
     let scrollTop = event.scrollTop;
-    this.setData({
-      firstLetterFix: scrollTop > this.data.letterTopAll[0].top ? true : false
-    });
-    let _scrollTop = scrollTop + 4;
-    _this.data.letterTopAll.forEach(function(item, index) {
-      if (
-        _scrollTop >= item.top &&
-        _scrollTop <= _this.data.letterTopAll[index + 1].top
-      ) {
-        _this.setData({
-          fixTopLetter: _this.data.letterTopAll[index].letter
-        });
-      }
-    });
+
+    if(this.data.letterTopAll.length > 0){
+
+      this.setData({
+        firstLetterFix: scrollTop > this.data.letterTopAll[0].top ? true : false
+      });
+      let _scrollTop = scrollTop + 4;
+      _this.data.letterTopAll.forEach(function(item, index) {
+        if (
+          _scrollTop >= item.top &&
+          _scrollTop <= _this.data.letterTopAll[index + 1].top
+        ) {
+          _this.setData({
+            fixTopLetter: _this.data.letterTopAll[index].letter
+          });
+        }
+      });
+      
+    }
   }
 });

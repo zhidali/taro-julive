@@ -1,8 +1,8 @@
 /*
  * @Author: limengge
  * @Date: 2020-02-06 19:08:58
- * @LastEditTime: 2020-09-15 13:49:58
- * @LastEditors: limengge
+ * @LastEditTime: 2020-09-25 16:52:16
+ * @LastEditors: zhidl
  * @Description:
  */
 const RELEAS_BASE_URL = 'https://miniprogram.julive.com';

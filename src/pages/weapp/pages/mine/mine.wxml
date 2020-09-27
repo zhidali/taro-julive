@@ -64,7 +64,7 @@
         <image class="mine-cell-right-image" src="/image/icon_view_more.png" />
       </view>
     </view>
-    <!-- 分享助力，有资质且登陆显示 -->
+    <!-- 分享助力，有资质且登录显示 -->
     <view
       wx:if="{{userLoginStatus && activity_enter.name}}"
       class="mine-cell"

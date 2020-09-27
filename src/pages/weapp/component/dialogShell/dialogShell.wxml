@@ -2,7 +2,7 @@
 
 <view class="dialog-shell my-class">
   <view class="mark" catchtouchmove="preventTouchMove" catchtap="closeDialog"></view>
-  <view class="dialog-wrap" catchtouchmove="preventTouchMove">
+  <view class="dialog-wrap wrap-class" catchtouchmove="preventTouchMove">
     <image
       src="/image/icon-close-dialog.png"
       class="img-close"

@@ -59,7 +59,7 @@ Component({
     clickSetTextCallback(data) {
       this.triggerEvent('clickGetSelectCallback', data.detail);
     },
-    //留电登陆的回调
+    //留电登录的回调
     GetPhoneNumberBtn(data) {
       this.triggerEvent('ClickGetPhoneNumberBtn', data.detail);
     },

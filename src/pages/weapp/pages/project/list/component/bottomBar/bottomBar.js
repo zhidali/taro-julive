@@ -70,7 +70,7 @@ Component({
       this.triggerEvent('didCloseBottomBarPop')
     },
 
-    // 允许登陆
+    // 允许登录
     allowLogin(e) {
       this.makeOrder();
       this.setData({
@@ -79,7 +79,7 @@ Component({
       })
       this.triggerEvent('didCloseBottomBarPop')
     },
-    // 取消登陆
+    // 取消登录
     cancelLogin() {
       wx.showToast({
         title: "预约失败",

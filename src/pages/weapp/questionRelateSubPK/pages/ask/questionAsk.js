@@ -1,6 +1,6 @@
 const app = getApp();
 var analytic = require('../../../analytic/analytic.js');
-const enviroment = require('../../../enviroment/enviroment.js');
+// const enviroment = require('../../../enviroment/enviroment.js');
 
 Page({
   data: {
@@ -274,7 +274,8 @@ Page({
     var currentPage = pages[pages.length - 1]; //获取当前页面的对象
     var _url = currentPage.route;
 
-    const gdtId = enviroment.getGDTId();
+    // const gdtId = enviroment.getGDTId();
+    const gdtId = app.enviroment.gdt_vid;
     if (gdtId && gdtId.length > 0) {
       parameters.wx_ad_click_id = gdtId;
       parameters.url = _url;
@@ -303,7 +304,7 @@ Page({
         _this.orderSuccessAnalytic('2');
       });
   },
-  // 实验B的留电登陆调微信登陆逻辑
+  // 实验B的留电登录调微信登录逻辑
   passBackGetPhoneNumberBtn(e) {
     let _markOpType = e.detail.markOpType;
     let loginUserInfo = {};

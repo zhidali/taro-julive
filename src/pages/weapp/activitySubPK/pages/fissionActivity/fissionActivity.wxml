@@ -16,7 +16,7 @@
   <!-- 活动头部 -->
   <template
     is="header-banner"
-    data="{{activity_time:activity_time,latest_reward:latest_reward}}"
+    data="{{countdownText:countdownText,countdownTime:countdownTime,countdownEnd:countdownEnd,latest_reward:latest_reward}}"
   ></template>
 
   <view class="activity-containter">
@@ -25,6 +25,7 @@
       is="personal-infor"
       data="{{userLoginStatus:userLoginStatus,user_info:user_info}}"
     ></template>
+
     <!-- 京东卡 100元活动区 -->
     <block wx:if="{{help_card_100 && help_card_100.title}}">
       <hundredActivity
@@ -46,7 +47,7 @@
     </block>
 
     <!-- 奖励排行榜 -->
-    <block wx:if="{{ranking_list.length>6}}">
+    <block wx:if="{{ranking_list.list.length>6}}">
       <view class="reward-rank">
         <view class="rank-title">
           奖励排行榜
@@ -54,7 +55,7 @@
         </view>
         <view class="rank-box">
           <view class="rank-list">
-            <block wx:for="{{ranking_list.list}}" wx:key="{{item.id}}">
+            <block wx:for="{{ranking_list.list}}" wx:key="id">
               <view class="list-item">
                 <image wx:if="{{index==0}}" class="rank" src="../../images/icon_rank_1.png" />
                 <image wx:elif="{{index==1}}" class="rank" src="../../images/icon_rank_2.png" />
@@ -78,22 +79,20 @@
     </block>
   </view>
   <!-- 活动规则弹窗 -->
-  <dialog-shell
-    wx:if="{{showActRulePop}}"
-    class="act-rule-pop-view"
-    hasImg="{{false}}"
-    bind:close="didCloseActRulePop"
-  >
+  <dialog-shell wx:if="{{showActRulePop}}" class="act-rule-pop-view" hasImg="{{false}}">
     <view class="pop-view-box">
-      <image src="../../images/icon_close_pop.png" class="img-close" bindtap="didCloseActRulePop" />
+      <view class="img-close-box" bindtap="didCloseActRulePop">
+        <image src="../../images/icon_close_pop.png" class="img-close" />
+      </view>
       <view class="pop-title">
         <image class="icon" src="../../images/icon_rule_title.png" />{{activity_rule_popup.title}}
       </view>
       <scroll-view class="pop-content" scroll-y="{{true}}">
-        <block wx:for="{{activity_rule_popup.qa}}" wx:key="{{item.question}}">
+        <view class="content-time">{{activity_rule_popup.time_desc}}</view>
+        <block wx:for="{{activity_rule_popup.qa}}" wx:key="question">
           <view class="content">
             <view class="text">{{item.question}}</view>
-            <block wx:for="{{item.answer}}" wx:for-item="list" wx:key="item">
+            <block wx:for="{{item.answer}}" wx:for-item="list" wx:key="answer">
               <view class="text">{{list}}</view>
             </block>
           </view>
@@ -111,7 +110,7 @@
       <jlImage
         my-class="jd-img-card"
         url="{{tools.resizeImageUrl(jDCardPopData.bg, 278, 122)}}"
-        placeholder="{{rewardIdx==0?'https://comjia-img.oss-cn-beijing.aliyuncs.com/minimgs/fissionActivity-jd-card1.png':'https://comjia-img.oss-cn-beijing.aliyuncs.com/minimgs/fissionActivity-jd-card-2.png'}}"
+        placeholder=""
       ></jlImage>
       <image
         class="jd-card-close"
@@ -137,7 +136,6 @@
     wx:if="{{showQualificationsPop}}"
     class="qualifications-pop-view"
     hasImg="{{false}}"
-    bind:close="didCloseQualificationsPop"
   >
     <view class="pop-view-box">
       <image

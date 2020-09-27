@@ -1,6 +1,7 @@
 const juliveConfig = require('../../julive-local-config.js');
-const enviroment = require('../../enviroment/enviroment.js');
+// const enviroment = require('../../enviroment/enviroment.js');
 const analytic = require('../../analytic/analytic.js');
+const julive_local_config = require('../../julive-local-config.js');
 const app = getApp();
 Page({
   data: {
@@ -46,12 +47,16 @@ Page({
         'appid': juliveConfig.appid,
         'version_code': juliveConfig.versionCode,
         'version_name': juliveConfig.versionName,
-        'agency': enviroment.getChannel(),
+        // 'agency': enviroment.getChannel(),
+        'agency': wx.getStorageSync('julive_channel') || julive_local_config.channel,
         'channel_id': app.commonData.channel.channel_id,
-        'token': enviroment.getJuliveToken(),
+        // 'token': enviroment.getJuliveToken(),
+        'token': app.commonData.token || '',
         'comjia_platform_id': juliveConfig.comjiaPlatformId,
-        'comjia_unique_id': enviroment.getOpenId(),
-        'channel_put': enviroment.getChannelPut()
+        // 'comjia_unique_id': enviroment.getOpenId(),
+        'comjia_unique_id': app.enviroment.openId,
+        // 'channel_put': enviroment.getChannelPut()
+        'channel_put': app.enviroment.channel_put
       };
       Object.keys(params).forEach(function (key) {
         if (url.indexOf(key) == -1) {

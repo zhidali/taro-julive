@@ -328,19 +328,17 @@ _.info = {
     getNetwork();
   },
 };
-// TODO func e 更改
+
 function e(t, n, o) {
   if (t[n]) {
-    const tt = Object.assign({}, {...t});
-    var e = tt[n];
-    //debugger
-    tt[n] = function (tt) {
-      o.call(this, tt, n);
-      e.call(this, tt);
+    var e = t[n];
+    t[n] = function (t) {
+      o.call(this, t, n);
+      e.call(this, t);
     };
   } else {
-    tt[n] = function (tt) {
-      o.call(this, tt, n);
+    t[n] = function (t) {
+      o.call(this, t, n);
     };
   }
 }
@@ -353,7 +351,6 @@ App = function (t) {
 };
 
 function appLaunch(options) {
-  console.log(options, 'options');
   app = this;
   enviroment.init();
   // console.log('options=====', options);

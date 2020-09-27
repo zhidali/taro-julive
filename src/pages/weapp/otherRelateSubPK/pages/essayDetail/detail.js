@@ -129,15 +129,9 @@ Page({
     if (app.commonData.user.userId) {
       this.makeOrder();
     } else {
-      if (getApp().abTest.minprogram_version == 'B') {
         wx.navigateTo({
           url: '/loginSubPK/pages/register/register',
         });
-      } else {
-        this.setData({
-          showLoginModal: true,
-        });
-      }
     }
 
     var analyticProperties = this.analyticProperties();

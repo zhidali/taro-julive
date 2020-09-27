@@ -2,7 +2,7 @@ const sensors = require("./sensorsSDK/sensorsdata.min.js");
 const page = require("./julivePage.js");
 const julive_local_config = require("../julive-local-config.js");
 
-// TODO func e 更改
+// TODO 更改 func
 function e(t, n, o) {
   if (t[n]) {
     const tt = Object.assign({}, {...t});

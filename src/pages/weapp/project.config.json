@@ -272,6 +272,13 @@
 					"pathName": "pages/dome/dome",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "裂变页",
+					"pathName": "activitySubPK/pages/fissionActivity/fissionActivity",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

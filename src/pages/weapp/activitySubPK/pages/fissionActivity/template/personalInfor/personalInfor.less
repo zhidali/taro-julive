@@ -9,7 +9,7 @@
   box-sizing: border-box;
 
   .personal-avatar {
-
+    height: 100rpx;
 
     .un-login {
       width: 100rpx;
@@ -34,6 +34,8 @@
     }
 
     .login {
+      height: 100rpx;
+
       .img {
         width: 100rpx;
         height: 100rpx;
@@ -50,17 +52,12 @@
 
     .detail-reward {
       width: 276rpx;
-      font-size: 24rpx;
-      font-family: PingFangSC-Regular, PingFang SC;
-      font-weight: 400;
-      color: #8D9799;
-      line-height: 33rpx;
       padding-left: 24rpx;
       position: relative;
       box-sizing: border-box;
 
       .line {
-        width: 2rpx;
+        width: 1rpx;
         height: 54rpx;
         background: #E8ECF0;
         position: absolute;
@@ -69,6 +66,12 @@
       }
 
       .title {
+        display: flex;
+        align-items: center;
+        height: 33rpx;
+        line-height: 33rpx;
+        font-size: 24rpx;
+        color: #8D9799;
         display: flex;
         align-items: center;
 
@@ -80,12 +83,11 @@
 
       .money {
         color: #FF7E45;
-        font-family: PingFangSC-Medium, PingFang SC;
 
         .num {
           height: 67rpx;
           font-size: 48rpx;
-          font-weight: 500;
+          font-weight: bold;
           line-height: 67rpx;
         }
 

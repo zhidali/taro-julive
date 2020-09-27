@@ -1,5 +1,5 @@
 var WxParse = require('../../../utils/wxParse/wxParse.js');
-const enviroment = require('../../../enviroment/enviroment.js');
+// const enviroment = require('../../../enviroment/enviroment.js');
 const bezierCurve = require('../../../utils/bezierCurve.js');
 const wxUserInfo = require('../../../user/wxUserInfo.js');
 const autoanalysis = require('../autoanalysis/autoanalysis.js');
@@ -15,6 +15,7 @@ Page({
     hide_good_box: true,
     videoFullScreen: true,
     ePageViewFlag: false,
+    employee: {}
   },
   acquireWxLogin(res) {
     this.setData({
@@ -92,10 +93,10 @@ Page({
     }
     _this.setData(
       {
-        // BUG
         employee: data.employee || {mobile: '', id: ''},
         detailserver: data.detailserver,
-        open_id: enviroment.getOpenId(),
+        // open_id: enviroment.getOpenId(),
+        open_id: app.enviroment.openId,
         title: data.title,
         loadingHidden: true,
         district_id: data.id,

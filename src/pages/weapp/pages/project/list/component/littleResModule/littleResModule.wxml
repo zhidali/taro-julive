@@ -1,4 +1,4 @@
-<view class="little-res-module my-class">
+<view class="little-res-module my-class {{projectListLength === 0?'little-res-border':''}}">
   <view class="tit">
     {{projectListLength === 0 ? '抱歉，暂无满足当前条件的楼盘…' : '当前条件下，楼盘数量较少'}}
   </view>

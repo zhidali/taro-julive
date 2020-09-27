@@ -61,11 +61,11 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    // 允许登陆
+    // 允许登录
     allowLogin(e) {
       this.makeOrder();
     },
-    // 取消登陆
+    // 取消登录
     cancelLogin() {
       wx.showToast({
         title: "预约失败",

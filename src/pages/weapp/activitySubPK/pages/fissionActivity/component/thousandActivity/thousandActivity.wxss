@@ -3,11 +3,12 @@
   background-color: #ffffff;
   margin: 32rpx 0rpx;
   position: relative;
+  border-radius: 12rpx;
 }
 .box .header {
   height: 256rpx;
   background: linear-gradient(90deg, #ff6e45 0%, #fea943 100%);
-  border-radius: 20px 20px 0px 0px;
+  border-radius: 20rpx 20rpx 0px 0px;
   position: relative;
   z-index: 2;
   overflow: hidden;
@@ -15,12 +16,23 @@
 .box .header .header-title {
   height: 95rpx;
   font-size: 68rpx;
-  font-family: PingFangSC-Medium, PingFang SC;
   font-weight: 500;
   color: #ffffff;
   line-height: 95rpx;
   margin-top: 40rpx;
   margin-left: 24rpx;
+  position: relative;
+}
+.box .header .header-title .header-title-lf {
+  display: inline-block;
+}
+.box .header .header-title .header-title-ri-img {
+  height: 24rpx;
+  width: 48rpx;
+  display: inline-block;
+  margin-left: 8rpx;
+  margin-bottom: 20rpx;
+  vertical-align: bottom;
 }
 .box .header .header-conntet {
   height: 40rpx;
@@ -32,6 +44,13 @@
   margin-left: 24rpx;
   position: relative;
   z-index: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.box .header .header-conntet-two {
+  font-size: 24rpx;
+  opacity: 0.7;
 }
 .box .header .header-righrt {
   position: absolute;
@@ -40,11 +59,13 @@
   height: 36rpx;
   z-index: 3;
   line-height: 36rpx;
-  background: #ffee18;
+  font-size: 24rpx;
+  background: #FF3453;
   border-radius: 4px;
   font-weight: 400;
-  color: #89500a;
+  color: #ffffff;
   padding: 0rpx 8rpx;
+  border-radius: 4rpx;
 }
 .box .header-strip {
   width: calc(100% - 30rpx);
@@ -73,6 +94,7 @@
   text-align: center;
   padding: 16rpx 0rpx;
   position: relative;
+  border-radius: 8rpx;
 }
 .box .tab .tab-itenm .tab-itenm-up {
   height: 33rpx;
@@ -86,7 +108,6 @@
   margin-top: 4rpx;
   height: 40rpx;
   font-size: 28rpx;
-  font-family: PingFangSC-Medium, PingFang SC;
   font-weight: 500;
   color: #ff7e45;
   line-height: 40rpx;
@@ -103,9 +124,12 @@
   background: #fff0e9;
 }
 .box .void-value {
-  margin-top: 86rpx;
+  height: 518rpx;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding-top: 86rpx;
   text-align: center;
-  margin-bottom: 118rpx;
+  padding-bottom: 118rpx;
 }
 .box .void-value .void-value-img {
   width: 228rpx;
@@ -114,61 +138,65 @@
   margin: 0px auto;
   margin-bottom: 16rpx;
 }
-.box .void-value text {
+.box .void-value .void-value-text {
   font-size: 28rpx;
-  font-family: PingFangSC-Regular, PingFang SC;
   font-weight: 400;
   color: #8d9799;
   line-height: 40rpx;
 }
 .box .scroll {
   width: 100%;
-  margin-top: 24rpx;
+  padding-top: 24rpx;
+  height: 518rpx;
+  overflow: hidden;
+  box-sizing: border-box;
 }
-.box .scroll scroll-view {
+.box .scroll .scroll-view {
   height: 440rpx;
 }
-.box .scroll scroll-view .scroll-item {
+.box .scroll .scroll-view .scroll-item {
   height: 80rpx;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0rpx 12rpx;
 }
-.box .scroll scroll-view .scroll-item .scroll-item-left {
+.box .scroll .scroll-view .scroll-item .scroll-item-left {
   display: flex;
   flex-direction: row;
   align-items: center;
+  max-width: 72%;
 }
-.box .scroll scroll-view .scroll-item .scroll-item-left .scroll-item-left-name {
+.box .scroll .scroll-view .scroll-item .scroll-item-left .scroll-item-left-name {
   display: block;
   margin-left: 8rpx;
   font-size: 24rpx;
-  font-family: PingFangSC-Regular, PingFang SC;
   font-weight: 400;
   color: #031a1f;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 80%;
 }
-.box .scroll scroll-view .scroll-item .scroll-item-left .scroll-item-img {
+.box .scroll .scroll-view .scroll-item .scroll-item-left .scroll-item-img {
   height: 50rpx;
   width: 50rpx;
 }
-.box .scroll scroll-view .scroll-item .scroll-item-right {
+.box .scroll .scroll-view .scroll-item .scroll-item-right {
   font-size: 24rpx;
-  font-family: PingFangSC-Regular, PingFang SC;
   font-weight: 400;
   color: #8d9799;
 }
-.box .scroll scroll-view .gray {
+.box .scroll .scroll-view .gray {
   background: #fafafa;
 }
-.box .scroll scroll-view .scroll-item-img {
+.box .scroll .scroll-view .scroll-item-img {
   height: 50rpx;
   width: 50rpx;
 }
 .box .scroll .scroll-footer {
   height: 33rpx;
   font-size: 24rpx;
-  font-family: PingFangSC-Regular, PingFang SC;
   font-weight: 400;
   color: #8d9799;
   line-height: 33rpx;
@@ -179,19 +207,18 @@
   width: 100%;
   height: 96rpx;
   line-height: 96rpx;
-  font-size: 28rpx;
   font-family: PingFangSC-Regular, PingFang SC;
   font-weight: 400;
   color: #ffffff;
   text-align: center;
   overflow: hidden;
 }
-.box .btn text {
+.box .btn .btn-text {
   display: inline-block;
   width: 100%;
   height: 100%;
 }
-.box .btn button {
+.box .btn .btn-btn {
   width: 100%;
   height: 100%;
   border: none;
@@ -199,9 +226,14 @@
   margin: none;
   height: 96rpx;
   line-height: 96rpx;
-  font-size: 28rpx;
   background-color: transparent;
   color: #ffffff;
+}
+.box .btn-font-36 {
+  font-size: 36rpx;
+}
+.box .btn-font-28 {
+  font-size: 28rpx;
 }
 .box .btn-allow {
   background: url("https://imgs.julive.com/l?p=eyJpbWdfcGF0aCI6IlwvbWluaW1ncy9maXNzaW9uLWpvaW4tYnRuLWEucG5nP3dhdGVybWFyayx0XzAifQ==") no-repeat;

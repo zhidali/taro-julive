@@ -36,7 +36,8 @@ const config = {
   'dipperSubPK/pages/orderConfig/orderConfig': 'p_buy_house_demand',
   'dipperSubPK/pages/clientMessage/clientMessage': 'p_feedback',
   'dipperSubPK/pages/recommendMap/recommendMap': 'p_recommend_project',
-  'myRelateSubPK/pages/myFavorite/myFavorite': 'p_my_follow'
+  'myRelateSubPK/pages/myFavorite/myFavorite': 'p_my_follow',
+  'activitySubPK/pages/fissionActivity/fissionActivity': 'p_help_activity'
 
 };
 

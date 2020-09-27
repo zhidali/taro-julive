@@ -17,27 +17,37 @@
         </view>
       </authorize-login>
     </view>
-    <swiper
-      class="swiper-box"
-      indicator-dots="{{false}}"
-      duration="500"
-      circular="true"
-      current="{{currentBannerIndex}}"
-      bindchange="projectSwiperChange"
-    >
-      <swiper-item wx:for="{{projectData.img_list}}" wx:for-index="index" wx:key="item">
-        <view class="swiper-item">
-          <image
-            class="project-image-b"
-            src="{{ item.url.length > 0 ?  tools.resizeImageUrl(item.url, 345, 180) : 'https://imgs.julive.com/l?p=eyJpbWdfcGF0aCI6IlwvbWluaW1ncy9iZy1kZWZhdWx0LXBsYW5iLnBuZz93YXRlcm1hcmssdF8wIn0=' }}"
-            data-index="{{index}}"
-            data-img="https://imgs.julive.com/l?p=eyJpbWdfcGF0aCI6IlwvbWluaW1ncy9iZy1kZWZhdWx0LXBsYW5iLnBuZz93YXRlcm1hcmssdF8wIn0="
-            binderror="errLoad"
-          ></image>
-          <image wx:if="{{projectData.video_path != '' && index == 0}}" src="/image/icon-video.png"  class="video-tag"/>
-        </view>
-      </swiper-item>
-    </swiper>
+    <block wx:if="{{projectData.img_list && projectData.img_list.length > 0}}">
+      <swiper
+        class="swiper-box"
+        indicator-dots="{{false}}"
+        duration="500"
+        circular="true"
+        current="{{currentBannerIndex}}"
+        bindchange="projectSwiperChange"
+      >
+        <swiper-item wx:for="{{projectData.img_list}}" wx:for-index="index" wx:key="item">
+          <view class="swiper-item">
+            <image
+              class="project-image-b"
+              src="{{item && item.url.length > 0 ?  tools.resizeImageUrl(item.url, 345, 180) : 'https://imgs.julive.com/l?p=eyJpbWdfcGF0aCI6IlwvbWluaW1ncy9iZy1kZWZhdWx0LXBsYW5iLnBuZz93YXRlcm1hcmssdF8wIn0=' }}"
+              data-index="{{index}}"
+              data-img="https://imgs.julive.com/l?p=eyJpbWdfcGF0aCI6IlwvbWluaW1ncy9iZy1kZWZhdWx0LXBsYW5iLnBuZz93YXRlcm1hcmssdF8wIn0="
+              binderror="errLoad"
+            ></image>
+            <image wx:if="{{projectData.video_path != '' && index == 0}}" src="/image/icon-video.png"  class="video-tag"/>
+
+            <!-- binderror -->
+          </view>
+        </swiper-item>
+      </swiper>
+    </block>
+    <block wx:else>
+      <image
+        class="project-image-default"
+        src="https://imgs.julive.com/l?p=eyJpbWdfcGF0aCI6IlwvbWluaW1ncy9iZy1kZWZhdWx0LXBsYW5iLnBuZz93YXRlcm1hcmssdF8wIn0="
+      ></image>
+    </block>
     <view
       class="swiper-banner-indicator swiper-banner-indicator-bottom"
       wx:if="{{projectData.img_list.length > 1}}"
@@ -65,7 +75,7 @@
         }}{{projectData.acreage.acreage_max}}{{projectData.acreage.unit}}
       </view>
     </view>
-    <view class="tag-wrap space" wx-if="{{projectData.billboard_tag != '' || projectData.brand_tag.length>0 || projectData.ascept_tag.length>0}}">
+    <view class="tag-wrap space" wx:if="{{projectData.billboard_tag != '' || projectData.brand_tag.length>0 || projectData.ascept_tag.length>0}}">
       <view class="tag rank-tag" wx:if="{{projectData.billboard_tag != ''}}">
         <image class="rank" src="/image/icon-rank.png"></image>
         {{projectData.billboard_tag}}

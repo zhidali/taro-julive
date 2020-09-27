@@ -2,7 +2,7 @@
  * @author: wangshuaixue
  * @Date: 2020-08-17 15:38:38
  * @description: 列表页 楼盘卡片B
- * @LastEditTime: 2020-09-10 17:12:37
+ * @LastEditTime: 2020-09-21 17:10:22
  */
 import {
   favorite
@@ -68,12 +68,12 @@ Component({
    */
   methods: {
 
-    // 允许登陆
+    // 允许登录
     allowLogin(e) {
       this.data.isLike = true;
       this.changeCollect()
     },
-    // 取消登陆
+    // 取消登录
     cancelLogin() {
       // 收藏失败
       this.triggerEvent('changeCollect', {
@@ -120,7 +120,7 @@ Component({
       } = this.data;
       var default_img = e.currentTarget.dataset.img;
       var index = e.currentTarget.dataset.index;
-      projectData.img_list[index].url = default_img;
+      projectData.img_list[index] && (projectData.img_list[index].url = default_img);
       this.setData({
         projectData
       })

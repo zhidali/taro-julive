@@ -26,7 +26,7 @@
             <view class="employee-info-btn" bindtap="didTapAskEmployee" data-index="{{index}}">
               <view class="common-button-content">免费咨询</view>
             </view>
-            <!-- 实验B登陆按钮 -->
+            <!-- 实验B登录按钮 -->
             <view wx:if="{{!userLoginStatus}}" data-index="{{index}}" class="list-employee-wx-loging">
               <wxLogin markOpType="{{opType}}" markOpType="{{opType}}" markIndex="{{index}}" bindClickGetPhoneNumberBtn="passBackGetPhoneNumberBtn" bindFastLoginCallBack="passBackFastLoginCallBack"></wxLogin>
             </view>
@@ -50,7 +50,7 @@
                 <view class="employee-info-btn" bindtap="didTapAskEmployee" data-index="{{index}}">
                   <view class="common-button-content">免费咨询</view>
                 </view>
-                <!-- 实验B登陆按钮 -->
+                <!-- 实验B登录按钮 -->
                 <view wx:if="{{!userLoginStatus}}" class="list-employee-wx-loging">
                   <wxLogin markOpType="{{opType}}" markOpType="{{opType}}" markIndex="{{index}}" bindClickGetPhoneNumberBtn="passBackGetPhoneNumberBtn" bindFastLoginCallBack="passBackFastLoginCallBack"></wxLogin>
                 </view>

@@ -31,10 +31,16 @@ async function seeUserList(data = {}) {
 async function signUserList(data = {}) {
   return await app.request("/wxmini/v1/activity/sign-user-list", data);
 }
+
+// 首页裂变活动--助力提交接口
+async function fissionSubmit(data = {}) {
+  return await app.request('/wxmini/v1/activity/pop-submit', data)
+}
 export {
   activityCommon,
   activityUserInfo,
   helpUserList,
   seeUserList,
   signUserList,
+  fissionSubmit
 };

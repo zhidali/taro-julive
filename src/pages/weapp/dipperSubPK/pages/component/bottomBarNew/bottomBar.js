@@ -1,4 +1,4 @@
-const enviroment = require('../../../../enviroment/enviroment.js');
+// const enviroment = require('../../../../enviroment/enviroment.js');
 const notification = require("../../../../utils/notification.js");
 const app = getApp()
 Component({
@@ -53,7 +53,8 @@ Component({
         });
       }
       app.request('/v1/beidou/collect', {
-        open_id: enviroment.getOpenId(),
+        // open_id: enviroment.getOpenId(),
+        open_id: app.enviroment.openId,
         share_id: this.data.share_id,
         show_type: this.data.show_type,
         order_id: this.data.order_id,

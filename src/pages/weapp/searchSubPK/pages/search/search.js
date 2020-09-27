@@ -1,5 +1,5 @@
 const app = getApp();
-const location = require("../../../location/location.js");
+// const location = require("../../../location/location.js");
 const analytic = require('../../../analytic/analytic.js');
 import {
   searchQuick,
@@ -315,7 +315,7 @@ Page({
       // 如果点击的是区域 筛选项联动
       if (typename == 2) {
         app.globalData.newFilter = Object.assign({}, app.globalData.newFilter, {
-          a: filter ? [filter.value] : ''
+          a: filter && typeof(filter) == 'object' ? [filter.value] : []
         });
       }
       app.globalData.searchKey = isCityChange || typename == 2 ? '' : name;
@@ -435,7 +435,8 @@ Page({
       city_name: e.currentTarget.dataset.name
     };
     app.commonData.city = cityInfo;
-    location.cityChanged(cityInfo);
+    // location.cityChanged(cityInfo);
+    app.enviroment.setCityInfo(cityInfo);
     this.toResPage(e, true);
   }
 });

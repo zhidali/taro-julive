@@ -54,7 +54,7 @@
         projectData.acreage.acreage_max) ? projectData.acreage.acreage_max : ''}}{{projectData.acreage.unit}}
       </view>
     </view>
-    <view class="tag-wrap" wx-if="{{projectData.billboard_tag != '' || projectData.brand_tag.length>0 || projectData.ascept_tag.length>0}}" >
+    <view class="tag-wrap" wx:if="{{projectData.billboard_tag != '' || projectData.brand_tag.length>0 || projectData.ascept_tag.length>0}}" >
       <label class="tag rank-tag" wx:if="{{projectData.billboard_tag != ''}}">
         <image class="rank" src="/image/icon-rank.png"></image>
         {{projectData.billboard_tag}}

@@ -22,7 +22,7 @@ Component({
     loginTitle: '请先登录',
     loginContent: '登录后将提供给你更个性化的服务',
     contentFooter: '',
-    userLoginStatus: true, //false时，显示微信登陆
+    userLoginStatus: true, //false时，显示微信登录
     barTypeData: {
       isShow: false,
       type: 1,
@@ -240,7 +240,10 @@ Component({
     // 特价楼盘 优惠楼盘点击咨询
     didTapSpecialConsult: function (e, markIndex) {
       let index = e ? e.currentTarget.dataset.index : markIndex;
-      let projectId = this.data.projectNewsList[index].project_id;
+      let projectId = '';
+      if(this.data.projectNewsList[index]){
+        projectId = this.data.projectNewsList[index].project_id;
+      }
       let type = this.data.projectNewsList[index].type;
       let opType = type == 1 ? '900709' : '900710';
       this.setData({
@@ -273,10 +276,11 @@ Component({
 
     onGetUserInfo: function (e) {
       var projectNews = e.currentTarget.dataset.projectNews;
+      // BUG
       var index = e.currentTarget.dataset.index;
-      var nickName = e.detail.userInfo.nickName;
-      var avatarUrl = e.detail.userInfo.avatarUrl;
       if (e.detail.userInfo) {
+        var nickName = e.detail.userInfo.nickName ;
+        var avatarUrl = e.detail.userInfo.avatarUrl ;
         wxUserInfo.init();
         var statusColor = util.statusColor(
           projectNews.project_info.status.value
@@ -358,7 +362,6 @@ Component({
     },
 
     makeOrder: function (noConfirmPop) {
-      console.log('app.commonData.use----', app.commonData.use)
       if (noConfirmPop !== false) {
         wx.showLoading({
           title: '预约中...',
@@ -423,7 +426,7 @@ Component({
       );
       appPage.globalData.houseDynamicLoginOnce = true;
     },
-    //点击微信登陆。允许或者拒绝 回调
+    //点击微信登录。允许或者拒绝 回调
     passBackGetPhoneNumberBtn(e) {
       let {
         markOpType,
@@ -445,7 +448,7 @@ Component({
       }
     },
 
-    //微信登陆 拒绝后回调 和允许后调用完fast-login 回调，允许loginStatus=true
+    //微信登录 拒绝后回调 和允许后调用完fast-login 回调，允许loginStatus=true
     passBackFastLoginCallBack(e) {
       let {
         loginStatus

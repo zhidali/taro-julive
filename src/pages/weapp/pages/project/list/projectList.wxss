@@ -614,10 +614,6 @@ page {
   margin-top: 80rpx;
 }
 
-.loading-tip {
-  margin-bottom: 100rpx;
-}
-
 .exposure14 {
   margin-bottom: 52rpx;
 }

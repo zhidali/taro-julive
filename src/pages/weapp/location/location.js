@@ -17,7 +17,7 @@ location.cityChanged = function (city) {
     return;
   }
   // 切换城市再次拉取conf
-  app.getAbtest();
+  // app.getAbtest();
   notification.postNotificationName("CityHadChanged", {
     city: city
   });
@@ -84,14 +84,8 @@ location.fetchCityInfo = function (lat, lng) {
       if (d.code == 0 && data != null) {
         // 避免用户 缓存已存在沈阳，然后二次打开小程序  fetchCityInfo  后重新触发 
         if (app.commonData.city.city_id && data.city_id === app.commonData.city.city_id) return;
-        app.commonData.city = {
-          city_name: '北京',
-          city_id: '2'
-        }
-        location.cityChanged({
-          city_name: '北京',
-          city_id: '2'
-        })
+        app.commonData.city = data
+        location.cityChanged(data)
 
         //需要通知首页。列表页面刷新数据,首页列表页面的方法名字是一样的
         if (app.globalData.commonQrInfo) {

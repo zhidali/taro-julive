@@ -21,10 +21,6 @@ Component({
       type: Number,
       value: 0,
     },
-    radiusFlag: {
-      type: String,
-      value: '',
-    },
   },
 
   options: {

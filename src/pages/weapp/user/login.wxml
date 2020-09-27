@@ -73,7 +73,7 @@
     </view>
   </view>
 </view>
-<!-- 领取优惠首页登陆样式 -->
+<!-- 领取优惠首页登录样式 -->
 <view catchtouchmove="preventTouchMove" class="modal-dialog-getDiscounts" wx:if="{{showModal && popType == 3}}">
   <view class="modal-dialog-getDiscounts-title">
     已有

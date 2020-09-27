@@ -3,6 +3,7 @@
   <dialog-shell
     wx:if="{{fissionDialogShow}}"
     class="pop-fission-activity"
+    wrap-class="fission-dialog-wrap"
     hasImg="{{false}}"
   >
     <view class="fission-activity-dialog" style="background: url({{fissionDialogData.bg_img}}) no-repeat; background-size: contain">
@@ -17,7 +18,7 @@
       </view>
       <rich-text class="{{fissionDialogData.type == 1 ? 'invite-content center' : 'invite-content'}}" nodes="{{fissionDialogData.title}}"> </rich-text>
       <view class="invite-btn-box">
-        <button class="invite-btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo" wx:if="{{loginStatus}}">
+        <button class="invite-btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo" wx:if="{{loginStatus && !wxUserHeadInfoStatus}}">
           {{fissionDialogData.btn}}
         </button>
         <view class="invite-btn" bindtap="clickFissionBtn" wx:else>

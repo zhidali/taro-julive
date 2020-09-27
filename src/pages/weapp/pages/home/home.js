@@ -4,7 +4,7 @@ const route = require('../../route/route.js');
 const analytic = require('../../analytic/analytic.js');
 const order = require('../../order/order.js');
 const reportPerformance = require('../../reportPerformance/reportPerformance');
-const enviroment = require('../../enviroment/enviroment.js');
+// const enviroment = require('../../enviroment/enviroment.js');
 const utilGetQr = require('../../utils/utilGetQr.js');
 
 import {
@@ -47,13 +47,13 @@ Page({
     showTabModule: true,
     //落地页弹窗的数据
     tanceng: '',
-    //底部的一键登录，type==1，代表是底部一键登陆弹窗，
+    //底部的一键登录，type==1，代表是底部一键登录弹窗，
     barTypeData: {
       isShow: false,
       type: 1,
       once: false,
     },
-    userLoginStatus: false, // 当前登陆状态，true是登陆
+    userLoginStatus: false, // 当前登录状态，true是登录
     bannerOne: [], // banner 1
     currentBannerOneIndexShadow: 0, //banner1 的当前展示的index加阴影
     bannerTwo: [], //banner 2
@@ -99,18 +99,17 @@ Page({
       userLoginStatus: app.commonData.user.userId ? true : false,
       findRoomState: (app.commonData.user.userId && !app.commonData.userHasOrder) || !app.commonData.user.userId
     })
-    // 如果是裂变活动分享卡片进来的 且没有登陆则直接跳转登陆页
+    // 如果是裂变活动分享卡片进来的 且没有登录则直接跳转登录页
     if (app.commonData.fissionShareId) {
-      setTimeout(() => {
-        // 要等/v1/user/user-info接口返回数据 所以加setTimeout
-        if (!app.commonData.login_status) {
-          wx.navigateTo({
-            url: '../../loginSubPK/pages/register/register?isFission=1'
-          })
-        }
-      }, 500);
+      // 要等/v1/user/user-info接口返回数据
+      await app.setUser();
+      if (!app.commonData.login_status) {
+        wx.navigateTo({
+          url: '/loginSubPK/pages/register/register?isFission=1'
+        })
+      }
     }
-    // 监听登陆状态变化
+    // 监听登录状态变化
     app.watchCommonData('login_status', (newv) => {
       this.setData({
         userLoginStatus: newv ? true : false,
@@ -173,7 +172,7 @@ Page({
       }
     });
 
-    // 吸底部 登陆弹窗 他处登陆后关闭
+    // 吸底部 登录弹窗 他处登录后关闭
     if (this.data.userLoginStatus && this.data.barTypeData.type == '1') {
       this.setData({
         ['barTypeData.isShow']: false,
@@ -226,7 +225,8 @@ Page({
     }
     if (eventName == 'e_page_view') {
       analyticProperties.channel_id = app.commonData.channel.channel_id;
-      analyticProperties.channel_put = enviroment.getChannelPut();
+      // analyticProperties.channel_put = enviroment.getChannelPut();
+      analyticProperties.channel_put = app.enviroment.channel_put;
     } else {
       var viewTime = (Date.parse(new Date()) - this.data.startViewTime) / 1000;
       analyticProperties.view_time = viewTime;
@@ -697,7 +697,7 @@ Page({
   },
 
   /**
-   * bannerone： 点击bannerone第一个登陆时候 暂停轮播
+   * bannerone： 点击bannerone第一个登录时候 暂停轮播
    */
   pauseBannerOneplay(e) {
     this.setData({
@@ -1015,7 +1015,7 @@ Page({
   },
 
   /**
-   * 底部一键登陆：点击蒙层 
+   * 底部一键登录：点击蒙层 
    */
   didClickCloseBarType() {
     let _this = this;
@@ -1039,7 +1039,7 @@ Page({
     });
   },
   /**
-   * 底部一键登陆：点击一键登陆
+   * 底部一键登录：点击一键登录
    */
   didClickBarTypeLogin() {
     analytic.sensors.track('e_click_onekey_login', {
@@ -1050,7 +1050,7 @@ Page({
     });
   },
   /**
-   * 底部一键登陆：登陆成功的回调事件
+   * 底部一键登录：登录成功的回调事件
    */
   bottomToLoginPageCallBack() {
     this.setData({
@@ -1100,7 +1100,7 @@ Page({
     wx.navigateTo({
       url: '/myRelateSubPK/pages/getReport/getReport',
     });
-    // type: 1 底部登陆后 埋点
+    // type: 1 底部登录后 埋点
     let ob = {
       fromPage: 'p_home',
       fromItem: 'i_report_entry',
@@ -1161,7 +1161,7 @@ Page({
   async getHomePopupData() {
     try {
       let params = {
-        share_id: app.commonData.fissionShareId
+        share_id: app.commonData.fissionShareId || ''
       }
       let res = await getHomePopup(params);
       if (res.code == 0) {
@@ -1342,7 +1342,7 @@ Page({
 
 
   /**
-   * 微信授权登陆：
+   * 微信授权登录：
    */
   loginSuccessCallback: function () {
     this.setData({
@@ -1352,7 +1352,7 @@ Page({
     this.makeOrder();
   },
   /**
-   * 微信授权登陆：登陆成功的回调事件
+   * 微信授权登录：登录成功的回调事件
    */
   passBackFastLoginCallBack(e) {
     let {
@@ -1360,7 +1360,7 @@ Page({
       markType
     } = e.detail;
     if (loginStatus && markType === '261') {
-      // markType 261 点击底部登陆条幅 成功回调
+      // markType 261 点击底部登录条幅 成功回调
       this.bottomToLoginPageCallBack();
       analytic.sensors.track('e_click_confirm_login', {
         fromPage: 'p_home',
@@ -1369,7 +1369,7 @@ Page({
         fromItem: 'i_confirm_login',
       });
     } else if (markType === '262') {
-      // 点击bannerone 第一个img 登陆成功
+      // 点击bannerone 第一个img 登录成功
       this.bannerOneLogin(loginStatus);
       if (!loginStatus) return;
       analytic.sensors.track('e_click_confirm_login', {
@@ -1398,7 +1398,7 @@ Page({
   },
 
   /**
-   * 微信授权登陆：授权允许的成功回调
+   * 微信授权登录：授权允许的成功回调
    */
   passBackGetPhoneNumberBtn(e) {
     let {
@@ -1634,7 +1634,7 @@ Page({
   exposurFindRoomModule() {
     wx.createIntersectionObserver().relativeToViewport({
       bottom: -80
-    }).observe('.find-house-component-box', (res) => {
+    }).observe('.find-house-component', (res) => {
       analytic.sensors.track('e_module_exposure', {
         fromPage: 'p_home',
         fromModule: 'm_appoint_banner',
@@ -1648,7 +1648,7 @@ Page({
   exposurLittleModule() {
     wx.createIntersectionObserver().relativeToViewport({
       bottom: -80
-    }).observe('.little-res-module-component', (res) => {
+    }).observe('.little-res-module', (res) => {
       analytic.sensors.track('e_module_exposure', {
         fromPage: 'p_home',
         fromModule: 'm_little_filter_guide',
@@ -1750,9 +1750,11 @@ Page({
   clickFilterKeyToTop() {
     const query = wx.createSelectorQuery();
     query.select('#home-filter').boundingClientRect((res) => {
-      wx.pageScrollTo({
-        scrollTop: res.top + this.data.pageScrollTop + 2
-      })
+      if(res){
+        wx.pageScrollTo({
+          scrollTop: res.top + this.data.pageScrollTop + 2
+        })
+      }
     }).exec();
   },
 
@@ -1792,23 +1794,10 @@ Page({
         } else {
           defaultFilter[e.detail.key].splice(defaultFilter[e.detail.key].indexOf(e.detail.value), 1);
         }
-        analytic.sensors.track('e_click_delete_filter', {
-          fromPage: 'p_home',
-          fromModule: 'm_little_filter_guide',
-          fromItem: 'i_delete_filter',
-          toPage: 'p_home',
-          filter_id: [e.detail.key]
-        });
       } else {
         delete this.data.homeDefaultFilter[e.detail.key];
       }
     } else {
-      analytic.sensors.track('e_click_reset', {
-        fromPage: 'p_home',
-        fromModule: 'm_little_filter_guide',
-        fromItem: 'i_reset',
-        toPage: 'p_home'
-      });
       defaultFilter = {};
     }
     this.setData({

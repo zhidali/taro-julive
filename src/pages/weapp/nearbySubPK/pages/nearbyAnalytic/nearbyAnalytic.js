@@ -72,7 +72,6 @@ Page({
       var values = [];
       this.data.optionsList.forEach((item) => {
         var option = item.key;
-        // BUG
         let mapresult = [];
         if(bmksearch.getMarkerData() && bmksearch.getMarkerData()[option]){
           mapresult = bmksearch.getMarkerData()[option]['wxMarkerData'] || [];
@@ -80,10 +79,10 @@ Page({
         item.count = mapresult.length;
         values.push(item);
       });
-      // BUG
+
       let markers = [];
       if(bmksearch.getMarkerData() && bmksearch.getMarkerData()[selectOption.key]){
-        markers = bmksearch.getMarkerData()[selectOption.key]['wxMarkerData'] || []
+        markers = bmksearch.getMarkerData()[selectOption.key]['wxMarkerData']
       }
       this.setData({
         projectId: projectId,
@@ -188,16 +187,13 @@ Page({
     var item = e.currentTarget.dataset.item;
     if (index == this.data.currentTabIndex) return;
     var keys = ['traffic', 'life', 'hospital', 'school'];
-
+    
     let markers = [];
     if(bmksearch.getMarkerData() && bmksearch.getMarkerData()[keys[index]]){
-      markers = bmksearch.getMarkerData()[keys[index]]['wxMarkerData'] || []
+      markers = bmksearch.getMarkerData()[keys[index]]['wxMarkerData'];
     }
-
     this.setData({
       currentTabIndex: index,
-      // BUG
-      //markers: bmksearch.getMarkerData()[keys[index]]['wxMarkerData'],
       markers,
       userInfo: {
         project_id: this.data.projectId,

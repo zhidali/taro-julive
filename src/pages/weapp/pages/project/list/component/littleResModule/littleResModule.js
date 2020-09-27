@@ -46,7 +46,7 @@ Component({
         }
         // 9167埋点
         analyticObj.fromItem = 'i_delete_filter';
-        analyticObj.filter_id = e.currentTarget.dataset.name;
+        analyticObj.tab_id = e.currentTarget.dataset.name;
         analytic.sensors.track('e_click_delete_filter', analyticObj);
       } else {
         // 9168埋点 点击重置

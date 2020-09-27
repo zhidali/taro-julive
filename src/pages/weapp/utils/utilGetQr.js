@@ -1,18 +1,17 @@
 /*
  * @Author: your name
  * @Date: 2020-07-20 22:00:20
- * @LastEditTime: 2020-08-13 17:27:48
+ * @LastEditTime: 2020-09-25 18:30:01
  * @LastEditors: zhidl
  * @Description: In User Settings Edit
  * @FilePath: /julive/utils/utilGetQr.js
  */
 
-const app = getApp();
-const enviroment = require('../enviroment/enviroment.js');
-const location = require('../location/location.js');
+// const enviroment = require('../enviroment/enviroment.js');
+// const location = require('../location/location.js');
 const analytic = require('../analytic/analytic.js');
-
 async function getCommonQrInfo(id) {
+  const app = getApp();
   const res = await app.request('/wxmini/v1/common/qr-info', {
     qr_id: id
   });
@@ -26,10 +25,12 @@ async function getCommonQrInfo(id) {
     });
   }
   if (_obj.utm_source) {
-    enviroment.setChannel(_obj.utm_source);
+    // enviroment.setChannel(_obj.utm_source);
+    app.enviroment.setChannel(_obj.utm_source);
   }
   if (_obj.channel_put) {
-    enviroment.setChannelPut(_obj.channel_put);
+    // enviroment.setChannelPut(_obj.channel_put);
+    app.enviroment.setChannelPut(_obj.channel_put);
     analytic.sensors.registerApp({
       channel_put: _obj.channel_put
     });
@@ -41,7 +42,8 @@ async function getCommonQrInfo(id) {
       city_name: city_name,
     }
     app.commonData.city = city;
-    location.cityChanged(city)
+    // location.cityChanged(city)
+    app.enviroment.setCityInfo(city);
   }
   return res.data.json;
 }

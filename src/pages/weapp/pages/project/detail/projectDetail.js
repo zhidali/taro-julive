@@ -2,7 +2,7 @@ const app = getApp();
 const WxParse = require('../../../utils/wxParse/wxParse.js');
 const tool = require('../../../utils/util.js');
 const order = require('../../../order/order.js');
-const location = require('../../../location/location.js');
+// const location = require('../../../location/location.js');
 const route = require('../../../route/route.js');
 const analytic = require('../../../analytic/analytic.js');
 const bmksearch = require('../../../utils/bmksearch/bmksearch.js');
@@ -214,7 +214,9 @@ Page({
         ) {
           if (info.city_info.city_id != app.commonData.city.city_id) {
             app.commonData.city = info.city_info;
-            location.cityChanged(info.city_info)
+
+            // location.cityChanged(info.city_info)
+            app.enviroment.setCityInfo(info.city_info);
           }
         }
 
@@ -767,18 +769,10 @@ Page({
   // },
 
   didTapProjectCellView: function (e) {
-    var opType = e.currentTarget.dataset.opType;
-
     let _id = e.currentTarget.dataset.id;
-    if (getApp().abTest.minprogram_version == 'B') {
       wx.navigateTo({
         url: `/pages/web/web?url=${getApp().commonData.m_domain_project}${_id}.html`
       });
-    } else {
-      wx.navigateTo({
-        url: '../detail/projectDetail?projectId=' + _id,
-      });
-    }
     var analyticProperties = this.analyticProperties();
     var index = e.currentTarget.dataset.index;
     analyticProperties.toPage = analyticProperties.fromPage;
@@ -1093,7 +1087,7 @@ Page({
   },
 
   loginSuccessCallback: function (e) {
-    // 详情页 点击收藏 未登陆的用户 返回没有操作
+    // 详情页 点击收藏 未登录的用户 返回没有操作
     if (e == undefined) return;
     let type = 1;
     if (e && !!e.detail.popType && e.detail.popType === '2') {
@@ -1667,7 +1661,7 @@ Page({
   },
   loginSuccessNotice() {
     wx.showToast({
-      title: '登陆成功',
+      title: '登录成功',
       icon: 'none',
       duration: 2000,
     });

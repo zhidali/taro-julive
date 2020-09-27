@@ -1,5 +1,5 @@
 const app = getApp();
-const location = require("../../../location/location.js");
+// const location = require("../../../location/location.js");
 var WxParse = require("../../../utils/wxParse/wxParse.js");
 var tool = require("../../../utils/util.js");
 var analytic = require("../../../analytic/analytic.js");

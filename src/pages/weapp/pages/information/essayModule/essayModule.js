@@ -1,7 +1,7 @@
 const app = getApp();
 const notification = require('../../../utils/notification.js');
 const analytic = require('../../../analytic/analytic.js');
-const enviroment = require('../../../enviroment/enviroment.js');
+// const enviroment = require('../../../enviroment/enviroment.js');
 
 import Palette from './palette/palette.js';
 let appPage = getApp();
@@ -51,7 +51,8 @@ Component({
       this.fetchCategory();
       this.data.startViewTime = Date.parse(new Date());
       notification.addNotification('CityHadChanged', this.fetchCategory, this);
-      if (enviroment.getCodeComeIn()) {
+      // if (enviroment.getCodeComeIn()) {
+      if(app.enviroment.code_come){
         this.setData({
           showBanner: true,
         });
@@ -375,7 +376,7 @@ Component({
       appPage.globalData.essayModuleLoginOnce = true;
     },
 
-    //点击微信登陆。允许或者拒绝 回调
+    //点击微信登录。允许或者拒绝 回调
     passBackGetPhoneNumberBtn(e) {
       if (e.detail.markType === '261') {
         analytic.sensors.track('e_click_onekey_login', {
@@ -387,7 +388,7 @@ Component({
         });
       }
     },
-    //微信登陆 拒绝后回调 和允许后调用完fast-login 回调，允许loginStatus=true
+    //微信登录 拒绝后回调 和允许后调用完fast-login 回调，允许loginStatus=true
     passBackFastLoginCallBack(e) {
       let {
         loginStatus

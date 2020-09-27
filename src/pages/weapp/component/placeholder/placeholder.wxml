@@ -1,9 +1,0 @@
-<template name="placeholder-view">
-  <view class="no-content">
-      <image class="no-content-icon" src="{{icon}}"></image>
-      <view class="no-content-font">{{title}}</view>
-      <block wx:if="{{buttonTitle.length > 0}}">
-        <button class="button no-content-button" hover-class='button-hover' bindtap='didClickPlaceHolderButton'>{{buttonTitle}}</button>
-      </block>
-  </view>
-</template>

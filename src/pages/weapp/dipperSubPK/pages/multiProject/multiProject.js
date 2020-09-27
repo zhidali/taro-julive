@@ -1,6 +1,6 @@
 const coordtransform = require('../../../utils/coordtransform.js');
 const qqmapNavigation = require('../qqmap-wx-jssdk/qqmap-navigation.js');
-const enviroment = require('../../../enviroment/enviroment.js');
+// const enviroment = require('../../../enviroment/enviroment.js');
 const wxUserInfo = require('../../../user/wxUserInfo.js');
 const autoanalysis = require('../autoanalysis/autoanalysis.js');
 var analytic = require('../../../analytic/analytic.js');
@@ -120,6 +120,7 @@ Page({
     matingTitleObj: {},
     recommendMapFlag: true,
     is_virtual_city: false, //是否是虚拟城市
+    employee: {}
   },
   acquireWxLogin(res) {
     this.setData({
@@ -485,12 +486,11 @@ Page({
         }
       });
     }
-
+    
     let markerProjectBubble = this.markerProjectBubble(data.project_bubble);
     _this.setData(
       {
-        // BUG
-        employee: data.employee || {id: ''},
+        employee: data.employee || {id: '', mobile: ''},
         project_info: data.project_info,
         down_payments: data.down_payments,
         loan_term: data.loan_term,
@@ -1009,10 +1009,10 @@ Page({
   async fetchRequiredInfo(share_id) {
     let { data } = await app.request('/v3/beidou/required-info', {
       share_id: share_id,
-      open_id: enviroment.getOpenId(),
+      // open_id: enviroment.getOpenId(),
+      open_id: app.enviroment.openId,
     });
-
-    if (data.project_type && data.project_type.label.length > 0) {
+    if (data && data.project_type && data.project_type.label.length > 0) {
       data.project_type.label.findIndex((item) => {
         if (item.key === data.project_type.default_val) {
           item.flag = true;
@@ -1326,7 +1326,8 @@ Page({
       );
       app.request('/v3/beidou/save-required-window', {
         share_id: this.data.share_id,
-        open_id: enviroment.getOpenId(),
+        // open_id: enviroment.getOpenId(),
+        open_id: app.enviroment.openId,
       });
     } else if (type == 1) {
       this.sendPoint(5929);
@@ -1531,7 +1532,8 @@ Page({
       acreage: data.acreage.default_val || '',
       project_type: data.selectProjectType ? data.selectProjectType.key : '',
       share_id: this.data.share_id,
-      open_id: enviroment.getOpenId(),
+      // open_id: enviroment.getOpenId(),
+      open_id: app.enviroment.openId,
     });
 
     this.setData({

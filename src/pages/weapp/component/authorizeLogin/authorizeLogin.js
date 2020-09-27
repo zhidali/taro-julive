@@ -1,6 +1,6 @@
 const app = getApp();
 const analytic = require('../../analytic/analytic.js');
-const enviroment = require('../../enviroment/enviroment');
+// const enviroment = require('../../enviroment/enviroment');
 const user = require('../../user/user');
 
 import {
@@ -11,7 +11,7 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    // 扩展字段 默认true需要正常使用授权登陆， 可由外部控制实际场景
+    // 扩展字段 默认true需要正常使用授权登录， 可由外部控制实际场景
     hasLogin: {
       type: Boolean,
       value: true
@@ -95,7 +95,10 @@ Component({
           wx.hideLoading();
           if (res.code == 0) {
             // 登录成功
-            enviroment.setJuliveToken(res.data.token, true);
+            // enviroment.setJuliveToken(res.data.token, true);
+
+            app.enviroment.setJuliveToken(res.data.token, true);
+
             analytic.sensors.registerApp(res.data.user_id);
             // 拉取 有无订房单接口
             user.fetchUserHasOrder();
@@ -149,7 +152,7 @@ Component({
       }
     },
     clickWrap() {
-      // 表示有授权登陆弹窗展开
+      // 表示有授权登录弹窗展开
       if(!app.commonData.login_status){
         app.dialogMapData('set', 'wx-login');
       }

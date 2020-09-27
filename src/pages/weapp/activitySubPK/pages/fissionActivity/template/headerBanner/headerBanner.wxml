@@ -8,16 +8,22 @@
     <view class="act-box">
       <view class="act-title"></view>
       <view class="act-time">
-        <block wx:if="{{activity_time.now<activity_time.start}}">
-          <view class="text">距离活动开始还有</view>
-          <count-down my-class="time-down" seconds="{{activity_time.start-activity_time.now}}" />
+        <block wx:if="{{!countdownEnd}}">
+          <view class="text">{{countdownText}}</view>
+          <count-down my-class="time-down" seconds="{{countdownTime}}" />
         </block>
-        
-        <block wx:else>
-          <view class="text"
-            >{{activity_time.now>activity_time.end?'距活动结束时间仅剩':'距离活动结束仅剩'}}</view
-          >
-          <count-down my-class="time-down" seconds="{{activity_time.end-activity_time.now}}" />
+        <block wx:if="{{countdownEnd}}">
+          <view class="text">距活动结束时间仅剩</view>
+          <view class="time-down">
+            <view class="bg bg-d">00</view>
+            天
+            <view class="bg bg-h">00</view>
+            小时
+            <view class="bg bg-min">00</view>
+            分
+            <view class="bg bg-s">00</view>
+            秒
+          </view>
         </block>
       </view>
     </view>
@@ -25,7 +31,7 @@
       <swiper
         class="reward-swiper"
         autoplay="{{true}}"
-        interval="1000"
+        interval="2000"
         vertical="{{true}}"
         circular="true"
       >
@@ -38,7 +44,7 @@
             <view class="swiper-item">
               <image
                 class="img"
-                src="{{latest_reward.list.reward.money=='100'?'../../images/icon_card_1.png':'../../images/icon_card_2.png'}}"
+                src="{{item.reward.money=='100'?'../../images/icon_card_1.png':'../../images/icon_card_2.png'}}"
               />
               <view class="text">{{item.text}}</view>
             </view>

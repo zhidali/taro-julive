@@ -1,22 +1,15 @@
-const enviroment = require('../enviroment/enviroment.js');
+// const enviroment = require('../enviroment/enviroment.js');
 const julive_local_config = require('../julive-local-config.js');
 
 import {
   BASE_URL
 } from './config'
 
-/**
- * 请求API接口
- * @param  {String} api    api 根地址
- * @param  {String} path   请求路径
- * @param  {Objece} params 参数
- * @return {Promise}       包含抓取任务的Promise
- */
-
 // 监听第一次进入时候 install 等待时候防止重复请求
 let installFlag = false;
-let token = getJuliveToken();
 let installING = false;
+let app = {};
+let token = "";
 // 判断是否第一次拉取conf
 /**
  * 请求API接口
@@ -37,7 +30,9 @@ async function request(path, params, method = "POST") {
 }
 
 
-async function install(flag) {
+async function install(flag, getApp) {
+  app = getApp;
+  token = getJuliveToken();
   // 如果在basciData调用 发现token 有 则不发送请求
   if (flag) {
     installFlag = true;
@@ -54,7 +49,8 @@ async function install(flag) {
     installING = false;
     if (d.code == 0) {
       installFlag = false;
-      enviroment.setJuliveLabel(d.data)
+      // enviroment.setJuliveLabel(d.data)
+      app.enviroment.setJuliveLabel(d.data)
       token = d.data.token;
     } else {
       return await sleep(install);
@@ -68,7 +64,8 @@ async function swanRequest(path, params, method = "POST") {
     wx.request({
       url: BASE_URL + `${path}`,
       data: {
-        common: enviroment.getEnviromentParams(),
+        common: app.enviroment.getRequestCommon(),
+        // common: enviroment.getEnviromentParams(),
         params: params
       },
       header: {
@@ -78,7 +75,10 @@ async function swanRequest(path, params, method = "POST") {
       success: res => {
         if (res.data.code == "1006") {
           // token失效，需要清空
-          enviroment.setJuliveToken("", true);
+          // enviroment.setJuliveToken("", true);
+
+          app.enviroment.setJuliveToken("", true);
+
           token = "";
           // let app = getApp();
           // app.commonData.user = {
@@ -131,7 +131,8 @@ async function sleep(fn, ...args) {
 function getJuliveToken() {
   try {
     let julive_label = wx.getStorageSync("julive_label") || "";
-    enviroment.setJuliveLabel(julive_label, 1)
+    // enviroment.setJuliveLabel(julive_label, 1);
+    app.enviroment.setJuliveLabel(julive_label, 1);
     return julive_label.token
   } catch (e) {
     return "";

@@ -1,5 +1,5 @@
 const regeneratorRuntime = require('../regeneratorRuntime.js');
-const enviroment = require('../../../enviroment/enviroment.js');
+// const enviroment = require('../../../enviroment/enviroment.js');
 const util = require('../../../utils/util.js')
 const analytic = require('../../../analytic/analytic.js');
 const app = getApp();
@@ -16,7 +16,8 @@ Page({
   async fetchGetUserRequiredFeedback() {
     let res = await app.request('/v3/beidou/get-user-required-feedback', {
       share_id: this.data.share_id,
-      open_id: enviroment.getOpenId(),
+      // open_id: enviroment.getOpenId(),
+      open_id: app.enviroment.openId,
       order_id: this.data.order_id,
       page_num: this.data.page_num,
     })
@@ -34,7 +35,8 @@ Page({
     })
     let res = await app.request('/v3/beidou/save-user-required-feedback', {
       share_id: this.data.share_id,
-      open_id: enviroment.getOpenId(),
+      // open_id: enviroment.getOpenId(),
+      open_id: app.enviroment.openId,
       order_id: this.data.order_id,
       feedback_type: '2', // 目前只有 文字类别
       feedback_info: this.data.pages[index].feedback_info
@@ -50,7 +52,8 @@ Page({
     this.data.flag = false
     let res = await app.request('/v3/beidou/save-user-required-feedback', {
       share_id: this.data.share_id,
-      open_id: enviroment.getOpenId(),
+      // open_id: enviroment.getOpenId(),
+      open_id: app.enviroment.openId,
       order_id: this.data.order_id,
       feedback_type: '2', // 目前只有 文字类别
       feedback_info: this.data.textareaVal
@@ -178,7 +181,8 @@ Page({
     ++this.data.page_num;
     let res = await app.request('/v3/beidou/get-user-required-feedback', {
       share_id: this.data.share_id,
-      open_id: enviroment.getOpenId(),
+      // open_id: enviroment.getOpenId(),
+      open_id: app.enviroment.openId,
       order_id: this.data.order_id,
       page_num: this.data.page_num
     })

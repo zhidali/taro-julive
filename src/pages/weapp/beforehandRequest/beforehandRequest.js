@@ -18,9 +18,9 @@ beforehandRequest.getObjAttribute = function (key) {
 
 beforehandRequest.setObjAttribute = function (key, _key, val) {
   this._.info[key][_key] = val
-  console.log(val)
-  console.log(_key)
-  console.log(this._.info[key])
+  // console.log(val)
+  // console.log(_key)
+  // console.log(this._.info[key])
 }
 
 beforehandRequest.sendRequest = async function (url, params, key)  {

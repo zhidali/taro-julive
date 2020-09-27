@@ -1,5 +1,5 @@
 const analytic = require('../../analytic/analytic.js');
-const enviroment = require('../../enviroment/enviroment');
+// const enviroment = require('../../enviroment/enviroment');
 const user = require('../../user/user');
 const app = getApp();
 Component({
@@ -141,7 +141,10 @@ Component({
     },
     setUserInfo(d, callback) {
       if (d.code == 0) {
-        enviroment.setJuliveToken(d.data.token, true);
+        // enviroment.setJuliveToken(d.data.token, true);
+
+        app.enviroment.setJuliveToken(d.data.token, true);
+
         analytic.sensors.registerApp(d.data.user_id);
         let _user = {
           userId: String(d.data.user_id),
@@ -171,7 +174,7 @@ Component({
       app.dialogMapData('set', 'wx-login');
       // 这个是东西 是干啥用的呢 
       // 如果首页 微信手机号授权弹窗弹起时候  标示一个状态
-      // 因为苑福的需求 首页弹窗 触发时候 发现 有授权登陆弹窗 要延迟触发
+      // 因为苑福的需求 首页弹窗 触发时候 发现 有授权登录弹窗 要延迟触发
       let pages = getCurrentPages();
       let currentPage = pages[pages.length - 1];
       if (currentPage.route === 'pages/home/home') {

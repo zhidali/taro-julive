@@ -1,4 +1,4 @@
-const enviroment = require('../../../enviroment/enviroment.js');
+// const enviroment = require('../../../enviroment/enviroment.js');
 const app = getApp();
 const analytic = require('../../../analytic/analytic.js');
 Page({
@@ -96,7 +96,8 @@ Page({
       data
     } = await app.request('/v3/beidou/required-info', {
       share_id: this.data.share_id,
-      open_id: enviroment.getOpenId()
+      // open_id: enviroment.getOpenId()
+      open_id: app.enviroment.openId
     })
     if (data.project_type && data.project_type.label.length > 0) {
       data.project_type.label.findIndex(item => {
@@ -268,7 +269,8 @@ Page({
       purchase_purpose: data.selectPurchasePurpose.key || '',
       other_require: this.data.textareaVal,
       share_id: this.data.share_id,
-      open_id: enviroment.getOpenId()
+      // open_id: enviroment.getOpenId()
+      open_id: app.enviroment.openId
     })
 
     analytic.sensors.track('e_click_submit', {

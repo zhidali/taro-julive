@@ -99,7 +99,7 @@
 }
 
 .isTakeParam-title-view {
-  /* margin-bottom: 140rpx; */
+  margin-top: 48rpx;
 }
 
 .isTakeParam-title {
@@ -161,9 +161,8 @@
 
 
 .little-res-module-component {
-  margin: 12rpx 30rpx 48rpx 30rpx;
-  border-top: 2rpx solid #ECF0F4;
-  border-bottom: 2rpx solid #ECF0F4;
+  margin-left: 30rpx;
+  margin-right: 30rpx;
 
 }
 

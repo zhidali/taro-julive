@@ -1,14 +1,27 @@
-import { request, install } from "./network/request";
+import {
+  request,
+  install
+} from './network/request';
 import Observer from './utils/watch/index';
 let observer = new Observer();
-import { versonTest, getConf, updInfo } from "./api/common";
-import { getUser } from "./api/mine";
-const location = require("./location/location.js");
-const user = require("./user/user.js");
-const enviroment = require("./enviroment/enviroment.js");
-const analytic = require("./analytic/analytic.js");
-const wxUserInfo = require("./user/wxUserInfo.js");
-const notification = require("./utils/notification.js");
+import {
+  versonTest,
+  getConf,
+  updInfo
+} from './api/common';
+
+import {
+  getUser
+} from './api/mine';
+
+import Enviroment from './enviroment/index';
+import Func from './enviroment/func';
+// const location = require('./location/location.js');
+const user = require('./user/user.js');
+// const enviroment = require('./enviroment/enviroment.js');
+const analytic = require('./analytic/analytic.js');
+const wxUserInfo = require('./user/wxUserInfo.js');
+// const notification = require('./utils/notification.js');
 
 App({
   request: request,
@@ -19,6 +32,9 @@ App({
   flagTest: true,
   // ab测试结果
   abTest: {},
+  // 原来enviroment 存储数据， 方法
+  enviroment: {},
+  func: {},
   // userinfo 重复请求
   getUserFlag: true,
   // 接口下发全局变量
@@ -27,7 +43,7 @@ App({
     homeChangeCollect: false,
     // 列表页面收藏是否修改
     listChangeCollect: false,
-    // 登陆状态
+    // 登录状态
     login_status: false,
     // 城市
     city: {
@@ -84,10 +100,9 @@ App({
     listSelectPopState: false, //列表页面的筛选引导弹窗状态
     wx_ad_coming: false, //当前是不是微信广告进来的
     informationPageIndex: 0, //情报页面当前要显示的子页面
-    essayModuleLoginOnce: false, //情报页面（下面两个变量）3个子页面的一键登陆展示逻辑
+    essayModuleLoginOnce: false, //情报页面（下面两个变量）3个子页面的一键登录展示逻辑
     questionAnswerLoginOnce: false,
     houseDynamicLoginOnce: false,
-    defaultHomeABtest: false, //是不是 进入首页默认实现里面了, true   默认B实验
     showWxPhoneNumberAleat: false, // 首页微信授权手机号弹窗 是否弹起 只有在wxlogin 触发
     essayModuleShare: {
       popEssayCard: false,
@@ -115,11 +130,21 @@ App({
     searchKey: "",
   },
   onLaunch: async function (e) {
+    
+    install(true, this);
+    // Enviroment 文件更改 ------star
+    this.func = new Func(this);
+    this.enviroment = new Enviroment(this);
+    
+    if(e.scene == (1045 || 1067)){
+      this.globalData.wx_ad_coming = true;
+    }
+    // ----------end
+
     // 设置监听
     observer.Observe(this.commonData);
     // 获取投放页channel_id
-    let { channel_id, fissionShareId } = e.query;
-    console.log('获取邀请人分享ID', fissionShareId)
+    let { channel_id } = e.query;
     if (channel_id) {
       this.commonData.channel.channel_id = String(channel_id);
       wx.setStorage({
@@ -130,17 +155,16 @@ App({
       this.commonData.channel.channel_id =
         wx.getStorageSync("julive_channelId") || "";
     }
-    this.commonData.fissionShareId = fissionShareId || "";
-    install(true);
-    location.startLocate(this);
+
+    
+    // location.startLocate(this);
+    wxUserInfo.init();
     //获取微信用户头像等信息
     this.upDataWxUserHeadInfo();
     user.init(this);
+
     // 更新到最新版本
     const updateManager = wx.getUpdateManager();
-    updateManager.onCheckForUpdate(function (res) {
-      console.log(res.hasUpdate);
-    });
 
     updateManager.onUpdateReady(function () {
       wx.showModal({
@@ -155,31 +179,31 @@ App({
         },
       });
     });
-    var _this = this;
-    wx.getSystemInfo({
-      success: function (res) {
-        let phoneModel = [
-          "iPhone X",
-          "iPhone XR",
-          "iPhone XS Max",
-          "iPhone 11",
-          "iPhone 11 Pro",
-          "iPhone 11 Pro Max",
-        ];
-        phoneModel.findIndex((item) => {
-          if (res.model.indexOf(item) != -1) {
-            _this.globalData.isIpx = true;
-            return;
-          }
-        });
-        if (res.system.indexOf("iOS") != -1) {
-          _this.globalData.isIos = true;
-        }
-        _this.globalData.platform = res.platform;
-        _this.globalData.ww = res.windowWidth;
-        _this.globalData.hh = res.windowHeight;
-      },
-    });
+    // var _this = this;
+    // wx.getSystemInfo({
+    //   success: function (res) {
+    //     let phoneModel = [
+    //       'iPhone X',
+    //       'iPhone XR',
+    //       'iPhone XS Max',
+    //       'iPhone 11',
+    //       'iPhone 11 Pro',
+    //       'iPhone 11 Pro Max',
+    //     ];
+    //     phoneModel.findIndex((item) => {
+    //       if (res.model.indexOf(item) != -1) {
+    //         _this.globalData.isIpx = true;
+    //         return;
+    //       }
+    //     });
+    //     if (res.system.indexOf('iOS') != -1) {
+    //       _this.globalData.isIos = true;
+    //     }
+    //     _this.globalData.platform = res.platform;
+    //     _this.globalData.ww = res.windowWidth;
+    //     _this.globalData.hh = res.windowHeight;
+    //   },
+    // });
     this.changePagesPath(e);
     // 监听我的购房福利tab是否显示
     this.watchCommonData("mineTabPurchase", (newVal) => {
@@ -189,12 +213,23 @@ App({
       });
     });
     // 初始化拉取conf  切换城市拉取
-    this.setConf();
+    // this.setConf();
     // 初始化同步 后台登录状态
-    this.setUser();
+    // this.setUser();
     // 初始化拉取实验
-    this.getAbtest();
-    notification.addNotification("CityHadChanged", this.setConf, this);
+    // this.getAbtest();
+
+    // notification.addNotification('CityHadChanged', this.setConf, this);
+  },
+ 
+  onShow: function(e) {
+    this.enviroment.appShow(e);
+    console.log('当前页面是', e.path,  e.path === 'pages/home/home')
+    if (e.path === 'pages/home/home') {
+      let { fissionShareId } = e.query;
+      console.log('获取邀请人分享ID', fissionShareId)
+      this.commonData.fissionShareId = fissionShareId || "";
+    }
   },
   changePagesPath(res) {
     let changePages = [
@@ -284,251 +319,6 @@ App({
    */
   watchCommonData(key, fn) {
     observer.makeWatcher(key, this.commonData, fn);
-  },
-  /**
-   * @description:  拉取conf接口 获取abtest
-   * @param {string} key abtest key值
-   */
-  async getAbtest(key = "") {
-    let timer = null;
-    try {
-      return new Promise(async (resolve, reject) => {
-        let resolveObj = this.abTest;
-        if (Object.keys(resolveObj).length <= 0 && this.flagTest) {
-          this.flagTest = false;
-          const ab = await versonTest();
-          if (ab.code != 0) {
-            this.abTest = {};
-            resolveObj = {};
-          }
-          if (ab.code == 0) {
-            // 缓存abtest
-            this.abTest = ab.data.abtest;
-            resolveObj = ab.data.abtest;
-            analytic.sensors.track("e_page_view_abtest", {
-              abtest_name: "p_project_list_optimization",
-              abtest_value: ab.data.abtest.p_project_list_optimization || "",
-            });
-
-            if (ab.data.abtest.p_home_strategy) {
-              analytic.sensors.track("e_page_view_abtest", {
-                abtest_name: "p_home_strategy",
-                abtest_value: ab.data.abtest.p_home_strategy,
-              });
-            }
-
-            if (ab.data.abtest.p_home_strategy_01) {
-              analytic.sensors.track("e_page_view_abtest", {
-                abtest_name: "p_home_strategy_01",
-                abtest_value: ab.data.abtest.p_home_strategy_01,
-              });
-            }
-
-            analytic.sensors.track("e_page_view_abtest", {
-              abtest_name: "help_find_home_optimization",
-              abtest_value: ab.data.abtest.help_find_home_optimization || "",
-            });
-            
-            this.abTest.p_project_list_optimization = "B";
-            // this.abTest.p_home_strategy="A"
-          }
-        }
-
-        timer = setInterval(() => {
-          if (Object.keys(this.abTest).length != 0) {
-            clearInterval(timer);
-            timer = null;
-            if (key == "") {
-              resolve(this.abTest);
-            }
-            if (key != "") {
-              resolve(this.abTest[key]);
-            }
-          }
-        }, 50);
-      });
-    } catch (e) {
-      console.log(e);
-    }
-  },
-  // 获取渠道id
-  async setConf() {
-    try {
-      let params = {
-        city_id: this.commonData.city.city_id,
-        channel_id: this.commonData.channel.channel_id || "",
-      };
-      const conf = await getConf(params);
-      if (conf.code == 0) {
-        // 若没有拿到投放页的channel_id 则取接口的channel_id
-        if (!this.commonData.channel.channel_id) {
-          this.commonData.channel.channel_id = String(
-            conf.data.channel.channel_id
-          );
-          wx.setStorage({
-            key: "julive_channelId",
-            data: String(conf.data.channel.channel_id),
-          });
-        }
-        // 400电话
-        this.commonData.channel.phone = conf.data.channel.phone;
-
-        // 注入埋点channel_id
-        analytic.sensors.registerApp({
-          channel_id: this.commonData.channel.channel_id,
-        });
-
-        // 存入m站跳转域名
-        this.commonData.m_domain_project = conf.data.m_domain_project;
-      }
-    } catch (e) {
-      console.log(e);
-    }
-  },
-  // 页面调用 弹出时必须使用次方法 用于记录弹出状态 当前名字 app.dialogMapData('set', wx-login')
-  // 判断使用  app.dialogMapData('get', 'wx-login'), 返回0 表示未弹出过
-  // app.dialogMapData('status') 获取当前项目有无其他弹层在弹出状态
-  // app.dialogMapData('dialog') 获取当前弹出名
-  // app.dialogMapData('close')  关闭弹窗时 使用， 用于清空弹出状态
-
-  /**
-   * @description: 设置当前城市弹窗 弹出
-   * @param {String} type  set get status close dialog
-   * @param {String} dialogKey 弹窗对应标示
-   */
-  dialogMapData(type, dialogKey = "none") {
-    // home-subscribe   首页订阅弹窗 上一个弹窗弹出关闭后18s后弹出
-    // home-ground  首页cms配置落地页面弹窗 进入符合逻辑就弹
-    // home-orderSuccess 首页留电成功弹窗
-    // home-findHouse 首页查找房源弹出 手动触发弹出
-    // home-filter 首页filter弹出
-    // home-fission 首页助力相关弹窗 包括（助力toast/帮TA助力/我也看看）
-
-    // list-findhouse  列表页面帮我找房 AB实验弹出 与首页cms配置页互斥
-    // list-service 列表升级服务 首页查找房源弹窗触发 列表页弹出
-    // list-orderSuccess 列表页面留电成功弹窗
-    // list-ground 列表页面 cms配置弹窗 C实验弹出 与首页cms配置页互斥
-
-    // wx-login 微信授权弹窗
-
-    // 设置 获取 状态
-    let typeStatus = ["set", "get", "status", "close", "dialog"];
-    // 弹窗标示符 有城市区分数组
-    let hasCityDialog = [
-      "home-subscribe",
-      "home-ground",
-      "home-findHouse",
-      "home-filter",
-      "list-findhouse",
-      "list-service",
-      "list-ground",
-    ];
-
-    // 无城市区分数组
-    let noCityDialog = [
-      "wx-login",
-      "list-orderSuccess",
-      "home-orderSuccess",
-      "home-fission",
-    ];
-    let dialogMap = this.globalData.dialogMap;
-
-    if (
-      hasCityDialog.indexOf(dialogKey) != -1 &&
-      noCityDialog.indexOf(dialogKey) != -1 &&
-      dialogKey != "none" &&
-      type != "dialog"
-    ) {
-      return;
-    }
-    if (typeStatus.indexOf(type) == -1) {
-      return;
-    }
-    // 如果是无城市区分的弹窗查找 noCityDialog  ， key为 common
-
-    let key = "";
-    if (noCityDialog.indexOf(dialogKey) != -1) {
-      key = "common";
-    } else {
-      key = `city_${this.commonData.city.city_id}`;
-    }
-
-    let dialogMapValue = dialogMap.get(key);
-
-    if (dialogMap.has(key)) {
-      if (
-        type == "set" &&
-        (hasCityDialog.indexOf(dialogKey) != -1 ||
-          noCityDialog.indexOf(dialogKey) != -1)
-      ) {
-        dialogMapValue[dialogKey]++;
-
-        dialogMap.currentStatus = true;
-        dialogMap.currentDialog = dialogKey;
-
-        dialogMap.set(key, dialogMapValue);
-      }
-
-      if (type == "get") {
-        return dialogMapValue[dialogKey];
-      }
-
-      if (type == "status") {
-        return dialogMap.currentStatus;
-      }
-
-      if (type == "close") {
-        dialogMap.currentStatus = false;
-        dialogMap.currentDialog = "";
-      }
-      if (type == "dialog") {
-        return dialogMap.currentDialog;
-      }
-    } else {
-      let obj = {};
-
-      dialogMap.currentDialog =
-        type == "set" ? dialogKey : dialogMap.currentDialog;
-      // 记录弹窗名字 状态
-
-      if (!dialogMap.currentStatus) {
-        dialogMap.currentStatus = type == "set" ? true : false;
-      }
-      // 获取为0
-      if (type == "get") {
-        return 0;
-      }
-      if (type == "status") {
-        return dialogMap.currentStatus;
-      }
-      if (type == "close") {
-        dialogMap.currentStatus = false;
-        dialogMap.currentDialog = "";
-      }
-      if (type == "dialog") {
-        return dialogMap.currentDialog;
-      }
-      if (noCityDialog.indexOf(dialogKey) != -1) {
-        noCityDialog.forEach((item) => {
-          // 如果为set 表示弹出1
-          if (type == "set" && item == dialogKey) {
-            obj[item] = 1;
-          } else {
-            obj[item] = 0;
-          }
-        });
-      } else {
-        hasCityDialog.forEach((item) => {
-          // 如果为set 表示弹出1
-          if (type == "set" && item == dialogKey) {
-            obj[item] = 1;
-          } else {
-            obj[item] = 0;
-          }
-        });
-      }
-      dialogMap.set(key, obj);
-    }
   },
   // 初始化进入小程序拉取登录状态
   async setUser() {

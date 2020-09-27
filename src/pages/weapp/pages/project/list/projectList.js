@@ -582,7 +582,6 @@ Page({
       loadingHidden: false,
     });
   },
-// BUG
   didTapProjectCellView: function (e) {
     var opType = e.currentTarget.dataset.opType;
     let fromModule = '';
@@ -1029,7 +1028,7 @@ Page({
     });
   },
 
-  // 实验B的留电登陆调微信登陆逻辑
+  // 实验B的留电登录调微信登录逻辑
   passBackGetPhoneNumberBtn(e) {
     let {
       markOpType,
@@ -1242,7 +1241,7 @@ Page({
   getFilterTop() {
     const query = wx.createSelectorQuery();
     query.select('#home-filter').boundingClientRect((res) => {
-      this.data.filterTop = res.top;
+      this.data.filterTop = res ? res.top : '';
     }).exec();
   },
   // 价格筛选模块点击
@@ -1278,6 +1277,7 @@ Page({
         this.setData({
           keywordTxt: ''
         })
+        app.globalData.searchKey = '';
       } else if (Array.isArray(defaultFilter[e.detail.key])) {
         // 如果数组里只有一项 就直接删掉
         if (defaultFilter[e.detail.key].length === 1) {
@@ -1293,6 +1293,7 @@ Page({
       this.setData({
         keywordTxt: ''
       })
+      app.globalData.searchKey = '';
     }
     this.setData({
       defaultFilter: defaultFilter,
@@ -1459,7 +1460,9 @@ Page({
             // 9248 延迟曝光
             let timer = setTimeout(() => {
               wx.createSelectorQuery().select(`.card-module${this.data.cardTypeA ? 'a':'b'}${index}`).boundingClientRect( rect => {
-                if (rect.top < app.globalData.hh) {
+                if (!rect) {
+                  return false;
+                } else if (rect.top < app.globalData.hh) {
                   analytic.sensors.track('e_module_exposure_delay', Object.assign({
                     fromPage: 'p_project_list',
                     fromModule: 'm_recommend_project',
@@ -1504,7 +1507,9 @@ Page({
             // 9248 延迟曝光
             let timer = setTimeout(() => {
               wx.createSelectorQuery().select(`.like-module${this.data.cardTypeA ? 'a':'b'}${index}`).boundingClientRect(rect=> {
-                if (rect.top < app.globalData.hh) {
+                if (!rect) {
+                  return false;
+                } else if (rect.top < app.globalData.hh) {
                   analytic.sensors.track('e_module_exposure_delay', Object.assign({
                     fromPage: 'p_project_list',
                     fromModule: 'm_guess_like_list',
@@ -1670,7 +1675,9 @@ Page({
                   // 9248 延迟曝光
                   let timer = setTimeout(() => {
                     wx.createSelectorQuery().select(`.card-module${cardTypeA ? 'a':'b'}${originalList.length + index}`).boundingClientRect((rect)=> {
-                      if (rect.top < app.globalData.hh) {
+                      if (!rect) {
+                        return false;
+                      } else if (rect.top < app.globalData.hh) {
                         analytic.sensors.track('e_module_exposure_delay', Object.assign({
                           fromPage: 'p_project_list',
                           fromModule: 'm_recommend_project',
@@ -1716,7 +1723,9 @@ Page({
                   // 9248 延迟曝光
                   let timer = setTimeout(() => {
                     wx.createSelectorQuery().select(`.like-module${cardTypeA ? 'a':'b'}${index}`).boundingClientRect((rect)=> {
-                      if (rect.top < app.globalData.hh) {
+                      if (!rect) {
+                        return false;
+                      } else if (rect.top < app.globalData.hh) {
                         analytic.sensors.track('e_module_exposure_delay', Object.assign({
                           fromPage: 'p_project_list',
                           fromModule: 'm_guess_like_list',
@@ -2180,7 +2189,7 @@ Page({
       op_type: '900741'
     });
   },
-  // 升级服务弹窗 允许登陆
+  // 升级服务弹窗 允许登录
   async allowService() {
     try {
       app.dialogMapData('close');
@@ -2310,11 +2319,10 @@ Page({
   /**
    * 实验A：弹窗A、B的展示逻辑
    */
-  // BUG
   listEmployeePopState() {
     let _this = this;
     let dataA = this.data.barTypeData;
-    if (dataA.popup && dataA.popup.avatar && dataA.popup.title) {
+    if (dataA && dataA.popup && dataA.popup.avatar && dataA.popup.title) {
       wx.createIntersectionObserver()
         .relativeToViewport({
           bottom: 0,
@@ -2398,7 +2406,6 @@ Page({
       guide_window_type: 'A',
       fromItem: 'i_close'
     });
-    L
   },
 
   // 开始列表页弹窗
@@ -2552,8 +2559,8 @@ Page({
       })
     }
   },
-  // 预约找房 中登陆成功后留电
-  // 登陆成功后 / 已登陆点击
+  // 预约找房 中登录成功后留电
+  // 登录成功后 / 已登录点击
   async findHouseLoginSuccess() {
     if (app.commonData.login_status) {
       // 向他咨询按钮

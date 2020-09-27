@@ -174,7 +174,12 @@ Page({
           step: 1,
           imageCode: '',
         });
-
+        wx.showModal({
+          title: '提示',
+          content: '登录成功',
+        });
+        // 活动开启代码 上线前关闭
+        return;
         var pages = getCurrentPages();
         var previousPage = pages[pages.length - 3];
         if (previousPage && previousPage.loginSuccessCallback) {

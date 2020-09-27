@@ -21,15 +21,13 @@
       .rank-title {
         height: 56rpx;
         font-size: 40rpx;
-        font-family: PingFangSC-Medium, PingFang SC;
-        font-weight: 500;
+        font-weight: bold;
         color: #583422;
         line-height: 56rpx;
 
         .sub {
           margin-left: 12rpx;
           font-size: 24rpx;
-          font-family: PingFangSC-Regular, PingFang SC;
           font-weight: 400;
           color: #8A6B52;
           line-height: 36rpx;
@@ -58,6 +56,11 @@
             background: #FFF;
             border-bottom: 1rpx solid #EFF2F5;
 
+            &:last-child {
+              border-bottom: none;
+
+            }
+
             .rank {
               width: 44rpx;
               height: 45rpx;
@@ -72,7 +75,6 @@
               margin: 0 6rpx;
               background: #B88B7B;
               font-size: 22rpx;
-              font-family: PingFangSC-Medium, PingFang SC;
               font-weight: 500;
               color: #FFF;
               line-height: 32rpx;
@@ -91,7 +93,6 @@
             .name {
               padding-left: 8rpx;
               font-size: 24rpx;
-              font-family: PingFangSC-Regular, PingFang SC;
               font-weight: 400;
               color: #031A1F;
               overflow: hidden;
@@ -103,7 +104,6 @@
 
             .money {
               font-size: 24rpx;
-              font-family: PingFangSC-Regular, PingFang SC;
               font-weight: 400;
               color: #FF7E45;
               text-align: right;
@@ -135,20 +135,26 @@
       box-sizing: border-box;
       position: relative;
 
-      .img-close {
+      .img-close-box {
         position: absolute;
-        width: 26rpx;
-        height: 26rpx;
-        top: 32rpx;
-        right: 26rpx;
+        width: 40rpx;
+        height: 40rpx;
+        top: 27rpx;
+        right: 19rpx;
+
+        .img-close {
+          width: 26rpx;
+          height: 26rpx;
+          margin: 7rpx 0 0 7rpx;
+        }
       }
+
 
       .pop-title {
         padding-top: 88rpx;
         height: 50rpx;
         font-size: 36rpx;
-        font-family: PingFangSC-Medium, PingFang SC;
-        font-weight: 500;
+        font-weight: bold;
         color: #031A1F;
         line-height: 50rpx;
         display: flex;
@@ -167,6 +173,14 @@
         overflow-y: auto;
         height: 298rpx;
         max-height: 298rpx;
+
+        .content-time {
+          font-size: 28rpx;
+          font-family: PingFangSC-Regular, PingFang SC;
+          font-weight: 400;
+          color: #8D9799;
+          line-height: 40rpx;
+        }
 
         .content {
           background: #FFFFFF;
@@ -197,6 +211,7 @@
   .jd-card-pop-view {
     .dialog-shell .dialog-wrap {
       background: none;
+      top: 47%;
     }
 
     .pop-view-box {
@@ -244,6 +259,7 @@
 
             .color {
               color: #FF7E45;
+              font-weight: bold;
             }
 
             &:nth-of-type(2) {
@@ -302,7 +318,6 @@
             margin-top: 36rpx;
             height: 50rpx;
             font-size: 36rpx;
-            font-family: PingFangSC-Medium, PingFang SC;
             font-weight: 500;
             color: #031A1F;
             line-height: 50rpx;

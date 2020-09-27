@@ -11,7 +11,7 @@
 <import src="hotTabModule/homeBannerModule.wxml" />
 <!-- 右侧 悬浮导航 -->
 <import src="hotTabModule/homeHotlineModule.wxml" />
-<!-- 底部 一键登陆 -->
+<!-- 底部 一键登录 -->
 <import src="../template/barTypeLogin/barTypeLogin.wxml" />
 <!-- 顶部的 引导弹窗 -->
 <import src="../template/topGuidePop/topGuidePop.wxml" />
@@ -156,7 +156,7 @@
               my-class="find-house-component-box"
               opType="900766"
               bind:leavePhone="leavePhoneHandle"
-              class="find-house-component-box"
+              class="find-house-component"
             />
           </block>
         </block>
@@ -179,7 +179,7 @@
           projectListLength="{{houseList.length}}"
           bind:filterLittleRes="filterLittleRes"
           my-class="little-res-module-component"
-          class="little-res-module-component"
+          class="little-res-module"
         />
         <block wx:if="{{guess_you_like.length > 0}}">
           <view class="isTakeParam-title-view">
@@ -210,7 +210,7 @@
         bind:leavePhone="leavePhoneHandle"
         brandData="{{brandData}}"
         my-class="brand-public-component"
-        class="brand-public-component"
+        class="brand-public"
       />
     </block>
   </view>

@@ -3,22 +3,34 @@
   background-color: #ffffff;
   margin: 32rpx 0rpx;
   position: relative;
+  border-radius: 12rpx;
   .header {
     height: 256rpx;
     background: linear-gradient(90deg, #ff6e45 0%, #fea943 100%);
-    border-radius: 20px 20px 0px 0px;
+    border-radius: 20rpx 20rpx 0px 0px;
     position: relative;
     z-index: 2;
     overflow: hidden;
     .header-title {
       height: 95rpx;
       font-size: 68rpx;
-      font-family: PingFangSC-Medium, PingFang SC;
       font-weight: 500;
       color: #ffffff;
       line-height: 95rpx;
       margin-top: 40rpx;
       margin-left: 24rpx;
+      position: relative;
+      .header-title-lf{
+        display: inline-block;
+      }
+      .header-title-ri-img {
+        height: 24rpx;
+        width: 48rpx;
+        display: inline-block;
+        margin-left: 8rpx;
+        margin-bottom: 20rpx;
+        vertical-align: bottom;
+      }
     }
     .header-conntet {
       height: 40rpx;
@@ -30,6 +42,13 @@
       margin-left: 24rpx;
       position: relative;
       z-index: 3;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .header-conntet-two{
+      font-size: 24rpx;
+      opacity: 0.7;
     }
     .header-righrt {
       position: absolute;
@@ -38,11 +57,13 @@
       height: 36rpx;
       z-index: 3;
       line-height: 36rpx;
-      background: #ffee18;
+      font-size: 24rpx;
+      background: #FF3453;
       border-radius: 4px;
       font-weight: 400;
-      color: #89500a;
+      color: #ffffff;
       padding: 0rpx 8rpx;
+      border-radius: 4rpx;
     }
   }
   .header-strip {
@@ -71,6 +92,7 @@
       text-align: center;
       padding: 16rpx 0rpx;
       position: relative;
+      border-radius: 8rpx;
       .tab-itenm-up {
         height: 33rpx;
         font-size: 24rpx;
@@ -83,7 +105,6 @@
         margin-top: 4rpx;
         height: 40rpx;
         font-size: 28rpx;
-        font-family: PingFangSC-Medium, PingFang SC;
         font-weight: 500;
         color: #ff7e45;
         line-height: 40rpx;
@@ -102,9 +123,12 @@
     }
   }
   .void-value {
-    margin-top: 86rpx;
+    height: 518rpx;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding-top: 86rpx;
     text-align: center;
-    margin-bottom: 118rpx;
+    padding-bottom: 118rpx;
     .void-value-img {
       width: 228rpx;
       height: 220rpx;
@@ -114,7 +138,7 @@
     }
     .void-value-text {
       font-size: 28rpx;
-      font-family: PingFangSC-Regular, PingFang SC;
+      // font-family: PingFangSC-Regular, PingFang SC;
       font-weight: 400;
       color: #8d9799;
       line-height: 40rpx;
@@ -122,8 +146,11 @@
   }
   .scroll {
     width: 100%;
-    margin-top: 24rpx;
-    scroll-view {
+    padding-top: 24rpx;
+    height: 518rpx;
+    overflow: hidden;
+    box-sizing: border-box;
+    .scroll-view {
       height: 440rpx;
       .scroll-item {
         height: 80rpx;
@@ -135,13 +162,18 @@
           display: flex;
           flex-direction: row;
           align-items: center;
+          max-width: 72%;
           .scroll-item-left-name {
             display: block;
             margin-left: 8rpx;
             font-size: 24rpx;
-            font-family: PingFangSC-Regular, PingFang SC;
+            // font-family: PingFangSC-Regular, PingFang SC;
             font-weight: 400;
             color: #031a1f;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            max-width: 80%;
           }
           .scroll-item-img {
             height: 50rpx;
@@ -150,7 +182,6 @@
         }
         .scroll-item-right {
           font-size: 24rpx;
-          font-family: PingFangSC-Regular, PingFang SC;
           font-weight: 400;
           color: #8d9799;
         }
@@ -166,7 +197,7 @@
     .scroll-footer {
       height: 33rpx;
       font-size: 24rpx;
-      font-family: PingFangSC-Regular, PingFang SC;
+      // font-family: PingFangSC-Regular, PingFang SC;
       font-weight: 400;
       color: #8d9799;
       line-height: 33rpx;
@@ -178,7 +209,6 @@
     width: 100%;
     height: 96rpx;
     line-height: 96rpx;
-    font-size: 28rpx;
     font-family: PingFangSC-Regular, PingFang SC;
     font-weight: 400;
     color: #ffffff;
@@ -197,10 +227,15 @@
       margin: none;
       height: 96rpx;
       line-height: 96rpx;
-      font-size: 28rpx;
       background-color: transparent;
       color: #ffffff;
     }
+  }
+  .btn-font-36{
+    font-size: 36rpx;
+  }
+  .btn-font-28{
+    font-size: 28rpx;
   }
   .btn-allow {
     background: url("https://imgs.julive.com/l?p=eyJpbWdfcGF0aCI6IlwvbWluaW1ncy9maXNzaW9uLWpvaW4tYnRuLWEucG5nP3dhdGVybWFyayx0XzAifQ==")

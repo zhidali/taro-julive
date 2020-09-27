@@ -61,13 +61,13 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    // 允许登陆
+    // 允许登录
     allowLogin(e) {
       this.data.isLike = true;
 
       this.changeCollect()
     },
-    // 取消登陆
+    // 取消登录
     cancelLogin() {
       // 收藏失败
       this.triggerEvent('changeCollect', {
