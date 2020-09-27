@@ -145,7 +145,7 @@ export default class Enviroment {
       // 拉取 conf 接口
       getApp().setConf();
       // 拉取 abTest 接口
-      getApp().getAbtest();
+      getApp().getAbtest('', true);
     }
     
   }

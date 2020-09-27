@@ -20,12 +20,12 @@ export default class Func {
    * @description:  拉取conf接口 获取abtest
    * @param {string} key abtest key值
    */
-  async getAbtest(key = '') {
+  async getAbtest(key = '', isChangeCity = false) {
     let timer = null;
     try {
       return new Promise(async (resolve, reject) => {
         let resolveObj = this.abTest;
-        if (Object.keys(resolveObj).length <= 0 && this.flagTest) {
+        if (Object.keys(resolveObj).length <= 0 && this.flagTest || isChangeCity) {
           this.flagTest = false;
           const ab = await versonTest();
           if (ab.code != 0) {

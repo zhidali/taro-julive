@@ -129,6 +129,8 @@ Page({
     });
     this.refreshPage();
 
+    console.log(notification, 'notification notification');
+
     notification.addNotification('CityHadChanged', this.refreshPage, this);
     // 首页弹窗接口
     this.getHomePopupData();
@@ -143,6 +145,7 @@ Page({
    * @description:  刷新页面需要的调用请求
    */
   refreshPage: async function () {
+    console.log('执行 700000');
     this.setData({
       city: app.commonData.city,
       loadingHidden: false,

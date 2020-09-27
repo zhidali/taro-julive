@@ -1,7 +1,7 @@
 import { Component } from 'react'
 import './app.less'
 
-require('./pages/weapp/global')
+require('./weapp/global')
 const app = getApp();
 
 class App extends Component {

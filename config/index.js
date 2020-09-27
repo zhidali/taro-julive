@@ -16,7 +16,7 @@ const config = {
   copy: {
     patterns: [
       // 将原生copy小程序
-      { from: `src/pages/${process.env.TARO_ENV}/`, to: `dist/${process.env.TARO_ENV}` },
+      { from: `src/${process.env.TARO_ENV}/`, to: `dist/${process.env.TARO_ENV}` },
     ],
     options: {
     }
