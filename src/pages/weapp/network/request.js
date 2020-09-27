@@ -19,6 +19,7 @@ let token = "";
  * @return {Promise}       包含抓取任务的Promise
  */
 async function request(path, params, method = "POST") {
+  console.log(path, 'path path');
   if (token) {
     return await swanRequest(path, params, method);
     // instill 请求中

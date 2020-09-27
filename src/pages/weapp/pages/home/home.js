@@ -309,11 +309,18 @@ Page({
    */
   async fetchHomeData() {
     var _this = this;
-    let res = await getHomeData();
+    try{
+      await getHomeData()
+    }catch(e){
+      console.log(e, 'i697')
+    }
     
+    let res = await getHomeData();
+    console.log(res, '96o7670');
     if(res.code != 0){
       return;
     }
+    console.log('fetchHomeData fetchHomeData-');
     let data = res.data;
     
     // BUG
